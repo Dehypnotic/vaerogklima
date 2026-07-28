@@ -109,12 +109,14 @@ export function getGlobalDataForRegion(regionKey = 'global') {
     const anomaly = Number((item.tempAnomaly * region.trendFactor).toFixed(2));
     const trend = Number((item.trendAnomaly * region.trendFactor).toFixed(2));
     const absTemp = Number((region.baseTemp + anomaly).toFixed(1));
+    const absTrend = Number((region.baseTemp + trend).toFixed(2));
 
     return {
       ...item,
       anomaly,
       trend,
-      absTemp
+      absTemp,
+      absTrend
     };
   });
 

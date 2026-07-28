@@ -98,19 +98,19 @@ function renderGlobalChart(data) {
 
   if (activeVariable === 'temp') {
     const anomalies = displaySeries.map(s => s.anomaly);
-    const trends = displaySeries.map(s => s.trend);
+    const trends = displaySeries.map(s => s.absTrend);
     const barColors = anomalies.map(val => val >= 0 ? 'rgba(244, 63, 94, 0.75)' : 'rgba(59, 130, 246, 0.75)');
 
     hasDualAxis = true;
-    yAxisLeftTitle = 'Temperaturavvik (°C)';
+    yAxisLeftTitle = 'Årlig Temperaturavvik (°C fra før-industrielt snitt)';
     yAxisLeftColor = '#94a3b8';
-    yAxisRightTitle = '10-års Snitttrend (°C)';
+    yAxisRightTitle = '10-års Snittemperatur (°C)';
     yAxisRightColor = '#f59e0b';
 
     datasetConfig = [
       {
         type: 'line',
-        label: '10-års Glidende Klimatrend (°C)',
+        label: '10-års Glidende Snittemperatur (°C)',
         data: trends,
         borderColor: '#f59e0b',
         borderWidth: 3,
@@ -120,7 +120,7 @@ function renderGlobalChart(data) {
       },
       {
         type: 'bar',
-        label: 'Årlig Temperaturavvik (°C)',
+        label: 'Årlig Temperaturavvik (°C fra før-industrielt snitt)',
         data: anomalies,
         backgroundColor: barColors,
         borderWidth: 0,
@@ -196,11 +196,11 @@ function renderGlobalChart(data) {
     ];
   }
 
-  // Beregn dynamisk min og max for full vertikal utnyttelse
+  // Beregn dynamisk min og max for full vertikal utnyttelse (100% aksestrekking)
   const primaryData = datasetConfig[datasetConfig.length - 1].data;
   const minVal = Math.min(...primaryData);
   const maxVal = Math.max(...primaryData);
-  const pad = Math.max(0.2, (maxVal - minVal) * 0.05);
+  const pad = Math.max(0.1, (maxVal - minVal) * 0.08);
 
   let scalesConfig = {
     x: {
@@ -211,8 +211,9 @@ function renderGlobalChart(data) {
       type: 'linear',
       display: true,
       position: 'left',
-      suggestedMin: Math.floor((minVal - pad) * 10) / 10,
-      suggestedMax: Math.ceil((maxVal + pad) * 10) / 10,
+      beginAtZero: false,
+      min: Math.floor((minVal - pad) * 10) / 10,
+      max: Math.ceil((maxVal + pad) * 10) / 10,
       title: {
         display: true,
         text: yAxisLeftTitle,
@@ -231,14 +232,15 @@ function renderGlobalChart(data) {
     const secondaryData = datasetConfig[0].data;
     const minSec = Math.min(...secondaryData);
     const maxSec = Math.max(...secondaryData);
-    const padSec = Math.max(0.2, (maxSec - minSec) * 0.05);
+    const padSec = Math.max(0.1, (maxSec - minSec) * 0.08);
 
     scalesConfig.yRight = {
       type: 'linear',
       display: true,
       position: 'right',
-      suggestedMin: Math.floor((minSec - padSec) * 10) / 10,
-      suggestedMax: Math.ceil((maxSec + padSec) * 10) / 10,
+      beginAtZero: false,
+      min: Math.floor((minSec - padSec) * 10) / 10,
+      max: Math.ceil((maxSec + padSec) * 10) / 10,
       title: {
         display: true,
         text: yAxisRightTitle,
@@ -249,7 +251,7 @@ function renderGlobalChart(data) {
       ticks: {
         color: yAxisRightColor,
         font: { family: 'Inter', size: 11, weight: '600' },
-        callback: value => `${value > 0 ? '+' : ''}${value}°C`
+        callback: value => `${Number(value).toFixed(1)}°C`
       }
     };
   }

@@ -85,7 +85,7 @@ export async function getClimateDataForRegion(regionKey = 'norway', seasonKey = 
     const factor = (region.trendFactor / 0.024) * season.factor;
     const regionAnomaly = Number((item.anomaly * factor).toFixed(2));
     const absTemp = Number((baseTempForSeason + regionAnomaly).toFixed(1));
-    const trendTemp = Number((baseTempForSeason + item.movingAvg * factor).toFixed(1));
+    const trendTemp = Number((baseTempForSeason + item.movingAvg * factor).toFixed(2));
 
     // Estimer historisk nedbør for året/sesongen
     const rainFactor = 1 + ((item.year - 1950) * 0.0022) + (item.anomaly * 0.06) + (Math.sin(idx * 0.8) * 0.04);
