@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vær og Klima i Norge | Sanntid Vær, Ekstrempunkter & Historiske Klimadata</title>
+  <meta name="description" content="Kjørbare, interaktive websider for vær og klimainformasjon i Norge. Nåværende vær i de 10 største byene, stedsvalg, prognoser og historiske klimagrafikk.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script type="module" crossorigin src="/assets/index-DEG732u_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-nhdhLusO.css">
+</head>
+<body class="nordic-dark">
+  <!-- Dynamic Background Atmosphere -->
+  <div id="bg-atmosphere" class="bg-atmosphere"></div>
+  <div class="glass-grid-overlay"></div>
+
+  <!-- Header Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="weather-logo"><path d="M17.5 19.5 15.08 14.33a5 5 0 0 0-6.16-2.58A5 5 0 0 0 4.5 17"/><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.94 9.06a5 5 0 0 0-7.88 0"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Vær og Klima <span class="brand-badge">NORGE</span></h1>
+          <p class="brand-tagline"> Meteorologiske data & historisk utsyn</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button id="tab-weather" class="tab-btn active" data-tab="weather">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19.5 15.08 14.33a5 5 0 0 0-6.16-2.58A5 5 0 0 0 4.5 17"/><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <span>Vær og Varsel</span>
+        </button>
+        <button id="tab-climate" class="tab-btn" data-tab="climate">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          <span>Klimautvikling i Norge</span>
+        </button>
+        <button id="tab-global" class="tab-btn" data-tab="global">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          <span>Globalt Klima (Verden)</span>
+        </button>
+      </nav>
+
+      <!-- Quick Action / Status -->
+      <div class="header-status">
+        <div class="live-indicator">
+          <span class="pulse-dot"></span>
+          <span class="live-text">Data fra Åpne API-er</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- TAB 1: VÆR OG VARSEL -->
+    <section id="view-weather" class="tab-view active">
+      
+      <!-- TOP 10 EKSTREMPUNKTER NORGE -->
+      <div class="section-container extremes-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">
+              <span class="title-icon">⚡</span> Ekstremvær i Norge Nå
+            </h2>
+            <p class="section-subtitle">Topp 10 steder med høye/lave temperaturer, mest nedbør og sterkest vind akkurat nå</p>
+          </div>
+          <div class="extremes-refresh-info">
+            <span id="extremes-timestamp" class="timestamp-badge">Oppdaterer data...</span>
+          </div>
+        </div>
+
+        <!-- Extremes Category Filter Tabs -->
+        <div class="category-pills">
+          <button class="pill-btn active" data-category="warmest">
+            <span class="pill-icon">☀️</span> Varmest <span class="pill-count" id="count-warmest">10</span>
+          </button>
+          <button class="pill-btn" data-category="coldest">
+            <span class="pill-icon">❄️</span> Kjøligst <span class="pill-count" id="count-coldest">10</span>
+          </button>
+          <button class="pill-btn" data-category="wettest">
+            <span class="pill-icon">🌧️</span> Våtest <span class="pill-count" id="count-wettest">10</span>
+          </button>
+          <button class="pill-btn" data-category="windiest">
+            <span class="pill-icon">💨</span> Mest vind <span class="pill-count" id="count-windiest">10</span>
+          </button>
+        </div>
+
+        <!-- Extremes Grid Carousel -->
+        <div id="extremes-container" class="extremes-grid">
+          <!-- Dynamisk oppdatert via JS -->
+          <div class="loading-skeleton">Henter ekstremverdiene fra norsk meteorologi...</div>
+        </div>
+      </div>
+
+      <!-- 10 BYER INFOBOKSER -->
+      <div class="section-container cities-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">
+              <span class="title-icon">📍</span> Vær i Norske Byer & Steder
+            </h2>
+            <p class="section-subtitle">
+              💡 <strong>Tips:</strong> Dobbeltklikk på en hvilken som helst boks for å velge et valgt sted i Norge, eller klikk på hjertet/huset for å sette det som ditt hjem-sted.
+            </p>
+          </div>
+          <div class="city-actions">
+            <button id="btn-reset-cities" class="btn-secondary btn-sm" title="Tilbakestill til de 10 største byene">
+              🔄 Tilbakestill byer
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid of 10 Customisable City Cards -->
+        <div id="cities-grid" class="cities-grid">
+          <!-- Dynamisk fylt via cityCards.js -->
+        </div>
+      </div>
+
+      <!-- GRAFISK FREMSTILLING FOR VALGT STED -->
+      <div class="section-container forecast-detail-section" id="forecast-section">
+        <div class="forecast-card glass-panel">
+          <div class="forecast-header">
+            <div class="selected-location-info">
+              <div class="location-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span id="forecast-location-name">Oslo</span>
+                <span id="forecast-home-tag" class="home-tag hidden">🏠 Mitt Hjem</span>
+              </div>
+              <p id="forecast-location-coords" class="coords-subtitle">Lat 59.91, Lon 10.75</p>
+            </div>
+
+            <div class="forecast-controls">
+              <div class="chart-toggle-group">
+                <button class="chart-tab-btn active" data-mode="hourly">Time-for-time</button>
+                <button class="chart-tab-btn" data-mode="daily">7-dagers oversikt</button>
+              </div>
+              <button id="btn-set-home" class="btn-primary btn-sm">
+                🏠 Sett som Mitt Hjem
+              </button>
+            </div>
+          </div>
+
+          <!-- Current Weather Snapshot for Selected Place -->
+          <div class="current-snap" id="selected-current-snap">
+            <!-- Dynamisk oppdatert -->
+          </div>
+
+          <!-- Interactive Chart Canvas -->
+          <div class="chart-wrapper">
+            <canvas id="forecast-chart"></canvas>
+          </div>
+
+          <!-- 7-Day Forecast Cards Scrollable Container -->
+          <div class="daily-cards-container" id="daily-cards">
+            <!-- Rendered by forecastChart.js -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: KLIMAINFORMASJON -->
+    <section id="view-climate" class="tab-view">
+      <div class="section-container climate-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">
+              <span class="title-icon">🌍</span> Klimautvikling i Norge (1950 – I dag)
+            </h2>
+            <p class="section-subtitle">Historisk oversikt over temperaturomveltning, nedbørsendringer og klimanormaler for Norge og utvalgte fylker/steder.</p>
+          </div>
+          
+          <div class="climate-filters-group">
+            <div class="climate-location-selector">
+              <label for="climate-region-select">Velg område:</label>
+              <select id="climate-region-select" class="custom-select">
+                <option value="norway">Hele Norge (Nasjonalt snitt)</option>
+                <option value="oslo">Oslo & Østlandet</option>
+                <option value="bergen">Bergen & Vestlandet</option>
+                <option value="trondheim">Trøndelag</option>
+                <option value="tromso">Troms & Nord-Norge</option>
+                <option value="svalbard">Svalbard / Longyearbyen</option>
+                <option value="karasjok">Finnmarksvidda (Karasjok)</option>
+              </select>
+            </div>
+
+            <div class="climate-season-selector">
+              <label for="climate-season-select">Årstid / Tidsrom:</label>
+              <select id="climate-season-select" class="custom-select">
+                <option value="annual">Hele året (Årsgjennomsnitt)</option>
+                <option value="winter">❄️ Vinter (Des – Feb)</option>
+                <option value="spring">🌸 Vår (Mar – Mai)</option>
+                <option value="summer">☀️ Sommer (Jun – Aug)</option>
+                <option value="autumn">🍂 Høst (Sep – Nov)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Climate KPI Highlight Cards -->
+        <div class="climate-kpi-grid">
+          <div class="kpi-card glass-panel highlight-temp">
+            <div class="kpi-icon">🌡️</div>
+            <div class="kpi-body">
+              <span class="kpi-label" id="kpi-temp-label">Klimaoppvarming (10-års snitt)</span>
+              <span class="kpi-value" id="kpi-temp-increase">+1.3 °C</span>
+              <span class="kpi-desc" id="kpi-temp-desc">Snittavvik fra 1961-1990 normal</span>
+            </div>
+          </div>
+          <div class="kpi-card glass-panel highlight-rain">
+            <div class="kpi-icon">🌧️</div>
+            <div class="kpi-body">
+              <span class="kpi-label">Årlig nedbørsendring</span>
+              <span class="kpi-value" id="kpi-rain-increase">+18 %</span>
+              <span class="kpi-desc">Mer nedbør & hyppigere ekstremdager</span>
+            </div>
+          </div>
+          <div class="kpi-card glass-panel highlight-record">
+            <div class="kpi-icon">🔥</div>
+            <div class="kpi-body">
+              <span class="kpi-label">Varmeste År Registrert</span>
+              <span class="kpi-value" id="kpi-warmest-year">2020 / 2024</span>
+              <span class="kpi-desc">Nasjonalt årsgjennomsnitt</span>
+            </div>
+          </div>
+          <div class="kpi-card glass-panel highlight-arctic">
+            <div class="kpi-icon">⚡</div>
+            <div class="kpi-body">
+              <span class="kpi-label" id="kpi-recent-year-label">Siste enkeltår (2025/2026)</span>
+              <span class="kpi-value" id="kpi-recent-year-val">+2.0 °C</span>
+              <span class="kpi-desc" id="kpi-recent-year-desc">Avvik for nyeste år alene</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Climate Chart: Temperature Anomaly Trend -->
+        <div class="climate-card glass-panel">
+          <div class="climate-chart-header">
+            <h3 id="climate-chart-title">Historisk Temperaturavvik (1950–Present)</h3>
+            <p class="chart-legend-hint">
+              <span class="legend-dot warm"></span> Varmere enn normal (1961-1990)
+              <span class="legend-dot cold"></span> Kaldere enn normal
+              <span class="legend-dot trend"></span> 10-års glidende snitt
+            </p>
+          </div>
+          <div class="chart-wrapper climate-chart-wrapper">
+            <canvas id="climate-trend-chart"></canvas>
+        </div>
+
+        <!-- TOP 10 HISTORISKE KLIMAREKORDER FOR OMRÅDE OG SESONG -->
+        <div class="climate-card glass-panel climate-records-section">
+          <div class="climate-chart-header">
+            <div>
+              <h3 id="climate-records-title">🏆 Topp 10 Historiske Rekordår & Sesonger</h3>
+              <p class="section-subtitle" id="climate-records-subtitle">Historisk rangering fra 1950 til i dag for valgt område og tidsrom</p>
+            </div>
+          </div>
+
+          <!-- Category Pills for Climate Extremes -->
+          <div class="category-pills climate-category-pills">
+            <button class="pill-btn climate-pill active" data-climate-category="warmest">
+              <span class="pill-icon">☀️</span> Varmeste år
+            </button>
+            <button class="pill-btn climate-pill" data-climate-category="coldest">
+              <span class="pill-icon">❄️</span> Kaldeste år
+            </button>
+            <button class="pill-btn climate-pill" data-climate-category="anomaly">
+              <span class="pill-icon">⚡</span> Største temperaturavvik
+            </button>
+            <button class="pill-btn climate-pill" data-climate-category="wettest">
+              <span class="pill-icon">🌧️</span> Våteste år
+            </button>
+          </div>
+
+          <!-- Grid of 10 Climate Record Items -->
+          <div id="climate-records-grid" class="extremes-grid">
+            <!-- Dynamisk oppdatert via climateView.js -->
+          </div>
+        </div>
+
+        <!-- Climate Normals Comparison & Seasonal Changes -->
+        <div class="climate-split-grid">
+          <div class="climate-card glass-panel">
+            <h3>Klimanormaler Sammenlignet (Måned for måned)</h3>
+            <p class="section-subtitle">Hvordan månedstemperaturene har flyttet seg fra 1961-1990 til nå</p>
+            <div class="chart-wrapper climate-subchart">
+              <canvas id="climate-normals-chart"></canvas>
+            </div>
+          </div>
+
+          <div class="climate-card glass-panel">
+            <h3>Klimafakta & Meteorologiske Innsikter</h3>
+            <div class="climate-facts-list">
+              <div class="fact-item">
+                <div class="fact-bullet">1</div>
+                <div>
+                  <strong>Endringer i Årstidene:</strong> 
+                  Vintrene i Norge er blitt merkbart kortere og milde. Snøgrensen har trukket seg høyere opp i terrenget.
+                </div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-bullet">2</div>
+                <div>
+                  <strong>Mer Ekstremnedbør:</strong> 
+                  Kortvarige kraftige regnskyll gir økt risiko for overvann, oversvømmelser og jordskred i norske kommuner.
+                </div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-bullet">3</div>
+                <div>
+                  <strong>Havklima & Havtemperatur:</strong> 
+                  Norskekysten og Nordsjøen har opplevd stigende sjøtemperaturer som påvirker havis og marint liv.
+                </div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-bullet">4</div>
+                <div>
+                  <strong>Åpne Datakilder:</strong> 
+                  Data på denne siden henter meteorologiske observasjoner og reanalyser fra MET Norge, Copernicus og Open-Meteo sin klima-arkivdatabase.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: GLOBALT KLIMA (VERDEN) -->
+    <section id="view-global" class="tab-view">
+      <div class="section-container climate-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">
+              <span class="title-icon">🌐</span> Globalt Klima & Drivhusgasser (1880 – I dag)
+            </h2>
+            <p class="section-subtitle">Oversikt over global temperaturutvikling, atmosfærisk CO₂ (Keeling-kurven), havnivåstigning og arktisk sjøis.</p>
+          </div>
+          
+          <div class="climate-location-selector">
+            <label for="global-region-select">Velg verdensdel / område:</label>
+            <select id="global-region-select" class="custom-select">
+              <option value="global">Hele Verden (Globalt Snitt)</option>
+              <option value="europe">Europa</option>
+              <option value="arctic">Arktis & Polardypet</option>
+              <option value="north_america">Nord-Amerika</option>
+              <option value="asia">Asia</option>
+              <option value="antarctica">Antarktis</option>
+              <option value="oceans">Verdenshavene (Overflatesnitt)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Key Global Climate KPI Highlight Cards -->
+        <div class="climate-kpi-grid">
+          <div class="kpi-card glass-panel highlight-temp">
+            <div class="kpi-icon">🌡️</div>
+            <div class="kpi-body">
+              <span class="kpi-label">Global Temperaturøkning</span>
+              <span class="kpi-value" id="g-kpi-temp">+1.25 °C</span>
+              <span class="kpi-desc">Fra før-industrielt snitt (1850-1900)</span>
+            </div>
+          </div>
+          <div class="kpi-card glass-panel highlight-record">
+            <div class="kpi-icon">☁️</div>
+            <div class="kpi-body">
+              <span class="kpi-label">Atmosfærisk CO₂ (PPM)</span>
+              <span class="kpi-value" id="g-kpi-co2">426 ppm</span>
+              <span class="kpi-desc">Opp fra ~280 ppm i før-industriell tid</span>
+            </div>
+          </div>
+          <div class="kpi-card glass-panel highlight-rain">
+            <div class="kpi-icon">🌊</div>
+            <div class="kpi-body">
+              <span class="kpi-label">Global Havnivåstigning</span>
+              <span class="kpi-value" id="g-kpi-sea">+240 mm</span>
+              <span class="kpi-desc">Målt samlet stigning siden 1880</span>
+            </div>
+          </div>
+          <div class="kpi-card glass-panel highlight-arctic">
+            <div class="kpi-icon">🧊</div>
+            <div class="kpi-body">
+              <span class="kpi-label">Arktisk Sjøis Minimum</span>
+              <span class="kpi-value" id="g-kpi-ice">4.4 mill. km²</span>
+              <span class="kpi-desc">September-minimum i isutbredelse</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Global Variable Chart Canvas -->
+        <div class="climate-card glass-panel">
+          <div class="climate-chart-header">
+            <div>
+              <h3>Global Klimautvikling & Indikatorer</h3>
+              <p class="section-subtitle">Velg klimavariabel for å studere måleserier fra 1880 til nåtid</p>
+            </div>
+            
+            <!-- Global Variable Selection Pills -->
+            <div class="category-pills">
+              <button class="pill-btn global-var-btn active" data-variable="temp">
+                <span class="pill-icon">🌡️</span> Temperaturavvik
+              </button>
+              <button class="pill-btn global-var-btn" data-variable="co2">
+                <span class="pill-icon">☁️</span> CO₂ (ppm)
+              </button>
+              <button class="pill-btn global-var-btn" data-variable="sealevel">
+                <span class="pill-icon">🌊</span> Havnivåstigning
+              </button>
+              <button class="pill-btn global-var-btn" data-variable="ice">
+                <span class="pill-icon">🧊</span> Arktisk Sjøis
+              </button>
+            </div>
+          </div>
+
+          <div class="chart-wrapper climate-chart-wrapper">
+            <canvas id="global-climate-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- TOP 10 GLOBALE KLIMAREKORDER & RASKESTE REGIONER -->
+        <div class="climate-card glass-panel climate-records-section">
+          <div class="climate-chart-header">
+            <div>
+              <h3 id="global-records-title">🌐 Globale Rekordår & Raskest Oppvarmede Regioner</h3>
+              <p class="section-subtitle">Historiske globale registreringer fra NOAA, NASA GISTEMP og IPCC</p>
+            </div>
+          </div>
+
+          <!-- Category Pills for Global Extremes -->
+          <div class="category-pills climate-category-pills">
+            <button class="pill-btn global-record-pill active" data-record-category="warmestYears">
+              <span class="pill-icon">☀️</span> Varmeste år i verden
+            </button>
+            <button class="pill-btn global-record-pill" data-record-category="fastestWarming">
+              <span class="pill-icon">🔥</span> Raskest oppvarmede regioner
+            </button>
+            <button class="pill-btn global-record-pill" data-record-category="co2Peaks">
+              <span class="pill-icon">🏭</span> Høyeste CO₂-konsentrasjoner
+            </button>
+            <button class="pill-btn global-record-pill" data-record-category="highestSeaLevel">
+              <span class="pill-icon">🌊</span> Største havnivåmålinger
+            </button>
+          </div>
+
+          <!-- Grid of 10 Global Record Items -->
+          <div id="global-records-grid" class="extremes-grid">
+            <!-- Dynamisk fylt via globalClimateView.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SEARCH MODAL FOR CHANGING A CITY BOKS -->
+  <div id="search-modal" class="modal-overlay hidden">
+    <div class="modal-content glass-panel">
+      <div class="modal-header">
+        <h3>Endre sted for Infoboks <span id="modal-box-index-title">#1</span></h3>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-instruction">Søk etter et hvilket som helst stedsnavn, kommune eller øy i Norge:</p>
+        
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" placeholder="F.eks. Geilo, Karasjok, Lofoten, Flåm, Røros..." autocomplete="off">
+          <div id="search-spinner" class="search-spinner hidden"></div>
+        </div>
+
+        <div id="search-results" class="search-results-list">
+          <div class="search-placeholder-msg">Skriv inn et stedsnavn for å søke...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>© 2026 Vær og Klima i Norge • Utviklet med åpne meteorologiske data fra Open-Meteo & Meteorologisk Institutt (MET Norge)</p>
+      <p class="footer-sub">Leverer sanntidsvarsler, stedsgeocoding og historiske klima-visualiseringer.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+</body>
+</html>
