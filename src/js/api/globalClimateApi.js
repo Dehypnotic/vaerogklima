@@ -120,26 +120,49 @@ export function getGlobalDataForRegion(regionKey = 'global') {
     };
   });
 
+  const latest = series[series.length - 1];
+  const globalLatestAnomaly = rawSeries[rawSeries.length - 1].anomaly;
+
   // Global Topp 10 rekorder
   const records = {
     warmestYears: [...series].sort((a, b) => b.anomaly - a.anomaly).slice(0, 10),
-    co2Peaks: [...series].sort((a, b) => b.co2Ppm - a.co2Ppm).slice(0, 10),
-    highestSeaLevel: [...series].sort((a, b) => b.seaLevelMm - a.seaLevelMm).slice(0, 10),
     fastestWarmingRegions: [
-      { name: 'Arktis & Svalbard', rate: '+4.8 °C', factor: '3.8x global fart', desc: 'Isalbedo-feedback' },
-      { name: 'Barentshavet', rate: '+3.9 °C', factor: '3.1x global fart', desc: 'Åpne isfrie farvann' },
-      { name: 'Europa', rate: '+2.3 °C', factor: '1.8x global fart', desc: 'Rask kontinentoppvarming' },
-      { name: 'Nord-Asia & Sibir', rate: '+2.1 °C', factor: '1.7x global fart', desc: 'Tining av permafrost' },
-      { name: 'Middelhavsområdet', rate: '+1.9 °C', factor: '1.5x global fart', desc: 'Økt tørke og hetebølger' },
-      { name: 'Nord-Amerika', rate: '+1.6 °C', factor: '1.3x global fart', desc: 'Ekstremvær & skogbranner' },
-      { name: 'Midtøsten', rate: '+1.8 °C', factor: '1.4x global fart', desc: 'Ekstreme sommertemperaturer' },
-      { name: 'Antarktishalvøya', rate: '+2.4 °C', factor: '1.9x global fart', desc: 'Isbre-kalving' },
-      { name: 'Sør-Norge & Østersjøen', rate: '+1.4 °C', factor: '1.1x global fart', desc: 'Milde vintrer' },
-      { name: 'Globalt Gjennomsnitt', rate: '+1.25 °C', factor: '1.0x baseline', desc: 'NASA / WMO snitt' }
+      { name: 'Arktis', rate: '+4.8 °C', factor: '3.8x globalt' },
+      { name: 'Barentshavet', rate: '+3.9 °C', factor: '3.1x globalt' },
+      { name: 'Antarktis-halvøya', rate: '+2.4 °C', factor: '1.9x globalt' },
+      { name: 'Europa', rate: '+2.3 °C', factor: '1.8x globalt' },
+      { name: 'Sibir & Nord-Asia', rate: '+2.1 °C', factor: '1.7x globalt' },
+      { name: 'Middelhavet', rate: '+1.9 °C', factor: '1.5x globalt' },
+      { name: 'Midtøsten', rate: '+1.8 °C', factor: '1.4x globalt' },
+      { name: 'Nord-Amerika', rate: '+1.6 °C', factor: '1.3x globalt' },
+      { name: 'Amazonas', rate: '+1.4 °C', factor: '1.1x globalt' },
+      { name: 'Globalt Snitt', rate: `${globalLatestAnomaly > 0 ? '+' : ''}${globalLatestAnomaly} °C`, factor: '1.0x grunnlinje' }
+    ],
+    elNinoEvents: [
+      { year: '2023–2024', name: 'Super El Niño (Rekordår)', rate: '+1.46 °C' },
+      { year: '2015–2016', name: 'Super El Niño ("Godzilla")', rate: '+1.20 °C' },
+      { year: '1997–1998', name: 'Århundrets El Niño', rate: '+0.64 °C' },
+      { year: '1982–1983', name: 'Historisk Ekstrem-El Niño', rate: '+0.31 °C' },
+      { year: '1972–1973', name: 'Kraftig El Niño', rate: '+0.16 °C' },
+      { year: '2009–2010', name: 'Moderat/Sterk El Niño', rate: '+0.72 °C' },
+      { year: '2002–2003', name: 'Moderat El Niño', rate: '+0.63 °C' },
+      { year: '1991–1992', name: 'El Niño (Pinatubo-kjølt)', rate: '+0.35 °C' },
+      { year: '1965–1966', name: 'Moderat Stillehavs-El Niño', rate: '-0.04 °C' },
+      { year: '1957–1958', name: 'Internasjonal Geofysisk El Niño', rate: '+0.08 °C' }
+    ],
+    laNinaEvents: [
+      { year: '2010–2011', name: 'Ekstrem La Niña (Havstigningsfall)', rate: '+0.61 °C' },
+      { year: '1973–1976', name: 'Langvarig Super-La Niña', rate: '-0.06 °C' },
+      { year: '1988–1989', name: 'Kraftig Post-El Niño La Niña', rate: '+0.28 °C' },
+      { year: '1998–2000', name: 'Dobbelt La Niña-kjøling', rate: '+0.42 °C' },
+      { year: '2020–2023', name: 'Sjelden "Triple-Dip" La Niña', rate: '+1.03 °C' },
+      { year: '2007–2008', name: 'Sterk La Niña-kjøling', rate: '+0.54 °C' },
+      { year: '1954–1956', name: 'Flerårig La Niña-periode', rate: '-0.14 °C' },
+      { year: '1964–1965', name: 'Sterk La Niña (Post-Agung)', rate: '-0.10 °C' },
+      { year: '1995–1996', name: 'Moderat Stillehavs-La Niña', rate: '+0.35 °C' },
+      { year: '2011–2012', name: 'Oppfølgende La Niña-kjøling', rate: '+0.65 °C' }
     ]
   };
-
-  const latest = series[series.length - 1];
 
   return {
     regionName: region.name,

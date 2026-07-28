@@ -311,7 +311,7 @@ function renderGlobalRecordsGrid(data) {
         <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
         <div class="extreme-info">
           <div class="extreme-place">${item.name}</div>
-          <div class="extreme-region">${item.desc} • ${item.factor}</div>
+          <div class="extreme-region">${item.factor}</div>
         </div>
         <div class="extreme-metric warm">${item.rate}</div>
       </div>
@@ -319,35 +319,31 @@ function renderGlobalRecordsGrid(data) {
     return;
   }
 
-  let list = [];
-  if (cat === 'warmestYears') list = data.records.warmestYears || [];
-  if (cat === 'co2Peaks') list = data.records.co2Peaks || [];
-  if (cat === 'highestSeaLevel') list = data.records.highestSeaLevel || [];
-
-  container.innerHTML = list.map((item, idx) => {
-    let valStr = '';
-    let metricClass = 'warm';
-
-    if (cat === 'warmestYears') {
-      valStr = `${item.anomaly > 0 ? '+' : ''}${item.anomaly} °C`;
-      metricClass = 'warm';
-    } else if (cat === 'co2Peaks') {
-      valStr = `${item.co2Ppm} ppm`;
-      metricClass = 'cold';
-    } else if (cat === 'highestSeaLevel') {
-      valStr = `+${item.seaLevelMm} mm`;
-      metricClass = 'rain';
-    }
-
-    return `
+  if (cat === 'elNino' || cat === 'laNina') {
+    const list = cat === 'elNino' ? (data.records.elNinoEvents || []) : (data.records.laNinaEvents || []);
+    const metricClass = cat === 'elNino' ? 'warm' : 'cold';
+    container.innerHTML = list.map((item, idx) => `
       <div class="extreme-item-card">
         <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
         <div class="extreme-info">
-          <div class="extreme-place">År ${item.year}</div>
-          <div class="extreme-region">${cat === 'co2Peaks' ? 'CO₂ Konsentrasjon' : (cat === 'highestSeaLevel' ? 'Havnivå i forhold til 1880' : 'Globalt temperaturavvik')}</div>
+          <div class="extreme-place">${item.year}</div>
         </div>
-        <div class="extreme-metric ${metricClass}">${valStr}</div>
+        <div class="extreme-metric ${metricClass}">${item.rate}</div>
       </div>
-    `;
-  }).join('');
+    `).join('');
+    return;
+  }
+
+  let list = [];
+  if (cat === 'warmestYears') list = data.records.warmestYears || [];
+
+  container.innerHTML = list.map((item, idx) => `
+    <div class="extreme-item-card">
+      <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
+      <div class="extreme-info">
+        <div class="extreme-place">År ${item.year}</div>
+      </div>
+      <div class="extreme-metric warm">${item.anomaly > 0 ? '+' : ''}${item.anomaly} °C</div>
+    </div>
+  `).join('');
 }

@@ -73,7 +73,7 @@
   background: rgba(19, 27, 46, 0.7);
   border: 1px solid var(--bg-glass-border);
   border-radius: var(--radius-md);
-  padding: 1rem;
+  padding: 0.7rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -91,10 +91,11 @@
 
 .extreme-rank {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--text-muted);
-  width: 28px;
+  width: 26px;
+  flex-shrink: 0;
 }
 
 .extreme-rank.rank-1 { color: var(--accent-amber); }
@@ -103,28 +104,35 @@
 
 .extreme-info {
   flex: 1;
-  padding: 0 0.5rem;
+  padding: 0 0.4rem;
+  min-width: 0;
 }
 
 .extreme-place {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--text-primary);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.extreme-region {
+  font-size: 0.72rem;
+  color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.extreme-region {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
 .extreme-metric {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--accent-cyan);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: right;
+  margin-left: 0.3rem;
 }
 
 .extreme-metric.warm { color: var(--accent-rose); }
