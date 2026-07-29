@@ -253,12 +253,53 @@ function updateKPICards(data) {
   }
 }
 
+const STATION_PROVENANCE_INFO = {
+  norway: '📡 Datakilde: MET Norway nasjonalt homogenisert klimagjennomsnitt (1900–2025)',
+  oslo_blindern: '📡 Datakilder: 1937–2025: Oslo – Blindern (SN18700) | 1900–1936: Oslo – Observatoriet (SN18500)',
+  lillehammer: '📡 Datakilder: 1982–2025: Lillehammer – Sæterengen (SN12550) | 1900–1981: Lillehammer I/II (SN12530)',
+  drammen: '📡 Datakilder: 1965–2025: Drammen – Berskog (SN17150) | 1900–1964: Drammen (SN17100)',
+  geilo: '📡 Datakilder: 1967–2025: Geilo – Geilostølen (SN23550) | 1900–1966: Geilo I (SN23500)',
+  kristiansand: '📡 Datakilder: 1942–2025: Kristiansand – Kjevik (SN39040) | 1900–1941: Kristiansand (SN39000)',
+  arendal: '📡 Datakilde: 1867–2025: Arendal – Torungen Fyr (SN36200)',
+  lindesnes: '📡 Datakilde: 1867–2025: Lindesnes Fyr (SN41100)',
+  bergen_florida: '📡 Datakilder: 1957–2025: Bergen – Florida (SN50540) | 1900–1956: Bergen – Fredriksberg (SN50500)',
+  stavanger_sola: '📡 Datakilder: 1935–2025: Stavanger – Sola (SN44560) | 1900–1934: Stavanger (SN44500)',
+  floro: '📡 Datakilder: 1971–2025: Florø Lufthavn (SN57710) | 1900–1970: Florø Furuhed (SN57000)',
+  laerdal: '📡 Datakilder: 1963–2025: Lærdal – Tønjum (SN53150) | 1900–1962: Lærdal (SN53100)',
+  ona: '📡 Datakilder: 1978–2025: Ona II Fyr (SN62480) | 1900–1977: Ona I Fyr (SN62470)',
+  kristiansund: '📡 Datakilder: 1970–2025: Kristiansund Lufthavn – Kvernberget (SN64330) | 1900–1969: Kristiansund (SN64300)',
+  molde: '📡 Datakilder: 1972–2025: Molde Lufthavn – Årø (SN62270) | 1900–1971: Molde I/II (SN64200)',
+  alesund: '📡 Datakilder: 1957–2025: Ålesund – Vigra (SN60940) | 1900–1956: Ålesund (SN60900)',
+  sunndalsora: '📡 Datakilder: 1955–2025: Sunndalsøra (SN63420) | 1900–1954: Sunndalsøra I (SN63400)',
+  tafjord: '📡 Datakilde: 1925–2025: Tafjord (SN60500)',
+  trondheim_voll: '📡 Datakilder: 1998–2025 & 1923–1965: Trondheim – Voll (SN68860) | 1966–1997: Trondheim – Tyholt (SN68865) | 1900–1922: Trondheim – Bispehaugen (SN68830)',
+  roros: '📡 Datakilder: 1957–2025: Røros Lufthavn (SN10380) | 1900–1956: Røros I/II (SN10350)',
+  steinkjer: '📡 Datakilder: 1954–2025: Steinkjer – Egge (SN70850) | 1900–1953: Steinkjer (SN70800)',
+  namsos: '📡 Datakilder: 1968–2025: Namsos Lufthavn (SN75200) | 1900–1967: Namsos (SN75100)',
+  tromso: '📡 Datakilder: 1920–2025: Tromsø – Langnes (SN90450) | 1900–1919: Tromsø Sem (SN90400)',
+  bodo: '📡 Datakilder: 1943–2025: Bodø Lufthavn (SN82290) | 1900–1942: Bodø (SN82200)',
+  svolvaer: '📡 Datakilder: 1972–2025: Svolvær Lufthavn (SN85450) | 1900–1971: Svolvær (SN85400)',
+  karasjok: '📡 Datakilde: 1876–2025: Karasjok – Markannjarga (SN97250)',
+  kautokeino: '📡 Datakilde: 1888–2025: Kautokeino (SN96450)',
+  vardo: '📡 Datakilde: 1867–2025: Vardø Radio (SN98550)',
+  svalbard_lufthavn: '📡 Datakilder: 1975–2025: Svalbard Lufthavn (SN99840) | 1911–1974: Isfjord Radio / Longyearbyen (SN99870)',
+  ny_alesund: '📡 Datakilder: 1969–2025: Ny-Ålesund (SN99910) | 1911–1968: Isfjord Radio (SN99870)',
+  jan_mayen: '📡 Datakilde: 1921–2025: Jan Mayen (SN99950)',
+  bjornoya: '📡 Datakilde: 1920–2025: Bjørnøya (SN99710)'
+};
+
 function renderAnomalyChart(data) {
   const chartTitleEl = document.getElementById('climate-chart-title');
   if (chartTitleEl) {
     const locText = formatLocationText(data.regionName);
     const seasonText = formatSeasonText(currentSeason);
     chartTitleEl.textContent = `Historisk temperaturavvik – ${seasonText} i ${locText}`;
+  }
+
+  const sourceBannerEl = document.getElementById('climate-data-source-banner');
+  if (sourceBannerEl) {
+    const info = STATION_PROVENANCE_INFO[currentStation] || '📡 Datakilde: MET Norway Frost API (frost.met.no)';
+    sourceBannerEl.textContent = info;
   }
 
   const canvas = document.getElementById('climate-trend-chart');

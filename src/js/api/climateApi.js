@@ -143,19 +143,24 @@ const SEASONAL_RAW_ANOMALIES = {
   ]
 };
 
+import { OFFICIAL_FROST_DATA } from './officialFrostData.js';
+
 function generateNorwayClimateData(stationKey = 'norway', seasonKey = 'annual') {
   const startYear = 1900;
   const endYear = 2025;
   const years = [];
-  
-  let rawList = STATION_RAW_ANOMALIES[stationKey] || STATION_RAW_ANOMALIES.oslo_blindern;
-  if (seasonKey && seasonKey !== 'annual' && SEASONAL_RAW_ANOMALIES[seasonKey]) {
-    rawList = SEASONAL_RAW_ANOMALIES[seasonKey];
-  }
+
+  const frostKey = OFFICIAL_FROST_DATA[stationKey] ? stationKey : (OFFICIAL_FROST_DATA['oslo_blindern'] ? 'oslo_blindern' : 'norway');
+  const frostStation = OFFICIAL_FROST_DATA[frostKey] || OFFICIAL_FROST_DATA.norway;
+  const seasonAnomalies = (frostStation.seasons && frostStation.seasons[seasonKey]) 
+    ? frostStation.seasons[seasonKey] 
+    : (frostStation.seasons ? frostStation.seasons.annual : {});
 
   for (let year = startYear; year <= endYear; year++) {
-    const idx = year - startYear;
-    const anomaly = rawList[idx] !== undefined ? rawList[idx] : 1.5;
+    const anomaly = seasonAnomalies[year] !== undefined 
+      ? seasonAnomalies[year] 
+      : (SEASONAL_RAW_ANOMALIES[seasonKey] ? SEASONAL_RAW_ANOMALIES[seasonKey][year - 1900] || 1.0 : 1.0);
+
     years.push({
       year,
       anomaly: Number(anomaly.toFixed(2))
@@ -189,67 +194,67 @@ export const CLIMATE_REGIONS = {
   ostlandet: {
     name: 'Østlandet & Innlandet',
     stations: {
-      oslo_blindern: { name: 'Oslo - Blindern (SN18700)', stID: 'SN18700', baseTemp: 6.4, trendFactor: 0.024, temps: { annual: 6.4, winter: -3.2, spring: 5.8, summer: 16.4, autumn: 6.6 } },
-      oslo_observatoriet: { name: 'Oslo - Observatoriet (SN18500)', stID: 'SN18500', baseTemp: 6.0, trendFactor: 0.023, temps: { annual: 6.0, winter: -3.5, spring: 5.4, summer: 16.0, autumn: 6.2 } },
-      lillehammer: { name: 'Lillehammer - Sæterengen (SN12550)', stID: 'SN12550', baseTemp: 4.5, trendFactor: 0.025, temps: { annual: 4.5, winter: -6.8, spring: 4.2, summer: 15.0, autumn: 4.4 } },
-      drammen: { name: 'Drammen - Berskog (SN17150)', stID: 'SN17150', baseTemp: 6.1, trendFactor: 0.023, temps: { annual: 6.1, winter: -3.8, spring: 5.6, summer: 16.2, autumn: 6.3 } },
-      geilo: { name: 'Geilo - Geilostølen (SN23550)', stID: 'SN23550', baseTemp: 1.2, trendFactor: 0.026, temps: { annual: 1.2, winter: -7.5, spring: 0.5, summer: 11.2, autumn: 1.5 } }
+      oslo_blindern: { name: 'Oslo - Blindern (SN18700, Måleserie 1937–2025)', stID: 'SN18700', baseTemp: 6.4, trendFactor: 0.024, temps: { annual: 6.4, winter: -3.2, spring: 5.8, summer: 16.4, autumn: 6.6 } },
+      lillehammer: { name: 'Lillehammer - Sæterengen (SN12550, Måleserie 1982–2025)', stID: 'SN12550', baseTemp: 4.5, trendFactor: 0.025, temps: { annual: 4.5, winter: -6.8, spring: 4.2, summer: 15.0, autumn: 4.4 } },
+      drammen: { name: 'Drammen - Berskog (SN17150, Måleserie 1965–2025)', stID: 'SN17150', baseTemp: 6.1, trendFactor: 0.023, temps: { annual: 6.1, winter: -3.8, spring: 5.6, summer: 16.2, autumn: 6.3 } },
+      geilo: { name: 'Geilo - Geilostølen (SN23550, Måleserie 1967–2025)', stID: 'SN23550', baseTemp: 1.2, trendFactor: 0.026, temps: { annual: 1.2, winter: -7.5, spring: 0.5, summer: 11.2, autumn: 1.5 } }
     }
   },
   sorlandet: {
     name: 'Sørlandet',
     stations: {
-      kristiansand: { name: 'Kristiansand - Kjevik (SN39040)', stID: 'SN39040', baseTemp: 7.2, trendFactor: 0.021, temps: { annual: 7.2, winter: -0.8, spring: 6.2, summer: 15.6, autumn: 7.8 } },
-      arendal: { name: 'Arendal - Torungen Fyr (SN36200)', stID: 'SN36200', baseTemp: 7.4, trendFactor: 0.020, temps: { annual: 7.4, winter: -0.4, spring: 6.4, summer: 15.8, autumn: 8.0 } },
-      lindesnes: { name: 'Lindesnes Fyr (SN41100)', stID: 'SN41100', baseTemp: 7.8, trendFactor: 0.018, temps: { annual: 7.8, winter: 1.2, spring: 6.8, summer: 15.2, autumn: 8.5 } }
+      kristiansand: { name: 'Kristiansand - Kjevik (SN39040, Måleserie 1942–2025)', stID: 'SN39040', baseTemp: 7.2, trendFactor: 0.021, temps: { annual: 7.2, winter: -0.8, spring: 6.2, summer: 15.6, autumn: 7.8 } },
+      arendal: { name: 'Arendal - Torungen Fyr (SN36200, Måleserie 1867–2025)', stID: 'SN36200', baseTemp: 7.4, trendFactor: 0.020, temps: { annual: 7.4, winter: -0.4, spring: 6.4, summer: 15.8, autumn: 8.0 } },
+      lindesnes: { name: 'Lindesnes Fyr (SN41100, Måleserie 1867–2025)', stID: 'SN41100', baseTemp: 7.8, trendFactor: 0.018, temps: { annual: 7.8, winter: 1.2, spring: 6.8, summer: 15.2, autumn: 8.5 } }
     }
   },
   vestlandet: {
     name: 'Vestlandet',
     stations: {
-      bergen_florida: { name: 'Bergen - Florida (SN50540)', stID: 'SN50540', baseTemp: 7.7, trendFactor: 0.020, temps: { annual: 7.7, winter: 1.8, spring: 6.8, summer: 14.5, autumn: 8.2 } },
-      stavanger_sola: { name: 'Stavanger - Sola (SN44560)', stID: 'SN44560', baseTemp: 7.9, trendFactor: 0.019, temps: { annual: 7.9, winter: 1.9, spring: 7.0, summer: 14.8, autumn: 8.4 } },
-      floro: { name: 'Florø Lufthavn (SN57070)', stID: 'SN57070', baseTemp: 7.4, trendFactor: 0.021, temps: { annual: 7.4, winter: 2.0, spring: 6.5, summer: 13.8, autumn: 7.9 } },
-      laerdal: { name: 'Lærdal - Tønjum (SN53150)', stID: 'SN53150', baseTemp: 6.5, trendFactor: 0.022, temps: { annual: 6.5, winter: -1.5, spring: 6.0, summer: 14.8, autumn: 6.7 } }
+      bergen_florida: { name: 'Bergen - Florida (SN50540, Måleserie 1957–2025)', stID: 'SN50540', baseTemp: 7.7, trendFactor: 0.020, temps: { annual: 7.7, winter: 1.8, spring: 6.8, summer: 14.5, autumn: 8.2 } },
+      stavanger_sola: { name: 'Stavanger - Sola (SN44560, Måleserie 1935–2025)', stID: 'SN44560', baseTemp: 7.9, trendFactor: 0.019, temps: { annual: 7.9, winter: 1.9, spring: 7.0, summer: 14.8, autumn: 8.4 } },
+      floro: { name: 'Florø Lufthavn (SN57710, Måleserie 1971–2025)', stID: 'SN57710', baseTemp: 7.4, trendFactor: 0.021, temps: { annual: 7.4, winter: 2.0, spring: 6.5, summer: 13.8, autumn: 7.9 } },
+      laerdal: { name: 'Lærdal - Tønjum (SN53150, Måleserie 1963–2025)', stID: 'SN53150', baseTemp: 6.5, trendFactor: 0.022, temps: { annual: 6.5, winter: -1.5, spring: 6.0, summer: 14.8, autumn: 6.7 } }
     }
   },
   nordvestlandet: {
     name: 'Nordvestlandet & Møre og Romsdal',
     stations: {
-      kristiansund: { name: 'Kristiansund - Kvernberget (SN86500)', stID: 'SN86500', baseTemp: 6.8, trendFactor: 0.022, temps: { annual: 6.8, winter: 1.2, spring: 5.8, summer: 13.5, autumn: 7.2 } },
-      molde: { name: 'Molde Lufthavn - Årø (SN64300)', stID: 'SN64300', baseTemp: 7.0, trendFactor: 0.021, temps: { annual: 7.0, winter: 1.0, spring: 6.0, summer: 13.8, autumn: 7.4 } },
-      alesund: { name: 'Ålesund - Vigra (SN60940)', stID: 'SN60940', baseTemp: 7.3, trendFactor: 0.020, temps: { annual: 7.3, winter: 2.1, spring: 6.2, summer: 13.6, autumn: 7.7 } },
-      sunndalsora: { name: 'Sunndalsøra (SN63420)', stID: 'SN63420', baseTemp: 7.2, trendFactor: 0.023, temps: { annual: 7.2, winter: 0.2, spring: 6.4, summer: 14.2, autumn: 7.5 } },
-      ona: { name: 'Ona Fyr (SN62290)', stID: 'SN62290', baseTemp: 7.5, trendFactor: 0.019, temps: { annual: 7.5, winter: 2.6, spring: 6.5, summer: 13.0, autumn: 8.2 } }
+      ona: { name: 'Ona Fyr (SN62480, Måleserie 1866–2025)', stID: 'SN62480', baseTemp: 7.5, trendFactor: 0.019, temps: { annual: 7.5, winter: 2.6, spring: 6.5, summer: 13.0, autumn: 8.2 } },
+      kristiansund: { name: 'Kristiansund Lufthavn - Kvernberget (SN64330, Måleserie 1970–2025)', stID: 'SN64330', baseTemp: 6.8, trendFactor: 0.022, temps: { annual: 6.8, winter: 1.2, spring: 5.8, summer: 13.5, autumn: 7.2 } },
+      molde: { name: 'Molde Lufthavn - Årø (SN62270, Måleserie 1972–2025)', stID: 'SN62270', baseTemp: 7.0, trendFactor: 0.021, temps: { annual: 7.0, winter: 1.0, spring: 6.0, summer: 13.8, autumn: 7.4 } },
+      alesund: { name: 'Ålesund - Vigra (SN60940, Måleserie 1957–2025)', stID: 'SN60940', baseTemp: 7.3, trendFactor: 0.020, temps: { annual: 7.3, winter: 2.1, spring: 6.2, summer: 13.6, autumn: 7.7 } },
+      sunndalsora: { name: 'Sunndalsøra (SN63420, Måleserie 1955–2025)', stID: 'SN63420', baseTemp: 7.2, trendFactor: 0.023, temps: { annual: 7.2, winter: 0.2, spring: 6.4, summer: 14.2, autumn: 7.5 } },
+      tafjord: { name: 'Tafjord (SN60500, Måleserie 1925–2025)', stID: 'SN60500', baseTemp: 6.8, trendFactor: 0.022, temps: { annual: 6.8, winter: 0.5, spring: 6.0, summer: 14.0, autumn: 7.0 } }
     }
   },
   trondelag: {
     name: 'Trøndelag & Midt-Norge',
     stations: {
-      trondheim_voll: { name: 'Trondheim - Voll (SN68860)', stID: 'SN68860', baseTemp: 5.0, trendFactor: 0.023, temps: { annual: 5.0, winter: -2.2, spring: 4.2, summer: 13.2, autumn: 5.2 } },
-      roros: { name: 'Røros Lufthavn (SN10380)', stID: 'SN10380', baseTemp: 0.8, trendFactor: 0.027, temps: { annual: 0.8, winter: -11.2, spring: -0.4, summer: 11.4, autumn: 1.0 } },
-      steinkjer: { name: 'Steinkjer - Egge (SN70850)', stID: 'SN70850', baseTemp: 4.7, trendFactor: 0.024, temps: { annual: 4.7, winter: -2.8, spring: 4.0, summer: 13.0, autumn: 4.8 } },
-      namsos: { name: 'Namsos Lufthavn (SN75200)', stID: 'SN75200', baseTemp: 4.9, trendFactor: 0.024, temps: { annual: 4.9, winter: -2.4, spring: 4.1, summer: 13.1, autumn: 5.0 } }
+      trondheim_voll: { name: 'Trondheim - Voll (SN68860, Måleserie 1923–2025)', stID: 'SN68860', baseTemp: 5.0, trendFactor: 0.023, temps: { annual: 5.0, winter: -2.2, spring: 4.2, summer: 13.2, autumn: 5.2 } },
+      roros: { name: 'Røros Lufthavn (SN10380, Måleserie 1957–2025)', stID: 'SN10380', baseTemp: 0.8, trendFactor: 0.027, temps: { annual: 0.8, winter: -11.2, spring: -0.4, summer: 11.4, autumn: 1.0 } },
+      steinkjer: { name: 'Steinkjer - Egge (SN70850, Måleserie 1954–2025)', stID: 'SN70850', baseTemp: 4.7, trendFactor: 0.024, temps: { annual: 4.7, winter: -2.8, spring: 4.0, summer: 13.0, autumn: 4.8 } },
+      namsos: { name: 'Namsos Lufthavn (SN75200, Måleserie 1968–2025)', stID: 'SN75200', baseTemp: 4.9, trendFactor: 0.024, temps: { annual: 4.9, winter: -2.4, spring: 4.1, summer: 13.1, autumn: 5.0 } }
     }
   },
   nordnorge: {
     name: 'Nord-Norge & Finnmark',
     stations: {
-      tromso: { name: 'Tromsø - Langnes (SN90450)', stID: 'SN90450', baseTemp: 2.8, trendFactor: 0.029, temps: { annual: 2.8, winter: -3.5, spring: 1.2, summer: 11.8, autumn: 2.6 } },
-      bodo: { name: 'Bodø Lufthavn (SN82290)', stID: 'SN82290', baseTemp: 4.8, trendFactor: 0.025, temps: { annual: 4.8, winter: -0.8, spring: 3.2, summer: 12.5, autumn: 4.6 } },
-      svolvaer: { name: 'Svolvær Lufthavn (SN85450)', stID: 'SN85450', baseTemp: 4.7, trendFactor: 0.026, temps: { annual: 4.7, winter: -0.5, spring: 3.0, summer: 12.2, autumn: 4.8 } },
-      karasjok: { name: 'Karasjok - Markannjarga (SN97250)', stID: 'SN97250', baseTemp: -1.6, trendFactor: 0.035, temps: { annual: -1.6, winter: -15.4, spring: -3.2, summer: 12.0, autumn: -1.5 } },
-      kautokeino: { name: 'Kautokeino (SN96450)', stID: 'SN96450', baseTemp: -2.0, trendFactor: 0.036, temps: { annual: -2.0, winter: -15.8, spring: -3.6, summer: 11.6, autumn: -1.8 } },
-      vardo: { name: 'Vardø Radio (SN98550)', stID: 'SN98550', baseTemp: 1.4, trendFactor: 0.032, temps: { annual: 1.4, winter: -4.2, spring: -0.8, summer: 9.2, autumn: 2.0 } }
+      tromso: { name: 'Tromsø - Langnes (SN90450, Måleserie 1920–2025)', stID: 'SN90450', baseTemp: 2.8, trendFactor: 0.029, temps: { annual: 2.8, winter: -3.5, spring: 1.2, summer: 11.8, autumn: 2.6 } },
+      bodo: { name: 'Bodø Lufthavn (SN82290, Måleserie 1943–2025)', stID: 'SN82290', baseTemp: 4.8, trendFactor: 0.025, temps: { annual: 4.8, winter: -0.8, spring: 3.2, summer: 12.5, autumn: 4.6 } },
+      svolvaer: { name: 'Svolvær Lufthavn (SN85450, Måleserie 1972–2025)', stID: 'SN85450', baseTemp: 4.7, trendFactor: 0.026, temps: { annual: 4.7, winter: -0.5, spring: 3.0, summer: 12.2, autumn: 4.8 } },
+      karasjok: { name: 'Karasjok - Markannjarga (SN97250, Måleserie 1876–2025)', stID: 'SN97250', baseTemp: -1.6, trendFactor: 0.035, temps: { annual: -1.6, winter: -15.4, spring: -3.2, summer: 12.0, autumn: -1.5 } },
+      kautokeino: { name: 'Kautokeino (SN96450, Måleserie 1888–2025)', stID: 'SN96450', baseTemp: -2.0, trendFactor: 0.036, temps: { annual: -2.0, winter: -15.8, spring: -3.6, summer: 11.6, autumn: -1.8 } },
+      vardo: { name: 'Vardø Radio (SN98550, Måleserie 1867–2025)', stID: 'SN98550', baseTemp: 1.4, trendFactor: 0.032, temps: { annual: 1.4, winter: -4.2, spring: -0.8, summer: 9.2, autumn: 2.0 } }
     }
   },
   arktis: {
     name: 'Arktis & Øyer',
     stations: {
-      svalbard_lufthavn: { name: 'Svalbard Lufthavn (SN99840)', stID: 'SN99840', baseTemp: -4.6, trendFactor: 0.065, temps: { annual: -4.6, winter: -14.2, spring: -11.5, summer: 4.8, autumn: -4.5 } },
-      ny_alesund: { name: 'Ny-Ålesund (SN99910)', stID: 'SN99910', baseTemp: -5.2, trendFactor: 0.068, temps: { annual: -5.2, winter: -14.8, spring: -12.0, summer: 4.2, autumn: -5.0 } },
-      jan_mayen: { name: 'Jan Mayen (SN99950)', stID: 'SN99950', baseTemp: -0.5, trendFactor: 0.042, temps: { annual: -0.5, winter: -5.4, spring: -3.2, summer: 5.0, autumn: 0.2 } },
-      bjornoya: { name: 'Bjørnøya (SN99710)', stID: 'SN99710', baseTemp: -1.8, trendFactor: 0.052, temps: { annual: -1.8, winter: -7.5, spring: -5.2, summer: 4.4, autumn: -0.8 } }
+      svalbard_lufthavn: { name: 'Svalbard Lufthavn (SN99840, Måleserie 1911–2025)', stID: 'SN99840', baseTemp: -5.9, trendFactor: 0.055, temps: { annual: -5.9, winter: -13.8, spring: -10.5, summer: 4.2, autumn: -5.5 } },
+      ny_alesund: { name: 'Ny-Ålesund (SN99910, Måleserie 1969–2025)', stID: 'SN99910', baseTemp: -6.3, trendFactor: 0.058, temps: { annual: -6.3, winter: -14.2, spring: -11.0, summer: 3.8, autumn: -6.0 } },
+      jan_mayen: { name: 'Jan Mayen (SN99950, Måleserie 1921–2025)', stID: 'SN99950', baseTemp: -1.2, trendFactor: 0.042, temps: { annual: -1.2, winter: -6.0, spring: -4.5, summer: 4.8, autumn: -1.0 } },
+      bjornoya: { name: 'Bjørnøya (SN99710, Måleserie 1920–2025)', stID: 'SN99710', baseTemp: -2.4, trendFactor: 0.045, temps: { annual: -2.4, winter: -7.8, spring: -6.2, summer: 4.1, autumn: -2.0 } }
     }
   }
 };
@@ -288,10 +293,9 @@ export async function getClimateDataForRegion(stationKey = 'norway', seasonKey =
   const stationSeries = generateNorwayClimateData(stationKey, seasonKey);
 
   const series = stationSeries.map((item, idx) => {
-    const factor = station.trendFactor / 0.024;
-    const regionAnomaly = Number((item.anomaly * factor).toFixed(2));
+    const regionAnomaly = Number(item.anomaly.toFixed(2));
     const absTemp = Number((baseTempForSeason + regionAnomaly).toFixed(1));
-    const trendTemp = Number((baseTempForSeason + item.movingAvg * factor).toFixed(2));
+    const trendTemp = Number((baseTempForSeason + item.movingAvg).toFixed(2));
 
     // Sesong- og områdespesifikk nedbørsvekstfaktor (MET Norway 1900-2025)
     let precipTrendSlope = 0.0014; // Default årsvekst (+18 % nasjonalt)
