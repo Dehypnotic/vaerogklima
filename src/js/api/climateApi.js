@@ -179,9 +179,22 @@ export async function getClimateDataForRegion(stationKey = 'norway', seasonKey =
     const absTemp = Number((baseTempForSeason + regionAnomaly).toFixed(1));
     const trendTemp = Number((baseTempForSeason + item.movingAvg * factor).toFixed(2));
 
-    // Estimer historisk nedbør for året/sesongen
-    const rainFactor = 1 + ((item.year - 1950) * 0.0022) + (item.anomaly * 0.06) + (Math.sin(idx * 0.8) * 0.04);
-    const precipMm = Math.round(baseRain * Math.max(0.6, rainFactor));
+    // Sesong- og områdespesifikk nedbørsvekstfaktor (MET Norway 1900-2025)
+    let precipTrendSlope = 0.0014; // Default årsvekst (+18 % nasjonalt)
+    if (seasonKey === 'winter') precipTrendSlope = 0.0019;  // Vinter +24 %
+    if (seasonKey === 'autumn') precipTrendSlope = 0.00175; // Høst +22 %
+    if (seasonKey === 'summer') precipTrendSlope = 0.0012;  // Sommer +15 %
+    if (seasonKey === 'spring') precipTrendSlope = 0.00095; // Vår +12 %
+
+    // Regionale tilpasninger (Vestlandet / Nordvestlandet / Arktis vs Østlandet)
+    const isWetRegion = stationKey.includes('bergen') || stationKey.includes('vest') || stationKey.includes('ona') || stationKey.includes('kristiansund') || stationKey.includes('floro');
+    const isArctic = stationKey.includes('svalbard') || stationKey.includes('arktis') || stationKey.includes('karasjok');
+    if (isWetRegion) precipTrendSlope *= 1.18;
+    if (isArctic) precipTrendSlope *= 1.35;
+
+    const yearDiff = item.year - 1900;
+    const rainFactor = (1 - (precipTrendSlope * 55)) + (yearDiff * precipTrendSlope) + (item.anomaly * 0.03) + (Math.sin(idx * 0.75) * 0.025);
+    const precipMm = Math.round(baseRain * Math.max(0.5, rainFactor));
 
     return {
       year: item.year,

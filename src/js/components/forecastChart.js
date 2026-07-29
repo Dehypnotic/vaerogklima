@@ -102,8 +102,8 @@ function renderCurrentSnap() {
     <div class="snap-temp-block">
       <div class="snap-icon">${weather.icon}</div>
       <div>
-        <div class="snap-degrees">${formatTemp(current.temperature_2m)}</div>
-        <div class="snap-feels">Føles som ${formatTemp(current.apparent_temperature)} • ${weather.text}</div>
+        <div class="snap-degrees ${current.temperature_2m > 0 ? 'temp-warm' : 'temp-cold'}">${formatTemp(current.temperature_2m)}</div>
+        <div class="snap-feels">Føles som <span class="${current.apparent_temperature > 0 ? 'temp-warm' : 'temp-cold'}">${formatTemp(current.apparent_temperature)}</span> • ${weather.text}</div>
       </div>
     </div>
 
@@ -297,8 +297,8 @@ function renderDailyCards() {
         <div class="daily-day">${formatDateShort(t)}</div>
         <div class="daily-icon">${weather.icon}</div>
         <div class="daily-temps">
-          <span class="daily-max">${formatTemp(maxTemps[idx])}</span>
-          <span class="daily-min">${formatTemp(minTemps[idx])}</span>
+          <span class="daily-max ${maxTemps[idx] > 0 ? 'temp-warm' : 'temp-cold'}">${formatTemp(maxTemps[idx])}</span>
+          <span class="daily-min ${minTemps[idx] > 0 ? 'temp-warm' : 'temp-cold'}">${formatTemp(minTemps[idx])}</span>
         </div>
         <div class="daily-rain">${rainSums[idx] > 0 ? `🌧️ ${rainSums[idx]} mm` : '☀️ Opphold'}</div>
       </div>

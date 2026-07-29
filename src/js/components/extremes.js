@@ -57,12 +57,9 @@ function renderExtremesGrid() {
     let valueStr = '';
     let metricClass = '';
 
-    if (activeCategory === 'warmest') {
+    if (activeCategory === 'warmest' || activeCategory === 'coldest') {
       valueStr = `${item.temp > 0 ? '+' : ''}${Math.round(item.temp)}°C`;
-      metricClass = 'warm';
-    } else if (activeCategory === 'coldest') {
-      valueStr = `${item.temp > 0 ? '+' : ''}${Math.round(item.temp)}°C`;
-      metricClass = 'cold';
+      metricClass = item.temp > 0 ? 'warm' : 'cold';
     } else if (activeCategory === 'wettest') {
       valueStr = `${item.rainToday.toFixed(1)} mm`;
       metricClass = 'rain';

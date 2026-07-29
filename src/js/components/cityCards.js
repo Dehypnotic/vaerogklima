@@ -145,7 +145,7 @@ async function loadCityWeatherData(index) {
       </div>
 
       <div class="city-box-body">
-        <div class="city-temp">${formatTemp(current.temperature_2m)}</div>
+        <div class="city-temp ${current.temperature_2m > 0 ? 'temp-warm' : 'temp-cold'}">${formatTemp(current.temperature_2m)}</div>
         <div class="city-condition">${weather.text}</div>
       </div>
 

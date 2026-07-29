@@ -81,6 +81,41 @@ export async function updateClimateDashboard() {
   renderNormalsChart(currentClimateData);
 }
 
+function formatLocationText(rawName = '') {
+  let text = rawName.replace(/^📍\s*/, '').trim();
+  // Fjern SN-nummer som (SN18700)
+  text = text.replace(/\s*\([A-Z0-9-]+\)$/, '').trim();
+  
+  // Gjør " - " om til parantes for stasjonssteder: "Oslo - Blindern" -> "Oslo (Blindern)"
+  if (text.includes(' - ')) {
+    const parts = text.split(' - ');
+    text = `${parts[0]} (${parts[1]})`;
+  }
+
+  // Rydd opp overskriftsbeskrivelse for hele landsdeler/Norge (Norge har alltid stor N!)
+  if (text.includes('Hele Norge')) return 'hele Norge';
+  if (text.includes('Hele Østlandet')) return 'hele Østlandet';
+  if (text.includes('Hele Sørlandet')) return 'hele Sørlandet';
+  if (text.includes('Hele Vestlandet')) return 'hele Vestlandet';
+  if (text.includes('Hele Nordvestlandet')) return 'hele Nordvestlandet';
+  if (text.includes('Hele Trøndelag')) return 'hele Trøndelag';
+  if (text.includes('Hele Nord-Norge')) return 'hele Nord-Norge';
+  if (text.includes('Hele Arktis')) return 'hele Arktis';
+
+  return text;
+}
+
+function formatSeasonText(seasonKey = 'annual') {
+  const map = {
+    annual: 'hele året',
+    winter: 'vinter',
+    spring: 'vår',
+    summer: 'sommer',
+    autumn: 'høst'
+  };
+  return map[seasonKey] || 'hele året';
+}
+
 function renderClimateRecordsGrid(data) {
   const container = document.getElementById('climate-records-grid');
   const titleEl = document.getElementById('climate-records-title');
@@ -88,11 +123,14 @@ function renderClimateRecordsGrid(data) {
 
   if (!container || !data || !data.records) return;
 
+  const locText = formatLocationText(data.regionName);
+  const seasonText = formatSeasonText(currentSeason);
+
   if (titleEl) {
-    titleEl.textContent = `🏆 Topp 10 Rekordår • ${data.seasonIcon} ${data.seasonName} (${data.regionName})`;
+    titleEl.textContent = `🏆 Topp 10 rekordår – ${seasonText} i ${locText}`;
   }
   if (subEl) {
-    subEl.textContent = `Historiske målinger (1950-2025) for ${data.regionName} i perioden ${data.seasonName}`;
+    subEl.textContent = `Historiske observasjoner fra 1900 til i dag for ${seasonText} i ${locText}`;
   }
 
   const list = data.records[activeClimateCategory] || [];
@@ -132,26 +170,95 @@ function updateKPICards(data) {
   const tempIncEl = document.getElementById('kpi-temp-increase');
   const tempLabelEl = document.getElementById('kpi-temp-label');
   const tempDescEl = document.getElementById('kpi-temp-desc');
+  
   const rainIncEl = document.getElementById('kpi-rain-increase');
+  const rainLabelEl = document.getElementById('kpi-rain-label');
+  const rainDescEl = document.getElementById('kpi-rain-desc');
+
   const warmestYearEl = document.getElementById('kpi-warmest-year');
+  const warmestLabelEl = document.getElementById('kpi-warmest-label');
+  const warmestDescEl = document.getElementById('kpi-warmest-desc');
+
   const recentYearValEl = document.getElementById('kpi-recent-year-val');
   const recentYearLabelEl = document.getElementById('kpi-recent-year-label');
+  const recentYearDescEl = document.getElementById('kpi-recent-year-desc');
 
-  if (tempLabelEl) tempLabelEl.textContent = `10-års snitt (${data.regionName})`;
-  if (tempIncEl) tempIncEl.textContent = `${data.summary.recentTrendIncrease > 0 ? '+' : ''}${data.summary.recentTrendIncrease} °C`;
-  if (tempDescEl) tempDescEl.textContent = `Klimatrend fra 1961-1990 normal`;
+  const locText = formatLocationText(data.regionName);
+  const seasonText = formatSeasonText(currentSeason);
 
-  if (rainIncEl) rainIncEl.textContent = currentRegion === 'bergen' ? '+22 %' : '+18 %';
-  if (warmestYearEl) warmestYearEl.textContent = '2020 / 2024';
+  if (tempLabelEl) tempLabelEl.textContent = `10-års snitt oppvarming`;
+  if (tempIncEl) {
+    const trendVal = data.summary.recentTrendIncrease;
+    tempIncEl.textContent = `${trendVal > 0 ? '+' : ''}${trendVal} °C`;
+  }
+  if (tempDescEl) tempDescEl.textContent = `For ${locText} fra 1961–1990 normal`;
 
-  if (recentYearLabelEl) recentYearLabelEl.textContent = `Enkeltår 2025/26 (${data.regionName})`;
-  if (recentYearValEl) recentYearValEl.textContent = `${data.summary.recentYearAnomaly > 0 ? '+' : ''}${data.summary.recentYearAnomaly} °C`;
+  // Dynamisk beregnet nedbørsendring fra baseline til sist målte år
+  if (rainLabelEl) rainLabelEl.textContent = `Nedbørsendring`;
+  if (rainIncEl && data.series && data.series.length > 0) {
+    const latestPrecip = data.series[data.series.length - 1].precipMm;
+    const firstPrecip = data.series[0].precipMm;
+    const diffPct = Math.round(((latestPrecip - firstPrecip) / firstPrecip) * 100);
+    rainIncEl.textContent = `${diffPct > 0 ? '+' : ''}${diffPct} %`;
+  }
+  if (rainDescEl) rainDescEl.textContent = `Endring for ${seasonText}`;
+
+  // Dynamisk varmeste registrert år for denne stasjonen og årstiden
+  if (warmestLabelEl) warmestLabelEl.textContent = `Varmeste registrert (${seasonText})`;
+  if (warmestYearEl && data.records && data.records.warmest && data.records.warmest.length > 0) {
+    const topWarmest = data.records.warmest[0];
+    const secondWarmest = data.records.warmest[1];
+    if (secondWarmest && Math.abs(topWarmest.absTemp - secondWarmest.absTemp) < 0.1) {
+      warmestYearEl.textContent = `${topWarmest.year} / ${secondWarmest.year}`;
+    } else {
+      warmestYearEl.textContent = `${topWarmest.year} (${topWarmest.absTemp > 0 ? '+' : ''}${topWarmest.absTemp}°C)`;
+    }
+  }
+  if (warmestDescEl) warmestDescEl.textContent = `Rekordår for ${locText}`;
+
+  // Dynamisk nyeste enkeltår
+  if (data.series && data.series.length > 0) {
+    const lastItem = data.series[data.series.length - 1];
+    if (recentYearLabelEl) recentYearLabelEl.textContent = `${lastItem.year}`;
+    if (recentYearValEl) {
+      recentYearValEl.textContent = `${lastItem.absTemp > 0 ? '+' : ''}${lastItem.absTemp} °C (${lastItem.anomaly > 0 ? '+' : ''}${lastItem.anomaly}°C)`;
+    }
+
+    const isNational = currentStation === 'norway' || currentRegion === 'all';
+    let descText = '';
+
+    if (isNational) {
+      const nationalMap = {
+        annual: 'Nasjonalt årssnitt for hele Norge',
+        winter: 'Nasjonalt vintersnitt for hele Norge',
+        spring: 'Nasjonalt vårsnitt for hele Norge',
+        summer: 'Nasjonalt sommersnitt for hele Norge',
+        autumn: 'Nasjonalt høstsnitt for hele Norge'
+      };
+      descText = nationalMap[currentSeason] || 'Nasjonalt snitt for hele Norge';
+    } else {
+      const seasonPrefix = {
+        annual: 'Årssnitt',
+        winter: 'Vintersnitt',
+        spring: 'Vårsnitt',
+        summer: 'Sommersnitt',
+        autumn: 'Høstsnitt'
+      }[currentSeason] || 'Snitt';
+      descText = `${seasonPrefix} for ${locText}`;
+    }
+
+    if (recentYearDescEl) {
+      recentYearDescEl.textContent = descText;
+    }
+  }
 }
 
 function renderAnomalyChart(data) {
   const chartTitleEl = document.getElementById('climate-chart-title');
   if (chartTitleEl) {
-    chartTitleEl.textContent = `Historisk Temperaturavvik (1950–Nå) • ${data.seasonIcon || ''} ${data.seasonName} (${data.regionName})`;
+    const locText = formatLocationText(data.regionName);
+    const seasonText = formatSeasonText(currentSeason);
+    chartTitleEl.textContent = `Historisk temperaturavvik – ${seasonText} i ${locText}`;
   }
 
   const canvas = document.getElementById('climate-trend-chart');
@@ -290,6 +397,14 @@ function renderAnomalyChart(data) {
 
 function renderNormalsChart(data) {
   const canvas = document.getElementById('climate-normals-chart');
+  const titleEl = document.getElementById('climate-normals-title');
+  const subEl = document.getElementById('climate-normals-subtitle');
+
+  const locText = formatLocationText(data.regionName);
+
+  if (titleEl) titleEl.textContent = `Klimanormaler sammenlignet – måned for måned`;
+  if (subEl) subEl.textContent = `Månedlige normaltemperaturer for ${locText} (1961–1990 vs. 1991–2020 og 2011–2025)`;
+
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');

@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script type="module" crossorigin src="./assets/index-q_fpXW1f.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CnrpXG2_.css">
+  <script type="module" crossorigin src="./assets/index-aeZJQxUv.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CenYMVUD.css">
 </head>
 <body class="nordic-dark">
   <!-- Dynamic Background Atmosphere -->
@@ -69,9 +69,8 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">
-              <span class="title-icon">⚡</span> Ekstremvær i Norge Nå
+              <span class="title-icon">⚡</span> Topplister
             </h2>
-            <p class="section-subtitle">Topp 10 steder med høye/lave temperaturer, mest nedbør og sterkest vind akkurat nå</p>
           </div>
           <div class="extremes-refresh-info">
             <span id="extremes-timestamp" class="timestamp-badge">Oppdaterer data...</span>
@@ -106,10 +105,10 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">
-              <span class="title-icon">📍</span> Vær i Norske Byer & Steder
+              <span class="title-icon">📍</span> Vær i Byer & Steder
             </h2>
             <p class="section-subtitle">
-              💡 <strong>Tips:</strong> Dobbeltklikk på en hvilken som helst boks for å velge et valgt sted i Norge, eller klikk på hjertet/huset for å sette det som ditt hjem-sted.
+              Dobbeltklikk på en hvilken som helst boks for å velge et valgt sted i Norge, eller klikk på hjertet/huset for å sette det som ditt hjem-sted.
             </p>
           </div>
           <div class="city-actions">
@@ -219,33 +218,33 @@
           <div class="kpi-card glass-panel highlight-temp">
             <div class="kpi-icon">🌡️</div>
             <div class="kpi-body">
-              <span class="kpi-label" id="kpi-temp-label">Klimaoppvarming (10-års snitt)</span>
-              <span class="kpi-value" id="kpi-temp-increase">+1.3 °C</span>
-              <span class="kpi-desc" id="kpi-temp-desc">Snittavvik fra 1961-1990 normal</span>
+              <span class="kpi-label" id="kpi-temp-label">10-års snitt oppvarming</span>
+              <span class="kpi-value" id="kpi-temp-increase">-- °C</span>
+              <span class="kpi-desc" id="kpi-temp-desc">Fra 1961–1990 normal</span>
             </div>
           </div>
           <div class="kpi-card glass-panel highlight-rain">
             <div class="kpi-icon">🌧️</div>
             <div class="kpi-body">
-              <span class="kpi-label">Årlig nedbørsendring</span>
-              <span class="kpi-value" id="kpi-rain-increase">+18 %</span>
-              <span class="kpi-desc">Mer nedbør & hyppigere ekstremdager</span>
+              <span class="kpi-label" id="kpi-rain-label">Nedbørsendring</span>
+              <span class="kpi-value" id="kpi-rain-increase">-- %</span>
+              <span class="kpi-desc" id="kpi-rain-desc">Fra historisk baseline</span>
             </div>
           </div>
           <div class="kpi-card glass-panel highlight-record">
             <div class="kpi-icon">🔥</div>
             <div class="kpi-body">
-              <span class="kpi-label">Varmeste År Registrert</span>
-              <span class="kpi-value" id="kpi-warmest-year">2020 / 2024</span>
-              <span class="kpi-desc">Nasjonalt årsgjennomsnitt</span>
+              <span class="kpi-label" id="kpi-warmest-label">Varmeste registrert</span>
+              <span class="kpi-value" id="kpi-warmest-year">--</span>
+              <span class="kpi-desc" id="kpi-warmest-desc">Høyeste temperatur</span>
             </div>
           </div>
           <div class="kpi-card glass-panel highlight-arctic">
             <div class="kpi-icon">⚡</div>
             <div class="kpi-body">
-              <span class="kpi-label" id="kpi-recent-year-label">Siste enkeltår (2025/2026)</span>
-              <span class="kpi-value" id="kpi-recent-year-val">+2.0 °C</span>
-              <span class="kpi-desc" id="kpi-recent-year-desc">Avvik for nyeste år alene</span>
+              <span class="kpi-label" id="kpi-recent-year-label">2025</span>
+              <span class="kpi-value" id="kpi-recent-year-val">-- °C</span>
+              <span class="kpi-desc" id="kpi-recent-year-desc">Siste måling</span>
             </div>
           </div>
         </div>
@@ -253,7 +252,7 @@
         <!-- Main Climate Chart: Temperature Anomaly Trend -->
         <div class="climate-card glass-panel">
           <div class="climate-chart-header">
-            <h3 id="climate-chart-title">Historisk Temperaturavvik (1950–Present)</h3>
+            <h3 id="climate-chart-title">Historisk Temperaturavvik (1900–nåtid)</h3>
             <p class="chart-legend-hint">
               <span class="legend-dot warm"></span> Varmere enn normal (1961-1990)
               <span class="legend-dot cold"></span> Kaldere enn normal
@@ -262,6 +261,7 @@
           </div>
           <div class="chart-wrapper climate-chart-wrapper">
             <canvas id="climate-trend-chart"></canvas>
+          </div>
         </div>
 
         <!-- TOP 10 HISTORISKE KLIMAREKORDER FOR OMRÅDE OG SESONG -->
@@ -295,48 +295,12 @@
           </div>
         </div>
 
-        <!-- Climate Normals Comparison & Seasonal Changes -->
-        <div class="climate-split-grid">
-          <div class="climate-card glass-panel">
-            <h3>Klimanormaler Sammenlignet (Måned for måned)</h3>
-            <p class="section-subtitle">Hvordan månedstemperaturene har flyttet seg fra 1961-1990 til nå</p>
-            <div class="chart-wrapper climate-subchart">
-              <canvas id="climate-normals-chart"></canvas>
-            </div>
-          </div>
-
-          <div class="climate-card glass-panel">
-            <h3>Klimafakta & Meteorologiske Innsikter</h3>
-            <div class="climate-facts-list">
-              <div class="fact-item">
-                <div class="fact-bullet">1</div>
-                <div>
-                  <strong>Endringer i Årstidene:</strong> 
-                  Vintrene i Norge er blitt merkbart kortere og milde. Snøgrensen har trukket seg høyere opp i terrenget.
-                </div>
-              </div>
-              <div class="fact-item">
-                <div class="fact-bullet">2</div>
-                <div>
-                  <strong>Mer Ekstremnedbør:</strong> 
-                  Kortvarige kraftige regnskyll gir økt risiko for overvann, oversvømmelser og jordskred i norske kommuner.
-                </div>
-              </div>
-              <div class="fact-item">
-                <div class="fact-bullet">3</div>
-                <div>
-                  <strong>Havklima & Havtemperatur:</strong> 
-                  Norskekysten og Nordsjøen har opplevd stigende sjøtemperaturer som påvirker havis og marint liv.
-                </div>
-              </div>
-              <div class="fact-item">
-                <div class="fact-bullet">4</div>
-                <div>
-                  <strong>Åpne Datakilder:</strong> 
-                  Data på denne siden henter meteorologiske observasjoner og reanalyser fra MET Norge, Copernicus og Open-Meteo sin klima-arkivdatabase.
-                </div>
-              </div>
-            </div>
+        <!-- Climate Normals Comparison (Full Width) -->
+        <div class="climate-card glass-panel climate-normals-section">
+          <h3 id="climate-normals-title">Klimanormaler Sammenlignet (Måned for måned)</h3>
+          <p class="section-subtitle" id="climate-normals-subtitle">Hvordan månedstemperaturene har flyttet seg fra 1961-1990 til nå</p>
+          <div class="chart-wrapper climate-subchart">
+            <canvas id="climate-normals-chart"></canvas>
           </div>
         </div>
 
@@ -495,7 +459,7 @@
   <!-- Footer -->
   <footer class="app-footer">
     <div class="footer-container">
-      <p>© 2026 Vær og Klima i Norge • Utviklet med åpne meteorologiske data fra Open-Meteo & Meteorologisk Institutt (MET Norge)</p>
+      <p>© 2026 Dehypnotic • Utviklet med åpne meteorologiske data fra Open-Meteo & Meteorologisk Institutt (MET Norge)</p>
       <p class="footer-sub">Leverer sanntidsvarsler, stedsgeocoding og historiske klima-visualiseringer.</p>
     </div>
   </footer>

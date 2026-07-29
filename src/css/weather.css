@@ -135,8 +135,12 @@
   margin-left: 0.3rem;
 }
 
-.extreme-metric.warm { color: var(--accent-rose); }
-.extreme-metric.cold { color: #60a5fa; }
+.extreme-metric.warm,
+.temp-warm { color: #f43f5e !important; }
+
+.extreme-metric.cold,
+.temp-cold { color: #60a5fa !important; }
+
 .extreme-metric.rain { color: var(--accent-cyan); }
 .extreme-metric.wind { color: var(--accent-amber); }
 
