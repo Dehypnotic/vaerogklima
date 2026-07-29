@@ -10,73 +10,80 @@ export const CLIMATE_REGIONS = {
   all: {
     name: 'Hele Norge (Nasjonalt Snitt)',
     stations: {
-      norway: { name: 'Hele Norge (Nasjonalt Landssnitt)', stID: 'SN18700', baseTemp: 1.8, trendFactor: 0.024 }
+      norway: { name: '📍 Hele Norge (Nasjonalt Snitt)', stID: 'SN18700', baseTemp: 1.8, trendFactor: 0.024, temps: { annual: 1.8, winter: -5.8, spring: 1.2, summer: 11.5, autumn: 2.1 } }
     }
   },
   ostlandet: {
     name: 'Østlandet & Innlandet',
     stations: {
-      oslo_blindern: { name: 'Oslo - Blindern (SN18700)', stID: 'SN18700', baseTemp: 6.4, trendFactor: 0.024 },
-      oslo_observatoriet: { name: 'Oslo - Observatoriet (SN18500)', stID: 'SN18500', baseTemp: 6.0, trendFactor: 0.023 },
-      lillehammer: { name: 'Lillehammer - Sæterengen (SN12550)', stID: 'SN12550', baseTemp: 4.5, trendFactor: 0.025 },
-      drammen: { name: 'Drammen - Berskog (SN17150)', stID: 'SN17150', baseTemp: 6.1, trendFactor: 0.023 },
-      geilo: { name: 'Geilo - Geilostølen (Fjellklima) (SN23550)', stID: 'SN23550', baseTemp: 1.2, trendFactor: 0.026 }
+      ostlandet_avg: { name: '📍 Hele Østlandet (Regionalsnitt)', stID: 'REGION-OST', baseTemp: 5.6, trendFactor: 0.024, temps: { annual: 5.6, winter: -4.2, spring: 5.0, summer: 15.4, autumn: 5.6 } },
+      oslo_blindern: { name: 'Oslo - Blindern (SN18700)', stID: 'SN18700', baseTemp: 6.4, trendFactor: 0.024, temps: { annual: 6.4, winter: -3.2, spring: 5.8, summer: 16.4, autumn: 6.6 } },
+      oslo_observatoriet: { name: 'Oslo - Observatoriet (SN18500)', stID: 'SN18500', baseTemp: 6.0, trendFactor: 0.023, temps: { annual: 6.0, winter: -3.5, spring: 5.4, summer: 16.0, autumn: 6.2 } },
+      lillehammer: { name: 'Lillehammer - Sæterengen (SN12550)', stID: 'SN12550', baseTemp: 4.5, trendFactor: 0.025, temps: { annual: 4.5, winter: -6.8, spring: 4.2, summer: 15.0, autumn: 4.4 } },
+      drammen: { name: 'Drammen - Berskog (SN17150)', stID: 'SN17150', baseTemp: 6.1, trendFactor: 0.023, temps: { annual: 6.1, winter: -3.8, spring: 5.6, summer: 16.2, autumn: 6.3 } },
+      geilo: { name: 'Geilo - Geilostølen (Fjellklima) (SN23550)', stID: 'SN23550', baseTemp: 1.2, trendFactor: 0.026, temps: { annual: 1.2, winter: -7.5, spring: 0.5, summer: 11.2, autumn: 1.5 } }
     }
   },
   sorlandet: {
     name: 'Sørlandet',
     stations: {
-      kristiansand: { name: 'Kristiansand - Kjevik (SN39040)', stID: 'SN39040', baseTemp: 7.2, trendFactor: 0.021 },
-      arendal: { name: 'Arendal - Torungen Fyr (SN36200)', stID: 'SN36200', baseTemp: 7.4, trendFactor: 0.020 },
-      lindesnes: { name: 'Lindesnes Fyr (SN41100)', stID: 'SN41100', baseTemp: 7.8, trendFactor: 0.018 }
+      sorlandet_avg: { name: '📍 Hele Sørlandet (Regionalsnitt)', stID: 'REGION-SOR', baseTemp: 7.5, trendFactor: 0.020, temps: { annual: 7.5, winter: 0.0, spring: 6.5, summer: 15.5, autumn: 8.1 } },
+      kristiansand: { name: 'Kristiansand - Kjevik (SN39040)', stID: 'SN39040', baseTemp: 7.2, trendFactor: 0.021, temps: { annual: 7.2, winter: -0.8, spring: 6.2, summer: 15.6, autumn: 7.8 } },
+      arendal: { name: 'Arendal - Torungen Fyr (SN36200)', stID: 'SN36200', baseTemp: 7.4, trendFactor: 0.020, temps: { annual: 7.4, winter: -0.4, spring: 6.4, summer: 15.8, autumn: 8.0 } },
+      lindesnes: { name: 'Lindesnes Fyr (SN41100)', stID: 'SN41100', baseTemp: 7.8, trendFactor: 0.018, temps: { annual: 7.8, winter: 1.2, spring: 6.8, summer: 15.2, autumn: 8.5 } }
     }
   },
   vestlandet: {
     name: 'Vestlandet (Sør- og Vestland)',
     stations: {
-      bergen_florida: { name: 'Bergen - Florida (SN50540)', stID: 'SN50540', baseTemp: 7.7, trendFactor: 0.020 },
-      stavanger_sola: { name: 'Stavanger - Sola (SN44560)', stID: 'SN44560', baseTemp: 7.9, trendFactor: 0.019 },
-      floro: { name: 'Florø Lufthavn (SN57070)', stID: 'SN57070', baseTemp: 7.4, trendFactor: 0.021 },
-      laerdal: { name: 'Lærdal - Tønjum (SN53150)', stID: 'SN53150', baseTemp: 6.5, trendFactor: 0.022 }
+      vestlandet_avg: { name: '📍 Hele Vestlandet (Regionalsnitt)', stID: 'REGION-VEST', baseTemp: 7.4, trendFactor: 0.020, temps: { annual: 7.4, winter: 1.2, spring: 6.6, summer: 14.5, autumn: 7.8 } },
+      bergen_florida: { name: 'Bergen - Florida (SN50540)', stID: 'SN50540', baseTemp: 7.7, trendFactor: 0.020, temps: { annual: 7.7, winter: 1.8, spring: 6.8, summer: 14.5, autumn: 8.2 } },
+      stavanger_sola: { name: 'Stavanger - Sola (SN44560)', stID: 'SN44560', baseTemp: 7.9, trendFactor: 0.019, temps: { annual: 7.9, winter: 1.9, spring: 7.0, summer: 14.8, autumn: 8.4 } },
+      floro: { name: 'Florø Lufthavn (SN57070)', stID: 'SN57070', baseTemp: 7.4, trendFactor: 0.021, temps: { annual: 7.4, winter: 2.0, spring: 6.5, summer: 13.8, autumn: 7.9 } },
+      laerdal: { name: 'Lærdal - Tønjum (SN53150)', stID: 'SN53150', baseTemp: 6.5, trendFactor: 0.022, temps: { annual: 6.5, winter: -1.5, spring: 6.0, summer: 14.8, autumn: 6.7 } }
     }
   },
   nordvestlandet: {
     name: 'Nordvestlandet & Møre og Romsdal',
     stations: {
-      kristiansund: { name: 'Kristiansund - Kvernberget (SN86500)', stID: 'SN86500', baseTemp: 6.8, trendFactor: 0.022 },
-      molde: { name: 'Molde Lufthavn - Årø (SN64300)', stID: 'SN64300', baseTemp: 7.0, trendFactor: 0.021 },
-      alesund: { name: 'Ålesund - Vigra (SN60940)', stID: 'SN60940', baseTemp: 7.3, trendFactor: 0.020 },
-      sunndalsora: { name: 'Sunndalsøra (Føhn- & Varmerekord) (SN63420)', stID: 'SN63420', baseTemp: 7.2, trendFactor: 0.023 },
-      ona: { name: 'Ona Fyr (Ytre Møre) (SN62290)', stID: 'SN62290', baseTemp: 7.5, trendFactor: 0.019 }
+      nordvestlandet_avg: { name: '📍 Hele Nordvestlandet (Regionalsnitt)', stID: 'REGION-NVEST', baseTemp: 7.1, trendFactor: 0.021, temps: { annual: 7.1, winter: 1.4, spring: 6.2, summer: 13.6, autumn: 7.6 } },
+      kristiansund: { name: 'Kristiansund - Kvernberget (SN86500)', stID: 'SN86500', baseTemp: 6.8, trendFactor: 0.022, temps: { annual: 6.8, winter: 1.2, spring: 5.8, summer: 13.5, autumn: 7.2 } },
+      molde: { name: 'Molde Lufthavn - Årø (SN64300)', stID: 'SN64300', baseTemp: 7.0, trendFactor: 0.021, temps: { annual: 7.0, winter: 1.0, spring: 6.0, summer: 13.8, autumn: 7.4 } },
+      alesund: { name: 'Ålesund - Vigra (SN60940)', stID: 'SN60940', baseTemp: 7.3, trendFactor: 0.020, temps: { annual: 7.3, winter: 2.1, spring: 6.2, summer: 13.6, autumn: 7.7 } },
+      sunndalsora: { name: 'Sunndalsøra (Føhn- & Varmerekord) (SN63420)', stID: 'SN63420', baseTemp: 7.2, trendFactor: 0.023, temps: { annual: 7.2, winter: 0.2, spring: 6.4, summer: 14.2, autumn: 7.5 } },
+      ona: { name: 'Ona Fyr (Ytre Møre) (SN62290)', stID: 'SN62290', baseTemp: 7.5, trendFactor: 0.019, temps: { annual: 7.5, winter: 2.6, spring: 6.5, summer: 13.0, autumn: 8.2 } }
     }
   },
   trondelag: {
     name: 'Trøndelag & Midt-Norge',
     stations: {
-      trondheim_voll: { name: 'Trondheim - Voll (SN68860)', stID: 'SN68860', baseTemp: 5.0, trendFactor: 0.023 },
-      roros: { name: 'Røros Lufthavn (Innlandsrekord) (SN10380)', stID: 'SN10380', baseTemp: 0.8, trendFactor: 0.027 },
-      steinkjer: { name: 'Steinkjer - Egge (SN70850)', stID: 'SN70850', baseTemp: 4.7, trendFactor: 0.024 },
-      namsos: { name: 'Namsos Lufthavn (SN75200)', stID: 'SN75200', baseTemp: 4.9, trendFactor: 0.024 }
+      trondelag_avg: { name: '📍 Hele Trøndelag (Regionalsnitt)', stID: 'REGION-TROND', baseTemp: 4.8, trendFactor: 0.024, temps: { annual: 4.8, winter: -3.2, spring: 4.0, summer: 13.0, autumn: 4.8 } },
+      trondheim_voll: { name: 'Trondheim - Voll (SN68860)', stID: 'SN68860', baseTemp: 5.0, trendFactor: 0.023, temps: { annual: 5.0, winter: -2.2, spring: 4.2, summer: 13.2, autumn: 5.2 } },
+      roros: { name: 'Røros Lufthavn (Innlandsrekord) (SN10380)', stID: 'SN10380', baseTemp: 0.8, trendFactor: 0.027, temps: { annual: 0.8, winter: -11.2, spring: -0.4, summer: 11.4, autumn: 1.0 } },
+      steinkjer: { name: 'Steinkjer - Egge (SN70850)', stID: 'SN70850', baseTemp: 4.7, trendFactor: 0.024, temps: { annual: 4.7, winter: -2.8, spring: 4.0, summer: 13.0, autumn: 4.8 } },
+      namsos: { name: 'Namsos Lufthavn (SN75200)', stID: 'SN75200', baseTemp: 4.9, trendFactor: 0.024, temps: { annual: 4.9, winter: -2.4, spring: 4.1, summer: 13.1, autumn: 5.0 } }
     }
   },
   nordnorge: {
     name: 'Nord-Norge & Finnmark',
     stations: {
-      tromso: { name: 'Tromsø - Langnes (SN90450)', stID: 'SN90450', baseTemp: 2.8, trendFactor: 0.029 },
-      bodo: { name: 'Bodø Lufthavn (SN82290)', stID: 'SN82290', baseTemp: 4.8, trendFactor: 0.025 },
-      svolvaer: { name: 'Svolvær Lufthavn (Lofoten) (SN85450)', stID: 'SN85450', baseTemp: 4.7, trendFactor: 0.026 },
-      karasjok: { name: 'Karasjok - Markannjarga (Kuldekulisse) (SN97250)', stID: 'SN97250', baseTemp: -1.6, trendFactor: 0.035 },
-      kautokeino: { name: 'Kautokeino (SN96450)', stID: 'SN96450', baseTemp: -2.0, trendFactor: 0.036 },
-      vardo: { name: 'Vardø Radio (Øst-Finnmark) (SN98550)', stID: 'SN98550', baseTemp: 1.4, trendFactor: 0.032 }
+      nordnorge_avg: { name: '📍 Hele Nord-Norge (Regionalsnitt)', stID: 'REGION-NNORGE', baseTemp: 2.4, trendFactor: 0.030, temps: { annual: 2.4, winter: -5.2, spring: 1.0, summer: 11.5, autumn: 2.5 } },
+      tromso: { name: 'Tromsø - Langnes (SN90450)', stID: 'SN90450', baseTemp: 2.8, trendFactor: 0.029, temps: { annual: 2.8, winter: -3.5, spring: 1.2, summer: 11.8, autumn: 2.6 } },
+      bodo: { name: 'Bodø Lufthavn (SN82290)', stID: 'SN82290', baseTemp: 4.8, trendFactor: 0.025, temps: { annual: 4.8, winter: -0.8, spring: 3.2, summer: 12.5, autumn: 4.6 } },
+      svolvaer: { name: 'Svolvær Lufthavn (Lofoten) (SN85450)', stID: 'SN85450', baseTemp: 4.7, trendFactor: 0.026, temps: { annual: 4.7, winter: -0.5, spring: 3.0, summer: 12.2, autumn: 4.8 } },
+      karasjok: { name: 'Karasjok - Markannjarga (Kuldekulisse) (SN97250)', stID: 'SN97250', baseTemp: -1.6, trendFactor: 0.035, temps: { annual: -1.6, winter: -15.4, spring: -3.2, summer: 12.0, autumn: -1.5 } },
+      kautokeino: { name: 'Kautokeino (SN96450)', stID: 'SN96450', baseTemp: -2.0, trendFactor: 0.036, temps: { annual: -2.0, winter: -15.8, spring: -3.6, summer: 11.6, autumn: -1.8 } },
+      vardo: { name: 'Vardø Radio (Øst-Finnmark) (SN98550)', stID: 'SN98550', baseTemp: 1.4, trendFactor: 0.032, temps: { annual: 1.4, winter: -4.2, spring: -0.8, summer: 9.2, autumn: 2.0 } }
     }
   },
   arktis: {
     name: 'Arktis & Øyer',
     stations: {
-      svalbard_lufthavn: { name: 'Svalbard Lufthavn (Longyearbyen) (SN99840)', stID: 'SN99840', baseTemp: -4.6, trendFactor: 0.065 },
-      ny_alesund: { name: 'Ny-Ålesund Forskningsstasjon (SN99910)', stID: 'SN99910', baseTemp: -5.2, trendFactor: 0.068 },
-      jan_mayen: { name: 'Jan Mayen Meteorologiske (SN99950)', stID: 'SN99950', baseTemp: -0.5, trendFactor: 0.042 },
-      bjornoya: { name: 'Bjørnøya Meteorologiske (SN99710)', stID: 'SN99710', baseTemp: -1.8, trendFactor: 0.052 }
+      arktis_avg: { name: '📍 Hele Arktis & Øyer (Regionalsnitt)', stID: 'REGION-ARKTIS', baseTemp: -3.0, trendFactor: 0.057, temps: { annual: -3.0, winter: -11.5, spring: -8.5, summer: 4.6, autumn: -3.0 } },
+      svalbard_lufthavn: { name: 'Svalbard Lufthavn (Longyearbyen) (SN99840)', stID: 'SN99840', baseTemp: -4.6, trendFactor: 0.065, temps: { annual: -4.6, winter: -14.2, spring: -11.5, summer: 4.8, autumn: -4.5 } },
+      ny_alesund: { name: 'Ny-Ålesund Forskningsstasjon (SN99910)', stID: 'SN99910', baseTemp: -5.2, trendFactor: 0.068, temps: { annual: -5.2, winter: -14.8, spring: -12.0, summer: 4.2, autumn: -5.0 } },
+      jan_mayen: { name: 'Jan Mayen Meteorologiske (SN99950)', stID: 'SN99950', baseTemp: -0.5, trendFactor: 0.042, temps: { annual: -0.5, winter: -5.4, spring: -3.2, summer: 5.0, autumn: 0.2 } },
+      bjornoya: { name: 'Bjørnøya Meteorologiske (SN99710)', stID: 'SN99710', baseTemp: -1.8, trendFactor: 0.052, temps: { annual: -1.8, winter: -7.5, spring: -5.2, summer: 4.4, autumn: -0.8 } }
     }
   }
 };
@@ -144,11 +151,11 @@ function generateNorwayClimateData() {
 }
 
 export const CLIMATE_SEASONS = {
-  annual: { name: 'Hele året (Årsgjennomsnitt)', tempOffset: 0, factor: 1.0, icon: '🌍' },
-  winter: { name: 'Vinter (Desember – Februar)', tempOffset: -5.5, factor: 1.40, icon: '❄️' },
-  spring: { name: 'Vår (Mars – Mai)', tempOffset: 0.5, factor: 1.05, icon: '🌸' },
-  summer: { name: 'Sommer (Juni – August)', tempOffset: 10.0, factor: 0.85, icon: '☀️' },
-  autumn: { name: 'Høst (September – November)', tempOffset: 2.0, factor: 1.15, icon: '🍂' }
+  annual: { name: 'Hele året (Årsgjennomsnitt)', icon: '🌍', anomalyFactor: 1.0 },
+  winter: { name: 'Vinter (Desember – Februar)', icon: '❄️', anomalyFactor: 2.2 },
+  spring: { name: 'Vår (Mars – Mai)', icon: '🌸', anomalyFactor: 1.2 },
+  summer: { name: 'Sommer (Juni – August)', icon: '☀️', anomalyFactor: 0.9 },
+  autumn: { name: 'Høst (September – November)', icon: '🍂', anomalyFactor: 1.3 }
 };
 
 /**
@@ -158,13 +165,16 @@ export async function getClimateDataForRegion(stationKey = 'norway', seasonKey =
   const station = getStationConfig(stationKey);
   const season = CLIMATE_SEASONS[seasonKey] || CLIMATE_SEASONS.annual;
   
-  // Tilpass temperaturer til valgt stasjon og årstid
-  const baseTempForSeason = station.baseTemp + season.tempOffset;
+  // Hent presis sesong-snittemperatur for denne spesifikke stasjonen
+  const baseTempForSeason = (station.temps && station.temps[seasonKey] !== undefined)
+    ? station.temps[seasonKey]
+    : station.baseTemp;
+
   const baseRain = getBasePrecipitation(stationKey, seasonKey);
 
   const series = NORWAY_HISTORICAL_CLIMATE_SERIES.map((item, idx) => {
-    // Multiplikator for stasjon og årstid
-    const factor = (station.trendFactor / 0.024) * season.factor;
+    // Multiplikator for stasjon og sesongens avviksskala
+    const factor = (station.trendFactor / 0.024) * season.anomalyFactor;
     const regionAnomaly = Number((item.anomaly * factor).toFixed(2));
     const absTemp = Number((baseTempForSeason + regionAnomaly).toFixed(1));
     const trendTemp = Number((baseTempForSeason + item.movingAvg * factor).toFixed(2));
