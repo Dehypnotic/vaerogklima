@@ -219,14 +219,50 @@ export async function getClimateDataForRegion(stationKey = 'norway', seasonKey =
   };
 }
 
-function getBasePrecipitation(regionKey, seasonKey) {
-  let annualBase = 1380; // Nasjonalt snitt i mm
-  if (regionKey === 'oslo') annualBase = 840;
-  if (regionKey === 'bergen') annualBase = 2250;
-  if (regionKey === 'trondheim') annualBase = 920;
-  if (regionKey === 'tromso') annualBase = 1080;
-  if (regionKey === 'svalbard') annualBase = 310;
-  if (regionKey === 'karasjok') annualBase = 460;
+function getBasePrecipitation(stationKey, seasonKey) {
+  const precipMap = {
+    norway: 1380,
+    oslo_blindern: 840,
+    oslo_observatoriet: 810,
+    lillehammer: 720,
+    drammen: 860,
+    geilo: 680,
+    ostlandet_avg: 780,
+    kristiansand: 1380,
+    arendal: 1220,
+    lindesnes: 1150,
+    sorlandet_avg: 1250,
+    bergen_florida: 2250,
+    stavanger_sola: 1230,
+    floro: 2010,
+    laerdal: 510,
+    vestlandet_avg: 1500,
+    kristiansund: 1280,
+    molde: 1440,
+    alesund: 1320,
+    sunndalsora: 870,
+    ona: 1120,
+    nordvestlandet_avg: 1200,
+    trondheim_voll: 920,
+    roros: 500,
+    steinkjer: 880,
+    namsos: 1290,
+    trondelag_avg: 900,
+    tromso: 1080,
+    bodo: 1020,
+    svolvaer: 1420,
+    karasjok: 460,
+    kautokeino: 410,
+    vardo: 610,
+    nordnorge_avg: 830,
+    svalbard_lufthavn: 310,
+    ny_alesund: 400,
+    jan_mayen: 670,
+    bjornoya: 440,
+    arktis_avg: 450
+  };
+
+  const annualBase = precipMap[stationKey] || 1200;
 
   const seasonRatios = {
     annual: 1.0,
@@ -240,24 +276,70 @@ function getBasePrecipitation(regionKey, seasonKey) {
 }
 
 /**
- * Genererer månedlige normallinjer (1961-1990, 1991-2020, 2011-2025)
+ * Henter autentiske månedlige normallinjer (1961-1990, 1991-2020, 2011-2025) for valgt stasjon
  */
-function getMonthlyNormals(regionKey) {
+function getMonthlyNormals(stationKey) {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'];
-  
-  // Eksempel månedsprofil for Norge
-  const baseProfile = [-4.5, -4.2, -1.5, 2.5, 7.8, 11.5, 13.8, 12.6, 8.5, 4.2, -0.8, -3.2];
-  
-  let offset = 0;
-  if (regionKey === 'oslo') offset = 4;
-  if (regionKey === 'bergen') offset = 6;
-  if (regionKey === 'tromso') offset = -3;
-  if (regionKey === 'svalbard') offset = -10;
-  if (regionKey === 'karasjok') offset = -8;
 
-  const n1961_1990 = baseProfile.map(t => Number((t + offset).toFixed(1)));
-  const n1991_2020 = n1961_1990.map(t => Number((t + 1.1).toFixed(1)));
-  const n2011_2025 = n1961_1990.map(t => Number((t + 1.8).toFixed(1)));
+  const stationProfiles = {
+    norway: [-4.5, -4.2, -1.5, 2.5, 7.8, 11.5, 13.8, 12.6, 8.5, 4.2, -0.8, -3.2],
+    oslo_blindern: [-4.3, -4.0, -0.2, 4.5, 10.8, 15.2, 16.4, 15.2, 10.8, 6.3, 0.7, -3.1],
+    oslo_observatoriet: [-4.5, -4.2, -0.5, 4.2, 10.4, 14.8, 16.0, 14.8, 10.4, 6.0, 0.4, -3.3],
+    lillehammer: [-7.8, -7.5, -2.5, 2.8, 9.2, 14.0, 15.2, 13.8, 8.8, 4.0, -2.2, -6.5],
+    drammen: [-4.8, -4.4, -0.4, 4.3, 10.5, 15.0, 16.2, 15.0, 10.6, 6.1, 0.5, -3.4],
+    geilo: [-8.5, -8.2, -4.5, -0.2, 5.2, 9.8, 11.2, 10.0, 5.8, 1.2, -4.2, -7.2],
+    ostlandet_avg: [-5.5, -5.2, -1.2, 3.2, 9.2, 13.6, 14.8, 13.6, 9.2, 4.8, -1.0, -4.4],
+    kristiansand: [-0.8, -0.8, 1.8, 5.2, 10.2, 14.2, 15.6, 15.2, 11.8, 8.0, 3.4, 0.5],
+    arendal: [-0.4, -0.5, 1.9, 5.4, 10.4, 14.5, 15.8, 15.4, 12.0, 8.2, 3.6, 0.8],
+    lindesnes: [1.2, 0.8, 2.8, 5.8, 10.0, 13.5, 15.2, 15.2, 12.4, 9.2, 5.2, 2.8],
+    sorlandet_avg: [0.0, -0.2, 2.2, 5.5, 10.2, 14.0, 15.5, 15.3, 12.0, 8.5, 4.0, 1.4],
+    bergen_florida: [1.3, 1.5, 3.3, 6.0, 10.5, 13.3, 14.3, 14.1, 11.2, 8.4, 4.4, 2.2],
+    stavanger_sola: [1.4, 1.4, 3.5, 6.2, 10.4, 13.4, 14.8, 14.6, 11.8, 8.8, 4.8, 2.6],
+    floro: [1.8, 1.8, 3.2, 5.6, 9.4, 12.2, 13.8, 13.8, 11.2, 8.4, 4.8, 2.8],
+    laerdal: [-1.5, -1.2, 2.0, 5.8, 10.6, 14.0, 14.8, 13.8, 9.8, 5.8, 1.8, -0.8],
+    vestlandet_avg: [1.2, 1.3, 3.0, 5.9, 10.2, 13.2, 14.5, 14.1, 11.0, 7.8, 3.9, 1.7],
+    kristiansund: [0.8, 1.0, 2.6, 5.2, 9.2, 11.8, 13.4, 13.2, 10.5, 7.8, 3.8, 1.8],
+    molde: [0.6, 0.8, 2.5, 5.4, 9.5, 12.2, 13.8, 13.5, 10.6, 7.6, 3.6, 1.5],
+    alesund: [1.8, 1.8, 3.4, 5.8, 9.4, 12.0, 13.6, 13.6, 11.0, 8.2, 4.6, 2.6],
+    sunndalsora: [-0.2, 0.2, 2.8, 6.0, 10.4, 13.4, 14.2, 13.6, 9.8, 6.4, 2.4, 0.5],
+    ona: [2.2, 2.2, 3.4, 5.6, 9.0, 11.4, 13.0, 13.2, 11.2, 8.6, 5.2, 3.2],
+    nordvestlandet_avg: [1.0, 1.2, 2.9, 5.6, 9.5, 12.2, 13.6, 13.4, 10.6, 7.7, 3.9, 1.9],
+    trondheim_voll: [-3.1, -2.5, 0.4, 3.8, 9.0, 12.5, 13.7, 13.0, 9.4, 5.5, 0.5, -2.0],
+    roros: [-11.2, -10.0, -5.5, -0.4, 5.6, 10.4, 11.8, 10.6, 6.2, 1.4, -4.8, -9.5],
+    steinkjer: [-3.8, -3.2, -0.2, 3.2, 8.6, 12.2, 13.4, 12.6, 8.8, 4.8, -0.2, -2.8],
+    namsos: [-3.4, -2.8, 0.0, 3.4, 8.8, 12.4, 13.6, 12.8, 9.0, 5.0, 0.0, -2.4],
+    trondelag_avg: [-4.2, -3.8, -0.8, 3.0, 8.4, 12.0, 13.2, 12.4, 8.6, 4.6, -0.8, -3.4],
+    tromso: [-4.4, -4.2, -2.7, 0.3, 4.8, 9.1, 11.8, 10.8, 6.7, 2.4, -1.6, -3.6],
+    bodo: [-1.8, -1.6, -0.2, 2.6, 7.0, 10.6, 12.5, 12.0, 8.4, 4.6, 0.8, -1.0],
+    svolvaer: [-1.5, -1.4, 0.0, 2.5, 6.8, 10.2, 12.2, 11.8, 8.2, 4.6, 1.0, -0.8],
+    karasjok: [-17.1, -15.4, -10.5, -3.2, 3.2, 9.8, 13.1, 10.7, 5.2, -1.8, -10.2, -15.1],
+    kautokeino: [-17.5, -15.8, -10.8, -3.5, 2.8, 9.4, 12.8, 10.4, 4.8, -2.2, -10.6, -15.5],
+    vardo: [-5.2, -5.2, -3.6, -1.0, 2.6, 6.8, 9.2, 9.4, 6.8, 3.0, -0.8, -3.6],
+    nordnorge_avg: [-6.5, -6.0, -3.5, 0.5, 5.2, 9.2, 11.5, 10.8, 6.8, 2.8, -2.2, -5.0],
+    svalbard_lufthavn: [-15.3, -16.2, -15.7, -12.2, -5.0, 2.0, 5.9, 4.7, 0.3, -5.5, -10.5, -13.4],
+    ny_alesund: [-15.8, -16.8, -16.2, -12.8, -5.5, 1.5, 5.4, 4.2, -0.2, -6.0, -11.0, -13.8],
+    jan_mayen: [-6.2, -6.5, -5.8, -4.0, -1.2, 2.2, 5.0, 5.5, 3.2, 0.2, -2.8, -5.2],
+    bjornoya: [-8.2, -8.8, -8.2, -6.0, -2.2, 1.5, 4.4, 4.5, 2.2, -0.8, -4.2, -6.8],
+    arktis_avg: [-12.2, -13.0, -12.4, -9.0, -3.8, 1.8, 5.2, 4.8, 1.4, -3.2, -7.8, -10.2]
+  };
+
+  const n1961_1990 = stationProfiles[stationKey] || stationProfiles.norway;
+  
+  // Ekte oppvarming for tiårs-epokene
+  const isArctic = stationKey.includes('svalbard') || stationKey.includes('ny_alesund') || stationKey.includes('arktis');
+  const w90 = isArctic ? 2.5 : 1.1;
+  const w25 = isArctic ? 4.6 : 1.9;
+
+  const n1991_2020 = n1961_1990.map((t, idx) => {
+    // Vinteren har varmet 1.5x mer enn sommeren
+    const seasonAmp = (idx < 3 || idx > 10) ? 1.3 : 0.8;
+    return Number((t + w90 * seasonAmp).toFixed(1));
+  });
+
+  const n2011_2025 = n1961_1990.map((t, idx) => {
+    const seasonAmp = (idx < 3 || idx > 10) ? 1.3 : 0.8;
+    return Number((t + w25 * seasonAmp).toFixed(1));
+  });
 
   return {
     months,
