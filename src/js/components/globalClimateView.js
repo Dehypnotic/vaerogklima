@@ -3,7 +3,7 @@
    ========================================================================== */
 
 import { Chart, registerables } from 'chart.js';
-import { getGlobalDataForRegion, GLOBAL_REGIONS } from '../api/globalClimateApi.js';
+import { getGlobalDataForRegion, GLOBAL_DATASETS } from '../api/globalClimateApi.js';
 
 Chart.register(...registerables);
 
@@ -14,9 +14,9 @@ let activeGlobalRecordCategory = 'warmestYears'; // 'warmestYears' | 'fastestWar
 let currentGlobalData = null;
 
 export async function initGlobalClimateView() {
-  const regionSelect = document.getElementById('global-region-select');
-  if (regionSelect) {
-    regionSelect.addEventListener('change', (e) => {
+  const datasetSelect = document.getElementById('global-dataset-select');
+  if (datasetSelect) {
+    datasetSelect.addEventListener('change', (e) => {
       currentGlobalRegion = e.target.value;
       updateGlobalDashboard();
     });
@@ -66,8 +66,8 @@ function updateGlobalKPIs(data) {
 
   if (tempEl) tempEl.textContent = `${data.kpis.globalTempAnomaly > 0 ? '+' : ''}${data.kpis.globalTempAnomaly} °C`;
   if (co2El) co2El.textContent = `${data.kpis.currentCo2Ppm} ppm`;
-  if (seaEl) seaEl.textContent = `+${data.kpis.seaLevelRiseMm} mm`;
-  if (iceEl) iceEl.textContent = `${data.kpis.arcticIceMin} mill. km²`;
+  if (seaEl) seaEl.textContent = `+${data.kpis.seaLevelMm} mm`;
+  if (iceEl) iceEl.textContent = `${data.kpis.arcticIceArea} mill. km²`;
 }
 
 function renderGlobalChart(data) {
@@ -83,7 +83,6 @@ function renderGlobalChart(data) {
   const series = data ? (data.series || []) : [];
   let displaySeries = series;
   if (activeVariable === 'ice') {
-    // Start sjøis-grafen fra 1979 ved starten av kontinuerlige NSIDC satellittmålinger
     displaySeries = series.filter(s => s.year >= 1979);
   }
 
@@ -98,168 +97,113 @@ function renderGlobalChart(data) {
 
   if (activeVariable === 'temp') {
     const anomalies = displaySeries.map(s => s.anomaly);
-    const trends = displaySeries.map(s => s.absTrend);
-    const barColors = anomalies.map(val => val >= 0 ? 'rgba(244, 63, 94, 0.75)' : 'rgba(59, 130, 246, 0.75)');
-
-    hasDualAxis = true;
-    yAxisLeftTitle = 'Årlig Temperaturavvik (°C fra før-industrielt snitt)';
-    yAxisLeftColor = '#94a3b8';
-    yAxisRightTitle = '10-års Snittemperatur (°C)';
-    yAxisRightColor = '#f59e0b';
+    const trends = displaySeries.map(s => s.trend);
 
     datasetConfig = [
       {
+        type: 'bar',
+        label: 'Årlig Temperaturavvik (°C)',
+        data: anomalies,
+        backgroundColor: anomalies.map(v => v >= 0 ? 'rgba(244, 63, 94, 0.75)' : 'rgba(59, 130, 246, 0.75)'),
+        borderColor: anomalies.map(v => v >= 0 ? '#f43f5e' : '#3b82f6'),
+        borderWidth: 1,
+        borderRadius: 2
+      },
+      {
         type: 'line',
-        label: '10-års Glidende Snittemperatur (°C)',
+        label: '10-års Klimatrend (°C)',
         data: trends,
         borderColor: '#f59e0b',
         borderWidth: 3,
         pointRadius: 0,
-        tension: 0.4,
-        yAxisID: 'yRight'
-      },
-      {
-        type: 'bar',
-        label: 'Årlig Temperaturavvik (°C fra før-industrielt snitt)',
-        data: anomalies,
-        backgroundColor: barColors,
-        borderWidth: 0,
-        borderRadius: 2,
-        yAxisID: 'yLeft'
+        tension: 0.35
       }
     ];
+    yAxisLeftTitle = 'Temperaturavvik fra baseline (°C)';
   } else if (activeVariable === 'co2') {
-    const co2Vals = displaySeries.map(s => s.co2Ppm);
-    const co2Grad = ctx.createLinearGradient(0, 0, 0, 300);
-    co2Grad.addColorStop(0, 'rgba(168, 85, 247, 0.4)');
-    co2Grad.addColorStop(1, 'rgba(168, 85, 247, 0.0)');
-
-    yAxisLeftTitle = 'Atmosfærisk CO₂-konsentrasjon (ppm)';
-    yAxisLeftColor = '#a855f7';
-
+    const co2Data = displaySeries.map(s => s.co2Ppm);
     datasetConfig = [
       {
         type: 'line',
-        label: 'CO₂ i Atmosfæren (Keeling-kurven i ppm)',
-        data: co2Vals,
+        label: 'Atmosfærisk CO₂ (ppm)',
+        data: co2Data,
         borderColor: '#a855f7',
-        backgroundColor: co2Grad,
+        backgroundColor: 'rgba(168, 85, 247, 0.15)',
         borderWidth: 3,
         fill: true,
         pointRadius: 1,
-        tension: 0.3,
-        yAxisID: 'yLeft'
+        tension: 0.3
       }
     ];
+    yAxisLeftTitle = 'CO₂-konsentrasjon (ppm)';
+    yAxisLeftColor = '#a855f7';
   } else if (activeVariable === 'sealevel') {
-    const seaVals = displaySeries.map(s => s.seaLevelMm);
-    const seaGrad = ctx.createLinearGradient(0, 0, 0, 300);
-    seaGrad.addColorStop(0, 'rgba(0, 210, 255, 0.4)');
-    seaGrad.addColorStop(1, 'rgba(0, 210, 255, 0.0)');
-
-    yAxisLeftTitle = 'Global Havnivåstigning (mm siden 1880)';
-    yAxisLeftColor = '#00d2ff';
-
+    const seaData = displaySeries.map(s => s.seaLevelMm);
     datasetConfig = [
       {
         type: 'line',
-        label: 'Globalt Havnivå (mm)',
-        data: seaVals,
-        borderColor: '#00d2ff',
-        backgroundColor: seaGrad,
-        borderWidth: 3,
-        fill: true,
-        pointRadius: 1,
-        tension: 0.3,
-        yAxisID: 'yLeft'
-      }
-    ];
-  } else if (activeVariable === 'ice') {
-    const iceVals = displaySeries.map(s => s.arcticIceArea);
-
-    yAxisLeftTitle = 'Arktisk Sjøis September-minimum (Mill. km² fra 1979)';
-    yAxisLeftColor = '#3b82f6';
-
-    datasetConfig = [
-      {
-        type: 'line',
-        label: 'Arktisk Sjøisutbredelse (Mill. km² - NSIDC Satellitt-æra)',
-        data: iceVals,
+        label: 'Global Havnivåstigning (mm)',
+        data: seaData,
         borderColor: '#3b82f6',
         backgroundColor: 'rgba(59, 130, 246, 0.15)',
         borderWidth: 3,
         fill: true,
-        pointRadius: 1.5,
-        tension: 0.3,
-        yAxisID: 'yLeft'
+        pointRadius: 1,
+        tension: 0.3
       }
     ];
+    yAxisLeftTitle = 'Havnivåstigning (mm)';
+    yAxisLeftColor = '#3b82f6';
+  } else if (activeVariable === 'ice') {
+    const iceData = displaySeries.map(s => s.arcticIceArea);
+    datasetConfig = [
+      {
+        type: 'line',
+        label: 'Arktisk Sjøis Minimum (mill. km²)',
+        data: iceData,
+        borderColor: '#38bdf8',
+        backgroundColor: 'rgba(56, 189, 248, 0.15)',
+        borderWidth: 3,
+        fill: true,
+        pointRadius: 2,
+        tension: 0.2
+      }
+    ];
+    yAxisLeftTitle = 'Isutbredelse (mill. km²)';
+    yAxisLeftColor = '#38bdf8';
   }
 
-  // Beregn dynamisk min og max for full vertikal utnyttelse (100% aksestrekking)
-  const primaryData = datasetConfig[datasetConfig.length - 1].data;
-  const minVal = Math.min(...primaryData);
-  const maxVal = Math.max(...primaryData);
-  const pad = Math.max(0.1, (maxVal - minVal) * 0.08);
+  const minVal = Math.min(...(datasetConfig[0]?.data || [0]));
+  const maxVal = Math.max(...(datasetConfig[0]?.data || [1]));
+  const pad = Math.max(0.1, (maxVal - minVal) * 0.05);
 
-  let scalesConfig = {
+  const scalesConfig = {
     x: {
-      grid: { color: 'rgba(255, 255, 255, 0.04)' },
-      ticks: { color: '#94a3b8', maxTicksLimit: 15 }
+      grid: { color: 'rgba(255, 255, 255, 0.05)' },
+      ticks: { color: '#94a3b8', font: { family: 'Inter', size: 11 } }
     },
-    yLeft: {
-      type: 'linear',
-      display: true,
+    y: {
       position: 'left',
       beginAtZero: false,
-      min: Math.floor((minVal - pad) * 10) / 10,
-      max: Math.ceil((maxVal + pad) * 10) / 10,
+      min: Number((minVal - pad).toFixed(2)),
+      max: Number((maxVal + pad).toFixed(2)),
       title: {
         display: true,
         text: yAxisLeftTitle,
         color: yAxisLeftColor,
-        font: { family: 'Inter', size: 11, weight: '600' }
+        font: { family: 'Inter', size: 12, weight: '600' }
       },
-      grid: { color: 'rgba(255, 255, 255, 0.06)' },
+      grid: { color: 'rgba(255, 255, 255, 0.08)' },
       ticks: {
         color: yAxisLeftColor,
-        callback: value => activeVariable === 'temp' ? `${value > 0 ? '+' : ''}${value}°C` : `${value}`
+        font: { family: 'Inter', size: 11, weight: '600' },
+        callback: val => Number(val.toFixed(2))
       }
     }
   };
 
-  if (hasDualAxis) {
-    const secondaryData = datasetConfig[0].data;
-    const minSec = Math.min(...secondaryData);
-    const maxSec = Math.max(...secondaryData);
-    const padSec = Math.max(0.1, (maxSec - minSec) * 0.08);
-
-    scalesConfig.yRight = {
-      type: 'linear',
-      display: true,
-      position: 'right',
-      beginAtZero: false,
-      min: Math.floor((minSec - padSec) * 10) / 10,
-      max: Math.ceil((maxSec + padSec) * 10) / 10,
-      title: {
-        display: true,
-        text: yAxisRightTitle,
-        color: yAxisRightColor,
-        font: { family: 'Inter', size: 11, weight: '600' }
-      },
-      grid: { drawOnChartArea: false },
-      ticks: {
-        color: yAxisRightColor,
-        font: { family: 'Inter', size: 11, weight: '600' },
-        callback: value => `${Number(value).toFixed(1)}°C`
-      }
-    };
-  }
-
-  const chartType = activeVariable === 'temp' ? 'bar' : 'line';
-
   globalChartInstance = new Chart(ctx, {
-    type: chartType,
+    type: activeVariable === 'temp' ? 'bar' : 'line',
     data: {
       labels: years,
       datasets: datasetConfig
@@ -299,21 +243,21 @@ function renderGlobalRecordsGrid(data) {
   if (!container || !data || !data.records) return;
 
   if (titleEl) {
-    titleEl.textContent = `🌐 Globale Rekorder & Ekstremdata (${data.regionName})`;
+    titleEl.textContent = `🌐 Globale Rekorder & Observasjonsdata – ${data.regionName}`;
   }
 
   const cat = activeGlobalRecordCategory;
 
-  if (cat === 'fastestWarming') {
-    const list = data.records.fastestWarmingRegions || [];
+  if (cat === 'warmestYears' || cat === 'coldestYears') {
+    const list = cat === 'warmestYears' ? (data.records.warmestYears || []) : (data.records.coldestYears || []);
+    const metricClass = cat === 'warmestYears' ? 'warm' : 'cold';
     container.innerHTML = list.map((item, idx) => `
       <div class="extreme-item-card">
         <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
         <div class="extreme-info">
-          <div class="extreme-place">${item.name}</div>
-          <div class="extreme-region">${item.factor}</div>
+          <div class="extreme-place">År ${item.year}</div>
         </div>
-        <div class="extreme-metric warm">${item.rate}</div>
+        <div class="extreme-metric ${metricClass}">${item.anomaly > 0 ? '+' : ''}${item.anomaly} °C</div>
       </div>
     `).join('');
     return;
@@ -327,23 +271,11 @@ function renderGlobalRecordsGrid(data) {
         <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
         <div class="extreme-info">
           <div class="extreme-place">${item.year}</div>
+          <div class="extreme-region">${item.name}</div>
         </div>
         <div class="extreme-metric ${metricClass}">${item.rate}</div>
       </div>
     `).join('');
     return;
   }
-
-  let list = [];
-  if (cat === 'warmestYears') list = data.records.warmestYears || [];
-
-  container.innerHTML = list.map((item, idx) => `
-    <div class="extreme-item-card">
-      <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
-      <div class="extreme-info">
-        <div class="extreme-place">År ${item.year}</div>
-      </div>
-      <div class="extreme-metric warm">${item.anomaly > 0 ? '+' : ''}${item.anomaly} °C</div>
-    </div>
-  `).join('');
 }

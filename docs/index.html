@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <script type="module" crossorigin src="./assets/index-aeZJQxUv.js"></script>
+
+  <script type="module" crossorigin src="./assets/index-BDf7wmfm.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-CenYMVUD.css">
 </head>
 <body class="nordic-dark">
@@ -319,15 +319,13 @@
           </div>
           
           <div class="climate-location-selector">
-            <label for="global-region-select">Velg verdensdel / område:</label>
-            <select id="global-region-select" class="custom-select">
-              <option value="global">Hele Verden (Globalt Snitt)</option>
-              <option value="europe">Europa</option>
-              <option value="arctic">Arktis & Polardypet</option>
-              <option value="north_america">Nord-Amerika</option>
-              <option value="asia">Asia</option>
-              <option value="antarctica">Antarktis</option>
-              <option value="oceans">Verdenshavene (Overflatesnitt)</option>
+            <label for="global-dataset-select">Velg verifisert observasjonsdatakilde:</label>
+            <select id="global-dataset-select" class="custom-select">
+              <option value="global">Hele Verden (NASA GISTEMP v4 / NOAA NCEI)</option>
+              <option value="europe">Europa Landflate (HadCRUT5 / Copernicus ERA5)</option>
+              <option value="north_hemisphere">Nordlige Halvkule (NOAA NCEI)</option>
+              <option value="tropics">Tropene 30°N–30°S (NOAA NCEI)</option>
+              <option value="south_hemisphere">Sørlige Halvkule (NOAA NCEI)</option>
             </select>
           </div>
         </div>
@@ -402,7 +400,7 @@
         <div class="climate-card glass-panel climate-records-section">
           <div class="climate-chart-header">
             <div>
-              <h3 id="global-records-title">🌐 Globale Rekordår & Raskest Oppvarmede Regioner</h3>
+              <h3 id="global-records-title">🌐 Globale Rekordår & Observasjonsdata</h3>
               <p class="section-subtitle">Historiske globale registreringer fra NOAA, NASA GISTEMP og IPCC</p>
             </div>
           </div>
@@ -410,10 +408,10 @@
           <!-- Category Pills for Global Extremes -->
           <div class="category-pills climate-category-pills">
             <button class="pill-btn global-record-pill active" data-record-category="warmestYears">
-              <span class="pill-icon">☀️</span> Varmeste år i verden
+              <span class="pill-icon">☀️</span> Varmeste år
             </button>
-            <button class="pill-btn global-record-pill" data-record-category="fastestWarming">
-              <span class="pill-icon">🔥</span> Raskest oppvarmede regioner
+            <button class="pill-btn global-record-pill" data-record-category="coldestYears">
+              <span class="pill-icon">❄️</span> Kaldeste år
             </button>
             <button class="pill-btn global-record-pill" data-record-category="elNino">
               <span class="pill-icon">🌊</span> Kraftigste El Niño-hendelser
@@ -464,6 +462,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts -->
 </body>
 </html>
