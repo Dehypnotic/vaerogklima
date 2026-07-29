@@ -175,27 +175,35 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">
-              <span class="title-icon">🌍</span> Klimautvikling i Norge (1950 – I dag)
+              <span class="title-icon">🌍</span> Klimautvikling i Norge (1900 – I dag)
             </h2>
-            <p class="section-subtitle">Historisk oversikt over temperaturomveltning, nedbørsendringer og klimanormaler for Norge og utvalgte fylker/steder.</p>
+            <p class="section-subtitle">Historisk oversikt (1900–nåtid) over temperaturomveltning, nedbørsendringer og klimanormaler fra Meteorologisk institutt (MET Norway / Frost.met.no).</p>
           </div>
           
           <div class="climate-filters-group">
             <div class="climate-location-selector">
-              <label for="climate-region-select">Velg område:</label>
+              <label for="climate-region-select">Landsdel:</label>
               <select id="climate-region-select" class="custom-select">
-                <option value="norway">Hele Norge (Nasjonalt snitt)</option>
-                <option value="oslo">Oslo & Østlandet</option>
-                <option value="bergen">Bergen & Vestlandet</option>
-                <option value="trondheim">Trøndelag</option>
-                <option value="tromso">Troms & Nord-Norge</option>
-                <option value="svalbard">Svalbard / Longyearbyen</option>
-                <option value="karasjok">Finnmarksvidda (Karasjok)</option>
+                <option value="all">Hele Norge</option>
+                <option value="ostlandet">Østlandet</option>
+                <option value="sorlandet">Sørlandet</option>
+                <option value="vestlandet">Sørvestlandet</option>
+                <option value="nordvestlandet">Nordvestlandet</option>
+                <option value="trondelag">Midt-Norge</option>
+                <option value="nordnorge">Nord-Norge</option>
+                <option value="arktis">Arktis & Øyer</option>
+              </select>
+            </div>
+
+            <div class="climate-station-selector">
+              <label for="climate-station-select">Målestasjon:</label>
+              <select id="climate-station-select" class="custom-select">
+                <!-- Dynamisk fylt ut fra valgt landsdel -->
               </select>
             </div>
 
             <div class="climate-season-selector">
-              <label for="climate-season-select">Årstid / Tidsrom:</label>
+              <label for="climate-season-select">Årstid:</label>
               <select id="climate-season-select" class="custom-select">
                 <option value="annual">Hele året (Årsgjennomsnitt)</option>
                 <option value="winter">❄️ Vinter (Des – Feb)</option>

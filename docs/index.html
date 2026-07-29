@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script type="module" crossorigin src="./assets/index-Dt2w_V_G.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CD9nw1a8.css">
+  <script type="module" crossorigin src="./assets/index-Cyv7QvtQ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CnrpXG2_.css">
 </head>
 <body class="nordic-dark">
   <!-- Dynamic Background Atmosphere -->
@@ -174,27 +174,35 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">
-              <span class="title-icon">🌍</span> Klimautvikling i Norge (1950 – I dag)
+              <span class="title-icon">🌍</span> Klimautvikling i Norge (1900 – I dag)
             </h2>
-            <p class="section-subtitle">Historisk oversikt over temperaturomveltning, nedbørsendringer og klimanormaler for Norge og utvalgte fylker/steder.</p>
+            <p class="section-subtitle">Historisk oversikt (1900–nåtid) over temperaturomveltning, nedbørsendringer og klimanormaler fra Meteorologisk institutt (MET Norway / Frost.met.no).</p>
           </div>
           
           <div class="climate-filters-group">
             <div class="climate-location-selector">
-              <label for="climate-region-select">Velg område:</label>
+              <label for="climate-region-select">Landsdel:</label>
               <select id="climate-region-select" class="custom-select">
-                <option value="norway">Hele Norge (Nasjonalt snitt)</option>
-                <option value="oslo">Oslo & Østlandet</option>
-                <option value="bergen">Bergen & Vestlandet</option>
-                <option value="trondheim">Trøndelag</option>
-                <option value="tromso">Troms & Nord-Norge</option>
-                <option value="svalbard">Svalbard / Longyearbyen</option>
-                <option value="karasjok">Finnmarksvidda (Karasjok)</option>
+                <option value="all">Hele Norge (Nasjonalt Snitt)</option>
+                <option value="ostlandet">Østlandet & Innlandet</option>
+                <option value="sorlandet">Sørlandet</option>
+                <option value="vestlandet">Vestlandet (Sør- og Vestland)</option>
+                <option value="nordvestlandet">Nordvestlandet & Møre og Romsdal</option>
+                <option value="trondelag">Trøndelag & Midt-Norge</option>
+                <option value="nordnorge">Nord-Norge & Finnmark</option>
+                <option value="arktis">Arktis & Øyer</option>
+              </select>
+            </div>
+
+            <div class="climate-station-selector">
+              <label for="climate-station-select">Målestasjon:</label>
+              <select id="climate-station-select" class="custom-select">
+                <!-- Dynamisk fylt ut fra valgt landsdel -->
               </select>
             </div>
 
             <div class="climate-season-selector">
-              <label for="climate-season-select">Årstid / Tidsrom:</label>
+              <label for="climate-season-select">Årstid:</label>
               <select id="climate-season-select" class="custom-select">
                 <option value="annual">Hele året (Årsgjennomsnitt)</option>
                 <option value="winter">❄️ Vinter (Des – Feb)</option>

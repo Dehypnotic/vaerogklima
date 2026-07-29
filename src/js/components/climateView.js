@@ -9,16 +9,42 @@ Chart.register(...registerables);
 
 let anomalyChartInstance = null;
 let normalsChartInstance = null;
-let currentRegion = 'norway';
+let currentRegion = 'all';
+let currentStation = 'norway';
 let currentSeason = 'annual';
 let activeClimateCategory = 'warmest';
 let currentClimateData = null;
 
 export async function initClimateView() {
   const regionSelect = document.getElementById('climate-region-select');
+  const stationSelect = document.getElementById('climate-station-select');
+
+  function populateStations(regionKey) {
+    if (!stationSelect) return;
+    const regConfig = CLIMATE_REGIONS[regionKey] || CLIMATE_REGIONS.all;
+    const stations = regConfig.stations || {};
+    
+    stationSelect.innerHTML = Object.keys(stations).map(stKey => {
+      const st = stations[stKey];
+      return `<option value="${stKey}">${st.name}</option>`;
+    }).join('');
+
+    const firstKey = Object.keys(stations)[0] || 'norway';
+    currentStation = firstKey;
+    stationSelect.value = firstKey;
+  }
+
   if (regionSelect) {
     regionSelect.addEventListener('change', (e) => {
       currentRegion = e.target.value;
+      populateStations(currentRegion);
+      updateClimateDashboard();
+    });
+  }
+
+  if (stationSelect) {
+    stationSelect.addEventListener('change', (e) => {
+      currentStation = e.target.value;
       updateClimateDashboard();
     });
   }
@@ -43,11 +69,12 @@ export async function initClimateView() {
     });
   });
 
+  populateStations('all');
   await updateClimateDashboard();
 }
 
 export async function updateClimateDashboard() {
-  currentClimateData = await getClimateDataForRegion(currentRegion, currentSeason);
+  currentClimateData = await getClimateDataForRegion(currentStation, currentSeason);
   updateKPICards(currentClimateData);
   renderAnomalyChart(currentClimateData);
   renderClimateRecordsGrid(currentClimateData);
