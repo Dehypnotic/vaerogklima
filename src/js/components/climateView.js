@@ -83,16 +83,16 @@ export async function updateClimateDashboard() {
 
 function formatLocationText(rawName = '') {
   let text = rawName.replace(/^📍\s*/, '').trim();
-  // Fjern SN-nummer som (SN18700)
-  text = text.replace(/\s*\([A-Z0-9-]+\)$/, '').trim();
+  // Fjern alt i paranteser
+  text = text.replace(/\s*\([^)]*\)/g, '').trim();
   
-  // Gjør " - " om til parantes for stasjonssteder: "Oslo - Blindern" -> "Oslo (Blindern)"
+  // Gjør " - " om til parantes for stasjonssteder: "Drammen - Berskog" -> "Drammen (Berskog)"
   if (text.includes(' - ')) {
     const parts = text.split(' - ');
     text = `${parts[0]} (${parts[1]})`;
   }
 
-  // Rydd opp overskriftsbeskrivelse for hele landsdeler/Norge (Norge har alltid stor N!)
+  // Rydd opp overskriftsbeskrivelse for hele landsdeler/Norge
   if (text.includes('Hele Norge')) return 'hele Norge';
   if (text.includes('Hele Østlandet')) return 'hele Østlandet';
   if (text.includes('Hele Sørlandet')) return 'hele Sørlandet';
