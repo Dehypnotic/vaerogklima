@@ -6,19 +6,19 @@ import requests
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_FIL = os.path.join(BASE_DIR, "kommuner_koordinater.json")
-NOWCAST_URL = "https://api.met.no/weatherapi/nowcast/2.0/complete"
+NOWCAST_URL = "https://met.no"
 
-# Dine ferdigutfylte detaljer for JSONBin.io
+# Dine detaljer for JSONBin.io
 JSONBIN_BIN_ID = "6a6bacc4f5f4af5e29d748d2"
 JSONBIN_API_KEY = "$2a$10$RKrUENVnz7CG/bSnyRnJcelPjzvDj7iTTHRnW.LmZ9zJQ26OchS3K"
 
+# MET krever et veldig strengt format fra sky-servere: "AppNavn/Versjon epost@domene.no"
 HEADERS = {
-    "User-Agent": "KommuneVaerToppliste/1.0 (kontakt: dehypnotic@outlook.com)"
+    "User-Agent": "KommuneVaerTopplisteApp/2.0 dehypnotic@outlook.com"
 }
 
 if not os.path.exists(INPUT_FIL):
     print(f"❌ KRITISK FEIL: Fant ikke koordinatfilen i mappen!")
-    print(f"Forventet bane var: {INPUT_FIL}")
     exit(1)
 
 try:
@@ -29,13 +29,19 @@ except Exception as e:
     exit(1)
 
 vaer_data = []
+forste_feil_skrevet = False
+
 print(f"🚀 Starter datahenting for {len(kommuner)} kommuner via GitHub Actions...")
 
 for i, kommune in enumerate(kommuner):
     if "svalbard" in kommune["kommune"].lower() or "jan mayen" in kommune["kommune"].lower():
         continue
 
-    params = {"lat": kommune["lat"], "lon": kommune["lon"]}
+    params = {
+        "lat": f"{float(kommune['lat']):.4f}", 
+        "lon": f"{float(kommune['lon']):.4f}"
+    }
+    
     try:
         response = requests.get(NOWCAST_URL, params=params, headers=HEADERS, timeout=5)
         if response.status_code == 200:
@@ -43,7 +49,6 @@ for i, kommune in enumerate(kommuner):
             timeseries = data["properties"]["timeseries"]
             
             if len(timeseries) > 0:
-                # Henter ut det første elementet (nyeste måling) i listen over tidsserier
                 gjeldende_varsel = timeseries[0]
                 details = gjeldende_varsel["data"]["instant"]["details"]
                 
@@ -58,17 +63,23 @@ for i, kommune in enumerate(kommuner):
                     "vind": details.get("wind_speed", 0),
                     "regn": regn
                 })
+        else:
+            if not forste_feil_skrevet:
+                print(f"⚠️ API-avvisning for {kommune['kommune']}: Statuskode {response.status_code}. Svar fra server: {response.text[:200]}")
+                forste_feil_skrevet = True
     except Exception as e:
+        if not forste_feil_skrevet:
+            print(f"❌ Nettverksfeil/Krasj for {kommune['kommune']}: {str(e)}")
+            forste_feil_skrevet = True
         continue
         
     time.sleep(0.1)
 
 gyldige_data = [k for k in vaer_data if k["temp"] != -999]
 
-# Hvis listen er tom, tvinger vi skriptet til å krasje og vise hvorfor
 if not gyldige_data:
     print(f"❌ KRITISK FEIL: Listen med værdata ble helt tom!")
-    print(f"Mottok totalt {len(vaer_data)} svar, men ingen ble godkjent.")
+    print(f"Totalt mottatt og lagret i listen: {len(vaer_data)} elementer.")
     exit(1)
 
 # Sortering
