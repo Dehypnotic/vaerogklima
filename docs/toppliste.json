@@ -1,83 +1,83 @@
 {
-    "sist_oppdatert": "2026-07-30 11:09:03",
+    "sist_oppdatert": "2026-07-30 13:21:17",
     "varmest": [
         {
-            "navn": "Kviteseid",
-            "temp": 26.3,
-            "vind": 1.5,
-            "regn": 0.0,
-            "lat": 59.3862,
-            "lon": 8.4006
-        },
-        {
-            "navn": "Seljord",
-            "temp": 25.9,
-            "vind": 0.7,
-            "regn": 0.0,
-            "lat": 59.5422,
-            "lon": 8.5979
-        },
-        {
             "navn": "Tokke",
-            "temp": 25.6,
-            "vind": 0.8,
+            "temp": 27.1,
+            "vind": 1.2,
             "regn": 0.0,
             "lat": 59.4394,
             "lon": 8.0001
         },
         {
-            "navn": "Aremark",
-            "temp": 25.5,
-            "vind": 3.4,
-            "regn": 0.0,
-            "lat": 59.2138,
-            "lon": 11.6953
+            "navn": "Modum",
+            "temp": 26.6,
+            "vind": 4.9,
+            "regn": 0.6,
+            "lat": 59.9468,
+            "lon": 9.9532
         },
         {
-            "navn": "Lørenskog",
-            "temp": 25.2,
-            "vind": 5.6,
-            "regn": 0.0,
-            "lat": 59.9277,
-            "lon": 10.9715
+            "navn": "Flesberg",
+            "temp": 26.5,
+            "vind": 2.3,
+            "regn": 0.7,
+            "lat": 59.8562,
+            "lon": 9.4863
         },
         {
-            "navn": "Nes",
-            "temp": 25.1,
-            "vind": 6.5,
+            "navn": "Åsnes",
+            "temp": 26.1,
+            "vind": 6.0,
             "regn": 0.0,
-            "lat": 60.1503,
-            "lon": 11.4225
+            "lat": 60.6484,
+            "lon": 12.1085
         },
         {
-            "navn": "Sør-Odal",
-            "temp": 25.1,
-            "vind": 4.3,
-            "regn": 0.2,
-            "lat": 60.2283,
-            "lon": 11.7721
+            "navn": "Østre Toten",
+            "temp": 26.0,
+            "vind": 5.3,
+            "regn": 0.0,
+            "lat": 60.6624,
+            "lon": 10.8341
         },
         {
-            "navn": "Fyresdal",
-            "temp": 25.1,
-            "vind": 2.5,
+            "navn": "Jevnaker",
+            "temp": 26.0,
+            "vind": 4.4,
             "regn": 0.0,
-            "lat": 59.1614,
-            "lon": 8.0552
+            "lat": 60.2753,
+            "lon": 10.3923
         },
         {
-            "navn": "Grue",
-            "temp": 24.8,
-            "vind": 4.6,
+            "navn": "Søndre Land",
+            "temp": 25.8,
+            "vind": 3.9,
             "regn": 0.0,
-            "lat": 60.4438,
-            "lon": 12.1925
+            "lat": 60.7228,
+            "lon": 10.3091
+        },
+        {
+            "navn": "Froland",
+            "temp": 25.7,
+            "vind": 1.9,
+            "regn": 0.0,
+            "lat": 58.6021,
+            "lon": 8.3919
+        },
+        {
+            "navn": "Hamar",
+            "temp": 25.6,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 60.8311,
+            "lon": 11.0979
         },
         {
             "navn": "Øvre Eiker",
-            "temp": 24.8,
-            "vind": 3.8,
-            "regn": 0.0,
+            "temp": 25.6,
+            "vind": 5.0,
+            "regn": 0.2,
             "lat": 59.7632,
             "lon": 9.8711
         }
@@ -85,2814 +85,2902 @@
     "kaldest": [
         {
             "navn": "Lom",
-            "temp": 7.2,
-            "vind": 7.6,
+            "temp": 6.0,
+            "vind": 6.6,
             "regn": 0.0,
             "lat": 61.7386,
             "lon": 8.5013
         },
         {
-            "navn": "Hemsedal",
-            "temp": 8.0,
-            "vind": 1.7,
-            "regn": 0.0,
-            "lat": 60.9109,
-            "lon": 8.467
-        },
-        {
             "navn": "Rauma",
-            "temp": 8.0,
-            "vind": 2.5,
+            "temp": 7.6,
+            "vind": 3.8,
             "regn": 0.0,
             "lat": 62.5323,
             "lon": 7.6516
         },
         {
             "navn": "Vik",
-            "temp": 8.0,
-            "vind": 3.2,
+            "temp": 8.8,
+            "vind": 2.4,
             "regn": 0.0,
             "lat": 61.0766,
             "lon": 6.6698
         },
         {
-            "navn": "Ulvik",
-            "temp": 8.5,
-            "vind": 3.7,
-            "regn": 0.0,
-            "lat": 60.61,
-            "lon": 7.2392
-        },
-        {
-            "navn": "Saltdal",
-            "temp": 9.0,
-            "vind": 2.9,
-            "regn": 0.6,
-            "lat": 67.0108,
-            "lon": 15.4119
-        },
-        {
-            "navn": "Modalen",
-            "temp": 9.1,
-            "vind": 4.3,
-            "regn": 1.8,
-            "lat": 60.8875,
-            "lon": 5.9297
-        },
-        {
-            "navn": "Røyrvik",
-            "temp": 9.1,
-            "vind": 2.4,
-            "regn": 0.0,
-            "lat": 64.9222,
-            "lon": 13.7222
-        },
-        {
             "navn": "Ibestad",
-            "temp": 9.2,
-            "vind": 4.1,
+            "temp": 9.0,
+            "vind": 1.9,
             "regn": 0.0,
             "lat": 68.8511,
             "lon": 17.1928
         },
         {
-            "navn": "Hol",
-            "temp": 10.2,
-            "vind": 3.2,
-            "regn": 0.1,
-            "lat": 60.5327,
-            "lon": 8.0991
-        }
-    ],
-    "vaatest": [
-        {
-            "navn": "Nord-Aurdal",
-            "temp": 14.6,
-            "vind": 1.4,
-            "regn": 5.0,
-            "lat": 60.9526,
-            "lon": 9.22
+            "navn": "Storfjord",
+            "temp": 9.1,
+            "vind": 8.4,
+            "regn": 0.2,
+            "lat": 69.2308,
+            "lon": 20.3659
         },
         {
-            "navn": "Etnedal",
-            "temp": 16.9,
-            "vind": 1.0,
-            "regn": 4.6,
-            "lat": 61.0185,
-            "lon": 9.5877
-        },
-        {
-            "navn": "Enebakk",
-            "temp": 23.2,
-            "vind": 4.4,
-            "regn": 3.4,
-            "lat": 59.7669,
-            "lon": 11.1231
-        },
-        {
-            "navn": "Sør-Fron",
-            "temp": 12.2,
-            "vind": 2.9,
-            "regn": 3.0,
-            "lat": 61.4932,
-            "lon": 9.7231
-        },
-        {
-            "navn": "Nord-Fron",
-            "temp": 12.7,
-            "vind": 4.5,
-            "regn": 2.3,
-            "lat": 61.6048,
-            "lon": 9.5544
-        },
-        {
-            "navn": "Osterøy",
-            "temp": 15.9,
-            "vind": 0.2,
-            "regn": 2.2,
-            "lat": 60.5411,
-            "lon": 5.5496
+            "navn": "Saltdal",
+            "temp": 9.4,
+            "vind": 0.5,
+            "regn": 0.0,
+            "lat": 67.0108,
+            "lon": 15.4119
         },
         {
             "navn": "Modalen",
-            "temp": 9.1,
-            "vind": 4.3,
-            "regn": 1.8,
+            "temp": 9.6,
+            "vind": 3.1,
+            "regn": 0.0,
             "lat": 60.8875,
             "lon": 5.9297
         },
         {
-            "navn": "Hvaler",
-            "temp": 19.7,
-            "vind": 5.8,
-            "regn": 1.6,
-            "lat": 59.0125,
-            "lon": 10.9813
+            "navn": "Gáivuotna Kåfjord",
+            "temp": 9.6,
+            "vind": 7.1,
+            "regn": 0.5,
+            "lat": 69.502,
+            "lon": 20.7065
         },
         {
-            "navn": "Indre Østfold",
-            "temp": 22.1,
-            "vind": 5.1,
-            "regn": 1.3,
-            "lat": 59.5932,
-            "lon": 11.1901
+            "navn": "Røyrvik",
+            "temp": 10.1,
+            "vind": 2.2,
+            "regn": 0.0,
+            "lat": 64.9222,
+            "lon": 13.7222
         },
         {
-            "navn": "Gol",
-            "temp": 14.7,
-            "vind": 1.6,
-            "regn": 1.3,
-            "lat": 60.7472,
-            "lon": 9.0001
+            "navn": "Vågan",
+            "temp": 10.2,
+            "vind": 4.3,
+            "regn": 0.0,
+            "lat": 68.263,
+            "lon": 14.6125
+        }
+    ],
+    "vaatest": [
+        {
+            "navn": "Åmot",
+            "temp": 21.0,
+            "vind": 5.3,
+            "regn": 11.7,
+            "lat": 61.3103,
+            "lon": 11.5282
+        },
+        {
+            "navn": "Tysnes",
+            "temp": 14.4,
+            "vind": 1.9,
+            "regn": 3.2,
+            "lat": 60.0061,
+            "lon": 5.5616
+        },
+        {
+            "navn": "Samnanger",
+            "temp": 16.1,
+            "vind": 0.3,
+            "regn": 2.6,
+            "lat": 60.3891,
+            "lon": 5.7486
+        },
+        {
+            "navn": "Kvam",
+            "temp": 13.8,
+            "vind": 1.3,
+            "regn": 2.5,
+            "lat": 60.3514,
+            "lon": 6.143
+        },
+        {
+            "navn": "Bjørnafjorden",
+            "temp": 16.3,
+            "vind": 1.0,
+            "regn": 2.3,
+            "lat": 60.1857,
+            "lon": 5.5528
+        },
+        {
+            "navn": "Vaksdal",
+            "temp": 15.3,
+            "vind": 0.6,
+            "regn": 1.9,
+            "lat": 60.6107,
+            "lon": 5.8459
+        },
+        {
+            "navn": "Nes",
+            "temp": 25.5,
+            "vind": 6.3,
+            "regn": 1.4,
+            "lat": 60.1503,
+            "lon": 11.4225
+        },
+        {
+            "navn": "Kvinnherad",
+            "temp": 16.8,
+            "vind": 2.1,
+            "regn": 1.2,
+            "lat": 59.9061,
+            "lon": 5.9104
+        },
+        {
+            "navn": "Vindafjord",
+            "temp": 14.9,
+            "vind": 3.6,
+            "regn": 1.1,
+            "lat": 59.563,
+            "lon": 5.7516
+        },
+        {
+            "navn": "Engerdal",
+            "temp": 17.0,
+            "vind": 2.1,
+            "regn": 1.0,
+            "lat": 61.9904,
+            "lon": 11.9372
         }
     ],
     "mest_vind": [
         {
+            "navn": "Røst",
+            "temp": 12.3,
+            "vind": 9.5,
+            "regn": 0.0,
+            "lat": 67.3693,
+            "lon": 12.1958
+        },
+        {
             "navn": "Træna",
-            "temp": 12.8,
+            "temp": 13.0,
             "vind": 9.5,
             "regn": 0.0,
             "lat": 66.5496,
             "lon": 12.0924
         },
         {
-            "navn": "Gildeskål",
-            "temp": 12.9,
-            "vind": 8.5,
-            "regn": 0.0,
-            "lat": 67.0609,
-            "lon": 13.9192
-        },
-        {
-            "navn": "Røst",
-            "temp": 12.3,
-            "vind": 8.4,
-            "regn": 0.0,
-            "lat": 67.3693,
-            "lon": 12.1958
-        },
-        {
-            "navn": "Rødøy",
-            "temp": 13.9,
-            "vind": 8.1,
-            "regn": 0.0,
-            "lat": 66.6138,
-            "lon": 13.0975
-        },
-        {
-            "navn": "Storfjord",
-            "temp": 10.6,
-            "vind": 7.8,
-            "regn": 1.0,
-            "lat": 69.2308,
-            "lon": 20.3659
-        },
-        {
-            "navn": "Båtsfjord",
-            "temp": 11.6,
-            "vind": 7.8,
-            "regn": 0.0,
-            "lat": 70.5582,
-            "lon": 29.9046
-        },
-        {
-            "navn": "Lom",
-            "temp": 7.2,
-            "vind": 7.6,
-            "regn": 0.0,
-            "lat": 61.7386,
-            "lon": 8.5013
-        },
-        {
-            "navn": "Værøy",
-            "temp": 12.3,
-            "vind": 7.5,
-            "regn": 0.0,
-            "lat": 67.6263,
-            "lon": 12.851
-        },
-        {
             "navn": "Herøy (Nordland)",
-            "temp": 13.5,
-            "vind": 7.4,
+            "temp": 13.6,
+            "vind": 9.2,
             "regn": 0.0,
             "lat": 65.9658,
             "lon": 11.9847
         },
         {
+            "navn": "Værøy",
+            "temp": 12.3,
+            "vind": 8.9,
+            "regn": 0.0,
+            "lat": 67.6263,
+            "lon": 12.851
+        },
+        {
+            "navn": "Storfjord",
+            "temp": 9.1,
+            "vind": 8.4,
+            "regn": 0.2,
+            "lat": 69.2308,
+            "lon": 20.3659
+        },
+        {
+            "navn": "Moskenes",
+            "temp": 12.4,
+            "vind": 8.2,
+            "regn": 0.0,
+            "lat": 67.8903,
+            "lon": 13.0864
+        },
+        {
+            "navn": "Dønna",
+            "temp": 14.6,
+            "vind": 7.7,
+            "regn": 0.0,
+            "lat": 66.1792,
+            "lon": 12.4325
+        },
+        {
             "navn": "Kvitsøy",
-            "temp": 14.4,
-            "vind": 7.2,
+            "temp": 14.8,
+            "vind": 7.5,
             "regn": 0.0,
             "lat": 59.0392,
             "lon": 5.364
+        },
+        {
+            "navn": "Os",
+            "temp": 11.8,
+            "vind": 7.4,
+            "regn": 0.2,
+            "lat": 62.4386,
+            "lon": 11.2964
+        },
+        {
+            "navn": "Leka",
+            "temp": 14.1,
+            "vind": 7.2,
+            "regn": 0.0,
+            "lat": 65.1485,
+            "lon": 11.5491
         }
     ],
     "alle_kommuner": [
         {
-            "navn": "Kviteseid",
-            "temp": 26.3,
-            "vind": 1.5,
-            "regn": 0.0,
-            "lat": 59.3862,
-            "lon": 8.4006
-        },
-        {
-            "navn": "Seljord",
-            "temp": 25.9,
-            "vind": 0.7,
-            "regn": 0.0,
-            "lat": 59.5422,
-            "lon": 8.5979
-        },
-        {
             "navn": "Tokke",
-            "temp": 25.6,
-            "vind": 0.8,
+            "temp": 27.1,
+            "vind": 1.2,
             "regn": 0.0,
             "lat": 59.4394,
             "lon": 8.0001
         },
         {
-            "navn": "Aremark",
-            "temp": 25.5,
-            "vind": 3.4,
-            "regn": 0.0,
-            "lat": 59.2138,
-            "lon": 11.6953
-        },
-        {
-            "navn": "Lørenskog",
-            "temp": 25.2,
-            "vind": 5.6,
-            "regn": 0.0,
-            "lat": 59.9277,
-            "lon": 10.9715
-        },
-        {
-            "navn": "Nes",
-            "temp": 25.1,
-            "vind": 6.5,
-            "regn": 0.0,
-            "lat": 60.1503,
-            "lon": 11.4225
-        },
-        {
-            "navn": "Sør-Odal",
-            "temp": 25.1,
-            "vind": 4.3,
-            "regn": 0.2,
-            "lat": 60.2283,
-            "lon": 11.7721
-        },
-        {
-            "navn": "Fyresdal",
-            "temp": 25.1,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 59.1614,
-            "lon": 8.0552
-        },
-        {
-            "navn": "Grue",
-            "temp": 24.8,
-            "vind": 4.6,
-            "regn": 0.0,
-            "lat": 60.4438,
-            "lon": 12.1925
-        },
-        {
-            "navn": "Øvre Eiker",
-            "temp": 24.8,
-            "vind": 3.8,
-            "regn": 0.0,
-            "lat": 59.7632,
-            "lon": 9.8711
-        },
-        {
-            "navn": "Nittedal",
-            "temp": 24.7,
-            "vind": 4.2,
-            "regn": 0.0,
-            "lat": 60.0698,
-            "lon": 10.8768
-        },
-        {
-            "navn": "Kongsvinger",
-            "temp": 24.7,
-            "vind": 4.6,
-            "regn": 0.5,
-            "lat": 60.212,
-            "lon": 12.0804
-        },
-        {
-            "navn": "Eidskog",
-            "temp": 24.7,
-            "vind": 4.2,
-            "regn": 0.2,
-            "lat": 60.0041,
-            "lon": 12.0925
-        },
-        {
-            "navn": "Kongsberg",
-            "temp": 24.7,
-            "vind": 3.1,
-            "regn": 0.0,
-            "lat": 59.6269,
-            "lon": 9.6745
-        },
-        {
-            "navn": "Drammen",
-            "temp": 24.6,
-            "vind": 3.6,
-            "regn": 0.0,
-            "lat": 59.7332,
-            "lon": 10.1778
-        },
-        {
-            "navn": "Flesberg",
-            "temp": 24.6,
-            "vind": 2.0,
-            "regn": 0.0,
-            "lat": 59.8562,
-            "lon": 9.4863
-        },
-        {
-            "navn": "Lillestrøm",
-            "temp": 24.5,
-            "vind": 5.4,
-            "regn": 0.2,
-            "lat": 59.9565,
-            "lon": 11.1087
-        },
-        {
-            "navn": "Gjerdrum",
-            "temp": 24.5,
-            "vind": 4.5,
-            "regn": 0.0,
-            "lat": 60.0808,
-            "lon": 11.013
-        },
-        {
-            "navn": "Ullensaker",
-            "temp": 24.4,
-            "vind": 5.4,
-            "regn": 0.0,
-            "lat": 60.1596,
-            "lon": 11.1781
-        },
-        {
             "navn": "Modum",
-            "temp": 24.4,
-            "vind": 3.6,
-            "regn": 0.0,
+            "temp": 26.6,
+            "vind": 4.9,
+            "regn": 0.6,
             "lat": 59.9468,
             "lon": 9.9532
         },
         {
+            "navn": "Flesberg",
+            "temp": 26.5,
+            "vind": 2.3,
+            "regn": 0.7,
+            "lat": 59.8562,
+            "lon": 9.4863
+        },
+        {
+            "navn": "Åsnes",
+            "temp": 26.1,
+            "vind": 6.0,
+            "regn": 0.0,
+            "lat": 60.6484,
+            "lon": 12.1085
+        },
+        {
+            "navn": "Østre Toten",
+            "temp": 26.0,
+            "vind": 5.3,
+            "regn": 0.0,
+            "lat": 60.6624,
+            "lon": 10.8341
+        },
+        {
             "navn": "Jevnaker",
-            "temp": 24.3,
+            "temp": 26.0,
             "vind": 4.4,
             "regn": 0.0,
             "lat": 60.2753,
             "lon": 10.3923
         },
         {
-            "navn": "Lier",
-            "temp": 24.1,
-            "vind": 5.6,
-            "regn": 0.0,
-            "lat": 59.8049,
-            "lon": 10.2555
-        },
-        {
-            "navn": "Nannestad",
-            "temp": 24.0,
-            "vind": 4.3,
-            "regn": 0.0,
-            "lat": 60.2023,
-            "lon": 10.9684
-        },
-        {
-            "navn": "Åsnes",
-            "temp": 24.0,
-            "vind": 5.2,
-            "regn": 0.0,
-            "lat": 60.6484,
-            "lon": 12.1085
-        },
-        {
             "navn": "Søndre Land",
-            "temp": 24.0,
-            "vind": 3.2,
+            "temp": 25.8,
+            "vind": 3.9,
             "regn": 0.0,
             "lat": 60.7228,
             "lon": 10.3091
         },
         {
-            "navn": "Midt-Telemark",
-            "temp": 24.0,
-            "vind": 2.3,
-            "regn": 0.0,
-            "lat": 59.4207,
-            "lon": 9.1315
-        },
-        {
-            "navn": "Halden",
-            "temp": 23.7,
-            "vind": 3.3,
-            "regn": 0.3,
-            "lat": 59.1178,
-            "lon": 11.405
-        },
-        {
-            "navn": "Hamar",
-            "temp": 23.6,
-            "vind": 2.8,
-            "regn": 0.0,
-            "lat": 60.8311,
-            "lon": 11.0979
-        },
-        {
-            "navn": "Lillehammer",
-            "temp": 23.6,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 61.1181,
-            "lon": 10.4345
-        },
-        {
-            "navn": "Østre Toten",
-            "temp": 23.6,
-            "vind": 3.5,
-            "regn": 0.0,
-            "lat": 60.6624,
-            "lon": 10.8341
-        },
-        {
-            "navn": "Sigdal",
-            "temp": 23.6,
-            "vind": 2.4,
-            "regn": 0.0,
-            "lat": 60.1001,
-            "lon": 9.4973
-        },
-        {
-            "navn": "Oslo",
-            "temp": 23.4,
-            "vind": 5.9,
-            "regn": 0.0,
-            "lat": 59.9225,
-            "lon": 10.7751
-        },
-        {
-            "navn": "Risør",
-            "temp": 23.4,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 58.7196,
-            "lon": 9.1754
-        },
-        {
-            "navn": "Bærum",
-            "temp": 23.2,
-            "vind": 5.6,
-            "regn": 0.0,
-            "lat": 59.9164,
-            "lon": 10.5415
-        },
-        {
-            "navn": "Nordre Follo",
-            "temp": 23.2,
-            "vind": 5.6,
-            "regn": 0.0,
-            "lat": 59.7539,
-            "lon": 10.8454
-        },
-        {
-            "navn": "Våler (Østfold)",
-            "temp": 23.2,
-            "vind": 3.8,
-            "regn": 0.0,
-            "lat": 59.4604,
-            "lon": 10.9066
-        },
-        {
-            "navn": "Enebakk",
-            "temp": 23.2,
-            "vind": 4.4,
-            "regn": 3.4,
-            "lat": 59.7669,
-            "lon": 11.1231
-        },
-        {
-            "navn": "Nord-Odal",
-            "temp": 23.2,
-            "vind": 4.4,
-            "regn": 0.0,
-            "lat": 60.4415,
-            "lon": 11.5979
-        },
-        {
-            "navn": "Flå",
-            "temp": 23.2,
-            "vind": 2.9,
-            "regn": 0.0,
-            "lat": 60.4159,
-            "lon": 9.5026
-        },
-        {
-            "navn": "Rælingen",
-            "temp": 23.1,
-            "vind": 4.5,
-            "regn": 0.2,
-            "lat": 59.9193,
-            "lon": 11.0518
-        },
-        {
-            "navn": "Notodden",
-            "temp": 23.1,
-            "vind": 3.1,
-            "regn": 0.0,
-            "lat": 59.5919,
-            "lon": 9.2371
-        },
-        {
-            "navn": "Tvedestrand",
-            "temp": 23.1,
-            "vind": 1.7,
-            "regn": 0.0,
-            "lat": 58.6239,
-            "lon": 9.0021
-        },
-        {
-            "navn": "Asker",
-            "temp": 23.0,
-            "vind": 5.4,
-            "regn": 0.0,
-            "lat": 59.75,
-            "lon": 10.4695
-        },
-        {
-            "navn": "Arendal",
-            "temp": 23.0,
-            "vind": 2.6,
-            "regn": 0.0,
-            "lat": 58.4681,
-            "lon": 8.7908
-        },
-        {
-            "navn": "Vestre Toten",
-            "temp": 22.9,
-            "vind": 3.6,
-            "regn": 0.0,
-            "lat": 60.6842,
-            "lon": 10.6163
-        },
-        {
-            "navn": "Rakkestad",
-            "temp": 22.8,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 59.3811,
-            "lon": 11.4018
-        },
-        {
-            "navn": "Elverum",
-            "temp": 22.8,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 60.899,
-            "lon": 11.6491
-        },
-        {
-            "navn": "Ringerike",
-            "temp": 22.8,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 60.221,
-            "lon": 10.1822
-        },
-        {
-            "navn": "Nesodden",
-            "temp": 22.7,
-            "vind": 5.3,
-            "regn": 0.0,
-            "lat": 59.8231,
-            "lon": 10.6418
-        },
-        {
-            "navn": "Løten",
-            "temp": 22.7,
-            "vind": 4.5,
-            "regn": 0.0,
-            "lat": 60.8154,
-            "lon": 11.3644
-        },
-        {
-            "navn": "Marker",
-            "temp": 22.6,
-            "vind": 3.2,
-            "regn": 0.1,
-            "lat": 59.4225,
-            "lon": 11.6788
-        },
-        {
-            "navn": "Tønsberg",
-            "temp": 22.6,
-            "vind": 4.1,
-            "regn": 0.0,
-            "lat": 59.2959,
-            "lon": 10.4009
-        },
-        {
-            "navn": "Fredrikstad",
-            "temp": 22.5,
-            "vind": 4.4,
-            "regn": 0.7,
-            "lat": 59.2228,
-            "lon": 10.95
-        },
-        {
-            "navn": "Drangedal",
-            "temp": 22.5,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 59.0885,
-            "lon": 8.9683
-        },
-        {
-            "navn": "Åmli",
-            "temp": 22.5,
-            "vind": 2.6,
-            "regn": 0.0,
-            "lat": 58.7517,
-            "lon": 8.4884
-        },
-        {
-            "navn": "Gran",
-            "temp": 22.4,
-            "vind": 3.9,
-            "regn": 0.0,
-            "lat": 60.4477,
-            "lon": 10.5099
-        },
-        {
-            "navn": "Holmestrand",
-            "temp": 22.4,
-            "vind": 4.0,
-            "regn": 0.0,
-            "lat": 59.5463,
-            "lon": 10.2216
-        },
-        {
-            "navn": "Ås",
-            "temp": 22.3,
-            "vind": 6.1,
-            "regn": 0.0,
-            "lat": 59.6703,
-            "lon": 10.789
-        },
-        {
-            "navn": "Moss",
-            "temp": 22.3,
-            "vind": 6.7,
-            "regn": 0.0,
-            "lat": 59.4316,
-            "lon": 10.6672
-        },
-        {
-            "navn": "Råde",
-            "temp": 22.2,
-            "vind": 4.3,
-            "regn": 0.0,
-            "lat": 59.3284,
-            "lon": 10.8356
-        },
-        {
-            "navn": "Eigersund",
-            "temp": 22.2,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 58.4612,
-            "lon": 6.0261
-        },
-        {
-            "navn": "Indre Østfold",
-            "temp": 22.1,
-            "vind": 5.1,
-            "regn": 1.3,
-            "lat": 59.5932,
-            "lon": 11.1901
-        },
-        {
-            "navn": "Eidsvoll",
-            "temp": 22.1,
-            "vind": 4.6,
-            "regn": 0.0,
-            "lat": 60.3438,
-            "lon": 11.2
-        },
-        {
-            "navn": "Vestby",
-            "temp": 22.0,
-            "vind": 4.1,
-            "regn": 0.2,
-            "lat": 59.5634,
-            "lon": 10.7145
-        },
-        {
-            "navn": "Horten",
-            "temp": 22.0,
-            "vind": 5.2,
-            "regn": 0.0,
-            "lat": 59.4027,
-            "lon": 10.459
-        },
-        {
             "navn": "Froland",
-            "temp": 22.0,
-            "vind": 2.8,
+            "temp": 25.7,
+            "vind": 1.9,
             "regn": 0.0,
             "lat": 58.6021,
             "lon": 8.3919
         },
         {
-            "navn": "Aurskog-Høland",
-            "temp": 21.9,
-            "vind": 3.5,
+            "navn": "Hamar",
+            "temp": 25.6,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 60.8311,
+            "lon": 11.0979
+        },
+        {
+            "navn": "Øvre Eiker",
+            "temp": 25.6,
+            "vind": 5.0,
+            "regn": 0.2,
+            "lat": 59.7632,
+            "lon": 9.8711
+        },
+        {
+            "navn": "Lørenskog",
+            "temp": 25.5,
+            "vind": 5.5,
             "regn": 0.3,
-            "lat": 59.8135,
-            "lon": 11.599
+            "lat": 59.9277,
+            "lon": 10.9715
         },
         {
-            "navn": "Nome",
-            "temp": 21.9,
-            "vind": 2.7,
-            "regn": 0.0,
-            "lat": 59.2697,
-            "lon": 9.1775
+            "navn": "Nes",
+            "temp": 25.5,
+            "vind": 6.3,
+            "regn": 1.4,
+            "lat": 60.1503,
+            "lon": 11.4225
         },
         {
-            "navn": "Bamble",
-            "temp": 21.9,
-            "vind": 2.3,
-            "regn": 0.0,
-            "lat": 59.0345,
-            "lon": 9.6424
+            "navn": "Eidskog",
+            "temp": 25.4,
+            "vind": 3.8,
+            "regn": 0.3,
+            "lat": 60.0041,
+            "lon": 12.0925
         },
         {
-            "navn": "Sokndal",
-            "temp": 21.9,
+            "navn": "Aremark",
+            "temp": 25.3,
             "vind": 1.5,
             "regn": 0.0,
-            "lat": 58.3499,
-            "lon": 6.2846
+            "lat": 59.2138,
+            "lon": 11.6953
         },
         {
-            "navn": "Lund",
-            "temp": 21.9,
-            "vind": 1.7,
+            "navn": "Sigdal",
+            "temp": 25.3,
+            "vind": 2.9,
             "regn": 0.0,
-            "lat": 58.4894,
-            "lon": 6.4749
+            "lat": 60.1001,
+            "lon": 9.4973
         },
         {
-            "navn": "Vegårshei",
-            "temp": 21.8,
-            "vind": 2.4,
+            "navn": "Nittedal",
+            "temp": 25.2,
+            "vind": 4.9,
             "regn": 0.0,
-            "lat": 58.7626,
-            "lon": 8.8385
+            "lat": 60.0698,
+            "lon": 10.8768
         },
         {
-            "navn": "Skiptvet",
-            "temp": 21.7,
+            "navn": "Rakkestad",
+            "temp": 25.2,
+            "vind": 3.4,
+            "regn": 0.0,
+            "lat": 59.3811,
+            "lon": 11.4018
+        },
+        {
+            "navn": "Sør-Odal",
+            "temp": 25.2,
             "vind": 4.0,
             "regn": 0.0,
-            "lat": 59.4799,
-            "lon": 11.1518
+            "lat": 60.2283,
+            "lon": 11.7721
         },
         {
-            "navn": "Nissedal",
-            "temp": 21.7,
+            "navn": "Grue",
+            "temp": 25.1,
+            "vind": 4.7,
+            "regn": 0.0,
+            "lat": 60.4438,
+            "lon": 12.1925
+        },
+        {
+            "navn": "Nannestad",
+            "temp": 25.0,
+            "vind": 5.1,
+            "regn": 0.0,
+            "lat": 60.2023,
+            "lon": 10.9684
+        },
+        {
+            "navn": "Lillestrøm",
+            "temp": 24.9,
+            "vind": 5.2,
+            "regn": 0.0,
+            "lat": 59.9565,
+            "lon": 11.1087
+        },
+        {
+            "navn": "Gjerdrum",
+            "temp": 24.9,
+            "vind": 4.8,
+            "regn": 0.0,
+            "lat": 60.0808,
+            "lon": 11.013
+        },
+        {
+            "navn": "Eidsvoll",
+            "temp": 24.9,
+            "vind": 5.3,
+            "regn": 0.0,
+            "lat": 60.3438,
+            "lon": 11.2
+        },
+        {
+            "navn": "Marker",
+            "temp": 24.8,
+            "vind": 2.9,
+            "regn": 0.0,
+            "lat": 59.4225,
+            "lon": 11.6788
+        },
+        {
+            "navn": "Nord-Odal",
+            "temp": 24.7,
+            "vind": 5.1,
+            "regn": 0.0,
+            "lat": 60.4415,
+            "lon": 11.5979
+        },
+        {
+            "navn": "Elverum",
+            "temp": 24.7,
             "vind": 4.1,
             "regn": 0.0,
-            "lat": 59.1114,
-            "lon": 8.5398
+            "lat": 60.899,
+            "lon": 11.6491
         },
         {
-            "navn": "Bjerkreim",
-            "temp": 21.7,
-            "vind": 2.6,
+            "navn": "Seljord",
+            "temp": 24.7,
+            "vind": 1.4,
             "regn": 0.0,
-            "lat": 58.6419,
-            "lon": 6.1642
-        },
-        {
-            "navn": "Lindesnes",
-            "temp": 21.7,
-            "vind": 1.3,
-            "regn": 0.0,
-            "lat": 58.097,
-            "lon": 7.4545
-        },
-        {
-            "navn": "Sarpsborg",
-            "temp": 21.6,
-            "vind": 4.0,
-            "regn": 0.0,
-            "lat": 59.2865,
-            "lon": 11.1177
+            "lat": 59.5422,
+            "lon": 8.5979
         },
         {
             "navn": "Stange",
-            "temp": 21.6,
-            "vind": 3.4,
+            "temp": 24.6,
+            "vind": 4.6,
             "regn": 0.0,
             "lat": 60.6838,
             "lon": 11.2846
         },
         {
-            "navn": "Bygland",
-            "temp": 21.6,
-            "vind": 2.6,
-            "regn": 0.0,
-            "lat": 58.7758,
-            "lon": 7.7635
-        },
-        {
-            "navn": "Frogn",
-            "temp": 21.5,
-            "vind": 6.8,
-            "regn": 0.3,
-            "lat": 59.675,
-            "lon": 10.6427
-        },
-        {
-            "navn": "Kragerø",
-            "temp": 21.4,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 58.8698,
-            "lon": 9.4479
-        },
-        {
-            "navn": "Evje Og Hornnes",
-            "temp": 21.4,
-            "vind": 2.4,
-            "regn": 0.0,
-            "lat": 58.576,
-            "lon": 7.8003
-        },
-        {
-            "navn": "Våler (Innlandet)",
-            "temp": 21.3,
-            "vind": 4.2,
-            "regn": 0.0,
-            "lat": 60.7519,
-            "lon": 11.9351
-        },
-        {
-            "navn": "Gjerstad",
-            "temp": 21.3,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 58.8746,
-            "lon": 9.0051
-        },
-        {
-            "navn": "Trysil",
-            "temp": 21.2,
-            "vind": 2.6,
-            "regn": 0.0,
-            "lat": 61.2835,
-            "lon": 12.2866
-        },
-        {
-            "navn": "Gjøvik",
-            "temp": 21.2,
-            "vind": 2.7,
-            "regn": 0.0,
-            "lat": 60.8414,
-            "lon": 10.5589
-        },
-        {
-            "navn": "Sandefjord",
-            "temp": 21.2,
-            "vind": 3.0,
-            "regn": 0.0,
-            "lat": 59.1394,
-            "lon": 10.2209
-        },
-        {
-            "navn": "Færder",
-            "temp": 21.1,
-            "vind": 3.0,
-            "regn": 0.0,
-            "lat": 59.1828,
-            "lon": 10.4406
-        },
-        {
-            "navn": "Larvik",
-            "temp": 21.1,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 59.0729,
-            "lon": 10.0065
-        },
-        {
-            "navn": "Tinn",
-            "temp": 21.0,
-            "vind": 1.7,
-            "regn": 0.0,
-            "lat": 59.9626,
-            "lon": 8.663
-        },
-        {
-            "navn": "Gjesdal",
-            "temp": 21.0,
-            "vind": 3.1,
-            "regn": 0.0,
-            "lat": 58.7935,
-            "lon": 6.0377
-        },
-        {
-            "navn": "Flekkefjord",
-            "temp": 21.0,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 58.3107,
-            "lon": 6.643
-        },
-        {
-            "navn": "Grimstad",
-            "temp": 21.0,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 58.3267,
-            "lon": 8.585
-        },
-        {
-            "navn": "Hurdal",
-            "temp": 20.9,
-            "vind": 2.7,
-            "regn": 0.0,
-            "lat": 60.4356,
-            "lon": 10.9491
-        },
-        {
-            "navn": "Hole",
-            "temp": 20.9,
-            "vind": 3.5,
-            "regn": 0.0,
-            "lat": 60.0273,
-            "lon": 10.2943
-        },
-        {
-            "navn": "Time",
-            "temp": 20.9,
+            "navn": "Vestre Toten",
+            "temp": 24.6,
             "vind": 4.5,
             "regn": 0.0,
-            "lat": 58.7264,
-            "lon": 5.7068
+            "lat": 60.6842,
+            "lon": 10.6163
         },
         {
-            "navn": "Åseral",
-            "temp": 20.9,
-            "vind": 2.8,
+            "navn": "Ullensaker",
+            "temp": 24.5,
+            "vind": 5.7,
             "regn": 0.0,
-            "lat": 58.6446,
-            "lon": 7.4182
+            "lat": 60.1596,
+            "lon": 11.1781
         },
         {
-            "navn": "Birkenes",
-            "temp": 20.9,
-            "vind": 2.1,
+            "navn": "Kviteseid",
+            "temp": 24.5,
+            "vind": 2.0,
             "regn": 0.0,
-            "lat": 58.4902,
-            "lon": 8.2389
+            "lat": 59.3862,
+            "lon": 8.4006
         },
         {
-            "navn": "Kvinesdal",
-            "temp": 20.8,
-            "vind": 1.7,
+            "navn": "Åmli",
+            "temp": 24.4,
+            "vind": 2.4,
             "regn": 0.0,
-            "lat": 58.413,
-            "lon": 6.9157
+            "lat": 58.7517,
+            "lon": 8.4884
         },
         {
-            "navn": "Iveland",
-            "temp": 20.7,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 58.4427,
-            "lon": 7.9917
-        },
-        {
-            "navn": "Krødsherad",
-            "temp": 20.6,
-            "vind": 3.4,
-            "regn": 0.0,
-            "lat": 60.1918,
-            "lon": 9.6778
-        },
-        {
-            "navn": "Hægebostad",
-            "temp": 20.6,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 58.4182,
-            "lon": 7.1998
-        },
-        {
-            "navn": "Lunner",
-            "temp": 20.5,
-            "vind": 3.0,
-            "regn": 0.0,
-            "lat": 60.2687,
-            "lon": 10.613
-        },
-        {
-            "navn": "Porsgrunn",
-            "temp": 20.5,
-            "vind": 3.8,
-            "regn": 0.0,
-            "lat": 59.1208,
-            "lon": 9.678
-        },
-        {
-            "navn": "Kristiansand",
-            "temp": 20.5,
-            "vind": 1.0,
-            "regn": 0.0,
-            "lat": 58.1486,
-            "lon": 7.9666
-        },
-        {
-            "navn": "Hjartdal",
-            "temp": 20.4,
-            "vind": 3.4,
-            "regn": 0.0,
-            "lat": 59.695,
-            "lon": 8.7287
-        },
-        {
-            "navn": "Skien",
-            "temp": 20.4,
+            "navn": "Ringerike",
+            "temp": 24.3,
             "vind": 3.6,
             "regn": 0.0,
-            "lat": 59.1998,
-            "lon": 9.5841
+            "lat": 60.221,
+            "lon": 10.1822
         },
         {
-            "navn": "Lyngdal",
-            "temp": 20.3,
-            "vind": 1.7,
+            "navn": "Kongsberg",
+            "temp": 24.3,
+            "vind": 3.6,
             "regn": 0.0,
-            "lat": 58.2679,
-            "lon": 7.2372
+            "lat": 59.6269,
+            "lon": 9.6745
         },
         {
-            "navn": "Rollag",
-            "temp": 20.1,
-            "vind": 2.6,
+            "navn": "Oslo",
+            "temp": 24.2,
+            "vind": 6.6,
             "regn": 0.0,
-            "lat": 60.013,
-            "lon": 9.2225
+            "lat": 59.9225,
+            "lon": 10.7751
         },
         {
-            "navn": "Klepp",
-            "temp": 20.1,
-            "vind": 5.2,
+            "navn": "Lillehammer",
+            "temp": 24.2,
+            "vind": 4.3,
             "regn": 0.0,
-            "lat": 58.7679,
-            "lon": 5.5771
-        },
-        {
-            "navn": "Sandnes",
-            "temp": 20.0,
-            "vind": 3.1,
-            "regn": 0.0,
-            "lat": 58.874,
-            "lon": 5.8469
+            "lat": 61.1181,
+            "lon": 10.4345
         },
         {
             "navn": "Vennesla",
-            "temp": 20.0,
-            "vind": 2.0,
+            "temp": 24.2,
+            "vind": 1.6,
             "regn": 0.0,
             "lat": 58.3008,
             "lon": 7.9059
         },
         {
-            "navn": "Hvaler",
-            "temp": 19.7,
-            "vind": 5.8,
-            "regn": 1.6,
-            "lat": 59.0125,
-            "lon": 10.9813
+            "navn": "Evje Og Hornnes",
+            "temp": 24.2,
+            "vind": 2.1,
+            "regn": 0.0,
+            "lat": 58.576,
+            "lon": 7.8003
         },
         {
-            "navn": "Kvænangen",
-            "temp": 19.1,
-            "vind": 1.1,
+            "navn": "Risør",
+            "temp": 24.2,
+            "vind": 1.8,
             "regn": 0.0,
-            "lat": 70.0045,
-            "lon": 21.713
+            "lat": 58.7196,
+            "lon": 9.1754
+        },
+        {
+            "navn": "Råde",
+            "temp": 24.0,
+            "vind": 2.9,
+            "regn": 0.0,
+            "lat": 59.3284,
+            "lon": 10.8356
+        },
+        {
+            "navn": "Trysil",
+            "temp": 24.0,
+            "vind": 3.4,
+            "regn": 0.2,
+            "lat": 61.2835,
+            "lon": 12.2866
+        },
+        {
+            "navn": "Drammen",
+            "temp": 24.0,
+            "vind": 4.2,
+            "regn": 0.0,
+            "lat": 59.7332,
+            "lon": 10.1778
+        },
+        {
+            "navn": "Bærum",
+            "temp": 23.9,
+            "vind": 6.6,
+            "regn": 0.0,
+            "lat": 59.9164,
+            "lon": 10.5415
+        },
+        {
+            "navn": "Gran",
+            "temp": 23.9,
+            "vind": 4.7,
+            "regn": 0.0,
+            "lat": 60.4477,
+            "lon": 10.5099
+        },
+        {
+            "navn": "Birkenes",
+            "temp": 23.9,
+            "vind": 1.8,
+            "regn": 0.0,
+            "lat": 58.4902,
+            "lon": 8.2389
+        },
+        {
+            "navn": "Skiptvet",
+            "temp": 23.7,
+            "vind": 3.2,
+            "regn": 0.0,
+            "lat": 59.4799,
+            "lon": 11.1518
+        },
+        {
+            "navn": "Løten",
+            "temp": 23.7,
+            "vind": 5.2,
+            "regn": 0.0,
+            "lat": 60.8154,
+            "lon": 11.3644
+        },
+        {
+            "navn": "Gjøvik",
+            "temp": 23.7,
+            "vind": 4.0,
+            "regn": 0.0,
+            "lat": 60.8414,
+            "lon": 10.5589
+        },
+        {
+            "navn": "Halden",
+            "temp": 23.5,
+            "vind": 1.3,
+            "regn": 0.0,
+            "lat": 59.1178,
+            "lon": 11.405
+        },
+        {
+            "navn": "Kongsvinger",
+            "temp": 23.5,
+            "vind": 4.5,
+            "regn": 0.0,
+            "lat": 60.212,
+            "lon": 12.0804
+        },
+        {
+            "navn": "Iveland",
+            "temp": 23.5,
+            "vind": 1.7,
+            "regn": 0.0,
+            "lat": 58.4427,
+            "lon": 7.9917
+        },
+        {
+            "navn": "Våler (Innlandet)",
+            "temp": 23.4,
+            "vind": 5.1,
+            "regn": 0.0,
+            "lat": 60.7519,
+            "lon": 11.9351
+        },
+        {
+            "navn": "Hole",
+            "temp": 23.4,
+            "vind": 4.2,
+            "regn": 0.7,
+            "lat": 60.0273,
+            "lon": 10.2943
+        },
+        {
+            "navn": "Våler (Østfold)",
+            "temp": 23.2,
+            "vind": 2.8,
+            "regn": 0.0,
+            "lat": 59.4604,
+            "lon": 10.9066
+        },
+        {
+            "navn": "Rælingen",
+            "temp": 23.1,
+            "vind": 4.2,
+            "regn": 0.0,
+            "lat": 59.9193,
+            "lon": 11.0518
+        },
+        {
+            "navn": "Flå",
+            "temp": 23.1,
+            "vind": 1.5,
+            "regn": 0.0,
+            "lat": 60.4159,
+            "lon": 9.5026
+        },
+        {
+            "navn": "Arendal",
+            "temp": 23.1,
+            "vind": 1.8,
+            "regn": 0.0,
+            "lat": 58.4681,
+            "lon": 8.7908
+        },
+        {
+            "navn": "Fredrikstad",
+            "temp": 23.0,
+            "vind": 3.5,
+            "regn": 0.0,
+            "lat": 59.2228,
+            "lon": 10.95
+        },
+        {
+            "navn": "Sokndal",
+            "temp": 22.8,
+            "vind": 1.6,
+            "regn": 0.0,
+            "lat": 58.3499,
+            "lon": 6.2846
+        },
+        {
+            "navn": "Nesodden",
+            "temp": 22.7,
+            "vind": 5.8,
+            "regn": 0.0,
+            "lat": 59.8231,
+            "lon": 10.6418
+        },
+        {
+            "navn": "Krødsherad",
+            "temp": 22.7,
+            "vind": 4.0,
+            "regn": 0.0,
+            "lat": 60.1918,
+            "lon": 9.6778
+        },
+        {
+            "navn": "Lyngdal",
+            "temp": 22.7,
+            "vind": 2.0,
+            "regn": 0.0,
+            "lat": 58.2679,
+            "lon": 7.2372
+        },
+        {
+            "navn": "Asker",
+            "temp": 22.6,
+            "vind": 5.1,
+            "regn": 0.0,
+            "lat": 59.75,
+            "lon": 10.4695
+        },
+        {
+            "navn": "Hurdal",
+            "temp": 22.5,
+            "vind": 3.3,
+            "regn": 0.0,
+            "lat": 60.4356,
+            "lon": 10.9491
+        },
+        {
+            "navn": "Sarpsborg",
+            "temp": 22.4,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 59.2865,
+            "lon": 11.1177
+        },
+        {
+            "navn": "Indre Østfold",
+            "temp": 22.4,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 59.5932,
+            "lon": 11.1901
+        },
+        {
+            "navn": "Kragerø",
+            "temp": 22.4,
+            "vind": 2.8,
+            "regn": 0.0,
+            "lat": 58.8698,
+            "lon": 9.4479
+        },
+        {
+            "navn": "Lindesnes",
+            "temp": 22.4,
+            "vind": 1.4,
+            "regn": 0.0,
+            "lat": 58.097,
+            "lon": 7.4545
+        },
+        {
+            "navn": "Kristiansand",
+            "temp": 22.4,
+            "vind": 1.7,
+            "regn": 0.0,
+            "lat": 58.1486,
+            "lon": 7.9666
+        },
+        {
+            "navn": "Nordre Follo",
+            "temp": 22.2,
+            "vind": 5.1,
+            "regn": 0.0,
+            "lat": 59.7539,
+            "lon": 10.8454
+        },
+        {
+            "navn": "Drangedal",
+            "temp": 22.2,
+            "vind": 3.2,
+            "regn": 0.0,
+            "lat": 59.0885,
+            "lon": 8.9683
+        },
+        {
+            "navn": "Midt-Telemark",
+            "temp": 22.2,
+            "vind": 5.2,
+            "regn": 0.0,
+            "lat": 59.4207,
+            "lon": 9.1315
+        },
+        {
+            "navn": "Tvedestrand",
+            "temp": 22.2,
+            "vind": 1.4,
+            "regn": 0.0,
+            "lat": 58.6239,
+            "lon": 9.0021
+        },
+        {
+            "navn": "Hjartdal",
+            "temp": 22.0,
+            "vind": 3.1,
+            "regn": 0.1,
+            "lat": 59.695,
+            "lon": 8.7287
+        },
+        {
+            "navn": "Notodden",
+            "temp": 21.9,
+            "vind": 4.3,
+            "regn": 0.0,
+            "lat": 59.5919,
+            "lon": 9.2371
+        },
+        {
+            "navn": "Gjerstad",
+            "temp": 21.9,
+            "vind": 2.7,
+            "regn": 0.0,
+            "lat": 58.8746,
+            "lon": 9.0051
+        },
+        {
+            "navn": "Vegårshei",
+            "temp": 21.9,
+            "vind": 2.5,
+            "regn": 0.0,
+            "lat": 58.7626,
+            "lon": 8.8385
+        },
+        {
+            "navn": "Aurskog-Høland",
+            "temp": 21.8,
+            "vind": 2.9,
+            "regn": 0.2,
+            "lat": 59.8135,
+            "lon": 11.599
+        },
+        {
+            "navn": "Lier",
+            "temp": 21.8,
+            "vind": 6.2,
+            "regn": 0.0,
+            "lat": 59.8049,
+            "lon": 10.2555
+        },
+        {
+            "navn": "Flekkefjord",
+            "temp": 21.8,
+            "vind": 1.6,
+            "regn": 0.0,
+            "lat": 58.3107,
+            "lon": 6.643
+        },
+        {
+            "navn": "Enebakk",
+            "temp": 21.7,
+            "vind": 3.9,
+            "regn": 0.0,
+            "lat": 59.7669,
+            "lon": 11.1231
+        },
+        {
+            "navn": "Tinn",
+            "temp": 21.7,
+            "vind": 1.3,
+            "regn": 0.0,
+            "lat": 59.9626,
+            "lon": 8.663
+        },
+        {
+            "navn": "Fyresdal",
+            "temp": 21.7,
+            "vind": 4.1,
+            "regn": 0.0,
+            "lat": 59.1614,
+            "lon": 8.0552
+        },
+        {
+            "navn": "Eigersund",
+            "temp": 21.7,
+            "vind": 3.3,
+            "regn": 0.0,
+            "lat": 58.4612,
+            "lon": 6.0261
         },
         {
             "navn": "Ringsaker",
-            "temp": 19.0,
-            "vind": 2.6,
+            "temp": 21.6,
+            "vind": 4.4,
             "regn": 0.0,
             "lat": 60.9458,
             "lon": 10.847
         },
         {
-            "navn": "Hå",
-            "temp": 19.0,
-            "vind": 4.7,
+            "navn": "Færder",
+            "temp": 21.5,
+            "vind": 3.1,
             "regn": 0.0,
-            "lat": 58.5711,
-            "lon": 5.676
+            "lat": 59.1828,
+            "lon": 10.4406
         },
         {
-            "navn": "Sør-Aurdal",
-            "temp": 18.9,
-            "vind": 1.3,
+            "navn": "Bamble",
+            "temp": 21.5,
+            "vind": 2.4,
             "regn": 0.0,
-            "lat": 60.6959,
-            "lon": 9.6504
+            "lat": 59.0345,
+            "lon": 9.6424
         },
         {
             "navn": "Farsund",
-            "temp": 18.9,
-            "vind": 1.9,
+            "temp": 21.5,
+            "vind": 1.1,
             "regn": 0.0,
             "lat": 58.0968,
             "lon": 6.6586
         },
         {
-            "navn": "Rendalen",
-            "temp": 18.8,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 61.8559,
-            "lon": 11.1446
+            "navn": "Lunner",
+            "temp": 21.4,
+            "vind": 3.4,
+            "regn": 0.6,
+            "lat": 60.2687,
+            "lon": 10.613
         },
         {
-            "navn": "Hasvik",
-            "temp": 18.8,
-            "vind": 0.9,
+            "navn": "Moss",
+            "temp": 21.3,
+            "vind": 4.9,
             "regn": 0.0,
-            "lat": 70.5903,
-            "lon": 22.2256
+            "lat": 59.4316,
+            "lon": 10.6672
         },
         {
-            "navn": "Karasjohka Karasjok",
-            "temp": 18.8,
-            "vind": 2.2,
+            "navn": "Bjerkreim",
+            "temp": 21.3,
+            "vind": 3.0,
             "regn": 0.0,
-            "lat": 69.4633,
-            "lon": 25.3143
+            "lat": 58.6419,
+            "lon": 6.1642
         },
         {
-            "navn": "Gausdal",
-            "temp": 18.7,
-            "vind": 1.1,
+            "navn": "Grimstad",
+            "temp": 21.3,
+            "vind": 1.4,
             "regn": 0.0,
-            "lat": 61.2701,
-            "lon": 10.0244
+            "lat": 58.3267,
+            "lon": 8.585
         },
         {
-            "navn": "Holtålen",
-            "temp": 18.7,
-            "vind": 1.9,
+            "navn": "Tønsberg",
+            "temp": 21.2,
+            "vind": 3.6,
             "regn": 0.0,
-            "lat": 62.8666,
-            "lon": 11.239
+            "lat": 59.2959,
+            "lon": 10.4009
         },
         {
-            "navn": "Guovdageaidnu Kautokeino",
-            "temp": 18.5,
-            "vind": 3.9,
+            "navn": "Bygland",
+            "temp": 21.2,
+            "vind": 2.0,
             "regn": 0.0,
-            "lat": 69.0611,
-            "lon": 23.3926
+            "lat": 58.7758,
+            "lon": 7.7635
         },
         {
-            "navn": "Lesja",
-            "temp": 18.3,
-            "vind": 0.9,
+            "navn": "Vestby",
+            "temp": 21.1,
+            "vind": 3.4,
             "regn": 0.0,
-            "lat": 62.1945,
-            "lon": 8.4689
+            "lat": 59.5634,
+            "lon": 10.7145
         },
         {
-            "navn": "Aurland",
-            "temp": 18.2,
-            "vind": 0.4,
+            "navn": "Nore Og Uvdal",
+            "temp": 21.1,
+            "vind": 3.5,
             "regn": 0.0,
-            "lat": 60.8527,
-            "lon": 7.1024
+            "lat": 60.3135,
+            "lon": 8.7346
+        },
+        {
+            "navn": "Lund",
+            "temp": 21.1,
+            "vind": 2.5,
+            "regn": 0.0,
+            "lat": 58.4894,
+            "lon": 6.4749
+        },
+        {
+            "navn": "Ås",
+            "temp": 21.0,
+            "vind": 5.1,
+            "regn": 0.0,
+            "lat": 59.6703,
+            "lon": 10.789
+        },
+        {
+            "navn": "Åmot",
+            "temp": 21.0,
+            "vind": 5.3,
+            "regn": 11.7,
+            "lat": 61.3103,
+            "lon": 11.5282
+        },
+        {
+            "navn": "Hægebostad",
+            "temp": 21.0,
+            "vind": 1.7,
+            "regn": 0.0,
+            "lat": 58.4182,
+            "lon": 7.1998
         },
         {
             "navn": "Lærdal",
-            "temp": 18.2,
-            "vind": 0.5,
+            "temp": 21.0,
+            "vind": 0.9,
             "regn": 0.0,
             "lat": 61.0577,
             "lon": 7.5452
         },
         {
-            "navn": "Hammerfest",
-            "temp": 18.2,
-            "vind": 3.6,
+            "navn": "Horten",
+            "temp": 20.8,
+            "vind": 4.8,
             "regn": 0.0,
-            "lat": 70.6427,
-            "lon": 23.6628
+            "lat": 59.4027,
+            "lon": 10.459
         },
         {
-            "navn": "Lillesand",
-            "temp": 18.1,
-            "vind": 2.3,
+            "navn": "Rendalen",
+            "temp": 20.7,
+            "vind": 1.6,
+            "regn": 0.7,
+            "lat": 61.8559,
+            "lon": 11.1446
+        },
+        {
+            "navn": "Holmestrand",
+            "temp": 20.7,
+            "vind": 4.6,
             "regn": 0.0,
-            "lat": 58.1815,
-            "lon": 8.3577
+            "lat": 59.5463,
+            "lon": 10.2216
         },
         {
-            "navn": "Stavanger",
-            "temp": 18.0,
-            "vind": 1.5,
+            "navn": "Sandnes",
+            "temp": 20.7,
+            "vind": 3.8,
             "regn": 0.0,
-            "lat": 59.0042,
-            "lon": 5.7366
+            "lat": 58.874,
+            "lon": 5.8469
         },
         {
-            "navn": "Alvdal",
-            "temp": 17.9,
-            "vind": 3.9,
-            "regn": 0.2,
-            "lat": 62.0684,
-            "lon": 10.5087
-        },
-        {
-            "navn": "Nordre Land",
-            "temp": 17.9,
-            "vind": 1.9,
+            "navn": "Kvinesdal",
+            "temp": 20.7,
+            "vind": 2.1,
             "regn": 0.0,
-            "lat": 60.9807,
-            "lon": 9.9893
+            "lat": 58.413,
+            "lon": 6.9157
         },
         {
-            "navn": "Sirdal",
-            "temp": 17.9,
+            "navn": "Frogn",
+            "temp": 20.6,
+            "vind": 5.9,
+            "regn": 0.0,
+            "lat": 59.675,
+            "lon": 10.6427
+        },
+        {
+            "navn": "Sandefjord",
+            "temp": 20.6,
+            "vind": 3.2,
+            "regn": 0.0,
+            "lat": 59.1394,
+            "lon": 10.2209
+        },
+        {
+            "navn": "Skien",
+            "temp": 20.6,
+            "vind": 4.6,
+            "regn": 0.0,
+            "lat": 59.1998,
+            "lon": 9.5841
+        },
+        {
+            "navn": "Rollag",
+            "temp": 20.5,
+            "vind": 3.0,
+            "regn": 0.1,
+            "lat": 60.013,
+            "lon": 9.2225
+        },
+        {
+            "navn": "Åseral",
+            "temp": 20.5,
             "vind": 2.4,
             "regn": 0.0,
-            "lat": 58.8665,
-            "lon": 6.8398
+            "lat": 58.6446,
+            "lon": 7.4182
         },
         {
-            "navn": "Molde",
-            "temp": 17.9,
-            "vind": 1.8,
-            "regn": 0.0,
-            "lat": 62.7315,
-            "lon": 7.4247
+            "navn": "Aurland",
+            "temp": 20.5,
+            "vind": 0.6,
+            "regn": 0.1,
+            "lat": 60.8527,
+            "lon": 7.1024
         },
         {
-            "navn": "Vadsø",
-            "temp": 17.9,
-            "vind": 5.1,
+            "navn": "Larvik",
+            "temp": 20.4,
+            "vind": 2.4,
             "regn": 0.0,
-            "lat": 70.127,
-            "lon": 29.7547
+            "lat": 59.0729,
+            "lon": 10.0065
+        },
+        {
+            "navn": "Time",
+            "temp": 20.2,
+            "vind": 5.3,
+            "regn": 0.0,
+            "lat": 58.7264,
+            "lon": 5.7068
         },
         {
             "navn": "Unjargga Nesseby",
-            "temp": 17.9,
-            "vind": 2.9,
+            "temp": 20.2,
+            "vind": 0.9,
             "regn": 0.0,
             "lat": 70.1332,
             "lon": 28.7991
         },
         {
-            "navn": "Hareid",
-            "temp": 17.7,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 62.3621,
-            "lon": 6.0131
+            "navn": "Nissedal",
+            "temp": 20.1,
+            "vind": 4.9,
+            "regn": 0.2,
+            "lat": 59.1114,
+            "lon": 8.5398
         },
         {
-            "navn": "Randaberg",
-            "temp": 17.6,
-            "vind": 1.1,
+            "navn": "Sør-Aurdal",
+            "temp": 20.0,
+            "vind": 2.7,
             "regn": 0.0,
-            "lat": 59.0031,
-            "lon": 5.6112
+            "lat": 60.6959,
+            "lon": 9.6504
         },
         {
-            "navn": "Stord",
-            "temp": 17.6,
-            "vind": 1.0,
-            "regn": 0.3,
-            "lat": 59.7987,
-            "lon": 5.4776
-        },
-        {
-            "navn": "Siljan",
-            "temp": 17.5,
-            "vind": 3.0,
+            "navn": "Gjesdal",
+            "temp": 20.0,
+            "vind": 3.8,
             "regn": 0.0,
-            "lat": 59.3267,
-            "lon": 9.7227
-        },
-        {
-            "navn": "Hjelmeland",
-            "temp": 17.5,
-            "vind": 2.1,
-            "regn": 0.0,
-            "lat": 59.2231,
-            "lon": 6.2821
-        },
-        {
-            "navn": "Nordreisa",
-            "temp": 17.5,
-            "vind": 2.4,
-            "regn": 0.0,
-            "lat": 69.776,
-            "lon": 21.055
-        },
-        {
-            "navn": "Loppa",
-            "temp": 17.5,
-            "vind": 3.9,
-            "regn": 0.0,
-            "lat": 70.2579,
-            "lon": 21.7735
+            "lat": 58.7935,
+            "lon": 6.0377
         },
         {
             "navn": "Sør-Varanger",
-            "temp": 17.5,
-            "vind": 3.8,
+            "temp": 20.0,
+            "vind": 3.2,
             "regn": 0.0,
             "lat": 69.6999,
             "lon": 29.818
         },
         {
-            "navn": "Tynset",
-            "temp": 17.4,
-            "vind": 2.3,
+            "navn": "Hammerfest",
+            "temp": 19.9,
+            "vind": 3.0,
             "regn": 0.0,
-            "lat": 62.3543,
-            "lon": 10.6023
-        },
-        {
-            "navn": "Strand",
-            "temp": 17.4,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 59.037,
-            "lon": 5.9837
-        },
-        {
-            "navn": "Alta",
-            "temp": 17.4,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 70.0304,
-            "lon": 23.2266
-        },
-        {
-            "navn": "Oppdal",
-            "temp": 17.2,
-            "vind": 1.9,
-            "regn": 0.0,
-            "lat": 62.5786,
-            "lon": 9.6183
-        },
-        {
-            "navn": "Vanylven",
-            "temp": 17.1,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 62.1049,
-            "lon": 5.6284
-        },
-        {
-            "navn": "Deatnu Tana",
-            "temp": 17.1,
-            "vind": 3.1,
-            "regn": 0.0,
-            "lat": 70.2026,
-            "lon": 27.8492
-        },
-        {
-            "navn": "Åmot",
-            "temp": 17.0,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 61.3103,
-            "lon": 11.5282
-        },
-        {
-            "navn": "Etnedal",
-            "temp": 16.9,
-            "vind": 1.0,
-            "regn": 4.6,
-            "lat": 61.0185,
-            "lon": 9.5877
-        },
-        {
-            "navn": "Sveio",
-            "temp": 16.9,
-            "vind": 1.9,
-            "regn": 0.1,
-            "lat": 59.6099,
-            "lon": 5.431
-        },
-        {
-            "navn": "Ulstein",
-            "temp": 16.9,
-            "vind": 2.9,
-            "regn": 0.0,
-            "lat": 62.3163,
-            "lon": 5.863
+            "lat": 70.6427,
+            "lon": 23.6628
         },
         {
             "navn": "Sunndal",
-            "temp": 16.9,
+            "temp": 19.8,
             "vind": 2.5,
             "regn": 0.0,
             "lat": 62.662,
             "lon": 8.6323
         },
         {
-            "navn": "Nore Og Uvdal",
-            "temp": 16.7,
-            "vind": 5.5,
-            "regn": 0.0,
-            "lat": 60.3135,
-            "lon": 8.7346
-        },
-        {
-            "navn": "Fitjar",
-            "temp": 16.6,
-            "vind": 1.0,
-            "regn": 0.3,
-            "lat": 59.9114,
-            "lon": 5.3258
-        },
-        {
-            "navn": "Sykkylven",
-            "temp": 16.6,
+            "navn": "Deatnu Tana",
+            "temp": 19.8,
             "vind": 2.1,
             "regn": 0.0,
-            "lat": 62.3657,
-            "lon": 6.5724
+            "lat": 70.2026,
+            "lon": 27.8492
+        },
+        {
+            "navn": "Ål",
+            "temp": 19.7,
+            "vind": 1.0,
+            "regn": 0.0,
+            "lat": 60.6998,
+            "lon": 8.5214
+        },
+        {
+            "navn": "Klepp",
+            "temp": 19.7,
+            "vind": 5.6,
+            "regn": 0.0,
+            "lat": 58.7679,
+            "lon": 5.5771
+        },
+        {
+            "navn": "Karasjohka Karasjok",
+            "temp": 19.6,
+            "vind": 2.8,
+            "regn": 0.0,
+            "lat": 69.4633,
+            "lon": 25.3143
+        },
+        {
+            "navn": "Stavanger",
+            "temp": 19.5,
+            "vind": 3.6,
+            "regn": 0.0,
+            "lat": 59.0042,
+            "lon": 5.7366
+        },
+        {
+            "navn": "Hvaler",
+            "temp": 19.4,
+            "vind": 3.9,
+            "regn": 0.0,
+            "lat": 59.0125,
+            "lon": 10.9813
+        },
+        {
+            "navn": "Vadsø",
+            "temp": 19.4,
+            "vind": 4.1,
+            "regn": 0.0,
+            "lat": 70.127,
+            "lon": 29.7547
+        },
+        {
+            "navn": "Lesja",
+            "temp": 19.3,
+            "vind": 0.9,
+            "regn": 0.0,
+            "lat": 62.1945,
+            "lon": 8.4689
+        },
+        {
+            "navn": "Porsgrunn",
+            "temp": 19.2,
+            "vind": 4.4,
+            "regn": 0.0,
+            "lat": 59.1208,
+            "lon": 9.678
+        },
+        {
+            "navn": "Porsanger Porsángu Porsanki",
+            "temp": 19.2,
+            "vind": 4.5,
+            "regn": 0.0,
+            "lat": 70.148,
+            "lon": 25.1777
+        },
+        {
+            "navn": "Vågå",
+            "temp": 19.1,
+            "vind": 2.4,
+            "regn": 0.0,
+            "lat": 61.7694,
+            "lon": 9.0683
+        },
+        {
+            "navn": "Sirdal",
+            "temp": 19.1,
+            "vind": 3.5,
+            "regn": 0.0,
+            "lat": 58.8665,
+            "lon": 6.8398
+        },
+        {
+            "navn": "Røros",
+            "temp": 19.1,
+            "vind": 2.8,
+            "regn": 0.4,
+            "lat": 62.6194,
+            "lon": 11.6126
+        },
+        {
+            "navn": "Nesbyen",
+            "temp": 18.8,
+            "vind": 1.5,
+            "regn": 0.0,
+            "lat": 60.5514,
+            "lon": 9.0726
+        },
+        {
+            "navn": "Oppdal",
+            "temp": 18.8,
+            "vind": 4.1,
+            "regn": 0.0,
+            "lat": 62.5786,
+            "lon": 9.6183
+        },
+        {
+            "navn": "Kvænangen",
+            "temp": 18.8,
+            "vind": 1.3,
+            "regn": 0.0,
+            "lat": 70.0045,
+            "lon": 21.713
+        },
+        {
+            "navn": "Randaberg",
+            "temp": 18.7,
+            "vind": 5.4,
+            "regn": 0.0,
+            "lat": 59.0031,
+            "lon": 5.6112
+        },
+        {
+            "navn": "Lillesand",
+            "temp": 18.7,
+            "vind": 0.8,
+            "regn": 0.0,
+            "lat": 58.1815,
+            "lon": 8.3577
+        },
+        {
+            "navn": "Molde",
+            "temp": 18.7,
+            "vind": 2.4,
+            "regn": 0.0,
+            "lat": 62.7315,
+            "lon": 7.4247
+        },
+        {
+            "navn": "Hjelmeland",
+            "temp": 18.6,
+            "vind": 2.3,
+            "regn": 0.1,
+            "lat": 59.2231,
+            "lon": 6.2821
         },
         {
             "navn": "Stor-Elvdal",
-            "temp": 16.5,
+            "temp": 18.4,
             "vind": 4.1,
             "regn": 0.0,
             "lat": 61.6695,
             "lon": 10.6369
         },
         {
-            "navn": "Kvinnherad",
-            "temp": 16.5,
-            "vind": 1.0,
+            "navn": "Hå",
+            "temp": 18.4,
+            "vind": 4.5,
             "regn": 0.0,
-            "lat": 59.9061,
-            "lon": 5.9104
+            "lat": 58.5711,
+            "lon": 5.676
         },
         {
-            "navn": "Fjaler",
-            "temp": 16.5,
-            "vind": 0.7,
-            "regn": 0.0,
-            "lat": 61.2928,
-            "lon": 5.2854
-        },
-        {
-            "navn": "Karmøy",
-            "temp": 16.4,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 59.2976,
-            "lon": 5.2112
-        },
-        {
-            "navn": "Sande",
-            "temp": 16.4,
-            "vind": 3.9,
-            "regn": 0.0,
-            "lat": 62.245,
-            "lon": 5.5022
-        },
-        {
-            "navn": "Askvoll",
-            "temp": 16.4,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 61.3732,
-            "lon": 4.9743
-        },
-        {
-            "navn": "Porsanger Porsángu Porsanki",
-            "temp": 16.4,
-            "vind": 3.7,
-            "regn": 0.0,
-            "lat": 70.148,
-            "lon": 25.1777
-        },
-        {
-            "navn": "Nesbyen",
-            "temp": 16.3,
-            "vind": 1.8,
-            "regn": 0.0,
-            "lat": 60.5514,
-            "lon": 9.0726
-        },
-        {
-            "navn": "Suldal",
-            "temp": 16.3,
-            "vind": 0.6,
-            "regn": 0.0,
-            "lat": 59.4562,
-            "lon": 6.342
-        },
-        {
-            "navn": "Bjørnafjorden",
-            "temp": 16.3,
-            "vind": 1.4,
-            "regn": 0.0,
-            "lat": 60.1857,
-            "lon": 5.5528
-        },
-        {
-            "navn": "Haugesund",
-            "temp": 16.3,
-            "vind": 2.8,
-            "regn": 0.0,
-            "lat": 59.4191,
-            "lon": 5.2773
-        },
-        {
-            "navn": "Hyllestad",
-            "temp": 16.2,
-            "vind": 0.7,
-            "regn": 0.0,
-            "lat": 61.1779,
-            "lon": 5.2324
-        },
-        {
-            "navn": "Engerdal",
-            "temp": 16.1,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 61.9904,
-            "lon": 11.9372
-        },
-        {
-            "navn": "Samnanger",
-            "temp": 16.1,
-            "vind": 0.6,
-            "regn": 0.0,
-            "lat": 60.3891,
-            "lon": 5.7486
-        },
-        {
-            "navn": "Voss",
-            "temp": 16.1,
-            "vind": 1.0,
-            "regn": 0.0,
-            "lat": 60.6562,
-            "lon": 6.4767
-        },
-        {
-            "navn": "Selbu",
-            "temp": 16.1,
+            "navn": "Surnadal",
+            "temp": 18.4,
             "vind": 1.7,
             "regn": 0.0,
-            "lat": 63.2005,
-            "lon": 11.1481
+            "lat": 62.9381,
+            "lon": 8.7069
         },
         {
-            "navn": "Tydal",
-            "temp": 16.1,
-            "vind": 1.1,
+            "navn": "Nome",
+            "temp": 18.3,
+            "vind": 3.7,
             "regn": 0.0,
-            "lat": 63.0082,
-            "lon": 11.8075
+            "lat": 59.2697,
+            "lon": 9.1775
         },
         {
-            "navn": "Tolga",
-            "temp": 16.0,
-            "vind": 5.6,
-            "regn": 0.0,
-            "lat": 62.338,
-            "lon": 11.1532
-        },
-        {
-            "navn": "Sola",
-            "temp": 16.0,
-            "vind": 4.4,
-            "regn": 0.0,
-            "lat": 58.8977,
-            "lon": 5.5576
-        },
-        {
-            "navn": "Bergen",
-            "temp": 16.0,
-            "vind": 2.0,
-            "regn": 1.1,
-            "lat": 60.3808,
-            "lon": 5.3246
-        },
-        {
-            "navn": "Tysvær",
-            "temp": 16.0,
-            "vind": 1.4,
-            "regn": 0.0,
-            "lat": 59.3653,
-            "lon": 5.5654
-        },
-        {
-            "navn": "Vågå",
-            "temp": 15.9,
-            "vind": 1.8,
-            "regn": 0.0,
-            "lat": 61.7694,
-            "lon": 9.0683
-        },
-        {
-            "navn": "Sauda",
-            "temp": 15.9,
-            "vind": 0.4,
-            "regn": 0.0,
-            "lat": 59.6544,
-            "lon": 6.3612
-        },
-        {
-            "navn": "Osterøy",
-            "temp": 15.9,
-            "vind": 0.2,
-            "regn": 2.2,
-            "lat": 60.5411,
-            "lon": 5.5496
-        },
-        {
-            "navn": "Austrheim",
-            "temp": 15.9,
-            "vind": 0.5,
-            "regn": 0.0,
-            "lat": 60.797,
-            "lon": 4.9252
-        },
-        {
-            "navn": "Ålesund",
-            "temp": 15.9,
-            "vind": 3.8,
-            "regn": 0.0,
-            "lat": 62.5238,
-            "lon": 6.3481
-        },
-        {
-            "navn": "Stranda",
-            "temp": 15.9,
-            "vind": 1.9,
-            "regn": 0.0,
-            "lat": 62.1833,
-            "lon": 7.0103
-        },
-        {
-            "navn": "Midtre Gauldal",
-            "temp": 15.9,
-            "vind": 2.0,
-            "regn": 0.0,
-            "lat": 62.932,
-            "lon": 10.4638
-        },
-        {
-            "navn": "Ringebu",
-            "temp": 15.8,
-            "vind": 2.1,
-            "regn": 0.4,
-            "lat": 61.5649,
-            "lon": 10.2427
-        },
-        {
-            "navn": "Bømlo",
-            "temp": 15.8,
+            "navn": "Alvdal",
+            "temp": 18.2,
             "vind": 2.6,
-            "regn": 0.3,
-            "lat": 59.7453,
-            "lon": 5.1475
-        },
-        {
-            "navn": "Bokn",
-            "temp": 15.8,
-            "vind": 1.4,
             "regn": 0.0,
-            "lat": 59.195,
-            "lon": 5.4607
+            "lat": 62.0684,
+            "lon": 10.5087
         },
         {
-            "navn": "Tysnes",
-            "temp": 15.8,
-            "vind": 1.9,
+            "navn": "Tynset",
+            "temp": 18.1,
+            "vind": 2.2,
             "regn": 0.0,
-            "lat": 60.0061,
-            "lon": 5.5616
-        },
-        {
-            "navn": "Herøy (Møre Og Romsdal)",
-            "temp": 15.8,
-            "vind": 5.0,
-            "regn": 0.0,
-            "lat": 62.3404,
-            "lon": 5.639
-        },
-        {
-            "navn": "Askøy",
-            "temp": 15.7,
-            "vind": 0.7,
-            "regn": 0.4,
-            "lat": 60.4482,
-            "lon": 5.1544
-        },
-        {
-            "navn": "Nordkapp",
-            "temp": 15.7,
-            "vind": 2.3,
-            "regn": 0.0,
-            "lat": 71.0243,
-            "lon": 25.8489
-        },
-        {
-            "navn": "Øygarden",
-            "temp": 15.6,
-            "vind": 0.9,
-            "regn": 0.0,
-            "lat": 60.386,
-            "lon": 4.9721
-        },
-        {
-            "navn": "Alver",
-            "temp": 15.6,
-            "vind": 1.1,
-            "regn": 0.5,
-            "lat": 60.649,
-            "lon": 5.2045
+            "lat": 62.3543,
+            "lon": 10.6023
         },
         {
             "navn": "Skjåk",
-            "temp": 15.5,
-            "vind": 1.6,
+            "temp": 18.0,
+            "vind": 1.5,
             "regn": 0.0,
             "lat": 61.9433,
             "lon": 7.8623
         },
         {
-            "navn": "Bremanger",
-            "temp": 15.5,
-            "vind": 3.6,
+            "navn": "Siljan",
+            "temp": 18.0,
+            "vind": 3.9,
             "regn": 0.0,
-            "lat": 61.8299,
-            "lon": 5.2367
+            "lat": 59.3267,
+            "lon": 9.7227
         },
         {
-            "navn": "Brønnøy",
-            "temp": 15.5,
-            "vind": 4.5,
+            "navn": "Hasvik",
+            "temp": 18.0,
+            "vind": 1.0,
             "regn": 0.0,
-            "lat": 65.4655,
-            "lon": 12.2184
+            "lat": 70.5903,
+            "lon": 22.2256
+        },
+        {
+            "navn": "Vestre Slidre",
+            "temp": 17.8,
+            "vind": 2.3,
+            "regn": 0.0,
+            "lat": 61.0613,
+            "lon": 8.9095
+        },
+        {
+            "navn": "Hareid",
+            "temp": 17.7,
+            "vind": 2.7,
+            "regn": 0.0,
+            "lat": 62.3621,
+            "lon": 6.0131
+        },
+        {
+            "navn": "Vanylven",
+            "temp": 17.7,
+            "vind": 2.0,
+            "regn": 0.0,
+            "lat": 62.1049,
+            "lon": 5.6284
+        },
+        {
+            "navn": "Holtålen",
+            "temp": 17.7,
+            "vind": 2.9,
+            "regn": 0.8,
+            "lat": 62.8666,
+            "lon": 11.239
+        },
+        {
+            "navn": "Gausdal",
+            "temp": 17.6,
+            "vind": 2.0,
+            "regn": 0.0,
+            "lat": 61.2701,
+            "lon": 10.0244
+        },
+        {
+            "navn": "Sel",
+            "temp": 17.6,
+            "vind": 1.9,
+            "regn": 0.0,
+            "lat": 61.7898,
+            "lon": 9.4816
+        },
+        {
+            "navn": "Strand",
+            "temp": 17.6,
+            "vind": 2.0,
+            "regn": 0.0,
+            "lat": 59.037,
+            "lon": 5.9837
+        },
+        {
+            "navn": "Suldal",
+            "temp": 17.6,
+            "vind": 0.0,
+            "regn": 0.6,
+            "lat": 59.4562,
+            "lon": 6.342
+        },
+        {
+            "navn": "Nordreisa",
+            "temp": 17.6,
+            "vind": 1.2,
+            "regn": 0.2,
+            "lat": 69.776,
+            "lon": 21.055
+        },
+        {
+            "navn": "Alta",
+            "temp": 17.6,
+            "vind": 1.3,
+            "regn": 0.2,
+            "lat": 70.0304,
+            "lon": 23.2266
+        },
+        {
+            "navn": "Hyllestad",
+            "temp": 17.5,
+            "vind": 1.1,
+            "regn": 0.0,
+            "lat": 61.1779,
+            "lon": 5.2324
+        },
+        {
+            "navn": "Sola",
+            "temp": 17.2,
+            "vind": 6.4,
+            "regn": 0.0,
+            "lat": 58.8977,
+            "lon": 5.5576
+        },
+        {
+            "navn": "Eidfjord",
+            "temp": 17.2,
+            "vind": 3.0,
+            "regn": 0.0,
+            "lat": 60.3956,
+            "lon": 7.2593
+        },
+        {
+            "navn": "Selbu",
+            "temp": 17.2,
+            "vind": 2.0,
+            "regn": 0.0,
+            "lat": 63.2005,
+            "lon": 11.1481
+        },
+        {
+            "navn": "Sauda",
+            "temp": 17.1,
+            "vind": 0.3,
+            "regn": 0.6,
+            "lat": 59.6544,
+            "lon": 6.3612
+        },
+        {
+            "navn": "Austrheim",
+            "temp": 17.1,
+            "vind": 1.1,
+            "regn": 0.4,
+            "lat": 60.797,
+            "lon": 4.9252
+        },
+        {
+            "navn": "Fjaler",
+            "temp": 17.1,
+            "vind": 1.2,
+            "regn": 0.0,
+            "lat": 61.2928,
+            "lon": 5.2854
+        },
+        {
+            "navn": "Engerdal",
+            "temp": 17.0,
+            "vind": 2.1,
+            "regn": 1.0,
+            "lat": 61.9904,
+            "lon": 11.9372
         },
         {
             "navn": "Stjørdal",
-            "temp": 15.4,
+            "temp": 17.0,
             "vind": 1.2,
             "regn": 0.0,
             "lat": 63.4674,
             "lon": 11.0034
         },
         {
-            "navn": "Vega",
-            "temp": 15.4,
-            "vind": 5.5,
-            "regn": 0.0,
-            "lat": 65.6751,
-            "lon": 11.9376
-        },
-        {
-            "navn": "Tromsø",
-            "temp": 15.4,
-            "vind": 1.7,
-            "regn": 0.4,
-            "lat": 69.6702,
-            "lon": 18.875
-        },
-        {
-            "navn": "Karlsøy",
-            "temp": 15.4,
-            "vind": 0.8,
-            "regn": 0.5,
-            "lat": 70.106,
-            "lon": 19.5187
-        },
-        {
-            "navn": "Nærøysund",
-            "temp": 15.3,
-            "vind": 3.3,
-            "regn": 0.0,
-            "lat": 64.8762,
-            "lon": 11.4484
-        },
-        {
-            "navn": "Øksnes",
-            "temp": 15.3,
-            "vind": 1.5,
-            "regn": 0.4,
-            "lat": 68.9125,
-            "lon": 15.0047
-        },
-        {
-            "navn": "Austevoll",
-            "temp": 15.2,
-            "vind": 1.1,
-            "regn": 0.0,
-            "lat": 60.0575,
-            "lon": 5.1172
-        },
-        {
-            "navn": "Trondheim",
-            "temp": 15.2,
-            "vind": 2.0,
-            "regn": 0.0,
-            "lat": 63.3993,
-            "lon": 10.4024
-        },
-        {
-            "navn": "Verdal",
-            "temp": 15.2,
-            "vind": 1.1,
-            "regn": 0.0,
-            "lat": 63.7947,
-            "lon": 11.5899
-        },
-        {
-            "navn": "Andøy",
-            "temp": 15.1,
-            "vind": 2.3,
-            "regn": 0.0,
-            "lat": 69.1566,
-            "lon": 15.8005
-        },
-        {
-            "navn": "Etne",
-            "temp": 15.0,
-            "vind": 1.4,
-            "regn": 0.0,
-            "lat": 59.782,
-            "lon": 6.1513
-        },
-        {
-            "navn": "Ullensvang",
-            "temp": 15.0,
-            "vind": 1.0,
-            "regn": 0.0,
-            "lat": 60.1964,
-            "lon": 6.6212
-        },
-        {
-            "navn": "Sula",
-            "temp": 15.0,
-            "vind": 1.8,
-            "regn": 0.0,
-            "lat": 62.4223,
-            "lon": 6.2301
-        },
-        {
-            "navn": "Sunnfjord",
-            "temp": 15.0,
-            "vind": 0.7,
-            "regn": 0.0,
-            "lat": 61.4476,
-            "lon": 5.9686
-        },
-        {
-            "navn": "Inderøy",
-            "temp": 15.0,
-            "vind": 0.8,
-            "regn": 0.0,
-            "lat": 63.8569,
-            "lon": 11.0711
-        },
-        {
-            "navn": "Rana",
-            "temp": 15.0,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 66.325,
-            "lon": 14.2028
-        },
-        {
-            "navn": "Valle",
-            "temp": 14.9,
-            "vind": 4.5,
-            "regn": 0.0,
-            "lat": 59.1596,
-            "lon": 7.4315
-        },
-        {
-            "navn": "Eidfjord",
-            "temp": 14.9,
-            "vind": 0.6,
-            "regn": 0.0,
-            "lat": 60.3956,
-            "lon": 7.2593
-        },
-        {
-            "navn": "Aukra",
-            "temp": 14.9,
-            "vind": 5.4,
-            "regn": 0.0,
-            "lat": 62.8181,
-            "lon": 6.805
-        },
-        {
-            "navn": "Surnadal",
-            "temp": 14.9,
-            "vind": 1.2,
-            "regn": 0.0,
-            "lat": 62.9381,
-            "lon": 8.7069
-        },
-        {
-            "navn": "Bindal",
-            "temp": 14.9,
-            "vind": 2.6,
-            "regn": 0.0,
-            "lat": 65.1991,
-            "lon": 12.2506
-        },
-        {
-            "navn": "Øyer",
-            "temp": 14.8,
-            "vind": 4.1,
-            "regn": 0.0,
-            "lat": 61.3252,
-            "lon": 10.528
-        },
-        {
-            "navn": "Vaksdal",
-            "temp": 14.8,
-            "vind": 0.4,
-            "regn": 0.0,
-            "lat": 60.6107,
-            "lon": 5.8459
-        },
-        {
-            "navn": "Rennebu",
-            "temp": 14.8,
-            "vind": 3.2,
-            "regn": 0.0,
-            "lat": 62.7875,
-            "lon": 9.9197
-        },
-        {
             "navn": "Meråker",
-            "temp": 14.8,
-            "vind": 0.9,
+            "temp": 17.0,
+            "vind": 2.2,
             "regn": 0.0,
             "lat": 63.4186,
             "lon": 11.8797
         },
         {
-            "navn": "Sortland",
-            "temp": 14.8,
-            "vind": 0.7,
+            "navn": "Askvoll",
+            "temp": 16.9,
+            "vind": 1.3,
             "regn": 0.0,
-            "lat": 68.7074,
-            "lon": 15.3855
+            "lat": 61.3732,
+            "lon": 4.9743
         },
         {
-            "navn": "Gol",
-            "temp": 14.7,
-            "vind": 1.6,
-            "regn": 1.3,
-            "lat": 60.7472,
-            "lon": 9.0001
-        },
-        {
-            "navn": "Høyanger",
-            "temp": 14.7,
-            "vind": 0.7,
+            "navn": "Verdal",
+            "temp": 16.9,
+            "vind": 0.9,
             "regn": 0.0,
-            "lat": 61.1677,
-            "lon": 5.9366
+            "lat": 63.7947,
+            "lon": 11.5899
         },
         {
-            "navn": "Sel",
-            "temp": 14.6,
-            "vind": 1.0,
-            "regn": 0.7,
-            "lat": 61.7898,
-            "lon": 9.4816
-        },
-        {
-            "navn": "Nord-Aurdal",
-            "temp": 14.6,
-            "vind": 1.4,
-            "regn": 5.0,
-            "lat": 60.9526,
-            "lon": 9.22
-        },
-        {
-            "navn": "Skaun",
-            "temp": 14.6,
-            "vind": 1.5,
+            "navn": "Inderøy",
+            "temp": 16.9,
+            "vind": 0.2,
             "regn": 0.0,
-            "lat": 63.2892,
-            "lon": 10.0482
+            "lat": 63.8569,
+            "lon": 11.0711
         },
         {
-            "navn": "Frosta",
-            "temp": 14.6,
-            "vind": 1.5,
-            "regn": 0.0,
-            "lat": 63.5879,
-            "lon": 10.7068
+            "navn": "Guovdageaidnu Kautokeino",
+            "temp": 16.9,
+            "vind": 3.1,
+            "regn": 1.0,
+            "lat": 69.0611,
+            "lon": 23.3926
         },
         {
-            "navn": "Narvik",
-            "temp": 14.6,
-            "vind": 0.3,
-            "regn": 0.0,
-            "lat": 68.3391,
-            "lon": 17.2759
+            "navn": "Kvinnherad",
+            "temp": 16.8,
+            "vind": 2.1,
+            "regn": 1.2,
+            "lat": 59.9061,
+            "lon": 5.9104
         },
         {
-            "navn": "Kvæfjord",
-            "temp": 14.6,
-            "vind": 0.6,
-            "regn": 0.0,
-            "lat": 68.6789,
-            "lon": 15.9849
-        },
-        {
-            "navn": "Gulen",
-            "temp": 14.5,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 60.9503,
-            "lon": 5.0431
-        },
-        {
-            "navn": "Melhus",
-            "temp": 14.5,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 63.1817,
-            "lon": 10.2397
+            "navn": "Alver",
+            "temp": 16.8,
+            "vind": 0.4,
+            "regn": 0.2,
+            "lat": 60.649,
+            "lon": 5.2045
         },
         {
             "navn": "Hattfjelldal",
-            "temp": 14.5,
-            "vind": 1.3,
+            "temp": 16.8,
+            "vind": 1.8,
             "regn": 0.0,
             "lat": 65.5883,
             "lon": 14.0514
         },
         {
-            "navn": "Skjervøy",
-            "temp": 14.5,
-            "vind": 1.6,
-            "regn": 1.0,
-            "lat": 70.1052,
-            "lon": 20.7005
+            "navn": "Karmøy",
+            "temp": 16.7,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 59.2976,
+            "lon": 5.2112
         },
         {
-            "navn": "Kvitsøy",
-            "temp": 14.4,
-            "vind": 7.2,
+            "navn": "Herøy (Møre Og Romsdal)",
+            "temp": 16.7,
+            "vind": 4.3,
             "regn": 0.0,
-            "lat": 59.0392,
-            "lon": 5.364
+            "lat": 62.3404,
+            "lon": 5.639
         },
         {
             "navn": "Steinkjer",
-            "temp": 14.4,
-            "vind": 0.4,
+            "temp": 16.7,
+            "vind": 0.5,
             "regn": 0.0,
             "lat": 64.0272,
             "lon": 11.4938
         },
         {
-            "navn": "Leirfjord",
-            "temp": 14.4,
+            "navn": "Rana",
+            "temp": 16.7,
+            "vind": 0.9,
+            "regn": 0.0,
+            "lat": 66.325,
+            "lon": 14.2028
+        },
+        {
+            "navn": "Vinje",
+            "temp": 16.6,
+            "vind": 4.6,
+            "regn": 0.0,
+            "lat": 59.7357,
+            "lon": 7.7634
+        },
+        {
+            "navn": "Sande",
+            "temp": 16.6,
+            "vind": 3.7,
+            "regn": 0.0,
+            "lat": 62.245,
+            "lon": 5.5022
+        },
+        {
+            "navn": "Loppa",
+            "temp": 16.6,
+            "vind": 2.6,
+            "regn": 1.0,
+            "lat": 70.2579,
+            "lon": 21.7735
+        },
+        {
+            "navn": "Nordre Land",
+            "temp": 16.5,
+            "vind": 2.6,
+            "regn": 0.0,
+            "lat": 60.9807,
+            "lon": 9.9893
+        },
+        {
+            "navn": "Stord",
+            "temp": 16.5,
+            "vind": 0.3,
+            "regn": 0.0,
+            "lat": 59.7987,
+            "lon": 5.4776
+        },
+        {
+            "navn": "Tysvær",
+            "temp": 16.5,
+            "vind": 2.8,
+            "regn": 0.0,
+            "lat": 59.3653,
+            "lon": 5.5654
+        },
+        {
+            "navn": "Bindal",
+            "temp": 16.5,
+            "vind": 2.5,
+            "regn": 0.0,
+            "lat": 65.1991,
+            "lon": 12.2506
+        },
+        {
+            "navn": "Tjeldsund",
+            "temp": 16.5,
+            "vind": 1.3,
+            "regn": 0.0,
+            "lat": 68.5439,
+            "lon": 16.5752
+        },
+        {
+            "navn": "Ringebu",
+            "temp": 16.4,
+            "vind": 1.6,
+            "regn": 0.0,
+            "lat": 61.5649,
+            "lon": 10.2427
+        },
+        {
+            "navn": "Sveio",
+            "temp": 16.4,
+            "vind": 2.7,
+            "regn": 0.0,
+            "lat": 59.6099,
+            "lon": 5.431
+        },
+        {
+            "navn": "Ulstein",
+            "temp": 16.4,
+            "vind": 3.0,
+            "regn": 0.0,
+            "lat": 62.3163,
+            "lon": 5.863
+        },
+        {
+            "navn": "Bremanger",
+            "temp": 16.4,
+            "vind": 2.5,
+            "regn": 0.0,
+            "lat": 61.8299,
+            "lon": 5.2367
+        },
+        {
+            "navn": "Tydal",
+            "temp": 16.4,
+            "vind": 2.6,
+            "regn": 0.5,
+            "lat": 63.0082,
+            "lon": 11.8075
+        },
+        {
+            "navn": "Bjørnafjorden",
+            "temp": 16.3,
+            "vind": 1.0,
+            "regn": 2.3,
+            "lat": 60.1857,
+            "lon": 5.5528
+        },
+        {
+            "navn": "Aukra",
+            "temp": 16.3,
             "vind": 3.5,
             "regn": 0.0,
-            "lat": 66.0888,
-            "lon": 13.0576
+            "lat": 62.8181,
+            "lon": 6.805
         },
         {
-            "navn": "Lyngen",
-            "temp": 14.4,
-            "vind": 1.6,
-            "regn": 0.2,
-            "lat": 69.6735,
-            "lon": 20.107
+            "navn": "Nord-Aurdal",
+            "temp": 16.2,
+            "vind": 1.3,
+            "regn": 0.0,
+            "lat": 60.9526,
+            "lon": 9.22
         },
         {
-            "navn": "Vestre Slidre",
-            "temp": 14.3,
-            "vind": 1.0,
-            "regn": 0.1,
-            "lat": 61.0613,
-            "lon": 8.9095
+            "navn": "Gol",
+            "temp": 16.2,
+            "vind": 1.3,
+            "regn": 0.0,
+            "lat": 60.7472,
+            "lon": 9.0001
         },
         {
-            "navn": "Ørsta",
-            "temp": 14.3,
+            "navn": "Haugesund",
+            "temp": 16.2,
+            "vind": 3.2,
+            "regn": 0.0,
+            "lat": 59.4191,
+            "lon": 5.2773
+        },
+        {
+            "navn": "Sykkylven",
+            "temp": 16.2,
+            "vind": 2.1,
+            "regn": 0.0,
+            "lat": 62.3657,
+            "lon": 6.5724
+        },
+        {
+            "navn": "Meløy",
+            "temp": 16.2,
+            "vind": 4.2,
+            "regn": 0.0,
+            "lat": 66.8376,
+            "lon": 13.5644
+        },
+        {
+            "navn": "Nesna",
+            "temp": 16.2,
+            "vind": 5.5,
+            "regn": 0.0,
+            "lat": 66.2295,
+            "lon": 13.0134
+        },
+        {
+            "navn": "Valle",
+            "temp": 16.1,
+            "vind": 6.0,
+            "regn": 0.0,
+            "lat": 59.1596,
+            "lon": 7.4315
+        },
+        {
+            "navn": "Fitjar",
+            "temp": 16.1,
+            "vind": 1.5,
+            "regn": 0.0,
+            "lat": 59.9114,
+            "lon": 5.3258
+        },
+        {
+            "navn": "Samnanger",
+            "temp": 16.1,
+            "vind": 0.3,
+            "regn": 2.6,
+            "lat": 60.3891,
+            "lon": 5.7486
+        },
+        {
+            "navn": "Stranda",
+            "temp": 16.1,
             "vind": 2.4,
             "regn": 0.0,
-            "lat": 62.2307,
-            "lon": 6.2546
+            "lat": 62.1833,
+            "lon": 7.0103
         },
         {
-            "navn": "Rindal",
-            "temp": 14.3,
-            "vind": 1.6,
+            "navn": "Midtre Gauldal",
+            "temp": 16.1,
+            "vind": 2.4,
             "regn": 0.0,
-            "lat": 63.0584,
-            "lon": 9.2943
+            "lat": 62.932,
+            "lon": 10.4638
+        },
+        {
+            "navn": "Lavangen",
+            "temp": 16.1,
+            "vind": 0.2,
+            "regn": 0.0,
+            "lat": 68.7314,
+            "lon": 17.8008
+        },
+        {
+            "navn": "Bokn",
+            "temp": 16.0,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 59.195,
+            "lon": 5.4607
+        },
+        {
+            "navn": "Etne",
+            "temp": 16.0,
+            "vind": 1.7,
+            "regn": 0.5,
+            "lat": 59.782,
+            "lon": 6.1513
+        },
+        {
+            "navn": "Voss",
+            "temp": 16.0,
+            "vind": 1.2,
+            "regn": 0.6,
+            "lat": 60.6562,
+            "lon": 6.4767
+        },
+        {
+            "navn": "Gulen",
+            "temp": 16.0,
+            "vind": 1.1,
+            "regn": 0.2,
+            "lat": 60.9503,
+            "lon": 5.0431
         },
         {
             "navn": "Solund",
-            "temp": 14.3,
-            "vind": 1.3,
+            "temp": 16.0,
+            "vind": 0.9,
             "regn": 0.0,
             "lat": 61.1233,
             "lon": 4.7422
         },
         {
-            "navn": "Orkland",
-            "temp": 14.3,
-            "vind": 1.4,
-            "regn": 0.0,
-            "lat": 63.2866,
-            "lon": 9.6786
+            "navn": "Askøy",
+            "temp": 15.9,
+            "vind": 0.8,
+            "regn": 0.2,
+            "lat": 60.4482,
+            "lon": 5.1544
         },
         {
-            "navn": "Flatanger",
-            "temp": 14.3,
-            "vind": 4.3,
+            "navn": "Bømlo",
+            "temp": 15.9,
+            "vind": 0.8,
             "regn": 0.0,
-            "lat": 64.4452,
-            "lon": 10.6585
+            "lat": 59.7453,
+            "lon": 5.1475
+        },
+        {
+            "navn": "Ålesund",
+            "temp": 15.9,
+            "vind": 3.7,
+            "regn": 0.0,
+            "lat": 62.5238,
+            "lon": 6.3481
+        },
+        {
+            "navn": "Frosta",
+            "temp": 15.9,
+            "vind": 2.3,
+            "regn": 0.0,
+            "lat": 63.5879,
+            "lon": 10.7068
+        },
+        {
+            "navn": "Lurøy",
+            "temp": 15.9,
+            "vind": 5.2,
+            "regn": 0.0,
+            "lat": 66.4053,
+            "lon": 12.8845
+        },
+        {
+            "navn": "Tolga",
+            "temp": 15.8,
+            "vind": 5.6,
+            "regn": 0.1,
+            "lat": 62.338,
+            "lon": 11.1532
         },
         {
             "navn": "Overhalla",
-            "temp": 14.3,
+            "temp": 15.8,
             "vind": 0.8,
             "regn": 0.0,
             "lat": 64.4714,
             "lon": 11.8494
         },
         {
-            "navn": "Dønna",
-            "temp": 14.3,
-            "vind": 7.0,
+            "navn": "Rindal",
+            "temp": 15.7,
+            "vind": 1.6,
             "regn": 0.0,
-            "lat": 66.1792,
-            "lon": 12.4325
+            "lat": 63.0584,
+            "lon": 9.2943
         },
         {
-            "navn": "Lavangen",
-            "temp": 14.3,
+            "navn": "Øygarden",
+            "temp": 15.6,
+            "vind": 1.4,
+            "regn": 0.1,
+            "lat": 60.386,
+            "lon": 4.9721
+        },
+        {
+            "navn": "Sunnfjord",
+            "temp": 15.6,
             "vind": 0.6,
             "regn": 0.0,
-            "lat": 68.7314,
-            "lon": 17.8008
-        },
-        {
-            "navn": "Vardø",
-            "temp": 14.3,
-            "vind": 5.0,
-            "regn": 0.0,
-            "lat": 70.3735,
-            "lon": 30.8647
-        },
-        {
-            "navn": "Berlevåg",
-            "temp": 14.3,
-            "vind": 3.9,
-            "regn": 0.0,
-            "lat": 70.7569,
-            "lon": 29.3284
-        },
-        {
-            "navn": "Stryn",
-            "temp": 14.2,
-            "vind": 1.8,
-            "regn": 0.0,
-            "lat": 61.8236,
-            "lon": 6.7811
-        },
-        {
-            "navn": "Røros",
-            "temp": 14.2,
-            "vind": 1.7,
-            "regn": 0.0,
-            "lat": 62.6194,
-            "lon": 11.6126
+            "lat": 61.4476,
+            "lon": 5.9686
         },
         {
             "navn": "Levanger",
-            "temp": 14.2,
-            "vind": 1.5,
+            "temp": 15.6,
+            "vind": 2.0,
             "regn": 0.0,
             "lat": 63.7068,
             "lon": 11.2276
         },
         {
-            "navn": "Sørfold",
-            "temp": 14.2,
-            "vind": 2.4,
-            "regn": 0.2,
-            "lat": 67.5605,
-            "lon": 15.7246
-        },
-        {
-            "navn": "Lurøy",
-            "temp": 14.2,
-            "vind": 6.3,
-            "regn": 0.0,
-            "lat": 66.4053,
-            "lon": 12.8845
-        },
-        {
-            "navn": "Ål",
-            "temp": 14.1,
-            "vind": 0.6,
-            "regn": 0.0,
-            "lat": 60.6998,
-            "lon": 8.5214
-        },
-        {
-            "navn": "Utsira",
-            "temp": 14.1,
+            "navn": "Øyer",
+            "temp": 15.5,
             "vind": 4.2,
             "regn": 0.0,
-            "lat": 59.2926,
-            "lon": 4.8568
+            "lat": 61.3252,
+            "lon": 10.528
         },
         {
-            "navn": "Haram",
-            "temp": 14.1,
-            "vind": 5.7,
-            "regn": 0.0,
-            "lat": 62.6175,
-            "lon": 6.326
+            "navn": "Bergen",
+            "temp": 15.5,
+            "vind": 1.0,
+            "regn": 0.5,
+            "lat": 60.3808,
+            "lon": 5.3246
         },
         {
-            "navn": "Kristiansund",
-            "temp": 14.1,
-            "vind": 5.1,
-            "regn": 0.0,
-            "lat": 63.1078,
-            "lon": 7.7599
+            "navn": "Osterøy",
+            "temp": 15.5,
+            "vind": 0.9,
+            "regn": 1.0,
+            "lat": 60.5411,
+            "lon": 5.5496
         },
         {
-            "navn": "Hitra",
-            "temp": 14.1,
-            "vind": 5.2,
+            "navn": "Kvæfjord",
+            "temp": 15.5,
+            "vind": 2.5,
             "regn": 0.0,
-            "lat": 63.5762,
-            "lon": 8.9108
+            "lat": 68.6789,
+            "lon": 15.9849
         },
         {
-            "navn": "Nesna",
-            "temp": 14.1,
-            "vind": 5.2,
+            "navn": "Vefsn",
+            "temp": 15.5,
+            "vind": 3.2,
             "regn": 0.0,
-            "lat": 66.2295,
-            "lon": 13.0134
+            "lat": 65.856,
+            "lon": 13.242
+        },
+        {
+            "navn": "Ullensvang",
+            "temp": 15.4,
+            "vind": 3.2,
+            "regn": 0.3,
+            "lat": 60.1964,
+            "lon": 6.6212
+        },
+        {
+            "navn": "Flatanger",
+            "temp": 15.4,
+            "vind": 5.0,
+            "regn": 0.0,
+            "lat": 64.4452,
+            "lon": 10.6585
+        },
+        {
+            "navn": "Narvik",
+            "temp": 15.4,
+            "vind": 0.4,
+            "regn": 0.0,
+            "lat": 68.3391,
+            "lon": 17.2759
+        },
+        {
+            "navn": "Harstad",
+            "temp": 15.4,
+            "vind": 0.8,
+            "regn": 0.0,
+            "lat": 68.8348,
+            "lon": 16.5341
+        },
+        {
+            "navn": "Gratangen",
+            "temp": 15.4,
+            "vind": 1.8,
+            "regn": 0.0,
+            "lat": 68.6941,
+            "lon": 17.5162
         },
         {
             "navn": "Gamvik",
-            "temp": 14.1,
-            "vind": 4.6,
+            "temp": 15.4,
+            "vind": 2.5,
             "regn": 0.0,
             "lat": 70.828,
             "lon": 27.9932
         },
         {
-            "navn": "Vinje",
-            "temp": 13.9,
-            "vind": 4.0,
-            "regn": 0.0,
-            "lat": 59.7357,
-            "lon": 7.7634
-        },
-        {
-            "navn": "Giske",
-            "temp": 13.9,
-            "vind": 6.1,
-            "regn": 0.0,
-            "lat": 62.5497,
-            "lon": 5.9772
-        },
-        {
-            "navn": "Aure",
-            "temp": 13.9,
-            "vind": 2.9,
-            "regn": 0.0,
-            "lat": 63.2888,
-            "lon": 8.4905
-        },
-        {
-            "navn": "Ørland",
-            "temp": 13.9,
-            "vind": 2.8,
-            "regn": 0.0,
-            "lat": 63.7578,
-            "lon": 9.6143
-        },
-        {
-            "navn": "Rødøy",
-            "temp": 13.9,
-            "vind": 8.1,
-            "regn": 0.0,
-            "lat": 66.6138,
-            "lon": 13.0975
-        },
-        {
-            "navn": "Bø",
-            "temp": 13.9,
-            "vind": 4.3,
-            "regn": 0.0,
-            "lat": 68.6821,
-            "lon": 14.378
-        },
-        {
-            "navn": "Balsfjord",
-            "temp": 13.9,
-            "vind": 2.2,
-            "regn": 0.2,
-            "lat": 69.3316,
-            "lon": 19.0899
-        },
-        {
-            "navn": "Tjeldsund",
-            "temp": 13.9,
-            "vind": 0.7,
-            "regn": 0.0,
-            "lat": 68.5439,
-            "lon": 16.5752
-        },
-        {
-            "navn": "Vindafjord",
-            "temp": 13.8,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 59.563,
-            "lon": 5.7516
-        },
-        {
-            "navn": "Kvam",
-            "temp": 13.8,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 60.3514,
-            "lon": 6.143
-        },
-        {
-            "navn": "Smøla",
-            "temp": 13.8,
-            "vind": 6.7,
-            "regn": 0.0,
-            "lat": 63.4177,
-            "lon": 7.876
-        },
-        {
-            "navn": "Gratangen",
-            "temp": 13.8,
-            "vind": 1.4,
-            "regn": 0.3,
-            "lat": 68.6941,
-            "lon": 17.5162
-        },
-        {
-            "navn": "Volda",
-            "temp": 13.7,
-            "vind": 2.8,
-            "regn": 0.0,
-            "lat": 62.11,
-            "lon": 6.1721
-        },
-        {
-            "navn": "Malvik",
-            "temp": 13.7,
-            "vind": 1.3,
-            "regn": 0.0,
-            "lat": 63.419,
-            "lon": 10.6864
-        },
-        {
-            "navn": "Leka",
-            "temp": 13.7,
-            "vind": 6.4,
-            "regn": 0.0,
-            "lat": 65.1485,
-            "lon": 11.5491
-        },
-        {
-            "navn": "Grane",
-            "temp": 13.7,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 65.5194,
-            "lon": 13.4587
-        },
-        {
-            "navn": "Sømna",
-            "temp": 13.7,
-            "vind": 6.2,
-            "regn": 0.0,
-            "lat": 65.3258,
-            "lon": 11.9007
+            "navn": "Vaksdal",
+            "temp": 15.3,
+            "vind": 0.6,
+            "regn": 1.9,
+            "lat": 60.6107,
+            "lon": 5.8459
         },
         {
             "navn": "Tingvoll",
-            "temp": 13.6,
-            "vind": 2.4,
+            "temp": 15.3,
+            "vind": 2.0,
             "regn": 0.0,
             "lat": 62.9652,
             "lon": 8.1593
         },
         {
-            "navn": "Gjemnes",
-            "temp": 13.6,
-            "vind": 1.1,
+            "navn": "Trondheim",
+            "temp": 15.3,
+            "vind": 2.7,
             "regn": 0.0,
-            "lat": 62.9074,
-            "lon": 7.8764
+            "lat": 63.3993,
+            "lon": 10.4024
+        },
+        {
+            "navn": "Rennebu",
+            "temp": 15.3,
+            "vind": 2.4,
+            "regn": 0.0,
+            "lat": 62.7875,
+            "lon": 9.9197
+        },
+        {
+            "navn": "Rødøy",
+            "temp": 15.3,
+            "vind": 6.3,
+            "regn": 0.0,
+            "lat": 66.6138,
+            "lon": 13.0975
+        },
+        {
+            "navn": "Grane",
+            "temp": 15.3,
+            "vind": 2.8,
+            "regn": 0.0,
+            "lat": 65.5194,
+            "lon": 13.4587
+        },
+        {
+            "navn": "Hitra",
+            "temp": 15.2,
+            "vind": 3.3,
+            "regn": 0.0,
+            "lat": 63.5762,
+            "lon": 8.9108
+        },
+        {
+            "navn": "Nærøysund",
+            "temp": 15.2,
+            "vind": 3.9,
+            "regn": 0.0,
+            "lat": 64.8762,
+            "lon": 11.4484
+        },
+        {
+            "navn": "Sortland",
+            "temp": 15.2,
+            "vind": 2.9,
+            "regn": 0.1,
+            "lat": 68.7074,
+            "lon": 15.3855
+        },
+        {
+            "navn": "Vega",
+            "temp": 15.2,
+            "vind": 5.9,
+            "regn": 0.0,
+            "lat": 65.6751,
+            "lon": 11.9376
+        },
+        {
+            "navn": "Austevoll",
+            "temp": 15.1,
+            "vind": 0.9,
+            "regn": 0.0,
+            "lat": 60.0575,
+            "lon": 5.1172
+        },
+        {
+            "navn": "Kristiansund",
+            "temp": 15.1,
+            "vind": 3.9,
+            "regn": 0.0,
+            "lat": 63.1078,
+            "lon": 7.7599
+        },
+        {
+            "navn": "Ørland",
+            "temp": 15.1,
+            "vind": 0.6,
+            "regn": 0.0,
+            "lat": 63.7578,
+            "lon": 9.6143
+        },
+        {
+            "navn": "Skaun",
+            "temp": 15.1,
+            "vind": 2.1,
+            "regn": 0.0,
+            "lat": 63.2892,
+            "lon": 10.0482
+        },
+        {
+            "navn": "Øksnes",
+            "temp": 15.1,
+            "vind": 1.6,
+            "regn": 0.4,
+            "lat": 68.9125,
+            "lon": 15.0047
+        },
+        {
+            "navn": "Nordkapp",
+            "temp": 15.1,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 71.0243,
+            "lon": 25.8489
+        },
+        {
+            "navn": "Smøla",
+            "temp": 15.0,
+            "vind": 4.6,
+            "regn": 0.0,
+            "lat": 63.4177,
+            "lon": 7.876
+        },
+        {
+            "navn": "Malvik",
+            "temp": 15.0,
+            "vind": 2.2,
+            "regn": 0.0,
+            "lat": 63.419,
+            "lon": 10.6864
+        },
+        {
+            "navn": "Evenes",
+            "temp": 15.0,
+            "vind": 0.8,
+            "regn": 0.0,
+            "lat": 68.4875,
+            "lon": 16.8171
+        },
+        {
+            "navn": "Leirfjord",
+            "temp": 15.0,
+            "vind": 4.9,
+            "regn": 0.0,
+            "lat": 66.0888,
+            "lon": 13.0576
+        },
+        {
+            "navn": "Vindafjord",
+            "temp": 14.9,
+            "vind": 3.6,
+            "regn": 1.1,
+            "lat": 59.563,
+            "lon": 5.7516
+        },
+        {
+            "navn": "Høyanger",
+            "temp": 14.9,
+            "vind": 1.2,
+            "regn": 0.0,
+            "lat": 61.1677,
+            "lon": 5.9366
+        },
+        {
+            "navn": "Melhus",
+            "temp": 14.9,
+            "vind": 2.1,
+            "regn": 0.0,
+            "lat": 63.1817,
+            "lon": 10.2397
+        },
+        {
+            "navn": "Kvitsøy",
+            "temp": 14.8,
+            "vind": 7.5,
+            "regn": 0.0,
+            "lat": 59.0392,
+            "lon": 5.364
+        },
+        {
+            "navn": "Aure",
+            "temp": 14.8,
+            "vind": 2.7,
+            "regn": 0.0,
+            "lat": 63.2888,
+            "lon": 8.4905
+        },
+        {
+            "navn": "Tromsø",
+            "temp": 14.8,
+            "vind": 0.7,
+            "regn": 0.0,
+            "lat": 69.6702,
+            "lon": 18.875
+        },
+        {
+            "navn": "Nord-Fron",
+            "temp": 14.7,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 61.6048,
+            "lon": 9.5544
+        },
+        {
+            "navn": "Etnedal",
+            "temp": 14.7,
+            "vind": 0.9,
+            "regn": 0.0,
+            "lat": 61.0185,
+            "lon": 9.5877
+        },
+        {
+            "navn": "Averøy",
+            "temp": 14.7,
+            "vind": 5.0,
+            "regn": 0.0,
+            "lat": 63.0695,
+            "lon": 7.4587
         },
         {
             "navn": "Gloppen",
-            "temp": 13.6,
+            "temp": 14.7,
             "vind": 2.3,
             "regn": 0.0,
             "lat": 61.7413,
             "lon": 6.2163
         },
         {
-            "navn": "Åfjord",
-            "temp": 13.6,
-            "vind": 3.7,
+            "navn": "Brønnøy",
+            "temp": 14.7,
+            "vind": 6.0,
             "regn": 0.0,
-            "lat": 64.1206,
-            "lon": 10.1039
+            "lat": 65.4655,
+            "lon": 12.2184
         },
         {
-            "navn": "Hamarøy",
-            "temp": 13.5,
+            "navn": "Utsira",
+            "temp": 14.6,
+            "vind": 4.9,
+            "regn": 0.0,
+            "lat": 59.2926,
+            "lon": 4.8568
+        },
+        {
+            "navn": "Sogndal",
+            "temp": 14.6,
             "vind": 2.0,
             "regn": 0.0,
-            "lat": 68.059,
-            "lon": 15.8926
+            "lat": 61.2521,
+            "lon": 6.9133
         },
         {
-            "navn": "Vefsn",
-            "temp": 13.5,
-            "vind": 2.7,
+            "navn": "Andøy",
+            "temp": 14.6,
+            "vind": 2.6,
             "regn": 0.0,
-            "lat": 65.856,
-            "lon": 13.242
+            "lat": 69.1566,
+            "lon": 15.8005
         },
         {
-            "navn": "Alstahaug",
-            "temp": 13.5,
-            "vind": 4.5,
+            "navn": "Dønna",
+            "temp": 14.6,
+            "vind": 7.7,
             "regn": 0.0,
-            "lat": 65.9086,
-            "lon": 12.5211
+            "lat": 66.1792,
+            "lon": 12.4325
         },
         {
-            "navn": "Herøy (Nordland)",
-            "temp": 13.5,
-            "vind": 7.4,
+            "navn": "Karlsøy",
+            "temp": 14.6,
+            "vind": 1.6,
             "regn": 0.0,
-            "lat": 65.9658,
-            "lon": 11.9847
+            "lat": 70.106,
+            "lon": 19.5187
         },
         {
-            "navn": "Averøy",
-            "temp": 13.4,
-            "vind": 6.2,
+            "navn": "Salangen",
+            "temp": 14.6,
+            "vind": 2.2,
             "regn": 0.0,
-            "lat": 63.0695,
-            "lon": 7.4587
+            "lat": 68.8929,
+            "lon": 17.8478
         },
         {
-            "navn": "Vestvågøy",
-            "temp": 13.4,
-            "vind": 5.2,
-            "regn": 0.3,
-            "lat": 68.1064,
-            "lon": 13.7432
-        },
-        {
-            "navn": "Evenes",
-            "temp": 13.4,
-            "vind": 2.7,
+            "navn": "Bykle",
+            "temp": 14.5,
+            "vind": 5.4,
             "regn": 0.0,
-            "lat": 68.4875,
-            "lon": 16.8171
+            "lat": 59.4864,
+            "lon": 7.236
+        },
+        {
+            "navn": "Sula",
+            "temp": 14.5,
+            "vind": 1.1,
+            "regn": 0.0,
+            "lat": 62.4223,
+            "lon": 6.2301
+        },
+        {
+            "navn": "Orkland",
+            "temp": 14.5,
+            "vind": 2.1,
+            "regn": 0.0,
+            "lat": 63.2866,
+            "lon": 9.6786
+        },
+        {
+            "navn": "Hemnes",
+            "temp": 14.5,
+            "vind": 2.1,
+            "regn": 0.0,
+            "lat": 66.0892,
+            "lon": 13.9356
+        },
+        {
+            "navn": "Tysnes",
+            "temp": 14.4,
+            "vind": 1.9,
+            "regn": 3.2,
+            "lat": 60.0061,
+            "lon": 5.5616
+        },
+        {
+            "navn": "Ørsta",
+            "temp": 14.4,
+            "vind": 2.3,
+            "regn": 0.0,
+            "lat": 62.2307,
+            "lon": 6.2546
+        },
+        {
+            "navn": "Sømna",
+            "temp": 14.4,
+            "vind": 6.1,
+            "regn": 0.0,
+            "lat": 65.3258,
+            "lon": 11.9007
+        },
+        {
+            "navn": "Øystre Slidre",
+            "temp": 14.3,
+            "vind": 1.9,
+            "regn": 0.0,
+            "lat": 61.2434,
+            "lon": 9.0389
         },
         {
             "navn": "Vevelstad",
-            "temp": 13.4,
-            "vind": 4.6,
+            "temp": 14.3,
+            "vind": 4.2,
             "regn": 0.0,
             "lat": 65.6496,
             "lon": 12.5652
         },
         {
-            "navn": "Meløy",
-            "temp": 13.3,
-            "vind": 6.1,
-            "regn": 0.0,
-            "lat": 66.8376,
-            "lon": 13.5644
-        },
-        {
-            "navn": "Hadsel",
-            "temp": 13.3,
-            "vind": 1.4,
-            "regn": 0.0,
-            "lat": 68.4977,
-            "lon": 15.0349
-        },
-        {
-            "navn": "Flakstad",
-            "temp": 13.3,
-            "vind": 4.9,
-            "regn": 0.0,
-            "lat": 68.0561,
-            "lon": 13.1966
-        },
-        {
             "navn": "Sørreisa",
-            "temp": 13.3,
-            "vind": 1.7,
-            "regn": 1.1,
+            "temp": 14.3,
+            "vind": 0.9,
+            "regn": 0.0,
             "lat": 69.0875,
             "lon": 18.1531
         },
         {
-            "navn": "Fedje",
-            "temp": 13.2,
-            "vind": 0.5,
+            "navn": "Haram",
+            "temp": 14.2,
+            "vind": 3.9,
             "regn": 0.0,
-            "lat": 60.7934,
-            "lon": 4.6175
+            "lat": 62.6175,
+            "lon": 6.326
+        },
+        {
+            "navn": "Sørfold",
+            "temp": 14.2,
+            "vind": 1.1,
+            "regn": 0.0,
+            "lat": 67.5605,
+            "lon": 15.7246
         },
         {
             "navn": "Hustadvika",
-            "temp": 13.1,
-            "vind": 3.2,
+            "temp": 14.1,
+            "vind": 2.4,
             "regn": 0.0,
             "lat": 62.9234,
             "lon": 7.1508
         },
         {
+            "navn": "Lierne",
+            "temp": 14.1,
+            "vind": 1.6,
+            "regn": 0.0,
+            "lat": 64.3467,
+            "lon": 13.6213
+        },
+        {
+            "navn": "Leka",
+            "temp": 14.1,
+            "vind": 7.2,
+            "regn": 0.0,
+            "lat": 65.1485,
+            "lon": 11.5491
+        },
+        {
+            "navn": "Alstahaug",
+            "temp": 14.1,
+            "vind": 6.7,
+            "regn": 0.0,
+            "lat": 65.9086,
+            "lon": 12.5211
+        },
+        {
+            "navn": "Gildeskål",
+            "temp": 14.0,
+            "vind": 7.0,
+            "regn": 0.0,
+            "lat": 67.0609,
+            "lon": 13.9192
+        },
+        {
+            "navn": "Hamarøy",
+            "temp": 14.0,
+            "vind": 2.0,
+            "regn": 0.1,
+            "lat": 68.059,
+            "lon": 15.8926
+        },
+        {
+            "navn": "Måsøy",
+            "temp": 14.0,
+            "vind": 5.6,
+            "regn": 0.0,
+            "lat": 70.9689,
+            "lon": 24.471
+        },
+        {
+            "navn": "Giske",
+            "temp": 13.9,
+            "vind": 4.9,
+            "regn": 0.0,
+            "lat": 62.5497,
+            "lon": 5.9772
+        },
+        {
+            "navn": "Åfjord",
+            "temp": 13.9,
+            "vind": 2.9,
+            "regn": 0.0,
+            "lat": 64.1206,
+            "lon": 10.1039
+        },
+        {
+            "navn": "Skjervøy",
+            "temp": 13.9,
+            "vind": 1.7,
+            "regn": 0.8,
+            "lat": 70.1052,
+            "lon": 20.7005
+        },
+        {
+            "navn": "Vardø",
+            "temp": 13.9,
+            "vind": 4.3,
+            "regn": 0.0,
+            "lat": 70.3735,
+            "lon": 30.8647
+        },
+        {
+            "navn": "Berlevåg",
+            "temp": 13.9,
+            "vind": 4.6,
+            "regn": 0.0,
+            "lat": 70.7569,
+            "lon": 29.3284
+        },
+        {
+            "navn": "Kvam",
+            "temp": 13.8,
+            "vind": 1.3,
+            "regn": 2.5,
+            "lat": 60.3514,
+            "lon": 6.143
+        },
+        {
+            "navn": "Stryn",
+            "temp": 13.8,
+            "vind": 1.4,
+            "regn": 0.0,
+            "lat": 61.8236,
+            "lon": 6.7811
+        },
+        {
+            "navn": "Lødingen",
+            "temp": 13.8,
+            "vind": 3.6,
+            "regn": 0.0,
+            "lat": 68.4004,
+            "lon": 15.704
+        },
+        {
             "navn": "Osen",
-            "temp": 13.1,
+            "temp": 13.7,
             "vind": 5.2,
             "regn": 0.0,
             "lat": 64.352,
             "lon": 10.3363
         },
         {
-            "navn": "Steigen",
-            "temp": 13.1,
-            "vind": 3.5,
-            "regn": 1.1,
-            "lat": 67.8139,
-            "lon": 14.7966
-        },
-        {
-            "navn": "Harstad",
-            "temp": 13.1,
-            "vind": 1.1,
+            "navn": "Namsos",
+            "temp": 13.6,
+            "vind": 2.0,
             "regn": 0.0,
-            "lat": 68.8348,
-            "lon": 16.5341
+            "lat": 64.5083,
+            "lon": 11.4185
         },
         {
-            "navn": "Måsøy",
-            "temp": 13.1,
-            "vind": 3.1,
+            "navn": "Beiarn",
+            "temp": 13.6,
+            "vind": 3.3,
             "regn": 0.0,
-            "lat": 70.9689,
-            "lon": 24.471
+            "lat": 66.963,
+            "lon": 14.6327
         },
         {
-            "navn": "Lebesby",
-            "temp": 13.1,
+            "navn": "Vestvågøy",
+            "temp": 13.6,
+            "vind": 6.4,
+            "regn": 0.0,
+            "lat": 68.1064,
+            "lon": 13.7432
+        },
+        {
+            "navn": "Herøy (Nordland)",
+            "temp": 13.6,
+            "vind": 9.2,
+            "regn": 0.0,
+            "lat": 65.9658,
+            "lon": 11.9847
+        },
+        {
+            "navn": "Grong",
+            "temp": 13.5,
+            "vind": 0.7,
+            "regn": 0.0,
+            "lat": 64.5385,
+            "lon": 12.6093
+        },
+        {
+            "navn": "Sør-Fron",
+            "temp": 13.4,
             "vind": 2.4,
             "regn": 0.0,
-            "lat": 70.7079,
-            "lon": 26.9147
+            "lat": 61.4932,
+            "lon": 9.7231
         },
         {
-            "navn": "Gildeskål",
-            "temp": 12.9,
-            "vind": 8.5,
+            "navn": "Fedje",
+            "temp": 13.4,
+            "vind": 0.5,
             "regn": 0.0,
-            "lat": 67.0609,
-            "lon": 13.9192
+            "lat": 60.7934,
+            "lon": 4.6175
         },
         {
-            "navn": "Lierne",
-            "temp": 12.8,
-            "vind": 2.1,
+            "navn": "Årdal",
+            "temp": 13.4,
+            "vind": 1.7,
             "regn": 0.0,
-            "lat": 64.3467,
-            "lon": 13.6213
+            "lat": 61.2843,
+            "lon": 7.7944
         },
         {
             "navn": "Bodø",
-            "temp": 12.8,
-            "vind": 2.4,
+            "temp": 13.4,
+            "vind": 3.8,
             "regn": 0.0,
             "lat": 67.2936,
             "lon": 14.4763
         },
         {
+            "navn": "Hadsel",
+            "temp": 13.4,
+            "vind": 1.2,
+            "regn": 0.1,
+            "lat": 68.4977,
+            "lon": 15.0349
+        },
+        {
+            "navn": "Bø",
+            "temp": 13.4,
+            "vind": 5.9,
+            "regn": 0.0,
+            "lat": 68.6821,
+            "lon": 14.378
+        },
+        {
+            "navn": "Heim",
+            "temp": 13.3,
+            "vind": 2.6,
+            "regn": 0.0,
+            "lat": 63.2093,
+            "lon": 8.7812
+        },
+        {
+            "navn": "Frøya",
+            "temp": 13.3,
+            "vind": 5.5,
+            "regn": 0.0,
+            "lat": 63.8423,
+            "lon": 8.6928
+        },
+        {
+            "navn": "Gjemnes",
+            "temp": 13.2,
+            "vind": 2.3,
+            "regn": 0.0,
+            "lat": 62.9074,
+            "lon": 7.8764
+        },
+        {
+            "navn": "Høylandet",
+            "temp": 13.2,
+            "vind": 1.8,
+            "regn": 0.0,
+            "lat": 64.7898,
+            "lon": 12.3998
+        },
+        {
+            "navn": "Dyrøy",
+            "temp": 13.2,
+            "vind": 1.0,
+            "regn": 0.0,
+            "lat": 69.0375,
+            "lon": 17.6193
+        },
+        {
+            "navn": "Båtsfjord",
+            "temp": 13.2,
+            "vind": 4.4,
+            "regn": 0.0,
+            "lat": 70.5582,
+            "lon": 29.9046
+        },
+        {
+            "navn": "Hol",
+            "temp": 13.1,
+            "vind": 3.5,
+            "regn": 0.0,
+            "lat": 60.5327,
+            "lon": 8.0991
+        },
+        {
             "navn": "Træna",
-            "temp": 12.8,
+            "temp": 13.0,
             "vind": 9.5,
             "regn": 0.0,
             "lat": 66.5496,
             "lon": 12.0924
         },
         {
+            "navn": "Vang",
+            "temp": 12.9,
+            "vind": 2.5,
+            "regn": 0.0,
+            "lat": 61.1969,
+            "lon": 8.5015
+        },
+        {
+            "navn": "Balsfjord",
+            "temp": 12.9,
+            "vind": 1.1,
+            "regn": 0.0,
+            "lat": 69.3316,
+            "lon": 19.0899
+        },
+        {
+            "navn": "Lyngen",
+            "temp": 12.9,
+            "vind": 2.1,
+            "regn": 0.1,
+            "lat": 69.6735,
+            "lon": 20.107
+        },
+        {
             "navn": "Målselv",
-            "temp": 12.8,
+            "temp": 12.9,
             "vind": 2.9,
-            "regn": 0.3,
+            "regn": 0.0,
             "lat": 69.0405,
             "lon": 18.926
         },
         {
-            "navn": "Nord-Fron",
-            "temp": 12.7,
-            "vind": 4.5,
-            "regn": 2.3,
-            "lat": 61.6048,
-            "lon": 9.5544
+            "navn": "Flakstad",
+            "temp": 12.8,
+            "vind": 6.1,
+            "regn": 0.0,
+            "lat": 68.0561,
+            "lon": 13.1966
         },
         {
-            "navn": "Heim",
+            "navn": "Snåsa",
             "temp": 12.7,
-            "vind": 2.1,
+            "vind": 1.2,
             "regn": 0.0,
-            "lat": 63.2093,
-            "lon": 8.7812
+            "lat": 64.2048,
+            "lon": 12.6281
+        },
+        {
+            "navn": "Luster",
+            "temp": 12.6,
+            "vind": 3.0,
+            "regn": 0.0,
+            "lat": 61.4325,
+            "lon": 7.3612
+        },
+        {
+            "navn": "Hemsedal",
+            "temp": 12.5,
+            "vind": 4.2,
+            "regn": 0.1,
+            "lat": 60.9109,
+            "lon": 8.467
+        },
+        {
+            "navn": "Lebesby",
+            "temp": 12.5,
+            "vind": 4.2,
+            "regn": 0.0,
+            "lat": 70.7079,
+            "lon": 26.9147
+        },
+        {
+            "navn": "Volda",
+            "temp": 12.4,
+            "vind": 2.7,
+            "regn": 0.0,
+            "lat": 62.11,
+            "lon": 6.1721
         },
         {
             "navn": "Fauske",
-            "temp": 12.7,
-            "vind": 1.1,
-            "regn": 0.5,
+            "temp": 12.4,
+            "vind": 0.8,
+            "regn": 0.1,
             "lat": 67.2609,
             "lon": 15.4611
         },
         {
-            "navn": "Salangen",
-            "temp": 12.7,
-            "vind": 3.4,
-            "regn": 0.5,
-            "lat": 68.8929,
-            "lon": 17.8478
-        },
-        {
-            "navn": "Bykle",
-            "temp": 12.6,
-            "vind": 4.5,
-            "regn": 0.0,
-            "lat": 59.4864,
-            "lon": 7.236
-        },
-        {
-            "navn": "Frøya",
-            "temp": 12.6,
-            "vind": 6.1,
-            "regn": 0.0,
-            "lat": 63.8423,
-            "lon": 8.6928
-        },
-        {
             "navn": "Moskenes",
-            "temp": 12.6,
-            "vind": 6.1,
+            "temp": 12.4,
+            "vind": 8.2,
             "regn": 0.0,
             "lat": 67.8903,
             "lon": 13.0864
         },
         {
-            "navn": "Folldal",
-            "temp": 12.5,
-            "vind": 5.3,
-            "regn": 0.7,
-            "lat": 62.1759,
-            "lon": 10.0055
-        },
-        {
-            "navn": "Sogndal",
-            "temp": 12.5,
-            "vind": 1.6,
-            "regn": 0.0,
-            "lat": 61.2521,
-            "lon": 6.9133
-        },
-        {
-            "navn": "Namsos",
-            "temp": 12.5,
-            "vind": 2.1,
-            "regn": 0.0,
-            "lat": 64.5083,
-            "lon": 11.4185
-        },
-        {
-            "navn": "Hemnes",
-            "temp": 12.4,
-            "vind": 2.2,
-            "regn": 0.0,
-            "lat": 66.0892,
-            "lon": 13.9356
-        },
-        {
-            "navn": "Høylandet",
-            "temp": 12.3,
-            "vind": 2.0,
-            "regn": 0.0,
-            "lat": 64.7898,
-            "lon": 12.3998
-        },
-        {
             "navn": "Værøy",
             "temp": 12.3,
-            "vind": 7.5,
+            "vind": 8.9,
             "regn": 0.0,
             "lat": 67.6263,
             "lon": 12.851
@@ -2900,287 +2988,199 @@
         {
             "navn": "Røst",
             "temp": 12.3,
-            "vind": 8.4,
+            "vind": 9.5,
             "regn": 0.0,
             "lat": 67.3693,
             "lon": 12.1958
         },
         {
-            "navn": "Lødingen",
+            "navn": "Steigen",
             "temp": 12.3,
-            "vind": 0.4,
+            "vind": 4.3,
             "regn": 0.0,
-            "lat": 68.4004,
-            "lon": 15.704
+            "lat": 67.8139,
+            "lon": 14.7966
         },
         {
-            "navn": "Sør-Fron",
-            "temp": 12.2,
-            "vind": 2.9,
-            "regn": 3.0,
-            "lat": 61.4932,
-            "lon": 9.7231
+            "navn": "Namsskogan",
+            "temp": 12.0,
+            "vind": 1.8,
+            "regn": 0.0,
+            "lat": 64.8175,
+            "lon": 13.0117
         },
         {
             "navn": "Kinn",
-            "temp": 12.1,
-            "vind": 2.9,
-            "regn": 0.0,
+            "temp": 11.9,
+            "vind": 2.8,
+            "regn": 0.2,
             "lat": 61.6812,
             "lon": 5.0374
         },
         {
             "navn": "Os",
-            "temp": 12.0,
-            "vind": 6.1,
-            "regn": 0.0,
+            "temp": 11.8,
+            "vind": 7.4,
+            "regn": 0.2,
             "lat": 62.4386,
             "lon": 11.2964
         },
         {
-            "navn": "Vestnes",
-            "temp": 11.9,
+            "navn": "Masfjorden",
+            "temp": 11.8,
+            "vind": 0.9,
+            "regn": 0.0,
+            "lat": 60.8626,
+            "lon": 5.4486
+        },
+        {
+            "navn": "Folldal",
+            "temp": 11.5,
+            "vind": 4.4,
+            "regn": 0.0,
+            "lat": 62.1759,
+            "lon": 10.0055
+        },
+        {
+            "navn": "Indre Fosen",
+            "temp": 11.5,
             "vind": 1.5,
+            "regn": 0.0,
+            "lat": 63.6784,
+            "lon": 10.1979
+        },
+        {
+            "navn": "Ulvik",
+            "temp": 11.3,
+            "vind": 4.3,
+            "regn": 0.0,
+            "lat": 60.61,
+            "lon": 7.2392
+        },
+        {
+            "navn": "Bardu",
+            "temp": 11.1,
+            "vind": 3.1,
+            "regn": 0.0,
+            "lat": 68.6644,
+            "lon": 18.8871
+        },
+        {
+            "navn": "Vestnes",
+            "temp": 11.0,
+            "vind": 1.6,
             "regn": 0.0,
             "lat": 62.589,
             "lon": 7.0186
         },
         {
             "navn": "Stad",
-            "temp": 11.9,
-            "vind": 2.8,
+            "temp": 10.8,
+            "vind": 2.2,
             "regn": 0.0,
             "lat": 61.9646,
             "lon": 5.6903
         },
         {
-            "navn": "Dyrøy",
-            "temp": 11.9,
-            "vind": 2.6,
-            "regn": 0.0,
-            "lat": 69.0375,
-            "lon": 17.6193
-        },
-        {
-            "navn": "Øystre Slidre",
-            "temp": 11.8,
-            "vind": 1.9,
-            "regn": 0.0,
-            "lat": 61.2434,
-            "lon": 9.0389
-        },
-        {
-            "navn": "Årdal",
-            "temp": 11.8,
-            "vind": 1.3,
-            "regn": 0.2,
-            "lat": 61.2843,
-            "lon": 7.7944
-        },
-        {
-            "navn": "Grong",
-            "temp": 11.7,
-            "vind": 0.9,
-            "regn": 0.1,
-            "lat": 64.5385,
-            "lon": 12.6093
-        },
-        {
-            "navn": "Beiarn",
-            "temp": 11.7,
-            "vind": 1.5,
-            "regn": 0.0,
-            "lat": 66.963,
-            "lon": 14.6327
-        },
-        {
-            "navn": "Gáivuotna Kåfjord",
-            "temp": 11.7,
-            "vind": 5.8,
-            "regn": 0.0,
-            "lat": 69.502,
-            "lon": 20.7065
-        },
-        {
-            "navn": "Båtsfjord",
-            "temp": 11.6,
-            "vind": 7.8,
-            "regn": 0.0,
-            "lat": 70.5582,
-            "lon": 29.9046
-        },
-        {
             "navn": "Fjord",
-            "temp": 11.4,
-            "vind": 3.4,
+            "temp": 10.7,
+            "vind": 2.6,
             "regn": 0.0,
             "lat": 62.2697,
             "lon": 7.3062
         },
         {
-            "navn": "Namsskogan",
-            "temp": 11.4,
-            "vind": 1.2,
-            "regn": 0.0,
-            "lat": 64.8175,
-            "lon": 13.0117
-        },
-        {
-            "navn": "Masfjorden",
-            "temp": 11.3,
-            "vind": 0.9,
-            "regn": 0.7,
-            "lat": 60.8626,
-            "lon": 5.4486
-        },
-        {
-            "navn": "Snåsa",
-            "temp": 11.3,
-            "vind": 1.5,
-            "regn": 0.0,
-            "lat": 64.2048,
-            "lon": 12.6281
-        },
-        {
-            "navn": "Bardu",
-            "temp": 11.1,
-            "vind": 4.1,
-            "regn": 0.2,
-            "lat": 68.6644,
-            "lon": 18.8871
-        },
-        {
-            "navn": "Vang",
-            "temp": 11.0,
-            "vind": 1.7,
-            "regn": 0.2,
-            "lat": 61.1969,
-            "lon": 8.5015
-        },
-        {
             "navn": "Senja",
-            "temp": 11.0,
-            "vind": 3.5,
+            "temp": 10.7,
+            "vind": 2.1,
             "regn": 0.0,
             "lat": 69.3441,
             "lon": 17.5767
         },
         {
-            "navn": "Luster",
-            "temp": 10.7,
-            "vind": 2.4,
-            "regn": 0.0,
-            "lat": 61.4325,
-            "lon": 7.3612
-        },
-        {
-            "navn": "Vågan",
-            "temp": 10.7,
-            "vind": 3.5,
-            "regn": 0.3,
-            "lat": 68.263,
-            "lon": 14.6125
-        },
-        {
-            "navn": "Storfjord",
-            "temp": 10.6,
-            "vind": 7.8,
-            "regn": 1.0,
-            "lat": 69.2308,
-            "lon": 20.3659
-        },
-        {
             "navn": "Dovre",
-            "temp": 10.5,
-            "vind": 5.0,
+            "temp": 10.6,
+            "vind": 5.4,
             "regn": 0.0,
             "lat": 62.0847,
             "lon": 9.4575
         },
         {
-            "navn": "Hol",
+            "navn": "Vågan",
             "temp": 10.2,
-            "vind": 3.2,
-            "regn": 0.1,
-            "lat": 60.5327,
-            "lon": 8.0991
-        },
-        {
-            "navn": "Indre Fosen",
-            "temp": 10.2,
-            "vind": 1.8,
-            "regn": 0.0,
-            "lat": 63.6784,
-            "lon": 10.1979
-        },
-        {
-            "navn": "Ibestad",
-            "temp": 9.2,
-            "vind": 4.1,
-            "regn": 0.0,
-            "lat": 68.8511,
-            "lon": 17.1928
-        },
-        {
-            "navn": "Modalen",
-            "temp": 9.1,
             "vind": 4.3,
-            "regn": 1.8,
-            "lat": 60.8875,
-            "lon": 5.9297
+            "regn": 0.0,
+            "lat": 68.263,
+            "lon": 14.6125
         },
         {
             "navn": "Røyrvik",
-            "temp": 9.1,
-            "vind": 2.4,
+            "temp": 10.1,
+            "vind": 2.2,
             "regn": 0.0,
             "lat": 64.9222,
             "lon": 13.7222
         },
         {
+            "navn": "Modalen",
+            "temp": 9.6,
+            "vind": 3.1,
+            "regn": 0.0,
+            "lat": 60.8875,
+            "lon": 5.9297
+        },
+        {
+            "navn": "Gáivuotna Kåfjord",
+            "temp": 9.6,
+            "vind": 7.1,
+            "regn": 0.5,
+            "lat": 69.502,
+            "lon": 20.7065
+        },
+        {
             "navn": "Saltdal",
-            "temp": 9.0,
-            "vind": 2.9,
-            "regn": 0.6,
+            "temp": 9.4,
+            "vind": 0.5,
+            "regn": 0.0,
             "lat": 67.0108,
             "lon": 15.4119
         },
         {
-            "navn": "Ulvik",
-            "temp": 8.5,
-            "vind": 3.7,
-            "regn": 0.0,
-            "lat": 60.61,
-            "lon": 7.2392
+            "navn": "Storfjord",
+            "temp": 9.1,
+            "vind": 8.4,
+            "regn": 0.2,
+            "lat": 69.2308,
+            "lon": 20.3659
         },
         {
-            "navn": "Hemsedal",
-            "temp": 8.0,
-            "vind": 1.7,
+            "navn": "Ibestad",
+            "temp": 9.0,
+            "vind": 1.9,
             "regn": 0.0,
-            "lat": 60.9109,
-            "lon": 8.467
-        },
-        {
-            "navn": "Rauma",
-            "temp": 8.0,
-            "vind": 2.5,
-            "regn": 0.0,
-            "lat": 62.5323,
-            "lon": 7.6516
+            "lat": 68.8511,
+            "lon": 17.1928
         },
         {
             "navn": "Vik",
-            "temp": 8.0,
-            "vind": 3.2,
+            "temp": 8.8,
+            "vind": 2.4,
             "regn": 0.0,
             "lat": 61.0766,
             "lon": 6.6698
         },
         {
+            "navn": "Rauma",
+            "temp": 7.6,
+            "vind": 3.8,
+            "regn": 0.0,
+            "lat": 62.5323,
+            "lon": 7.6516
+        },
+        {
             "navn": "Lom",
-            "temp": 7.2,
-            "vind": 7.6,
+            "temp": 6.0,
+            "vind": 6.6,
             "regn": 0.0,
             "lat": 61.7386,
             "lon": 8.5013
