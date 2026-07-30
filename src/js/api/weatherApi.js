@@ -83,21 +83,129 @@ export const SAMPLE_EXTREME_LOCATIONS = [
   { name: 'Voss', region: 'Vestland', lat: 60.6286, lon: 6.4137 }
 ];
 
+import kommunerData from '../../../kommuner_koordinater.json';
+
+const kommuneLookup = new Map();
+if (Array.isArray(kommunerData)) {
+  kommunerData.forEach(k => {
+    if (k.kommune) {
+      kommuneLookup.set(k.kommune.toLowerCase().trim(), { lat: k.lat, lon: k.lon });
+    }
+  });
+}
+
 /**
- * Henter vær for utvalget av norske steder og finner Topp 10 i 4 kategorier
+ * Henter autogenerert toppliste.json fra docs-katalogen (oppdatert hvert 30. minutt)
  */
 export async function fetchExtremesData() {
-  const lats = SAMPLE_EXTREME_LOCATIONS.map(l => l.lat).join(',');
-  const lons = SAMPLE_EXTREME_LOCATIONS.map(l => l.lon).join(',');
+  const possiblePaths = [
+    './toppliste.json',
+    './docs/toppliste.json',
+    'toppliste.json',
+    'docs/toppliste.json'
+  ];
 
-  const url = `${FORECAST_BASE_URL}?latitude=${lats}&longitude=${lons}&current=temperature_2m,precipitation,wind_speed_10m,weather_code&daily=precipitation_sum&wind_speed_unit=ms&timezone=auto`;
+  let rawData = null;
 
+  for (const path of possiblePaths) {
+    try {
+      const res = await fetch(path);
+      if (res.ok) {
+        rawData = await res.json();
+        if (rawData && (rawData.varmest || rawData.warmest)) {
+          break;
+        }
+      }
+    } catch (e) {
+      // prøv neste sti
+    }
+  }
+
+  if (rawData) {
+    const rawWarmest = rawData.varmest || rawData.warmest || [];
+    const rawColdest = rawData.kaldest || rawData.coldest || [];
+    const rawWettest = rawData.vaatest || rawData.wettest || [];
+    const rawWindiest = rawData.mest_vind || rawData.windiest || [];
+
+    const processItem = (item) => {
+      const name = item.navn || item.name || 'Ukjent';
+      const cleanName = name.toLowerCase().trim();
+      const coords = kommuneLookup.get(cleanName) || {};
+
+      const lat = item.lat !== undefined ? item.lat : (coords.lat !== undefined ? coords.lat : 60.0);
+      const lon = item.lon !== undefined ? item.lon : (coords.lon !== undefined ? coords.lon : 10.0);
+
+      const temp = typeof item.temp === 'number' ? item.temp : 0;
+      const windSpeed = typeof item.vind === 'number' ? item.vind : (typeof item.windSpeed === 'number' ? item.windSpeed : 0);
+      const rainToday = typeof item.regn === 'number' ? item.regn : (typeof item.rainToday === 'number' ? item.rainToday : 0);
+
+      let code = item.code || 0;
+      if (!item.code) {
+        if (rainToday > 5.0) code = 65;
+        else if (rainToday > 2.0) code = 63;
+        else if (rainToday > 0.0) code = 61;
+        else if (temp <= 0) code = 1;
+        else code = 0;
+      }
+
+      return {
+        name,
+        navn: name,
+        temp,
+        windSpeed,
+        vind: windSpeed,
+        rainToday,
+        regn: rainToday,
+        lat,
+        lon,
+        region: 'Kommune',
+        code
+      };
+    };
+
+    const warmest = rawWarmest.map(processItem);
+    const coldest = rawColdest.map(processItem);
+    const wettest = rawWettest.map(processItem);
+    const windiest = rawWindiest.map(processItem);
+
+    let displayTime = '';
+    if (rawData.sist_oppdatert) {
+      const parts = rawData.sist_oppdatert.split(' ');
+      if (parts.length === 2) {
+        const timePart = parts[1].substring(0, 5);
+        displayTime = timePart;
+      } else {
+        displayTime = rawData.sist_oppdatert;
+      }
+    } else {
+      displayTime = new Date().toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    return {
+      warmest,
+      coldest,
+      wettest,
+      windiest,
+      varmest: warmest,
+      kaldest: coldest,
+      vaatest: wettest,
+      mest_vind: windiest,
+      timestamp: displayTime,
+      sist_oppdatert: rawData.sist_oppdatert
+    };
+  }
+
+  // Fallback til Open-Meteo sampling hvis toppliste.json mot formodning ikke ble funnet
   try {
+    const lats = SAMPLE_EXTREME_LOCATIONS.map(l => l.lat).join(',');
+    const lons = SAMPLE_EXTREME_LOCATIONS.map(l => l.lon).join(',');
+
+    const url = `${FORECAST_BASE_URL}?latitude=${lats}&longitude=${lons}&current=temperature_2m,precipitation,wind_speed_10m,weather_code&daily=precipitation_sum&wind_speed_unit=ms&timezone=auto`;
+
     const res = await fetch(url);
     if (!res.ok) throw new Error('Kunne ikke hente ekstremdata');
     const rawList = await res.json();
 
-    // API-et returnerer enten et array eller enkelt-objekt
     const list = Array.isArray(rawList) ? rawList : [rawList];
 
     const processed = SAMPLE_EXTREME_LOCATIONS.map((loc, idx) => {
@@ -114,7 +222,6 @@ export async function fetchExtremesData() {
       };
     });
 
-    // Sorter for topp 10
     const warmest = [...processed].sort((a, b) => b.temp - a.temp).slice(0, 10);
     const coldest = [...processed].sort((a, b) => a.temp - b.temp).slice(0, 10);
     const wettest = [...processed].sort((a, b) => b.rainToday - a.rainToday).slice(0, 10);
@@ -129,7 +236,6 @@ export async function fetchExtremesData() {
     };
   } catch (err) {
     console.error('Feil ved uthenting av ekstremdata:', err);
-    // Returner fallback-data basert på SAMPLE_EXTREME_LOCATIONS hvis frakoblet
     return null;
   }
 }

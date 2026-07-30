@@ -47,7 +47,9 @@ for i, kommune in enumerate(kommuner):
                     "navn": kommune["kommune"],
                     "temp": details.get("air_temperature", -999),
                     "vind": details.get("wind_speed", 0),
-                    "regn": regn
+                    "regn": regn,
+                    "lat": kommune["lat"],
+                    "lon": kommune["lon"]
                 })
         else:
             print(f"⚠️ API-feil for {kommune['kommune']}: Statuskode {response.status_code}")
@@ -108,5 +110,14 @@ resultat = {
 
 with open(OUTPUT_FIL, "w", encoding="utf-8") as f:
     json.dump(resultat, f, ensure_ascii=False, indent=4)
+
+try:
+    import os
+    if os.path.exists("public"):
+        with open("public/toppliste.json", "w", encoding="utf-8") as f:
+            json.dump(resultat, f, ensure_ascii=False, indent=4)
+except Exception:
+    pass
+
     
 print(f"\n✅ SUKSESS! '{OUTPUT_FIL}' ble opprettet i mappen din uten Svalbard/Jan Mayen.")

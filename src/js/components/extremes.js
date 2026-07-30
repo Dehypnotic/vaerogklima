@@ -14,7 +14,7 @@ export async function initExtremes(onSelectLocation) {
 
   const container = document.getElementById('extremes-container');
   const timestampEl = document.getElementById('extremes-timestamp');
-  const categoryBtns = document.querySelectorAll('.pill-btn');
+  const categoryBtns = document.querySelectorAll('.extremes-section .pill-btn');
 
   // Kategori-knappenes lyttere
   categoryBtns.forEach(btn => {
@@ -57,23 +57,30 @@ function renderExtremesGrid() {
     let valueStr = '';
     let metricClass = '';
 
+    const tempVal = typeof item.temp === 'number' ? item.temp : 0;
+    const rainVal = item.rainToday !== undefined ? item.rainToday : (item.regn !== undefined ? item.regn : 0);
+    const windVal = item.windSpeed !== undefined ? item.windSpeed : (item.vind !== undefined ? item.vind : 0);
+
     if (activeCategory === 'warmest' || activeCategory === 'coldest') {
-      valueStr = `${item.temp > 0 ? '+' : ''}${Math.round(item.temp)}°C`;
-      metricClass = item.temp > 0 ? 'warm' : 'cold';
+      valueStr = `${tempVal > 0 ? '+' : ''}${tempVal.toFixed(1)}°C`;
+      metricClass = tempVal > 0 ? 'warm' : 'cold';
     } else if (activeCategory === 'wettest') {
-      valueStr = `${item.rainToday.toFixed(1)} mm`;
+      valueStr = `${rainVal.toFixed(1)} mm`;
       metricClass = 'rain';
     } else if (activeCategory === 'windiest') {
-      valueStr = `${Math.round(item.windSpeed)} m/s`;
+      valueStr = `${windVal.toFixed(1)} m/s`;
       metricClass = 'wind';
     }
 
+    const placeName = item.name || item.navn || 'Ukjent';
+    const regionStr = item.region && item.region !== 'Kommune' ? `${item.region} • ` : '';
+
     return `
-      <div class="extreme-item-card" data-lat="${item.lat}" data-lon="${item.lon}" data-name="${item.name}" data-region="${item.region}">
+      <div class="extreme-item-card" data-lat="${item.lat}" data-lon="${item.lon}" data-name="${placeName}" data-region="${item.region || 'Kommune'}">
         <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
         <div class="extreme-info">
-          <div class="extreme-place">${item.name}</div>
-          <div class="extreme-region">${item.region} • ${weather.icon} ${weather.text}</div>
+          <div class="extreme-place">${placeName}</div>
+          <div class="extreme-region">${regionStr}${weather.icon} ${weather.text}</div>
         </div>
         <div class="extreme-metric ${metricClass}">${valueStr}</div>
       </div>
