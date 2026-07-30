@@ -1,26 +1,33 @@
+import os
 import json
 import time
 from datetime import datetime
 import requests
 
-INPUT_FIL = "kommuner_koordinater.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+INPUT_FIL = os.path.join(BASE_DIR, "kommuner_koordinater.json")
 NOWCAST_URL = "https://api.met.no/weatherapi/nowcast/2.0/complete"
 
-# --- HUSK Å SETTE INN DINE DETALJER FRA JSONBIN.IO HER ---
+# Dine ferdigutfylte detaljer for JSONBin.io
 JSONBIN_BIN_ID = "6a6bacc4f5f4af5e29d748d2"
 JSONBIN_API_KEY = "$2a$10$RKrUENVnz7CG/bSnyRnJcelPjzvDj7iTTHRnW.LmZ9zJQ26OchS3K"
-# --------------------------------------------------------
 
 HEADERS = {
     "User-Agent": "KommuneVaerToppliste/1.0 (kontakt: dehypnotic@outlook.com)"
 }
 
+if not os.path.exists(INPUT_FIL):
+    print(f"❌ KRITISK FEIL: Fant ikke koordinatfilen i mappen!")
+    print(f"Forventet bane var: {INPUT_FIL}")
+    print(f"Filer i denne mappen: {os.listdir(BASE_DIR) if os.path.exists(BASE_DIR) else 'Ukjent'}")
+    exit(1)
+
 try:
     with open(INPUT_FIL, "r", encoding="utf-8") as f:
         kommuner = json.load(f)
-except FileNotFoundError:
-    print(f"❌ FEIL: Fant ikke filen '{INPUT_FIL}'!")
-    exit()
+except Exception as e:
+    print(f"❌ KRITISK FEIL: Kunne ikke lese JSON-filen: {e}")
+    exit(1)
 
 vaer_data = []
 print(f"🚀 Starter datahenting for {len(kommuner)} kommuner via GitHub Actions...")
@@ -31,17 +38,19 @@ for i, kommune in enumerate(kommuner):
 
     params = {"lat": kommune["lat"], "lon": kommune["lon"]}
     try:
-        response = requests.get(NOWCAST_URL, params=params, headers=HEADERS)
+        response = requests.get(NOWCAST_URL, params=params, headers=HEADERS, timeout=5)
         if response.status_code == 200:
             data = response.json()
             timeseries = data["properties"]["timeseries"]
             
             if len(timeseries) > 0:
-                details = timeseries[0]["data"]["instant"]["details"]
+                # VIKTIG RETTING: Henter ut det første elementet [0] i listen over tidsserier
+                gjeldende_time = timeseries[0]
+                details = gjeldende_time["data"]["instant"]["details"]
                 
                 regn = 0.0
-                if "next_1_hours" in timeseries[0]["data"]:
-                    regn = timeseries[0]["data"]["next_1_hours"]["details"].get("precipitation_amount", 0.0)
+                if "next_1_hours" in gjeldende_time["data"]:
+                    regn = gjeldende_time["data"]["next_1_hours"]["details"].get("precipitation_amount", 0.0)
                     
                 vaer_data.append({
                     "navn": kommune["kommune"],
@@ -50,23 +59,23 @@ for i, kommune in enumerate(kommuner):
                     "vind": details.get("wind_speed", 0),
                     "regn": regn
                 })
-    except Exception:
+    except Exception as e:
+        # Hvis en enkelt kommune feiler, printer vi det ut så vi ser det i loggen
+        if (i + 1) % 50 == 0:
+            print(f"Siste tekniske feil underveis: {e}")
         continue
         
     time.sleep(0.1)
 
 gyldige_data = [k for k in vaer_data if k["temp"] != -999]
 
-# Hvis listen er tom, tvinger vi skriptet til å krasje så det SKINNER RØDT i GitHub Actions
+# Sjekk om listen ble helt tom
 if not gyldige_data:
     print(f"❌ KRITISK FEIL: Listen med værdata ble helt tom!")
-    print(f"Sjekket totalt {len(kommuner)} kommuner fra filen.")
-    if len(kommuner) == 0:
-        print(f"Bane brukt: {INPUT_FIL}")
-        print(f"Filer i mappen: {os.listdir(BASE_DIR) if os.path.exists(BASE_DIR) else 'Fant ikke mappen'}")
-    exit(1) # Tvinger GitHub til å vise rød feilmelding
+    print(f"Prosessert totalt {len(vaer_data)} rå-elementer fra {len(kommuner)} kommuner.")
+    exit(1)
 
-# Hvis alt er i orden, fortsetter vi som planlagt:
+# Sortering hvis alt er OK
 alle_varmest = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
 alle_kaldest = sorted(gyldige_data, key=lambda x: x["temp"])
 alle_vaatest = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
@@ -88,10 +97,11 @@ headers = {
     "X-Bin-Versioning": "false"
 }
 
+print("📤 Sender data over til JSONBin.io...")
 res = requests.put(url, json=resultat, headers=headers)
+
 if res.status_code == 200:
     print("✅ SUKSESS! Værdataene ble overskrevet og lagret i skyen hos JSONBin.io!")
 else:
     print(f"❌ FEIL FRA JSONBIN: Status {res.status_code}. Melding: {res.text}")
     exit(1)
-
