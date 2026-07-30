@@ -4,11 +4,11 @@ from datetime import datetime
 import requests
 
 INPUT_FIL = "kommuner_koordinater.json"
-NOWCAST_URL = "https://met.no"
+NOWCAST_URL = "https://api.met.no/weatherapi/nowcast/2.0/complete"
 
 # --- HUSK Å SETTE INN DINE DETALJER FRA JSONBIN.IO HER ---
-JSONBIN_BIN_ID = "DIN_BIN_ID_HER"
-JSONBIN_API_KEY = "DIN_API_KEY_HER"
+JSONBIN_BIN_ID = "6a6bacc4f5f4af5e29d748d2"
+JSONBIN_API_KEY = "$2a$10$RKrUENVnz7CG/bSnyRnJcelPjzvDj7iTTHRnW.LmZ9zJQ26OchS3K"
 # --------------------------------------------------------
 
 HEADERS = {
