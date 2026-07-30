@@ -1,20 +1,13 @@
-name: Oppdater Vaer Data
+name: Oppdater Vaer Data Eksternt
 
 on:
- # schedule:
- #   - cron: '0 * * * *'
+  schedule:
+    - cron: '0 * * * *' # Kjører en gang i timen døgnet rundt
   workflow_dispatch:
 
 jobs:
   oppdater:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    # Tvinger GitHub til å bruke Node 20 for modulene, slik at du slipper advarsler
-    env:
-      FORCE_NODE_VERSION: 'node20'
-
     steps:
     - name: Hent kildekode
       uses: actions/checkout@v4
@@ -31,10 +24,3 @@ jobs:
 
     - name: Kjor vaerskriptet
       run: python vaer_toppliste.py
-
-    - name: Commit og push endringer
-      run: |
-        git config --global user.name "GitHub Actions Bot"
-        git config --global user.email "actions@github.com"
-        git add docs/toppliste.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Automatisk oppdatering av vaerdata" && git push)

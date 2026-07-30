@@ -4,10 +4,13 @@ from datetime import datetime
 import requests
 
 INPUT_FIL = "kommuner_koordinater.json"
-OUTPUT_FIL = "docs/toppliste.json"
 NOWCAST_URL = "https://api.met.no/weatherapi/nowcast/2.0/complete"
 
-# Din ferdigutfylte User-Agent for MET API-et
+# --- OPPGI DINE DETALJER FRA JSONBIN.IO HER ---
+JSONBIN_BIN_ID = "6a6bacc4f5f4af5e29d748d2"
+JSONBIN_API_KEY = "$2a$10$RKrUENVnz7CG/bSnyRnJcelPjzvDj7iTTHRnW.LmZ9zJQ26OchS3K"
+# ---------------------------------------------
+
 HEADERS = {
     "User-Agent": "KommuneVaerToppliste/1.0 (kontakt: dehypnotic@outlook.com)"
 }
@@ -16,114 +19,69 @@ try:
     with open(INPUT_FIL, "r", encoding="utf-8") as f:
         kommuner = json.load(f)
 except FileNotFoundError:
-    print(f"❌ FEIL: Fant ikke filen '{INPUT_FIL}' i mappen din!")
+    print(f"❌ FEIL: Fant ikke filen '{INPUT_FIL}'!")
     exit()
 
 vaer_data = []
-print(f"🚀 Starter datahenting for {len(kommuner)} kommuner (Svalbard/Jan Mayen ekskludert)...")
+print(f"🚀 Starter datahenting for {len(kommuner)} kommuner via GitHub Actions...")
 
 for i, kommune in enumerate(kommuner):
-    # Hopper over arktiske områder for å unngå 422-feil og skjevheter i listene
     if "svalbard" in kommune["kommune"].lower() or "jan mayen" in kommune["kommune"].lower():
         continue
 
     params = {"lat": kommune["lat"], "lon": kommune["lon"]}
     try:
         response = requests.get(NOWCAST_URL, params=params, headers=HEADERS)
-        
         if response.status_code == 200:
             data = response.json()
             timeseries = data["properties"]["timeseries"]
             
             if len(timeseries) > 0:
-                gjeldende_varsel = timeseries[0]
-                details = gjeldende_varsel["data"]["instant"]["details"]
+                details = timeseries[0]["data"]["instant"]["details"]
                 
                 regn = 0.0
-                if "next_1_hours" in gjeldende_varsel["data"]:
-                    regn = gjeldende_varsel["data"]["next_1_hours"]["details"].get("precipitation_amount", 0.0)
+                if "next_1_hours" in timeseries[0]["data"]:
+                    regn = timeseries[0]["data"]["next_1_hours"]["details"].get("precipitation_amount", 0.0)
                     
                 vaer_data.append({
                     "navn": kommune["kommune"],
+                    "fylke": kommune["fylke"],
                     "temp": details.get("air_temperature", -999),
                     "vind": details.get("wind_speed", 0),
-                    "regn": regn,
-                    "lat": kommune["lat"],
-                    "lon": kommune["lon"]
+                    "regn": regn
                 })
-        else:
-            print(f"⚠️ API-feil for {kommune['kommune']}: Statuskode {response.status_code}")
-            
-    except Exception as e:
-        print(f"❌ Teknisk feil ved henting av {kommune['kommune']}: {e}")
+    except Exception:
+        continue
         
-    if (i + 1) % 50 == 0:
-        print(f"Progress: {i + 1}/{len(kommuner)} kommuner sjekket...")
-        
-# time.sleep(0.05)
-
-print(f"\nHenting ferdig. Fant data for {len(vaer_data)} av {len(kommuner)} kommuner.")
+    # Siden GitHub har ubegrenset med tid per kjøring, bruker vi en høflig pause
+    time.sleep(0.1)
 
 gyldige_data = [k for k in vaer_data if k["temp"] != -999]
 
-if not gyldige_data:
-    print("❌ FEIL: Listen med gyldige værdata er helt tom. Ingen filer ble lagret.")
-    exit()
+if gyldige_data:
+    alle_varmest = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
+    alle_kaldest = sorted(gyldige_data, key=lambda x: x["temp"])
+    alle_vaatest = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
+    alle_vind    = sorted(gyldige_data, key=lambda x: x["vind"], reverse=True)
 
-# Sorterer ut Topp 10
-topp_varmest = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)[:10]
-topp_kaldest = sorted(gyldige_data, key=lambda x: x["temp"])[:10]
-topp_vaatest = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)[:10]
-topp_vind    = sorted(gyldige_data, key=lambda x: x["vind"], reverse=True)[:10]
+    resultat = {
+        "sist_oppdatert": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "varmest": alle_varmest[:10],
+        "kaldest": alle_kaldest[:10],
+        "vaatest": alle_vaatest[:10],
+        "mest_vind": alle_vind[:10],
+        "alle_kommuner": alle_varmest
+    }
 
-# Skriv ut resultatet i terminalen
-print("\n🏆 ====================================================== 🏆")
-print("             SANNTIDS VÆRTOPPLISTE (TOPP 10)              ")
-print("🏆 ====================================================== 🏆\n")
-
-print("☀️ TOPP 10 VARMEST:")
-for nr, k in enumerate(topp_varmest, 1):
-    print(f"  {nr:2d}. {k['navn']:<20} {k['temp']:>5} °C")
+    # SEND DATAENE TIL JSONBIN I STEDET FOR LOKAL FIL
+    url = f"https://jsonbin.io{JSONBIN_BIN_ID}"
+    headers = {
+        "Content-Type": "application/json",
+        "X-Master-Key": JSONBIN_API_KEY
+    }
     
-print("\n❄️ TOPP 10 KALDEST:")
-for nr, k in enumerate(topp_kaldest, 1):
-    print(f"  {nr:2d}. {k['navn']:<20} {k['temp']:>5} °C")
-    
-print("\n🌧️ TOPP 10 VÅTEST (NESTE TIME):")
-for nr, k in enumerate(topp_vaatest, 1):
-    print(f"  {nr:2d}. {k['navn']:<20} {k['regn']:>5} mm")
-    
-print("\n💨 TOPP 10 MEST VIND:")
-for nr, k in enumerate(topp_vind, 1):
-    print(f"  {nr:2d}. {k['navn']:<20} {k['vind']:>5} m/s")
-    
-print("\n==========================================================")
-
-# Strukturere og lagre til JSON-filen
-
-# Sorter hele listen én gang basert på temperatur (varmest til kaldest)
-alle_kommuner_sortert = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
-
-# Sorter de andre kategoriene fullstendig for søk og filtrering
-alle_kaldest_sortert = sorted(gyldige_data, key=lambda x: x["temp"])
-alle_vaatest_sortert = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
-alle_vind_sortert    = sorted(gyldige_data, key=lambda x: x["vind"], reverse=True)
-
-# Strukturere og lagre til JSON-filen
-resultat = {
-    "sist_oppdatert": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    
-    # Bevarer disse nøyaktig som før, slik at du ikke ødelegger det fine designet ditt:
-    "varmest": alle_kommuner_sortert[:10],
-    "kaldest": alle_kaldest_sortert[:10],
-    "vaatest": alle_vaatest_sortert[:10],
-    "mest_vind": alle_vind_sortert[:10],
-    
-    # NYTT: Sender med alle kommunene ferdig sortert slik at AI-en kan lage søkefunksjon
-    "alle_kommuner": alle_kommuner_sortert
-}
-
-with open(OUTPUT_FIL, "w", encoding="utf-8") as f:
-    json.dump(resultat, f, ensure_ascii=False, indent=4)
-    
-print(f"\n✅ SUKSESS! '{OUTPUT_FIL}' ble opprettet med data for alle {len(alle_kommuner_sortert)} kommuner til søkefunksjonen.")
+    res = requests.put(url, json=resultat, headers=headers)
+    if res.status_code == 200:
+        print("✅ Suksess! Værdataene er oppdatert og lagret eksternt på JSONBin.io!")
+    else:
+        print(f"❌ Feil ved lagring til JSONBin: Status {res.status_code}")
