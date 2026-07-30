@@ -60,7 +60,7 @@ for i, kommune in enumerate(kommuner):
     if (i + 1) % 50 == 0:
         print(f"Progress: {i + 1}/{len(kommuner)} kommuner sjekket...")
         
-    time.sleep(0.05)
+# time.sleep(0.05)
 
 print(f"\nHenting ferdig. Fant data for {len(vaer_data)} av {len(kommuner)} kommuner.")
 
