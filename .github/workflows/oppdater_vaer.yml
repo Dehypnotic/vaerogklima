@@ -2,15 +2,18 @@ name: Oppdater Vaer Data
 
 on:
   schedule:
-    # Kjører automatisk hvert 30. minutt hele døgnet
     - cron: '*/30 * * * *'
-  workflow_dispatch: # Gjør at du kan klikke på en knapp på GitHub for å teste skriptet manuelt
+  workflow_dispatch:
 
 jobs:
   oppdater:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Gir GitHub-roboten lov til å lagre og lagre den nye JSON-filen i repoet ditt
+      contents: write
+
+    # Tvinger GitHub til å bruke Node 20 for modulene, slik at du slipper advarsler
+    env:
+      FORCE_NODE_VERSION: 'node20'
 
     steps:
     - name: Hent kildekode

@@ -99,17 +99,17 @@ if (Array.isArray(kommunerData)) {
  */
 export async function fetchExtremesData() {
   const possiblePaths = [
-    './toppliste.json',
     './docs/toppliste.json',
-    'toppliste.json',
-    'docs/toppliste.json'
+    'docs/toppliste.json',
+    './toppliste.json',
+    'toppliste.json'
   ];
 
   let rawData = null;
 
   for (const path of possiblePaths) {
     try {
-      const res = await fetch(path);
+      const res = await fetch(`${path}?t=${Date.now()}`, { cache: 'no-store' });
       if (res.ok) {
         rawData = await res.json();
         if (rawData && (rawData.varmest || rawData.warmest)) {
