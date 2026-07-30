@@ -57,34 +57,41 @@ for i, kommune in enumerate(kommuner):
 
 gyldige_data = [k for k in vaer_data if k["temp"] != -999]
 
-if gyldige_data:
-    alle_varmest = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
-    alle_kaldest = sorted(gyldige_data, key=lambda x: x["temp"])
-    alle_vaatest = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
-    alle_vind    = sorted(gyldige_data, key=lambda x: x["vind"], reverse=True)
+# Hvis listen er tom, tvinger vi skriptet til å krasje så det SKINNER RØDT i GitHub Actions
+if not gyldige_data:
+    print(f"❌ KRITISK FEIL: Listen med værdata ble helt tom!")
+    print(f"Sjekket totalt {len(kommuner)} kommuner fra filen.")
+    if len(kommuner) == 0:
+        print(f"Bane brukt: {INPUT_FIL}")
+        print(f"Filer i mappen: {os.listdir(BASE_DIR) if os.path.exists(BASE_DIR) else 'Fant ikke mappen'}")
+    exit(1) # Tvinger GitHub til å vise rød feilmelding
 
-    resultat = {
-        "sist_oppdatert": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "varmest": alle_varmest[:10],
-        "kaldest": alle_kaldest[:10],
-        "vaatest": alle_vaatest[:10],
-        "mest_vind": alle_vind[:10],
-        "alle_kommuner": alle_varmest
-    }
+# Hvis alt er i orden, fortsetter vi som planlagt:
+alle_varmest = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
+alle_kaldest = sorted(gyldige_data, key=lambda x: x["temp"])
+alle_vaatest = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
+alle_vind    = sorted(gyldige_data, key=lambda x: x["vind"], reverse=True)
 
-    # KORREKTE HEADERE IHHT JSONBIN API DOKUMENTASJON
-    url = f"https://api.jsonbin.io/v3/b/{JSONBIN_BIN_ID}"
-    headers = {
-        "Content-Type": "application/json",
-        "X-Master-key": JSONBIN_API_KEY,      # Liten 'k' i Master-key!
-        "X-Bin-Versioning": "false"           # Overskriver dummydata istedenfor å lage ny versjon
-    }
-    
-    # Vi fjerner try/except akkurat her så GitHub-loggen faktisk VISER feilmeldingen hvis JSONBin avviser oss
-    res = requests.put(url, json=resultat, headers=headers)
-    if res.status_code == 200:
-        print("✅ SUKSESS! Værdataene ble overskrevet og lagret i skyen hos JSONBin.io!")
-    else:
-        print(f"❌ FEIL FRA JSONBIN: Status {res.status_code}. Melding: {res.text}")
+resultat = {
+    "sist_oppdatert": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    "varmest": alle_varmest[:10],
+    "kaldest": alle_kaldest[:10],
+    "vaatest": alle_vaatest[:10],
+    "mest_vind": alle_vind[:10],
+    "alle_kommuner": alle_varmest
+}
+
+url = f"https://jsonbin.io{JSONBIN_BIN_ID}"
+headers = {
+    "Content-Type": "application/json",
+    "X-Master-key": JSONBIN_API_KEY,
+    "X-Bin-Versioning": "false"
+}
+
+res = requests.put(url, json=resultat, headers=headers)
+if res.status_code == 200:
+    print("✅ SUKSESS! Værdataene ble overskrevet og lagret i skyen hos JSONBin.io!")
 else:
-    print("❌ FEIL: Listen med værdata ble tom.")
+    print(f"❌ FEIL FRA JSONBIN: Status {res.status_code}. Melding: {res.text}")
+    exit(1)
+
