@@ -94,30 +94,53 @@ if (Array.isArray(kommunerData)) {
   });
 }
 
+const JSONBIN_URL = 'https://api.jsonbin.io/v3/b/6a6bacc4f5f4af5e29d748d2';
+const JSONBIN_ACCESS_KEY = '$2a$10$er/dSLTpHud1ixIQtV50O.lUSWV00Xmw8.yf1jI3fVf9vRy49MYem';
+
 /**
- * Henter autogenerert toppliste.json fra docs-katalogen (oppdatert hvert 30. minutt)
+ * Henter sanntids toppliste fra JSONBin.io (med fallback til docs/toppliste.json)
  */
 export async function fetchExtremesData() {
-  const possiblePaths = [
-    './docs/toppliste.json',
-    'docs/toppliste.json',
-    './toppliste.json',
-    'toppliste.json'
-  ];
-
   let rawData = null;
 
-  for (const path of possiblePaths) {
-    try {
-      const res = await fetch(`${path}?t=${Date.now()}`, { cache: 'no-store' });
-      if (res.ok) {
-        rawData = await res.json();
-        if (rawData && (rawData.varmest || rawData.warmest)) {
-          break;
-        }
+  // 1. Prøv å hente sanntids toppliste fra JSONBin.io sky-tjenesten
+  try {
+    const res = await fetch(`${JSONBIN_URL}/latest?t=${Date.now()}`, {
+      headers: {
+        'X-Access-Key': JSONBIN_ACCESS_KEY,
+        'cache-control': 'no-cache'
       }
-    } catch (e) {
-      // prøv neste sti
+    });
+
+    if (res.ok) {
+      const jsonBinRes = await res.json();
+      rawData = jsonBinRes.record || jsonBinRes;
+    }
+  } catch (err) {
+    console.warn('Kunne ikke hente fra JSONBin.io, prøver lokal fil:', err);
+  }
+
+  // 2. Fallback til lokal toppliste.json dersom skyoppslag feiler
+  if (!rawData) {
+    const possiblePaths = [
+      './docs/toppliste.json',
+      'docs/toppliste.json',
+      './toppliste.json',
+      'toppliste.json'
+    ];
+
+    for (const path of possiblePaths) {
+      try {
+        const res = await fetch(`${path}?t=${Date.now()}`, { cache: 'no-store' });
+        if (res.ok) {
+          rawData = await res.json();
+          if (rawData && (rawData.varmest || rawData.warmest)) {
+            break;
+          }
+        }
+      } catch (e) {
+        // prøv neste sti
+      }
     }
   }
 
@@ -148,9 +171,12 @@ export async function fetchExtremesData() {
         else code = 0;
       }
 
+      const region = item.fylke || item.region || 'Kommune';
+
       return {
         name,
         navn: name,
+        fylke: item.fylke || '',
         temp,
         windSpeed,
         vind: windSpeed,
@@ -158,7 +184,7 @@ export async function fetchExtremesData() {
         regn: rainToday,
         lat,
         lon,
-        region: 'Kommune',
+        region,
         code
       };
     };
