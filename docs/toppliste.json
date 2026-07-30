@@ -1,0 +1,251 @@
+{
+    "sist_oppdatert": "2026-07-30 09:38:17",
+    "varmest": [
+        {
+            "navn": "Tokke",
+            "temp": 24.4,
+            "vind": 0.9,
+            "regn": 0.0
+        },
+        {
+            "navn": "Eidskog",
+            "temp": 24.0,
+            "vind": 3.8,
+            "regn": 0.0
+        },
+        {
+            "navn": "Aremark",
+            "temp": 23.8,
+            "vind": 3.4,
+            "regn": 0.4
+        },
+        {
+            "navn": "Lørenskog",
+            "temp": 23.4,
+            "vind": 5.3,
+            "regn": 0.0
+        },
+        {
+            "navn": "Sør-Odal",
+            "temp": 23.4,
+            "vind": 3.9,
+            "regn": 0.0
+        },
+        {
+            "navn": "Kviteseid",
+            "temp": 23.4,
+            "vind": 1.2,
+            "regn": 0.0
+        },
+        {
+            "navn": "Lier",
+            "temp": 23.2,
+            "vind": 5.0,
+            "regn": 0.2
+        },
+        {
+            "navn": "Jevnaker",
+            "temp": 23.2,
+            "vind": 4.0,
+            "regn": 0.0
+        },
+        {
+            "navn": "Seljord",
+            "temp": 23.2,
+            "vind": 1.1,
+            "regn": 0.0
+        },
+        {
+            "navn": "Ås",
+            "temp": 23.1,
+            "vind": 5.4,
+            "regn": 0.0
+        }
+    ],
+    "kaldest": [
+        {
+            "navn": "Lom",
+            "temp": 6.7,
+            "vind": 7.8,
+            "regn": 0.0
+        },
+        {
+            "navn": "Ulvik",
+            "temp": 7.8,
+            "vind": 2.1,
+            "regn": 0.3
+        },
+        {
+            "navn": "Rauma",
+            "temp": 7.9,
+            "vind": 3.2,
+            "regn": 0.0
+        },
+        {
+            "navn": "Vik",
+            "temp": 8.0,
+            "vind": 2.7,
+            "regn": 0.0
+        },
+        {
+            "navn": "Hemsedal",
+            "temp": 8.6,
+            "vind": 2.2,
+            "regn": 2.2
+        },
+        {
+            "navn": "Røyrvik",
+            "temp": 8.7,
+            "vind": 3.2,
+            "regn": 0.0
+        },
+        {
+            "navn": "Modalen",
+            "temp": 9.0,
+            "vind": 4.0,
+            "regn": 0.0
+        },
+        {
+            "navn": "Saltdal",
+            "temp": 9.1,
+            "vind": 1.6,
+            "regn": 0.0
+        },
+        {
+            "navn": "Hol",
+            "temp": 9.4,
+            "vind": 2.1,
+            "regn": 1.3
+        },
+        {
+            "navn": "Ibestad",
+            "temp": 9.5,
+            "vind": 3.9,
+            "regn": 0.4
+        }
+    ],
+    "vaatest": [
+        {
+            "navn": "Skien",
+            "temp": 20.8,
+            "vind": 2.9,
+            "regn": 8.5
+        },
+        {
+            "navn": "Holmestrand",
+            "temp": 22.0,
+            "vind": 3.0,
+            "regn": 3.3
+        },
+        {
+            "navn": "Ål",
+            "temp": 13.9,
+            "vind": 1.0,
+            "regn": 2.3
+        },
+        {
+            "navn": "Hemsedal",
+            "temp": 8.6,
+            "vind": 2.2,
+            "regn": 2.2
+        },
+        {
+            "navn": "Siljan",
+            "temp": 18.9,
+            "vind": 2.9,
+            "regn": 2.1
+        },
+        {
+            "navn": "Tromsø",
+            "temp": 15.5,
+            "vind": 1.3,
+            "regn": 1.8
+        },
+        {
+            "navn": "Balsfjord",
+            "temp": 16.0,
+            "vind": 1.3,
+            "regn": 1.6
+        },
+        {
+            "navn": "Ørland",
+            "temp": 13.3,
+            "vind": 2.9,
+            "regn": 1.5
+        },
+        {
+            "navn": "Øystre Slidre",
+            "temp": 13.2,
+            "vind": 1.5,
+            "regn": 1.3
+        },
+        {
+            "navn": "Hol",
+            "temp": 9.4,
+            "vind": 2.1,
+            "regn": 1.3
+        }
+    ],
+    "mest_vind": [
+        {
+            "navn": "Træna",
+            "temp": 12.6,
+            "vind": 9.5,
+            "regn": 0.0
+        },
+        {
+            "navn": "Herøy (Nordland)",
+            "temp": 13.1,
+            "vind": 8.4,
+            "regn": 0.0
+        },
+        {
+            "navn": "Båtsfjord",
+            "temp": 10.4,
+            "vind": 8.2,
+            "regn": 0.0
+        },
+        {
+            "navn": "Røst",
+            "temp": 12.4,
+            "vind": 8.0,
+            "regn": 0.0
+        },
+        {
+            "navn": "Lom",
+            "temp": 6.7,
+            "vind": 7.8,
+            "regn": 0.0
+        },
+        {
+            "navn": "Giske",
+            "temp": 13.3,
+            "vind": 7.4,
+            "regn": 0.0
+        },
+        {
+            "navn": "Storfjord",
+            "temp": 11.5,
+            "vind": 7.4,
+            "regn": 0.5
+        },
+        {
+            "navn": "Dønna",
+            "temp": 13.2,
+            "vind": 7.3,
+            "regn": 0.0
+        },
+        {
+            "navn": "Smøla",
+            "temp": 13.6,
+            "vind": 7.0,
+            "regn": 0.0
+        },
+        {
+            "navn": "Frøya",
+            "temp": 12.8,
+            "vind": 6.9,
+            "regn": 0.0
+        }
+    ]
+}
