@@ -100,24 +100,30 @@ for nr, k in enumerate(topp_vind, 1):
 print("\n==========================================================")
 
 # Strukturere og lagre til JSON-filen
+
+# Sorter hele listen én gang basert på temperatur (varmest til kaldest)
+alle_kommuner_sortert = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
+
+# Sorter de andre kategoriene fullstendig for søk og filtrering
+alle_kaldest_sortert = sorted(gyldige_data, key=lambda x: x["temp"])
+alle_vaatest_sortert = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
+alle_vind_sortert    = sorted(gyldige_data, key=lambda x: x["vind"], reverse=True)
+
+# Strukturere og lagre til JSON-filen
 resultat = {
     "sist_oppdatert": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    "varmest": topp_varmest,
-    "kaldest": topp_kaldest,
-    "vaatest": topp_vaatest,
-    "mest_vind": topp_vind
+    
+    # Bevarer disse nøyaktig som før, slik at du ikke ødelegger det fine designet ditt:
+    "varmest": alle_kommuner_sortert[:10],
+    "kaldest": alle_kaldest_sortert[:10],
+    "vaatest": alle_vaatest_sortert[:10],
+    "mest_vind": alle_vind_sortert[:10],
+    
+    # NYTT: Sender med alle kommunene ferdig sortert slik at AI-en kan lage søkefunksjon
+    "alle_kommuner": alle_kommuner_sortert
 }
 
 with open(OUTPUT_FIL, "w", encoding="utf-8") as f:
     json.dump(resultat, f, ensure_ascii=False, indent=4)
-
-try:
-    import os
-    if os.path.exists("public"):
-        with open("public/toppliste.json", "w", encoding="utf-8") as f:
-            json.dump(resultat, f, ensure_ascii=False, indent=4)
-except Exception:
-    pass
-
     
-print(f"\n✅ SUKSESS! '{OUTPUT_FIL}' ble opprettet i mappen din uten Svalbard/Jan Mayen.")
+print(f"\n✅ SUKSESS! '{OUTPUT_FIL}' ble opprettet med data for alle {len(alle_kommuner_sortert)} kommuner til søkefunksjonen.")
