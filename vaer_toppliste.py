@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_FIL = os.path.join(BASE_DIR, "kommuner_koordinater.json")
 NOWCAST_URL = "https://api.met.no/weatherapi/nowcast/2.0/complete"
 
-# Dine detaljer for JSONBin.io
+# Dine ferdigutfylte detaljer for JSONBin.io
 JSONBIN_BIN_ID = "6a6bacc4f5f4af5e29d748d2"
 JSONBIN_API_KEY = "$2a$10$RKrUENVnz7CG/bSnyRnJcelPjzvDj7iTTHRnW.LmZ9zJQ26OchS3K"
 
@@ -33,16 +33,13 @@ forste_feil_skrevet = False
 print(f"🚀 Starter datahenting for {len(kommuner)} kommuner via GitHub Actions...")
 
 for i, kommune in enumerate(kommuner):
-    # Hopp over Svalbard, Jan Mayen eller elementer som mangler navn
     if not kommune.get("kommune") or "svalbard" in kommune["kommune"].lower() or "jan mayen" in kommune["kommune"].lower():
         continue
 
-    # SIKKERHETSSJEKK: Sørg for at koordinatene faktisk er reelle tall før vi sender dem til API-et
     try:
         lat_float = float(kommune["lat"])
         lon_float = float(kommune["lon"])
     except (ValueError, TypeError):
-        # Hvis koordinaten er tom eller tekst (f.eks ""), hopper vi elegant over raden
         continue
 
     params = {
@@ -54,11 +51,7 @@ for i, kommune in enumerate(kommuner):
         response = requests.get(NOWCAST_URL, params=params, headers=HEADERS, timeout=5)
         
         if response.status_code == 200:
-            # Sjekk om serveren faktisk sendte tekst før vi prøver å tolke den som JSON
             if not response.text or response.text.strip() == "":
-                if not forste_feil_skrevet:
-                    print(f"⚠️ API-feil for {kommune['kommune']}: Serveren returnerte et helt tomt svar.")
-                    forste_feil_skrevet = True
                 continue
                 
             data = response.json()
@@ -81,11 +74,11 @@ for i, kommune in enumerate(kommuner):
                 })
         else:
             if not forste_feil_skrevet:
-                print(f"⚠️ API-avvisning for {kommune['kommune']}: Statuskode {response.status_code}. Svar: {response.text[:200]}")
+                print(f"⚠️ API-avvisning for {kommune['kommune']}: Statuskode {response.status_code}.")
                 forste_feil_skrevet = True
     except Exception as e:
         if not forste_feil_skrevet:
-            print(f"❌ Teknisk feil/krasj under utlesing for {kommune['kommune']}: {str(e)}")
+            print(f"❌ Teknisk feil under utlesing for {kommune['kommune']}: {str(e)}")
             forste_feil_skrevet = True
         continue
         
@@ -95,7 +88,6 @@ gyldige_data = [k for k in vaer_data if k["temp"] != -999]
 
 if not gyldige_data:
     print(f"❌ KRITISK FEIL: Listen med værdata ble helt tom!")
-    print(f"Mottok totalt {len(vaer_data)} elementer inn i rålisten.")
     exit(1)
 
 # Sortering
@@ -113,7 +105,9 @@ resultat = {
     "alle_kommuner": alle_varmest
 }
 
-url = f"https://jsonbin.io{JSONBIN_BIN_ID}"
+# DEN RIKTIGE OG OFFISIELLE ENDEPUNKT-URL-EN TIL JSONBIN:
+url = f"https://api.jsonbin.io/v3/b/{JSONBIN_BIN_ID}"
+
 headers = {
     "Content-Type": "application/json",
     "X-Master-key": JSONBIN_API_KEY,
