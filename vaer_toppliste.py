@@ -19,7 +19,6 @@ HEADERS = {
 if not os.path.exists(INPUT_FIL):
     print(f"❌ KRITISK FEIL: Fant ikke koordinatfilen i mappen!")
     print(f"Forventet bane var: {INPUT_FIL}")
-    print(f"Filer i denne mappen: {os.listdir(BASE_DIR) if os.path.exists(BASE_DIR) else 'Ukjent'}")
     exit(1)
 
 try:
@@ -44,13 +43,13 @@ for i, kommune in enumerate(kommuner):
             timeseries = data["properties"]["timeseries"]
             
             if len(timeseries) > 0:
-                # VIKTIG RETTING: Henter ut det første elementet [0] i listen over tidsserier
-                gjeldende_time = timeseries[0]
-                details = gjeldende_time["data"]["instant"]["details"]
+                # Henter ut det første elementet (nyeste måling) i listen over tidsserier
+                gjeldende_varsel = timeseries[0]
+                details = gjeldende_varsel["data"]["instant"]["details"]
                 
                 regn = 0.0
-                if "next_1_hours" in gjeldende_time["data"]:
-                    regn = gjeldende_time["data"]["next_1_hours"]["details"].get("precipitation_amount", 0.0)
+                if "next_1_hours" in gjeldende_varsel["data"]:
+                    regn = gjeldende_varsel["data"]["next_1_hours"]["details"].get("precipitation_amount", 0.0)
                     
                 vaer_data.append({
                     "navn": kommune["kommune"],
@@ -60,22 +59,19 @@ for i, kommune in enumerate(kommuner):
                     "regn": regn
                 })
     except Exception as e:
-        # Hvis en enkelt kommune feiler, printer vi det ut så vi ser det i loggen
-        if (i + 1) % 50 == 0:
-            print(f"Siste tekniske feil underveis: {e}")
         continue
         
     time.sleep(0.1)
 
 gyldige_data = [k for k in vaer_data if k["temp"] != -999]
 
-# Sjekk om listen ble helt tom
+# Hvis listen er tom, tvinger vi skriptet til å krasje og vise hvorfor
 if not gyldige_data:
     print(f"❌ KRITISK FEIL: Listen med værdata ble helt tom!")
-    print(f"Prosessert totalt {len(vaer_data)} rå-elementer fra {len(kommuner)} kommuner.")
+    print(f"Mottok totalt {len(vaer_data)} svar, men ingen ble godkjent.")
     exit(1)
 
-# Sortering hvis alt er OK
+# Sortering
 alle_varmest = sorted(gyldige_data, key=lambda x: x["temp"], reverse=True)
 alle_kaldest = sorted(gyldige_data, key=lambda x: x["temp"])
 alle_vaatest = sorted(gyldige_data, key=lambda x: x["regn"], reverse=True)
