@@ -4,12 +4,12 @@ from datetime import datetime
 import requests
 
 INPUT_FIL = "kommuner_koordinater.json"
-NOWCAST_URL = "https://api.met.no/weatherapi/nowcast/2.0/complete"
+NOWCAST_URL = "https://met.no"
 
-# --- OPPGI DINE DETALJER FRA JSONBIN.IO HER ---
-JSONBIN_BIN_ID = "6a6bacc4f5f4af5e29d748d2"
-JSONBIN_API_KEY = "$2a$10$RKrUENVnz7CG/bSnyRnJcelPjzvDj7iTTHRnW.LmZ9zJQ26OchS3K"
-# ---------------------------------------------
+# --- HUSK Å SETTE INN DINE DETALJER FRA JSONBIN.IO HER ---
+JSONBIN_BIN_ID = "DIN_BIN_ID_HER"
+JSONBIN_API_KEY = "DIN_API_KEY_HER"
+# --------------------------------------------------------
 
 HEADERS = {
     "User-Agent": "KommuneVaerToppliste/1.0 (kontakt: dehypnotic@outlook.com)"
@@ -53,7 +53,6 @@ for i, kommune in enumerate(kommuner):
     except Exception:
         continue
         
-    # Siden GitHub har ubegrenset med tid per kjøring, bruker vi en høflig pause
     time.sleep(0.1)
 
 gyldige_data = [k for k in vaer_data if k["temp"] != -999]
@@ -73,15 +72,19 @@ if gyldige_data:
         "alle_kommuner": alle_varmest
     }
 
-    # SEND DATAENE TIL JSONBIN I STEDET FOR LOKAL FIL
-    url = f"https://jsonbin.io{JSONBIN_BIN_ID}"
+    # KORREKTE HEADERE IHHT JSONBIN API DOKUMENTASJON
+    url = f"https://api.jsonbin.io/v3/b/{JSONBIN_BIN_ID}"
     headers = {
         "Content-Type": "application/json",
-        "X-Master-Key": JSONBIN_API_KEY
+        "X-Master-key": JSONBIN_API_KEY,      # Liten 'k' i Master-key!
+        "X-Bin-Versioning": "false"           # Overskriver dummydata istedenfor å lage ny versjon
     }
     
+    # Vi fjerner try/except akkurat her så GitHub-loggen faktisk VISER feilmeldingen hvis JSONBin avviser oss
     res = requests.put(url, json=resultat, headers=headers)
     if res.status_code == 200:
-        print("✅ Suksess! Værdataene er oppdatert og lagret eksternt på JSONBin.io!")
+        print("✅ SUKSESS! Værdataene ble overskrevet og lagret i skyen hos JSONBin.io!")
     else:
-        print(f"❌ Feil ved lagring til JSONBin: Status {res.status_code}")
+        print(f"❌ FEIL FRA JSONBIN: Status {res.status_code}. Melding: {res.text}")
+else:
+    print("❌ FEIL: Listen med værdata ble tom.")
