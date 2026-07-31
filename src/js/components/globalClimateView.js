@@ -3,14 +3,14 @@
    ========================================================================== */
 
 import { Chart, registerables } from 'chart.js';
-import { getGlobalDataForRegion, GLOBAL_DATASETS, fetchNoaaSeaLevelData, fetchNoaaCo2Data } from '../api/globalClimateApi.js';
+import { getGlobalDataForRegion, GLOBAL_DATASETS, fetchNoaaSeaLevelData, fetchNoaaCo2Data, fetchNoaaEnsoData } from '../api/globalClimateApi.js';
 
 Chart.register(...registerables);
 
 let globalChartInstance = null;
 let currentGlobalRegion = 'global';
-let activeVariable = 'temp'; // 'temp' | 'co2' | 'sealevel' | 'ice'
-let activeGlobalRecordCategory = 'warmestYears'; // 'warmestYears' | 'fastestWarming' | 'co2Peaks' | 'highestSeaLevel'
+let activeVariable = 'temp'; // 'temp' | 'co2' | 'sealevel' | 'ice' | 'enso'
+let activeGlobalRecordCategory = 'warmestYears'; // 'warmestYears' | 'coldestYears' | 'elNino' | 'laNina'
 let currentGlobalData = null;
 
 export async function initGlobalClimateView() {
@@ -22,7 +22,7 @@ export async function initGlobalClimateView() {
     });
   }
 
-  // Variabel-velgere (Temperatur, CO2, Havnivå, Sjøis)
+  // Variabel-velgere (Temperatur, CO2, Havnivå, Sjøis, ENSO)
   const varBtns = document.querySelectorAll('.global-var-btn');
   varBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -66,6 +66,14 @@ export async function initGlobalClimateView() {
     }
   }).catch(() => {});
 
+  // Fetch live NOAA CPC ENSO (ONI) data in the background; refresh when ready
+  fetchNoaaEnsoData().then(() => {
+    if (currentGlobalData) {
+      currentGlobalData = getGlobalDataForRegion(currentGlobalRegion);
+      if (activeVariable === 'enso') renderGlobalChart(currentGlobalData);
+    }
+  }).catch(() => {});
+
   await updateGlobalDashboard();
 }
 
@@ -85,7 +93,6 @@ function updateGlobalKPIs(data) {
   if (tempEl) tempEl.textContent = `${data.kpis.globalTempAnomaly > 0 ? '+' : ''}${data.kpis.globalTempAnomaly} °C`;
   if (co2El) co2El.textContent = `${data.kpis.currentCo2Ppm} ppm`;
   if (seaEl) {
-    // Find most recent year with real NOAA sea level data
     const seaVal = data.kpis.seaLevelMm ?? data.series.filter(s => s.seaLevelMm !== null && s.seaLevelMm !== undefined).slice(-1)[0]?.seaLevelMm;
     seaEl.textContent = seaVal != null ? `+${seaVal} mm` : '–';
   }
@@ -113,9 +120,6 @@ function renderGlobalChart(data) {
   let datasetConfig = [];
   let yAxisLeftTitle = '';
   let yAxisLeftColor = '#00d2ff';
-  let yAxisRightTitle = '';
-  let yAxisRightColor = '#f59e0b';
-  let hasDualAxis = false;
 
   if (activeVariable === 'temp') {
     const anomalies = displaySeries.map(s => s.anomaly);
@@ -160,11 +164,9 @@ function renderGlobalChart(data) {
     yAxisLeftTitle = 'CO₂-konsentrasjon (ppm)';
     yAxisLeftColor = '#a855f7';
   } else if (activeVariable === 'sealevel') {
-    // Filter out years where NOAA has no data (null)
     const seaFiltered = displaySeries.filter(s => s.seaLevelMm !== null && s.seaLevelMm !== undefined);
     const seaYears = seaFiltered.map(s => s.year);
     const seaData = seaFiltered.map(s => s.seaLevelMm);
-    const years_ = seaYears; // override x-axis
     datasetConfig = [
       {
         type: 'line',
@@ -181,7 +183,6 @@ function renderGlobalChart(data) {
     yAxisLeftTitle = 'Havnivåstigning (mm rel. ~1880)';
     yAxisLeftColor = '#3b82f6';
 
-    // Build chart with filtered years instead of full series years
     const minVal2 = Math.min(...seaData);
     const maxVal2 = Math.max(...seaData);
     const pad2 = Math.max(1, (maxVal2 - minVal2) * 0.05);
@@ -213,7 +214,7 @@ function renderGlobalChart(data) {
         }
       }
     });
-    return; // already rendered above
+    return;
   } else if (activeVariable === 'ice') {
     const iceData = displaySeries.map(s => s.arcticIceArea);
     datasetConfig = [
@@ -231,6 +232,60 @@ function renderGlobalChart(data) {
     ];
     yAxisLeftTitle = 'Isutbredelse (mill. km²)';
     yAxisLeftColor = '#38bdf8';
+  } else if (activeVariable === 'enso') {
+    const ensoFiltered = displaySeries.filter(s => s.ensoOni !== null && s.ensoOni !== undefined && s.year >= 1950);
+    const ensoYears = ensoFiltered.map(s => s.year);
+    const ensoData = ensoFiltered.map(s => s.ensoOni);
+
+    datasetConfig = [
+      {
+        type: 'bar',
+        label: 'Oceanic Niño Index (ONI / SST-avvik) – NOAA CPC',
+        data: ensoData,
+        backgroundColor: ensoData.map(v => v >= 0.5 ? 'rgba(244, 63, 94, 0.85)' : (v <= -0.5 ? 'rgba(59, 130, 246, 0.85)' : 'rgba(148, 163, 184, 0.5)')),
+        borderColor: ensoData.map(v => v >= 0.5 ? '#f43f5e' : (v <= -0.5 ? '#3b82f6' : '#94a3b8')),
+        borderWidth: 1,
+        borderRadius: 2
+      }
+    ];
+    yAxisLeftTitle = 'ENSO Sjøtemperaturavvik (°C rel. normal)';
+    yAxisLeftColor = '#f43f5e';
+
+    globalChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: { labels: ensoYears, datasets: datasetConfig },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 }, usePointStyle: true } },
+          tooltip: {
+            backgroundColor: '#131b2e', titleColor: '#f0f4fc',
+            bodyColor: '#94a3b8', borderColor: 'rgba(255,255,255,0.15)',
+            borderWidth: 1, padding: 10,
+            callbacks: {
+              label: ctx => {
+                const val = ctx.parsed.y;
+                const status = val >= 0.5 ? '🔥 El Niño (Varm fase)' : (val <= -0.5 ? '❄️ La Niña (Kald fase)' : '⚪ Nøytral fase');
+                return `${status}: ${val > 0 ? '+' : ''}${val} °C`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { family: 'Inter', size: 11 } } },
+          y: {
+            position: 'left', beginAtZero: false,
+            min: -2.5, max: 3.0,
+            title: { display: true, text: yAxisLeftTitle, color: yAxisLeftColor, font: { family: 'Inter', size: 12, weight: '600' } },
+            grid: { color: 'rgba(255,255,255,0.08)' },
+            ticks: { color: yAxisLeftColor, font: { family: 'Inter', size: 11, weight: '600' }, callback: val => `${val > 0 ? '+' : ''}${val}°C` }
+          }
+        }
+      }
+    });
+    return;
   }
 
   const minVal = Math.min(...(datasetConfig[0]?.data || [0]));

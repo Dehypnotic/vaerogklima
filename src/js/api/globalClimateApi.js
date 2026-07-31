@@ -197,6 +197,76 @@ export async function fetchNoaaCo2Data() {
   }
 }
 
+// ==========================================================================
+// ENSO DATA: NOAA CPC Oceanic Niño Index (ONI) / NINO3.4 SST Anomaly Index
+// Source: NOAA Climate Prediction Center (cpc.ncep.noaa.gov/data/indices/oni.ascii.txt)
+// Baseline: 3-month running mean Sea Surface Temperature anomaly in Niño 3.4
+// Values ≥ +0.5 °C = El Niño, ≤ -0.5 °C = La Niña
+// ==========================================================================
+const NOAA_ENSO_ONI = {
+  1950: -1.53, 1951: 1.15, 1952: 0.53, 1953: 0.84, 1954: -0.9,
+  1955: -1.67, 1956: -1.11, 1957: 1.74, 1958: 1.81, 1959: 0.62,
+  1960: 0.27, 1961: -0.3, 1962: -0.43, 1963: 1.37, 1964: 1.07,
+  1965: 1.98, 1966: 1.37, 1967: -0.53, 1968: 0.98, 1969: 1.13,
+  1970: -1.15, 1971: -1.38, 1972: 2.12, 1973: -2.03, 1974: -1.84,
+  1975: -1.65, 1976: -1.56, 1977: 0.81, 1978: 0.69, 1979: 0.64,
+  1980: 0.59, 1981: -0.5, 1982: 2.23, 1983: 2.18, 1984: -1.14,
+  1985: -1.04, 1986: 1.22, 1987: 1.7, 1988: -1.85, 1989: -1.69,
+  1990: 0.41, 1991: 1.53, 1992: 1.71, 1993: 0.7, 1994: 1.09,
+  1995: -1.0, 1996: -0.9, 1997: 2.4, 1998: 2.24, 1999: -1.65,
+  2000: -1.66, 2001: -0.68, 2002: 1.31, 2003: 0.92, 2004: 0.7,
+  2005: -0.84, 2006: 0.94, 2007: -1.6, 2008: -1.64, 2009: 1.56,
+  2010: -1.64, 2011: -1.31, 2012: -0.72, 2013: -0.35, 2014: 0.77,
+  2015: 2.75, 2016: 2.63, 2017: -0.86, 2018: 0.97, 2019: 0.89,
+  2020: -1.2, 2021: -0.91, 2022: -0.97, 2023: 2.06, 2024: 1.92,
+  2025: -0.55, 2026: 0.98
+};
+
+let _cachedEnso = null;
+
+export async function fetchNoaaEnsoData() {
+  if (_cachedEnso) return _cachedEnso;
+
+  try {
+    const url = 'https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt';
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const text = await res.text();
+
+    const yearlyPeaks = {};
+    const lines = text.split('\n');
+
+    lines.forEach(line => {
+      line = line.trim();
+      if (!line || line.includes('SEAS') || line.includes('YR')) return;
+      const parts = line.split(/\s+/);
+      if (parts.length >= 4) {
+        const yr = parseInt(parts[1]);
+        const anom = parseFloat(parts[3]);
+        if (!isNaN(yr) && !isNaN(anom)) {
+          if (!yearlyPeaks[yr]) yearlyPeaks[yr] = [];
+          yearlyPeaks[yr].push(anom);
+        }
+      }
+    });
+
+    if (Object.keys(yearlyPeaks).length < 10) return null;
+
+    const result = {};
+    Object.entries(yearlyPeaks).forEach(([yr, vals]) => {
+      const maxA = Math.max(...vals);
+      const minA = Math.min(...vals);
+      const peak = Math.abs(maxA) >= Math.abs(minA) ? maxA : minA;
+      result[parseInt(yr)] = Number(peak.toFixed(2));
+    });
+
+    _cachedEnso = result;
+    return result;
+  } catch {
+    return null;
+  }
+}
+
 export const GLOBAL_DATASETS = {
   global: { name: 'Hele Verden (NASA GISTEMP v4 / NOAA NCEI)', baseTemp: 14.0, trendFactor: 1.0 },
   europe: { name: 'Europa Landflate (HadCRUT5 / Copernicus ERA5)', baseTemp: 9.2, trendFactor: 1.4 },
@@ -320,6 +390,11 @@ export function getGlobalClimateSeries(datasetKey = 'global') {
     ? _cachedSeaLevel
     : NOAA_SEA_LEVEL_MM;
 
+  // ENSO ONI index: use live NOAA CPC data if available, else fallback to NOAA_ENSO_ONI
+  const ensoLookup = (_cachedEnso && Object.keys(_cachedEnso).length > 10)
+    ? _cachedEnso
+    : NOAA_ENSO_ONI;
+
   const years = [];
   const startYear = 1880;
   const endYear = 2025;
@@ -329,6 +404,7 @@ export function getGlobalClimateSeries(datasetKey = 'global') {
     const co2 = co2Lookup[y] !== undefined ? co2Lookup[y] : 427.0;
     const tempAnomaly = rawAnomalies[idx] !== undefined ? rawAnomalies[idx] : 1.33;
     const seaLevelMm = seaLevelLookup[y] !== undefined ? seaLevelLookup[y] : null;
+    const ensoOni = ensoLookup[y] !== undefined ? ensoLookup[y] : null;
     
     let arcticIceArea = 7.8 - ((y - 1880) / 145) * 1.5;
     if (realSeaIceMin[y] !== undefined) {
@@ -340,7 +416,8 @@ export function getGlobalClimateSeries(datasetKey = 'global') {
       co2Ppm: Number(co2.toFixed(1)),
       tempAnomaly: tempAnomaly,
       seaLevelMm: seaLevelMm,
-      arcticIceArea: Number(arcticIceArea.toFixed(2))
+      arcticIceArea: Number(arcticIceArea.toFixed(2)),
+      ensoOni: ensoOni
     });
   }
 
