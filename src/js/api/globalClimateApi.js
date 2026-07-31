@@ -1,7 +1,203 @@
 /* ==========================================================================
    VÆR OG KLIMA I NORGE - GLOBAL CLIMATE API & DATASETS (NOAA/NASA/WMO/IPCC)
    ========================================================================== */
-export const GLOBAL_DATASETS = {
+
+// NOAA CO-OPS multi-station tide gauge composite (10 US long-running gauges)
+// Sources: San Francisco (1880), The Battery NY (1893), Honolulu (1911),
+//          Key West (1913), Charleston (1901), Seattle (1899),
+//          Portland ME (1912), San Diego (1906), Galveston (1904)
+// Rebaselined: 1880 ≈ 0 mm. Averaged across all stations reporting each year.
+// Data fetched live at startup if possible; these values serve as a reliable fallback.
+const NOAA_SEA_LEVEL_MM = {
+  1893: -8, 1894: -6, 1895: 11, 1896: 21, 1897: 7, 1898: -26, 1899: 1,
+  1900: 9, 1901: -6, 1902: 15, 1903: 10, 1904: -19, 1905: -20, 1906: -8, 1907: 5,
+  1908: -18, 1909: 4, 1910: -22, 1911: -1, 1912: -2, 1913: 13, 1914: 48, 1915: 48,
+  1916: 24, 1917: 6, 1918: 29, 1919: 50, 1920: 49, 1921: 61, 1922: 28, 1923: 32,
+  1924: 12, 1925: 32, 1926: 23, 1927: 40, 1928: 18, 1929: 32, 1930: 38, 1931: 31,
+  1932: 52, 1933: 59, 1934: 32, 1935: 65, 1936: 63, 1937: 76, 1938: 72, 1939: 60,
+  1940: 85, 1941: 106, 1942: 98, 1943: 100, 1944: 101, 1945: 102, 1946: 116,
+  1947: 118, 1948: 138, 1949: 115, 1950: 111, 1951: 124, 1952: 127, 1953: 128,
+  1954: 119, 1955: 108, 1956: 111, 1957: 144, 1958: 165, 1959: 150, 1960: 140,
+  1961: 147, 1962: 142, 1963: 129, 1964: 109, 1965: 141, 1966: 144, 1967: 150,
+  1968: 151, 1969: 181, 1970: 159, 1971: 155, 1972: 198, 1973: 187, 1974: 185,
+  1975: 181, 1976: 162, 1977: 171, 1978: 198, 1979: 184, 1980: 188, 1981: 188,
+  1982: 204, 1983: 263, 1984: 224, 1985: 193, 1986: 211, 1987: 210, 1988: 185,
+  1989: 182, 1990: 201, 1991: 230, 1992: 251, 1993: 241, 1994: 216, 1995: 256,
+  1996: 229, 1997: 265, 1998: 256, 1999: 211, 2000: 204, 2001: 201, 2002: 208,
+  2003: 224, 2004: 225, 2005: 251, 2006: 241, 2007: 216, 2008: 229, 2009: 248,
+  2010: 270, 2011: 252, 2012: 270, 2013: 254, 2014: 288, 2015: 297, 2016: 307,
+  2017: 314, 2018: 296, 2019: 333, 2020: 328, 2021: 315, 2022: 313, 2023: 360,
+  2024: 344, 2025: 307
+};
+
+// NOAA CO-OPS stations used for live fetch (station IDs)
+const NOAA_STATIONS = [
+  { name: 'San Francisco', id: '9414290' },
+  { name: 'The Battery',   id: '8518750' },
+  { name: 'Honolulu',      id: '1612340' },
+  { name: 'Key West',      id: '8724580' },
+  { name: 'Charleston',    id: '8665530' },
+  { name: 'Seattle',       id: '9447130' },
+  { name: 'Portland ME',   id: '8418150' },
+  { name: 'San Diego',     id: '9410170' },
+  { name: 'Galveston',     id: '8771450' },
+];
+
+let _cachedSeaLevel = null;
+
+async function fetchStationAnnual(stationId, beginYear, endYear) {
+  const results = {};
+  for (let startYr = beginYear; startYr <= endYear; startYr += 50) {
+    const endYr = Math.min(startYr + 49, endYear);
+    const url = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter` +
+      `?begin_date=${startYr}0101&end_date=${endYr}1231` +
+      `&product=monthly_mean&datum=MSL&station=${stationId}` +
+      `&time_zone=GMT&units=metric&format=json`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const data = (await res.json()).data || [];
+      const byYear = {};
+      data.forEach(row => {
+        const msl = parseFloat(row.MSL);
+        if (!isNaN(msl)) {
+          if (!byYear[row.year]) byYear[row.year] = [];
+          byYear[row.year].push(msl);
+        }
+      });
+      Object.entries(byYear).forEach(([yr, vals]) => {
+        results[parseInt(yr)] = vals.reduce((a, b) => a + b, 0) / vals.length;
+      });
+    } catch {}
+  }
+  return results;
+}
+
+export async function fetchNoaaSeaLevelData() {
+  if (_cachedSeaLevel) return _cachedSeaLevel;
+
+  try {
+    const stationData = await Promise.all(
+      NOAA_STATIONS.map(s => fetchStationAnnual(s.id, 1880, new Date().getFullYear()))
+    );
+
+    // Normalize each station to its 1920–1960 mean, then average years
+    const allYears = {};
+    stationData.forEach(annual => {
+      const baselineVals = Object.entries(annual)
+        .filter(([yr]) => parseInt(yr) >= 1920 && parseInt(yr) <= 1960)
+        .map(([, v]) => v);
+      if (baselineVals.length < 5) return;
+      const baseline = baselineVals.reduce((a, b) => a + b, 0) / baselineVals.length;
+      Object.entries(annual).forEach(([yr, v]) => {
+        const y = parseInt(yr);
+        if (!allYears[y]) allYears[y] = [];
+        allYears[y].push(v - baseline);
+      });
+    });
+
+    // Average across stations (require ≥2), rebaseline 1880–1900 → 0
+    const combined = {};
+    Object.entries(allYears).forEach(([yr, vals]) => {
+      if (vals.length >= 2) combined[parseInt(yr)] = vals.reduce((a, b) => a + b, 0) / vals.length;
+    });
+
+    const earlyVals = Object.entries(combined)
+      .filter(([yr]) => parseInt(yr) <= 1900)
+      .map(([, v]) => v);
+    const offset = earlyVals.length > 0 ? earlyVals.reduce((a, b) => a + b, 0) / earlyVals.length : 0;
+
+    const result = {};
+    Object.entries(combined).forEach(([yr, v]) => {
+      result[parseInt(yr)] = Math.round((v - offset) * 1000);
+    });
+
+    _cachedSeaLevel = result;
+    return result;
+  } catch {
+    return null;
+  }
+}
+
+// ==========================================================================
+// CO₂ DATA: Law Dome ice core (1880–1958) + NOAA GML Mauna Loa (1959–2025)
+// Ice core: MacFarling Meure et al. 2006, Law Dome, Antarctica (NOAA NCEI)
+// Direct: Keeling Curve / NOAA GML gml.noaa.gov/ccgg/trends/
+// ==========================================================================
+const NOAA_CO2_PPM = {
+  // Law Dome ice core reconstruction (pre-Keeling):
+  1880: 291.1, 1881: 291.3, 1882: 291.5, 1883: 291.8, 1884: 292.0,
+  1885: 292.3, 1886: 292.6, 1887: 292.9, 1888: 293.2, 1889: 293.5,
+  1890: 293.8, 1891: 294.1, 1892: 294.4, 1893: 294.7, 1894: 295.0,
+  1895: 295.3, 1896: 295.7, 1897: 296.0, 1898: 296.3, 1899: 296.6,
+  1900: 296.9, 1901: 297.3, 1902: 297.6, 1903: 297.9, 1904: 298.2,
+  1905: 298.5, 1906: 298.9, 1907: 299.2, 1908: 299.5, 1909: 299.8,
+  1910: 300.1, 1911: 300.5, 1912: 300.8, 1913: 301.1, 1914: 301.4,
+  1915: 301.8, 1916: 302.1, 1917: 302.4, 1918: 302.7, 1919: 303.0,
+  1920: 303.3, 1921: 303.6, 1922: 303.9, 1923: 304.2, 1924: 304.5,
+  1925: 304.8, 1926: 305.1, 1927: 305.4, 1928: 305.7, 1929: 306.0,
+  1930: 306.3, 1931: 306.6, 1932: 306.9, 1933: 307.2, 1934: 307.5,
+  1935: 307.7, 1936: 308.0, 1937: 308.3, 1938: 308.6, 1939: 308.9,
+  1940: 309.2, 1941: 309.4, 1942: 309.7, 1943: 310.0, 1944: 310.2,
+  1945: 310.5, 1946: 310.7, 1947: 310.9, 1948: 311.1, 1949: 311.3,
+  1950: 311.5, 1951: 311.7, 1952: 311.9, 1953: 312.1, 1954: 312.2,
+  1955: 312.4, 1956: 312.7, 1957: 313.1, 1958: 315.0,
+  // NOAA GML Mauna Loa Observatory (Keeling Curve — authoritative direct measurements):
+  1959: 315.98, 1960: 316.91, 1961: 317.64, 1962: 318.45, 1963: 318.99,
+  1964: 319.62, 1965: 320.04, 1966: 321.37, 1967: 322.18, 1968: 323.05,
+  1969: 324.62, 1970: 325.68, 1971: 326.32, 1972: 327.46, 1973: 329.68,
+  1974: 330.19, 1975: 331.13, 1976: 332.03, 1977: 333.84, 1978: 335.41,
+  1979: 336.84, 1980: 338.76, 1981: 340.12, 1982: 341.48, 1983: 343.15,
+  1984: 344.87, 1985: 346.35, 1986: 347.61, 1987: 349.31, 1988: 351.69,
+  1989: 353.20, 1990: 354.45, 1991: 355.70, 1992: 356.54, 1993: 357.21,
+  1994: 358.96, 1995: 360.97, 1996: 362.74, 1997: 363.88, 1998: 366.84,
+  1999: 368.54, 2000: 369.71, 2001: 371.32, 2002: 373.45, 2003: 375.98,
+  2004: 377.70, 2005: 379.98, 2006: 382.09, 2007: 384.02, 2008: 385.83,
+  2009: 387.64, 2010: 390.10, 2011: 391.85, 2012: 394.06, 2013: 396.74,
+  2014: 398.81, 2015: 401.01, 2016: 404.41, 2017: 406.76, 2018: 408.72,
+  2019: 411.65, 2020: 414.21, 2021: 416.41, 2022: 418.53, 2023: 421.08,
+  2024: 424.61, 2025: 427.35
+};
+
+let _cachedCo2 = null;
+
+export async function fetchNoaaCo2Data() {
+  if (_cachedCo2) return _cachedCo2;
+
+  try {
+    // NOAA GML annual mean CO2 – Mauna Loa Observatory
+    const url = 'https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_annmean_mlo.txt';
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const text = await res.text();
+
+    const mloData = {};
+    text.split('\n').forEach(line => {
+      line = line.trim();
+      if (!line || line.startsWith('#')) return;
+      const parts = line.split(/\s+/);
+      if (parts.length >= 2) {
+        const yr = parseInt(parts[0]);
+        const ppm = parseFloat(parts[1]);
+        if (!isNaN(yr) && !isNaN(ppm)) mloData[yr] = ppm;
+      }
+    });
+
+    if (Object.keys(mloData).length < 10) return null;
+
+    // Merge: Law Dome pre-1959, Mauna Loa 1959+
+    _cachedCo2 = { ...NOAA_CO2_PPM };
+    Object.entries(mloData).forEach(([yr, ppm]) => {
+      _cachedCo2[parseInt(yr)] = ppm;
+    });
+
+    return _cachedCo2;
+  } catch {
+    return null;
+  }
+}
+
+export const GLOBAL_DATASETS = {
   global: { name: 'Hele Verden (NASA GISTEMP v4 / NOAA NCEI)', baseTemp: 14.0, trendFactor: 1.0 },
   europe: { name: 'Europa Landflate (HadCRUT5 / Copernicus ERA5)', baseTemp: 9.2, trendFactor: 1.4 },
   north_hemisphere: { name: 'Nordlige Halvkule (NOAA NCEI)', baseTemp: 14.8, trendFactor: 1.25 },
@@ -111,41 +307,18 @@ export function getGlobalClimateSeries(datasetKey = 'global') {
     2020: 3.82, 2021: 4.72, 2022: 4.67, 2023: 4.23, 2024: 4.28, 2025: 4.10
   };
 
-  const realCo2Ppm = {
-    1880: 290.8, 1881: 291.4, 1882: 291.9, 1883: 292.4, 1884: 292.9, 1885: 293.4, 1886: 293.9, 1887: 294.3, 1888: 294.8, 1889: 295.2,
-    1890: 295.6, 1891: 296.0, 1892: 296.4, 1893: 296.8, 1894: 297.2, 1895: 297.5, 1896: 297.9, 1897: 298.3, 1898: 298.6, 1899: 299.0,
-    1900: 299.3, 1901: 299.7, 1902: 300.0, 1903: 300.4, 1904: 300.7, 1905: 301.1, 1906: 301.4, 1907: 301.8, 1908: 302.2, 1909: 302.5,
-    1910: 302.9, 1911: 303.3, 1912: 303.7, 1913: 304.1, 1914: 304.5, 1915: 304.9, 1916: 305.3, 1917: 305.7, 1918: 306.2, 1919: 306.6,
-    1920: 307.0, 1921: 307.5, 1922: 307.9, 1923: 308.4, 1924: 308.8, 1925: 309.3, 1926: 309.8, 1927: 310.2, 1928: 310.7, 1929: 311.2,
-    1930: 311.6, 1931: 312.0, 1932: 312.4, 1933: 312.8, 1934: 313.2, 1935: 313.6, 1936: 314.0, 1937: 314.4, 1938: 314.8, 1939: 315.2,
-    1940: 315.6, 1941: 316.0, 1942: 316.3, 1943: 316.6, 1944: 316.9, 1945: 317.2, 1946: 317.4, 1947: 317.6, 1948: 317.8, 1949: 318.0,
-    1950: 318.2, 1951: 318.4, 1952: 318.6, 1953: 318.9, 1954: 319.2, 1955: 319.6, 1956: 320.0, 1957: 320.4, 1958: 315.7, 1959: 315.98,
-    1960: 316.91, 1961: 317.64, 1962: 318.45, 1963: 318.99, 1964: 319.62, 1965: 320.04, 1966: 321.38, 1967: 322.16, 1968: 323.04, 1969: 324.62,
-    1970: 325.68, 1971: 326.32, 1972: 327.46, 1973: 329.68, 1974: 330.18, 1975: 331.11, 1976: 332.04, 1977: 333.84, 1978: 335.41, 1979: 336.84,
-    1980: 338.75, 1981: 340.12, 1982: 341.45, 1983: 343.05, 1984: 344.65, 1985: 346.12, 1986: 347.42, 1987: 349.19, 1988: 351.57, 1989: 353.12,
-    1990: 354.39, 1991: 355.61, 1992: 356.41, 1993: 357.10, 1994: 358.83, 1995: 360.82, 1996: 362.61, 1997: 363.73, 1998: 366.70, 1999: 368.38,
-    2000: 369.55, 2001: 371.14, 2002: 373.28, 2003: 375.80, 2004: 377.52, 2005: 379.80, 2006: 381.90, 2007: 383.79, 2008: 385.60, 2009: 387.43,
-    2010: 389.90, 2011: 391.65, 2012: 393.86, 2013: 396.52, 2014: 398.65, 2015: 400.83, 2016: 404.24, 2017: 406.55, 2018: 408.52, 2019: 411.44,
-    2020: 414.24, 2021: 416.45, 2022: 418.56, 2023: 421.08, 2024: 424.12, 2025: 426.50
-  };
+  // CO2 data: Law Dome ice core (1880–1958) + NOAA GML Mauna Loa (1959–2025)
+  // Ice core: MacFarling Meure et al. 2006, Law Dome, Antarctica
+  // Mauna Loa: Keeling et al. / NOAA GML (gml.noaa.gov/ccgg/trends/)
+  // Live NOAA fetch updates this at runtime if available.
+  const co2Lookup = (_cachedCo2 && Object.keys(_cachedCo2).length > 10)
+    ? _cachedCo2
+    : NOAA_CO2_PPM;
 
-  const realSeaLevelRiseMm = {
-    1880: 0, 1881: 4, 1882: 8, 1883: 11, 1884: 12, 1885: 14, 1886: 15, 1887: 17, 1888: 19, 1889: 21,
-    1890: 23, 1891: 24, 1892: 26, 1893: 28, 1894: 29, 1895: 31, 1896: 33, 1897: 35, 1898: 36, 1899: 38,
-    1900: 40, 1901: 42, 1902: 43, 1903: 45, 1904: 46, 1905: 48, 1906: 50, 1907: 51, 1908: 53, 1909: 55,
-    1910: 56, 1911: 58, 1912: 59, 1913: 61, 1914: 63, 1915: 65, 1916: 67, 1917: 68, 1918: 70, 1919: 72,
-    1920: 74, 1921: 76, 1922: 78, 1923: 80, 1924: 82, 1925: 84, 1926: 86, 1927: 88, 1928: 90, 1929: 92,
-    1930: 94, 1931: 96, 1932: 98, 1933: 100, 1934: 102, 1935: 104, 1936: 106, 1937: 108, 1938: 110, 1939: 112,
-    1940: 114, 1941: 116, 1942: 118, 1943: 120, 1944: 122, 1945: 124, 1946: 125, 1947: 127, 1948: 129, 1949: 131,
-    1950: 133, 1951: 135, 1952: 137, 1953: 139, 1954: 141, 1955: 143, 1956: 144, 1957: 146, 1958: 148, 1959: 150,
-    1960: 152, 1961: 154, 1962: 156, 1963: 158, 1964: 160, 1965: 161, 1966: 163, 1967: 165, 1968: 167, 1969: 169,
-    1970: 171, 1971: 173, 1972: 175, 1973: 177, 1974: 178, 1975: 180, 1976: 182, 1977: 184, 1978: 186, 1979: 188,
-    1980: 190, 1981: 192, 1982: 194, 1983: 196, 1984: 198, 1985: 200, 1986: 202, 1987: 204, 1988: 206, 1989: 208,
-    1990: 210, 1991: 212, 1992: 214, 1993: 216, 1994: 219, 1995: 222, 1996: 225, 1997: 229, 1998: 232, 1999: 235,
-    2000: 238, 2001: 241, 2002: 244, 2003: 247, 2004: 250, 2005: 253, 2006: 256, 2007: 259, 2008: 262, 2009: 265,
-    2010: 268, 2011: 264, 2012: 274, 2013: 278, 2014: 282, 2015: 287, 2016: 291, 2017: 295, 2018: 299, 2019: 304,
-    2020: 308, 2021: 312, 2022: 316, 2023: 321, 2024: 325, 2025: 330
-  };
+  // Sea level: use the live NOAA data if available (populated async), else fallback to NOAA_SEA_LEVEL_MM
+  const seaLevelLookup = (_cachedSeaLevel && Object.keys(_cachedSeaLevel).length > 10)
+    ? _cachedSeaLevel
+    : NOAA_SEA_LEVEL_MM;
 
   const years = [];
   const startYear = 1880;
@@ -153,9 +326,9 @@ export function getGlobalClimateSeries(datasetKey = 'global') {
 
   for (let y = startYear; y <= endYear; y++) {
     const idx = y - startYear;
-    const co2 = realCo2Ppm[y] !== undefined ? realCo2Ppm[y] : 426.5;
+    const co2 = co2Lookup[y] !== undefined ? co2Lookup[y] : 427.0;
     const tempAnomaly = rawAnomalies[idx] !== undefined ? rawAnomalies[idx] : 1.33;
-    const seaLevelMm = realSeaLevelRiseMm[y] !== undefined ? realSeaLevelRiseMm[y] : 330;
+    const seaLevelMm = seaLevelLookup[y] !== undefined ? seaLevelLookup[y] : null;
     
     let arcticIceArea = 7.8 - ((y - 1880) / 145) * 1.5;
     if (realSeaIceMin[y] !== undefined) {
@@ -237,6 +410,9 @@ export function getGlobalDataForRegion(regionKey = 'global') {
     ]
   };
 
+  // Find most recent year with NOAA sea level reading
+  const latestSeaEntry = [...series].reverse().find(s => s.seaLevelMm !== null && s.seaLevelMm !== undefined);
+
   return {
     regionName: dataset.name,
     series,
@@ -244,8 +420,8 @@ export function getGlobalDataForRegion(regionKey = 'global') {
     kpis: {
       globalTempAnomaly: latest.anomaly,
       currentCo2Ppm: latest.co2Ppm,
-      seaLevelMm: latest.seaLevelMm,
-      seaLevelRiseMm: latest.seaLevelMm,
+      seaLevelMm: latestSeaEntry ? latestSeaEntry.seaLevelMm : null,
+      seaLevelRiseMm: latestSeaEntry ? latestSeaEntry.seaLevelMm : null,
       arcticIceArea: latest.arcticIceArea,
       arcticIceMin: latest.arcticIceArea
     }

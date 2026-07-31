@@ -3,7 +3,7 @@
    ========================================================================== */
 
 import { Chart, registerables } from 'chart.js';
-import { getGlobalDataForRegion, GLOBAL_DATASETS } from '../api/globalClimateApi.js';
+import { getGlobalDataForRegion, GLOBAL_DATASETS, fetchNoaaSeaLevelData, fetchNoaaCo2Data } from '../api/globalClimateApi.js';
 
 Chart.register(...registerables);
 
@@ -48,6 +48,24 @@ export async function initGlobalClimateView() {
     });
   });
 
+  // Fetch live NOAA tide gauge data in the background; refresh when ready
+  fetchNoaaSeaLevelData().then(() => {
+    if (currentGlobalData) {
+      currentGlobalData = getGlobalDataForRegion(currentGlobalRegion);
+      if (activeVariable === 'sealevel') renderGlobalChart(currentGlobalData);
+      updateGlobalKPIs(currentGlobalData);
+    }
+  }).catch(() => {});
+
+  // Fetch live NOAA GML CO2 data (Mauna Loa) in the background; refresh when ready
+  fetchNoaaCo2Data().then(() => {
+    if (currentGlobalData) {
+      currentGlobalData = getGlobalDataForRegion(currentGlobalRegion);
+      if (activeVariable === 'co2') renderGlobalChart(currentGlobalData);
+      updateGlobalKPIs(currentGlobalData);
+    }
+  }).catch(() => {});
+
   await updateGlobalDashboard();
 }
 
@@ -66,7 +84,11 @@ function updateGlobalKPIs(data) {
 
   if (tempEl) tempEl.textContent = `${data.kpis.globalTempAnomaly > 0 ? '+' : ''}${data.kpis.globalTempAnomaly} °C`;
   if (co2El) co2El.textContent = `${data.kpis.currentCo2Ppm} ppm`;
-  if (seaEl) seaEl.textContent = `+${data.kpis.seaLevelMm} mm`;
+  if (seaEl) {
+    // Find most recent year with real NOAA sea level data
+    const seaVal = data.kpis.seaLevelMm ?? data.series.filter(s => s.seaLevelMm !== null && s.seaLevelMm !== undefined).slice(-1)[0]?.seaLevelMm;
+    seaEl.textContent = seaVal != null ? `+${seaVal} mm` : '–';
+  }
   if (iceEl) iceEl.textContent = `${data.kpis.arcticIceArea} mill. km²`;
 }
 
@@ -125,7 +147,7 @@ function renderGlobalChart(data) {
     datasetConfig = [
       {
         type: 'line',
-        label: 'Atmosfærisk CO₂ (ppm)',
+        label: 'Atmosfærisk CO₂ (ppm) – NOAA GML / Mauna Loa',
         data: co2Data,
         borderColor: '#a855f7',
         backgroundColor: 'rgba(168, 85, 247, 0.15)',
@@ -138,11 +160,15 @@ function renderGlobalChart(data) {
     yAxisLeftTitle = 'CO₂-konsentrasjon (ppm)';
     yAxisLeftColor = '#a855f7';
   } else if (activeVariable === 'sealevel') {
-    const seaData = displaySeries.map(s => s.seaLevelMm);
+    // Filter out years where NOAA has no data (null)
+    const seaFiltered = displaySeries.filter(s => s.seaLevelMm !== null && s.seaLevelMm !== undefined);
+    const seaYears = seaFiltered.map(s => s.year);
+    const seaData = seaFiltered.map(s => s.seaLevelMm);
+    const years_ = seaYears; // override x-axis
     datasetConfig = [
       {
         type: 'line',
-        label: 'Global Havnivåstigning (mm)',
+        label: 'Global Havnivåstigning (mm) – NOAA CO-OPS',
         data: seaData,
         borderColor: '#3b82f6',
         backgroundColor: 'rgba(59, 130, 246, 0.15)',
@@ -152,8 +178,42 @@ function renderGlobalChart(data) {
         tension: 0.3
       }
     ];
-    yAxisLeftTitle = 'Havnivåstigning (mm)';
+    yAxisLeftTitle = 'Havnivåstigning (mm rel. ~1880)';
     yAxisLeftColor = '#3b82f6';
+
+    // Build chart with filtered years instead of full series years
+    const minVal2 = Math.min(...seaData);
+    const maxVal2 = Math.max(...seaData);
+    const pad2 = Math.max(1, (maxVal2 - minVal2) * 0.05);
+    globalChartInstance = new Chart(ctx, {
+      type: 'line',
+      data: { labels: seaYears, datasets: datasetConfig },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 }, usePointStyle: true } },
+          tooltip: {
+            backgroundColor: '#131b2e', titleColor: '#f0f4fc',
+            bodyColor: '#94a3b8', borderColor: 'rgba(255,255,255,0.15)',
+            borderWidth: 1, padding: 10,
+            callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} mm` }
+          }
+        },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { family: 'Inter', size: 11 } } },
+          y: {
+            position: 'left', beginAtZero: false,
+            min: Math.floor(minVal2 - pad2), max: Math.ceil(maxVal2 + pad2),
+            title: { display: true, text: yAxisLeftTitle, color: yAxisLeftColor, font: { family: 'Inter', size: 12, weight: '600' } },
+            grid: { color: 'rgba(255,255,255,0.08)' },
+            ticks: { color: yAxisLeftColor, font: { family: 'Inter', size: 11, weight: '600' }, callback: val => `${val} mm` }
+          }
+        }
+      }
+    });
+    return; // already rendered above
   } else if (activeVariable === 'ice') {
     const iceData = displaySeries.map(s => s.arcticIceArea);
     datasetConfig = [
