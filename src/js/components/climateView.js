@@ -193,15 +193,15 @@ function updateKPICards(data) {
   }
   if (tempDescEl) tempDescEl.textContent = `For ${locText} fra 1961–1990 normal`;
 
-  // Dynamisk beregnet nedbørsendring fra baseline til sist målte år
+  // Dynamisk beregnet nedbørsendring basert på 10-års glidende klimatrend (1900-1909 vs 2016-2025)
   if (rainLabelEl) rainLabelEl.textContent = `Nedbørsendring`;
-  if (rainIncEl && data.series && data.series.length > 0) {
-    const latestPrecip = data.series[data.series.length - 1].precipMm;
-    const firstPrecip = data.series[0].precipMm;
-    const diffPct = Math.round(((latestPrecip - firstPrecip) / firstPrecip) * 100);
+  if (rainIncEl && data.series && data.series.length >= 10) {
+    const first10Avg = data.series.slice(0, 10).reduce((sum, item) => sum + item.precipMm, 0) / 10;
+    const last10Avg = data.series.slice(-10).reduce((sum, item) => sum + item.precipMm, 0) / 10;
+    const diffPct = Math.round(((last10Avg - first10Avg) / first10Avg) * 100);
     rainIncEl.textContent = `${diffPct > 0 ? '+' : ''}${diffPct} %`;
   }
-  if (rainDescEl) rainDescEl.textContent = `Endring for ${seasonText}`;
+  if (rainDescEl) rainDescEl.textContent = `Trendøkning (${seasonText}) fra 1900 til i dag`;
 
   // Dynamisk varmeste registrert år for denne stasjonen og årstiden
   if (warmestLabelEl) warmestLabelEl.textContent = `Varmeste registrert (${seasonText})`;
@@ -315,6 +315,13 @@ function renderAnomalyChart(data) {
   const years = series.map(s => s.year);
   const anomalies = series.map(s => s.anomaly);
   const trends = series.map(s => s.trend);
+  const precipTrends = series.map((_, idx) => {
+    const start = Math.max(0, idx - 4);
+    const end = Math.min(series.length, idx + 5);
+    const window = series.slice(start, end);
+    const avg = window.reduce((sum, item) => sum + item.precipMm, 0) / window.length;
+    return Math.round(avg);
+  });
 
   // Beregn dynamisk min og max for uavhengig 100% vertikal utnyttelse for alle områder
   const minAnomaly = Math.min(...anomalies);
@@ -346,8 +353,20 @@ function renderAnomalyChart(data) {
           yAxisID: 'yTrend'
         },
         {
+          type: 'line',
+          label: '10-års Snittnedbør (mm)',
+          data: precipTrends,
+          borderColor: '#06b6d4',
+          borderWidth: 2,
+          borderDash: [4, 4],
+          pointRadius: 0,
+          tension: 0.4,
+          fill: false,
+          yAxisID: 'yPrecip'
+        },
+        {
           type: 'bar',
-          label: 'Temperaturavvik fra normal (°C)',
+          label: 'Temperaturavvik fra 1961–1990 normal (°C)',
           data: anomalies,
           backgroundColor: barColors,
           borderColor: borderColors,
@@ -384,6 +403,9 @@ function renderAnomalyChart(data) {
               if (ctx.dataset.yAxisID === 'yTrend') {
                 return `${ctx.dataset.label}: ${ctx.raw} °C`;
               }
+              if (ctx.dataset.yAxisID === 'yPrecip') {
+                return `${ctx.dataset.label}: ${ctx.raw} mm`;
+              }
               return `${ctx.dataset.label}: ${ctx.raw > 0 ? '+' : ''}${ctx.raw} °C`;
             }
           }
@@ -402,7 +424,7 @@ function renderAnomalyChart(data) {
           max: Math.ceil((maxAnomaly + anomalyPad) * 2) / 2,
           title: {
             display: true,
-            text: 'Temperaturavvik (°C)',
+            text: 'Temperaturavvik fra 1961–1990 normal (°C)',
             color: '#94a3b8',
             font: { family: 'Inter', size: 11, weight: '600' }
           },
@@ -420,15 +442,30 @@ function renderAnomalyChart(data) {
           max: Math.ceil((maxTrend + trendPad) * 2) / 2,
           title: {
             display: true,
-            text: '10-års Snitt (°C)',
+            text: '10-års Temp.snitt (°C)',
             color: '#f59e0b',
             font: { family: 'Inter', size: 11, weight: '600' }
           },
           grid: { drawOnChartArea: false },
           ticks: {
             color: '#f59e0b',
-            font: { family: 'Inter', size: 11, weight: '600' },
             callback: value => `${value}°C`
+          }
+        },
+        yPrecip: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          title: {
+            display: true,
+            text: '10-års Nedbørssnitt (mm)',
+            color: '#06b6d4',
+            font: { family: 'Inter', size: 11, weight: '600' }
+          },
+          grid: { drawOnChartArea: false },
+          ticks: {
+            color: '#06b6d4',
+            callback: value => `${value} mm`
           }
         }
       }
