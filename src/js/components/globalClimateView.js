@@ -85,11 +85,13 @@ export async function updateGlobalDashboard() {
 }
 
 function updateGlobalKPIs(data) {
+  const tempLabelEl = document.getElementById('g-kpi-temp-label');
   const tempEl = document.getElementById('g-kpi-temp');
   const co2El = document.getElementById('g-kpi-co2');
   const seaEl = document.getElementById('g-kpi-sea');
   const iceEl = document.getElementById('g-kpi-ice');
 
+  if (tempLabelEl && data.tempLabel) tempLabelEl.textContent = data.tempLabel;
   if (tempEl) tempEl.textContent = `${data.kpis.globalTempAnomaly > 0 ? '+' : ''}${data.kpis.globalTempAnomaly} °C`;
   if (co2El) co2El.textContent = `${data.kpis.currentCo2Ppm} ppm`;
   if (seaEl) {

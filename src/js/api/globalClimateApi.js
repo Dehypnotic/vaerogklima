@@ -268,11 +268,11 @@ export async function fetchNoaaEnsoData() {
 }
 
 export const GLOBAL_DATASETS = {
-  global: { name: 'Hele Verden (NASA GISTEMP v4 / NOAA NCEI)', baseTemp: 14.0, trendFactor: 1.0 },
-  europe: { name: 'Europa Landflate (HadCRUT5 / Copernicus ERA5)', baseTemp: 9.2, trendFactor: 1.4 },
-  north_hemisphere: { name: 'Nordlige Halvkule (NOAA NCEI)', baseTemp: 14.8, trendFactor: 1.25 },
-  tropics: { name: 'Tropene 30°N–30°S (NOAA NCEI)', baseTemp: 25.2, trendFactor: 0.85 },
-  south_hemisphere: { name: 'Sørlige Halvkule (NOAA NCEI)', baseTemp: 13.2, trendFactor: 0.75 }
+  global: { name: 'Hele Verden (NASA GISTEMP v4 / NOAA NCEI)', shortName: 'Global', tempLabel: 'Global Temperaturøkning', baseTemp: 14.0, trendFactor: 1.0 },
+  europe: { name: 'Europa Landflate (HadCRUT5 / Copernicus ERA5)', shortName: 'Europa', tempLabel: 'Temperaturøkning i Europa', baseTemp: 9.2, trendFactor: 1.4 },
+  north_hemisphere: { name: 'Nordlige Halvkule (NOAA NCEI)', shortName: 'Nordlige Halvkule', tempLabel: 'Temperaturøkning Nordlige Halvkule', baseTemp: 14.8, trendFactor: 1.25 },
+  tropics: { name: 'Tropene 30°N–30°S (NOAA NCEI)', shortName: 'Tropene', tempLabel: 'Temperaturøkning i Tropene', baseTemp: 25.2, trendFactor: 0.85 },
+  south_hemisphere: { name: 'Sørlige Halvkule (NOAA NCEI)', shortName: 'Sørlige Halvkule', tempLabel: 'Temperaturøkning Sørlige Halvkule', baseTemp: 13.2, trendFactor: 0.75 }
 };
 
 /**
@@ -492,6 +492,7 @@ export function getGlobalDataForRegion(regionKey = 'global') {
 
   return {
     regionName: dataset.name,
+    tempLabel: dataset.tempLabel || 'Global Temperaturøkning',
     series,
     records,
     kpis: {

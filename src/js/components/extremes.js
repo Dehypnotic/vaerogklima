@@ -7,6 +7,7 @@ import { getWeatherInfo } from '../utils/weatherIcons.js';
 
 let currentExtremesData = null;
 let activeCategory = 'warmest';
+let activeFylke = 'all';
 let onSelectLocationCallback = null;
 
 export async function initExtremes(onSelectLocation) {
@@ -15,6 +16,7 @@ export async function initExtremes(onSelectLocation) {
   const container = document.getElementById('extremes-container');
   const timestampEl = document.getElementById('extremes-timestamp');
   const categoryBtns = document.querySelectorAll('.extremes-section .pill-btn');
+  const fylkeSelect = document.getElementById('extremes-fylke-select');
 
   // Kategori-knappenes lyttere
   categoryBtns.forEach(btn => {
@@ -25,6 +27,14 @@ export async function initExtremes(onSelectLocation) {
       renderExtremesGrid();
     });
   });
+
+  // Fylke-velgerens lytter
+  if (fylkeSelect) {
+    fylkeSelect.addEventListener('change', (e) => {
+      activeFylke = e.target.value;
+      renderExtremesGrid();
+    });
+  }
 
   // Hent data
   try {
@@ -45,10 +55,39 @@ function renderExtremesGrid() {
   const container = document.getElementById('extremes-container');
   if (!container || !currentExtremesData) return;
 
-  const list = currentExtremesData[activeCategory] || [];
+  let list = [];
+  if (!activeFylke || activeFylke === 'all') {
+    list = currentExtremesData[activeCategory] || [];
+  } else {
+    const rawAll = (currentExtremesData.allProcessed && currentExtremesData.allProcessed.length > 0)
+      ? currentExtremesData.allProcessed
+      : [
+          ...(currentExtremesData.warmest || []),
+          ...(currentExtremesData.coldest || []),
+          ...(currentExtremesData.wettest || []),
+          ...(currentExtremesData.windiest || [])
+        ];
+
+    const targetFylke = activeFylke.trim().toLowerCase();
+    const fylkeItems = rawAll.filter(k => {
+      const f1 = (k.fylke || '').trim().toLowerCase();
+      const f2 = (k.region || '').trim().toLowerCase();
+      return f1 === targetFylke || f2 === targetFylke || (f1 && targetFylke.includes(f1)) || (f2 && targetFylke.includes(f2));
+    });
+
+    if (activeCategory === 'warmest') {
+      list = [...fylkeItems].sort((a, b) => b.temp - a.temp).slice(0, 10);
+    } else if (activeCategory === 'coldest') {
+      list = [...fylkeItems].sort((a, b) => a.temp - b.temp).slice(0, 10);
+    } else if (activeCategory === 'wettest') {
+      list = [...fylkeItems].sort((a, b) => b.rainToday - a.rainToday).slice(0, 10);
+    } else if (activeCategory === 'windiest') {
+      list = [...fylkeItems].sort((a, b) => b.windSpeed - a.windSpeed).slice(0, 10);
+    }
+  }
 
   if (list.length === 0) {
-    container.innerHTML = '<div class="loading-skeleton">Ingen data for denne kategorien.</div>';
+    container.innerHTML = `<div class="loading-skeleton">Ingen registrerte data for ${activeFylke === 'all' ? 'denne kategorien' : activeFylke}.</div>`;
     return;
   }
 
@@ -73,14 +112,15 @@ function renderExtremesGrid() {
     }
 
     const placeName = item.name || item.navn || 'Ukjent';
-    const regionStr = item.region && item.region !== 'Kommune' ? `${item.region} • ` : '';
+    const regionName = item.region && item.region !== 'Kommune' ? item.region : '';
 
     return `
       <div class="extreme-item-card" data-lat="${item.lat}" data-lon="${item.lon}" data-name="${placeName}" data-region="${item.region || 'Kommune'}">
         <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
         <div class="extreme-info">
           <div class="extreme-place">${placeName}</div>
-          <div class="extreme-region">${regionStr}${weather.icon} ${weather.text}</div>
+          ${regionName ? `<div class="extreme-region">${regionName}</div>` : ''}
+          <div class="extreme-weather">${weather.icon} ${weather.text}</div>
         </div>
         <div class="extreme-metric ${metricClass}">${valueStr}</div>
       </div>

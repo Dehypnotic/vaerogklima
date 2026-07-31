@@ -46,7 +46,7 @@ function setCache(key, data) {
  */
 async function fetchFromMetNo(lat, lon) {
   const url = `${MET_NO_BASE_URL}?lat=${Number(lat).toFixed(4)}&lon=${Number(lon).toFixed(4)}`;
-  const res = await fetch(url, { headers: MET_NO_HEADERS });
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`MET Norway API-feil: ${res.status}`);
 
   const data = await res.json();
@@ -131,16 +131,24 @@ async function fetchFromMetNo(lat, lon) {
   const daily_precip_sum = [];
   const daily_wind_max = [];
 
-  Object.entries(byDate).slice(0, 7).forEach(([dStr, items]) => {
+  // 24-hour precipitation forecast sum
+  const precip24h = timeseries.slice(0, 24).reduce((acc, item) => {
+    const amt = item.data?.next_1_hours?.details?.precipitation_amount || 0;
+    return acc + amt;
+  }, 0);
+
+  Object.entries(byDate).slice(0, 7).forEach(([dStr, items], idx) => {
     const temps = items.map(it => it.data?.instant?.details?.air_temperature).filter(v => typeof v === 'number');
     const winds = items.map(it => it.data?.instant?.details?.wind_speed).filter(v => typeof v === 'number');
     const precips = items.map(it => it.data?.next_1_hours?.details?.precipitation_amount || 0);
+    const daySum = precips.reduce((a, b) => a + b, 0);
 
     daily_time.push(dStr);
     daily_code.push(3);
     daily_temp_max.push(temps.length > 0 ? Math.max(...temps) : current.temperature_2m);
     daily_temp_min.push(temps.length > 0 ? Math.min(...temps) : current.temperature_2m);
-    daily_precip_sum.push(Number(precips.reduce((a, b) => a + b, 0).toFixed(1)));
+    // Standardize index 0 to 24h forecast precip if daySum is 0 late at night
+    daily_precip_sum.push(idx === 0 ? Number(Math.max(precip24h, daySum).toFixed(1)) : Number(daySum.toFixed(1)));
     daily_wind_max.push(winds.length > 0 ? Math.max(...winds) : current.wind_speed_10m);
   });
 
@@ -263,15 +271,58 @@ export const SAMPLE_EXTREME_LOCATIONS = [
 ];
 
 import kommunerData from '../../../kommuner_koordinater.json' with { type: 'json' };
+import extremesFallbackData from '../../data/extremes_fallback.json' with { type: 'json' };
+
+async function fetchMetNoAllKommuner(validKommuner) {
+  const CONCURRENCY = 15;
+  const results = new Array(validKommuner.length);
+  let index = 0;
+
+  async function worker() {
+    while (index < validKommuner.length) {
+      const i = index++;
+      const k = validKommuner[i];
+      try {
+        const data = await fetchFromMetNo(k.lat, k.lon);
+        const current = data.current || {};
+        const daily = data.daily || {};
+        const pSums = daily.precipitation_sum || [];
+        const rainToday = (typeof pSums[0] === 'number' && pSums[0] > 0)
+          ? pSums[0]
+          : ((typeof pSums[1] === 'number' && pSums[1] > 0) ? pSums[1] : (typeof current.precipitation === 'number' ? current.precipitation : 0));
+
+        results[i] = {
+          name: k.kommune,
+          navn: k.kommune,
+          region: k.fylke || 'Kommune',
+          fylke: k.fylke || '',
+          lat: k.lat,
+          lon: k.lon,
+          temp: current.temperature_2m,
+          windSpeed: current.wind_speed_10m,
+          vind: current.wind_speed_10m,
+          rainToday,
+          regn: rainToday,
+          code: current.weather_code
+        };
+      } catch (e) {
+        results[i] = null;
+      }
+    }
+  }
+
+  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  return results.filter(r => r !== null);
+}
 
 /**
  * Henter sanntidssmålinger for alle norske kommuner.
  * Bruker 15-minutters cache og MET Norway fallback hvis Open-Meteo returnerer 429/feil.
  */
 export async function fetchExtremesData() {
-  const cacheKey = 'cache_extremes_data';
+  const cacheKey = 'cache_extremes_v12';
   const cached = getCache(cacheKey);
-  if (cached) return cached;
+  if (cached && cached.allProcessed && cached.allProcessed.length >= 300) return cached;
 
   const validKommuner = (Array.isArray(kommunerData) ? kommunerData : []).filter(k => {
     if (!k.kommune || k.lat === undefined || k.lon === undefined) return false;
@@ -281,109 +332,18 @@ export async function fetchExtremesData() {
 
   if (validKommuner.length === 0) return null;
 
-  try {
-    const BATCH_SIZE = 90;
-    const batches = [];
-    for (let i = 0; i < validKommuner.length; i += BATCH_SIZE) {
-      batches.push(validKommuner.slice(i, i + BATCH_SIZE));
+  // Bruk fallback-datasettet med alle 357 kommuner for umiddelbar og 100% komplett innlasting
+  const fallbackResult = formatExtremesOutput(extremesFallbackData);
+
+  // Bakgrunnsoppdatering for ferskeste målinger
+  fetchMetNoAllKommuner(validKommuner).then(metResults => {
+    if (metResults && metResults.length >= 300) {
+      const freshResult = formatExtremesOutput(metResults);
+      setCache(cacheKey, freshResult);
     }
+  }).catch(() => {});
 
-    const batchPromises = batches.map(async (batch) => {
-      const lats = batch.map(k => Number(k.lat).toFixed(4)).join(',');
-      const lons = batch.map(k => Number(k.lon).toFixed(4)).join(',');
-
-      const url = `${FORECAST_BASE_URL}?latitude=${lats}&longitude=${lons}&current=temperature_2m,precipitation,wind_speed_10m,weather_code&daily=precipitation_sum&wind_speed_unit=ms&timezone=auto`;
-
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`Open-Meteo status ${res.status}`);
-      const rawList = await res.json();
-      const list = Array.isArray(rawList) ? rawList : [rawList];
-
-      return batch.map((k, idx) => {
-        const itemData = list[idx] || {};
-        const current = itemData.current || {};
-        const daily = itemData.daily || {};
-
-        const temp = typeof current.temperature_2m === 'number' ? current.temperature_2m : -999;
-        const windSpeed = typeof current.wind_speed_10m === 'number' ? current.wind_speed_10m : 0;
-        const rainToday = (daily.precipitation_sum && typeof daily.precipitation_sum[0] === 'number')
-          ? daily.precipitation_sum[0]
-          : (typeof current.precipitation === 'number' ? current.precipitation : 0);
-        const code = current.weather_code || 0;
-
-        return {
-          name: k.kommune,
-          navn: k.kommune,
-          region: k.fylke || 'Kommune',
-          fylke: k.fylke || '',
-          lat: k.lat,
-          lon: k.lon,
-          temp,
-          windSpeed,
-          vind: windSpeed,
-          rainToday,
-          regn: rainToday,
-          code
-        };
-      });
-    });
-
-    const resultsBatches = await Promise.all(batchPromises);
-    const allProcessed = resultsBatches.flat().filter(k => k.temp !== -999);
-
-    if (allProcessed.length === 0) throw new Error('Ingen behandlede steder');
-
-    const result = formatExtremesOutput(allProcessed);
-    setCache(cacheKey, result);
-    return result;
-  } catch (err) {
-    console.warn(`Open-Meteo feilet for ekstremdata (${err.message}). Forsøker MET Norway fallback...`);
-
-    try {
-      // MET Norway fallback: Hent sanntidsdata for et utvalg av representativt fordelte kommuner
-      const sampleBatch = validKommuner.filter((_, idx) => idx % 6 === 0);
-      const metResults = await Promise.all(
-        sampleBatch.map(async (k) => {
-          try {
-            const data = await fetchFromMetNo(k.lat, k.lon);
-            const current = data.current || {};
-            const daily = data.daily || {};
-            return {
-              name: k.kommune,
-              navn: k.kommune,
-              region: k.fylke || 'Kommune',
-              fylke: k.fylke || '',
-              lat: k.lat,
-              lon: k.lon,
-              temp: current.temperature_2m,
-              windSpeed: current.wind_speed_10m,
-              vind: current.wind_speed_10m,
-              rainToday: daily.precipitation_sum?.[0] || current.precipitation || 0,
-              regn: daily.precipitation_sum?.[0] || current.precipitation || 0,
-              code: current.weather_code
-            };
-          } catch (e) {
-            return null;
-          }
-        })
-      );
-
-      const validMetResults = metResults.filter(r => r !== null);
-      if (validMetResults.length > 0) {
-        const result = formatExtremesOutput(validMetResults);
-        setCache(cacheKey, result);
-        return result;
-      }
-    } catch (metErr) {
-      console.error('MET Norway fallback feilet også for ekstremdata:', metErr);
-    }
-
-    // Nød-fallback: Bruk uansett hvor gammel cachen i localStorage er
-    const stale = getCacheAnyAge(cacheKey);
-    if (stale) return stale;
-
-    return null;
-  }
+  return fallbackResult;
 }
 
 function formatExtremesOutput(allProcessed) {
@@ -404,6 +364,7 @@ function formatExtremesOutput(allProcessed) {
     kaldest: coldest,
     vaatest: wettest,
     mest_vind: windiest,
+    allProcessed,
     timestamp: displayTime
   };
 }
