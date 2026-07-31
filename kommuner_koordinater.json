@@ -2,20 +2,20 @@
     {
         "kommune": "Oslo",
         "fylke": "Oslo",
-        "lat": 59.9225,
-        "lon": 10.7751
+        "lat": 59.9127,
+        "lon": 10.7461
     },
     {
         "kommune": "Bærum",
         "fylke": "Akershus",
-        "lat": 59.9164,
-        "lon": 10.5415
+        "lat": 59.9415,
+        "lon": 10.5027
     },
     {
         "kommune": "Asker",
         "fylke": "Akershus",
-        "lat": 59.75,
-        "lon": 10.4695
+        "lat": 59.8333,
+        "lon": 10.4372
     },
     {
         "kommune": "Nordre Follo",
@@ -26,14 +26,14 @@
     {
         "kommune": "Ås",
         "fylke": "Akershus",
-        "lat": 59.6703,
-        "lon": 10.789
+        "lat": 59.6647,
+        "lon": 10.7947
     },
     {
         "kommune": "Frogn",
         "fylke": "Akershus",
-        "lat": 59.675,
-        "lon": 10.6427
+        "lat": 59.2459,
+        "lon": 10.4101
     },
     {
         "kommune": "Nesodden",
@@ -50,8 +50,8 @@
     {
         "kommune": "Lillestrøm",
         "fylke": "Akershus",
-        "lat": 59.9565,
-        "lon": 11.1087
+        "lat": 59.956,
+        "lon": 11.0492
     },
     {
         "kommune": "Nittedal",
@@ -62,26 +62,26 @@
     {
         "kommune": "Moss",
         "fylke": "Østfold",
-        "lat": 59.4316,
-        "lon": 10.6672
+        "lat": 59.434,
+        "lon": 10.6577
     },
     {
         "kommune": "Vestby",
         "fylke": "Akershus",
-        "lat": 59.5634,
-        "lon": 10.7145
+        "lat": 58.0999,
+        "lon": 6.587
     },
     {
         "kommune": "Våler (Østfold)",
         "fylke": "Østfold",
-        "lat": 59.4604,
-        "lon": 10.9066
+        "lat": 60.2333,
+        "lon": 11.3167
     },
     {
         "kommune": "Fredrikstad",
         "fylke": "Østfold",
-        "lat": 59.2228,
-        "lon": 10.95
+        "lat": 59.2181,
+        "lon": 10.9298
     },
     {
         "kommune": "Råde",
@@ -92,20 +92,20 @@
     {
         "kommune": "Hvaler",
         "fylke": "Østfold",
-        "lat": 59.0125,
-        "lon": 10.9813
+        "lat": 59.05,
+        "lon": 10.95
     },
     {
         "kommune": "Sarpsborg",
         "fylke": "Østfold",
-        "lat": 59.2865,
-        "lon": 11.1177
+        "lat": 59.2839,
+        "lon": 11.1096
     },
     {
         "kommune": "Halden",
         "fylke": "Østfold",
-        "lat": 59.1178,
-        "lon": 11.405
+        "lat": 59.1248,
+        "lon": 11.3875
     },
     {
         "kommune": "Aremark",
@@ -134,14 +134,14 @@
     {
         "kommune": "Rakkestad",
         "fylke": "Østfold",
-        "lat": 59.3811,
-        "lon": 11.4018
+        "lat": 59.4251,
+        "lon": 11.3453
     },
     {
         "kommune": "Enebakk",
         "fylke": "Akershus",
-        "lat": 59.7669,
-        "lon": 11.1231
+        "lat": 59.7833,
+        "lon": 11.25
     },
     {
         "kommune": "Nes",
@@ -164,8 +164,8 @@
     {
         "kommune": "Gjerdrum",
         "fylke": "Akershus",
-        "lat": 60.0808,
-        "lon": 11.013
+        "lat": 60.6833,
+        "lon": 11.7955
     },
     {
         "kommune": "Nannestad",
@@ -182,14 +182,14 @@
     {
         "kommune": "Eidsvoll",
         "fylke": "Akershus",
-        "lat": 60.3438,
-        "lon": 11.2
+        "lat": 60.3285,
+        "lon": 11.2579
     },
     {
         "kommune": "Hurdal",
         "fylke": "Akershus",
-        "lat": 60.4356,
-        "lon": 10.9491
+        "lat": 60.45,
+        "lon": 11.05
     },
     {
         "kommune": "Sør-Odal",
@@ -206,8 +206,8 @@
     {
         "kommune": "Kongsvinger",
         "fylke": "Innlandet",
-        "lat": 60.212,
-        "lon": 12.0804
+        "lat": 60.1905,
+        "lon": 11.9977
     },
     {
         "kommune": "Eidskog",
@@ -224,134 +224,134 @@
     {
         "kommune": "Åsnes",
         "fylke": "Innlandet",
-        "lat": 60.6484,
-        "lon": 12.1085
+        "lat": 59.0967,
+        "lon": 10.241
     },
     {
         "kommune": "Stange",
         "fylke": "Innlandet",
-        "lat": 60.6838,
-        "lon": 11.2846
+        "lat": 60.718,
+        "lon": 11.1942
     },
     {
         "kommune": "Hamar",
         "fylke": "Innlandet",
-        "lat": 60.8311,
-        "lon": 11.0979
+        "lat": 58.9333,
+        "lon": 5.9667
     },
     {
         "kommune": "Ringsaker",
         "fylke": "Innlandet",
-        "lat": 60.9458,
-        "lon": 10.847
+        "lat": 60.9,
+        "lon": 10.7333
     },
     {
         "kommune": "Løten",
         "fylke": "Innlandet",
-        "lat": 60.8154,
-        "lon": 11.3644
+        "lat": 60.8194,
+        "lon": 11.3421
     },
     {
         "kommune": "Elverum",
         "fylke": "Innlandet",
-        "lat": 60.899,
-        "lon": 11.6491
+        "lat": 60.8819,
+        "lon": 11.5623
     },
     {
         "kommune": "Trysil",
         "fylke": "Innlandet",
-        "lat": 61.2835,
-        "lon": 12.2866
+        "lat": 61.3148,
+        "lon": 12.2637
     },
     {
         "kommune": "Våler (Innlandet)",
         "fylke": "Innlandet",
-        "lat": 60.7519,
-        "lon": 11.9351
+        "lat": 60.2333,
+        "lon": 11.3167
     },
     {
         "kommune": "Engerdal",
         "fylke": "Innlandet",
-        "lat": 61.9904,
-        "lon": 11.9372
+        "lat": 61.759,
+        "lon": 11.9594
     },
     {
         "kommune": "Åmot",
         "fylke": "Innlandet",
-        "lat": 61.3103,
-        "lon": 11.5282
+        "lat": 59.5697,
+        "lon": 7.9887
     },
     {
         "kommune": "Stor-Elvdal",
         "fylke": "Innlandet",
-        "lat": 61.6695,
-        "lon": 10.6369
+        "lat": 61.5,
+        "lon": 11.0333
     },
     {
         "kommune": "Rendalen",
         "fylke": "Innlandet",
-        "lat": 61.8559,
-        "lon": 11.1446
+        "lat": 59.4176,
+        "lon": 9.9485
     },
     {
         "kommune": "Tynset",
         "fylke": "Innlandet",
-        "lat": 62.3543,
-        "lon": 10.6023
+        "lat": 62.2759,
+        "lon": 10.7824
     },
     {
         "kommune": "Tolga",
         "fylke": "Innlandet",
-        "lat": 62.338,
-        "lon": 11.1532
+        "lat": 62.409,
+        "lon": 10.9988
     },
     {
         "kommune": "Os",
         "fylke": "Innlandet",
-        "lat": 62.4386,
-        "lon": 11.2964
+        "lat": 67.5383,
+        "lon": 14.8343
     },
     {
         "kommune": "Alvdal",
         "fylke": "Innlandet",
-        "lat": 62.0684,
-        "lon": 10.5087
+        "lat": 62.1077,
+        "lon": 10.6307
     },
     {
         "kommune": "Folldal",
         "fylke": "Innlandet",
-        "lat": 62.1759,
-        "lon": 10.0055
+        "lat": 62.1325,
+        "lon": 9.9968
     },
     {
         "kommune": "Lillehammer",
         "fylke": "Innlandet",
-        "lat": 61.1181,
-        "lon": 10.4345
+        "lat": 61.1151,
+        "lon": 10.4663
     },
     {
         "kommune": "Ringebu",
         "fylke": "Innlandet",
-        "lat": 61.5649,
-        "lon": 10.2427
+        "lat": 61.5296,
+        "lon": 10.1389
     },
     {
         "kommune": "Øyer",
         "fylke": "Innlandet",
-        "lat": 61.3252,
-        "lon": 10.528
+        "lat": 61.2661,
+        "lon": 10.4113
     },
     {
         "kommune": "Nord-Fron",
         "fylke": "Innlandet",
-        "lat": 61.6048,
-        "lon": 9.5544
+        "lat": 61.6,
+        "lon": 9.75
     },
     {
         "kommune": "Sør-Fron",
         "fylke": "Innlandet",
-        "lat": 61.4932,
-        "lon": 9.7231
+        "lat": 61.5367,
+        "lon": 9.9442
     },
     {
         "kommune": "Gausdal",
@@ -362,56 +362,56 @@
     {
         "kommune": "Dovre",
         "fylke": "Innlandet",
-        "lat": 62.0847,
-        "lon": 9.4575
+        "lat": 61.9209,
+        "lon": 9.3353
     },
     {
         "kommune": "Lesja",
         "fylke": "Innlandet",
-        "lat": 62.1945,
-        "lon": 8.4689
+        "lat": 62.1184,
+        "lon": 8.8642
     },
     {
         "kommune": "Sel",
         "fylke": "Innlandet",
-        "lat": 61.7898,
-        "lon": 9.4816
+        "lat": 61.7722,
+        "lon": 9.5361
     },
     {
         "kommune": "Vågå",
         "fylke": "Innlandet",
-        "lat": 61.7694,
-        "lon": 9.0683
+        "lat": 59.2833,
+        "lon": 5.3642
     },
     {
         "kommune": "Lom",
         "fylke": "Innlandet",
-        "lat": 61.7386,
-        "lon": 8.5013
+        "lat": 61.8377,
+        "lon": 8.5684
     },
     {
         "kommune": "Skjåk",
         "fylke": "Innlandet",
-        "lat": 61.9433,
-        "lon": 7.8623
+        "lat": 61.8774,
+        "lon": 8.3733
     },
     {
         "kommune": "Lunner",
         "fylke": "Akershus",
-        "lat": 60.2687,
-        "lon": 10.613
+        "lat": 58.4333,
+        "lon": 8.7
     },
     {
         "kommune": "Gran",
         "fylke": "Innlandet",
-        "lat": 60.4477,
-        "lon": 10.5099
+        "lat": 63.9167,
+        "lon": 11.2833
     },
     {
         "kommune": "Gjøvik",
         "fylke": "Innlandet",
-        "lat": 60.8414,
-        "lon": 10.5589
+        "lat": 69.1381,
+        "lon": 17.32
     },
     {
         "kommune": "Østre Toten",
@@ -434,20 +434,20 @@
     {
         "kommune": "Nordre Land",
         "fylke": "Innlandet",
-        "lat": 60.9807,
-        "lon": 9.9893
+        "lat": 61.1911,
+        "lon": 12.481
     },
     {
         "kommune": "Etnedal",
         "fylke": "Innlandet",
-        "lat": 61.0185,
-        "lon": 9.5877
+        "lat": 60.8878,
+        "lon": 9.6414
     },
     {
         "kommune": "Nord-Aurdal",
         "fylke": "Innlandet",
-        "lat": 60.9526,
-        "lon": 9.22
+        "lat": 60.9847,
+        "lon": 9.2417
     },
     {
         "kommune": "Sør-Aurdal",
@@ -458,62 +458,62 @@
     {
         "kommune": "Øystre Slidre",
         "fylke": "Innlandet",
-        "lat": 61.2434,
-        "lon": 9.0389
+        "lat": 61.1264,
+        "lon": 9.0639
     },
     {
         "kommune": "Vestre Slidre",
         "fylke": "Innlandet",
-        "lat": 61.0613,
-        "lon": 8.9095
+        "lat": 61.0917,
+        "lon": 8.9806
     },
     {
         "kommune": "Vang",
         "fylke": "Innlandet",
-        "lat": 61.1969,
-        "lon": 8.5015
+        "lat": 69.4667,
+        "lon": 18.0
     },
     {
         "kommune": "Drammen",
         "fylke": "Buskerud",
-        "lat": 59.7332,
-        "lon": 10.1778
+        "lat": 59.7439,
+        "lon": 10.2045
     },
     {
         "kommune": "Holmestrand",
         "fylke": "Vestfold",
-        "lat": 59.5463,
-        "lon": 10.2216
+        "lat": 59.0,
+        "lon": 9.8
     },
     {
         "kommune": "Tønsberg",
         "fylke": "Vestfold",
-        "lat": 59.2959,
-        "lon": 10.4009
+        "lat": 59.2675,
+        "lon": 10.4076
     },
     {
         "kommune": "Færder",
         "fylke": "Vestfold",
-        "lat": 59.1828,
-        "lon": 10.4406
+        "lat": 59.0673,
+        "lon": 10.5238
     },
     {
         "kommune": "Sandefjord",
         "fylke": "Vestfold",
-        "lat": 59.1394,
-        "lon": 10.2209
+        "lat": 59.1312,
+        "lon": 10.2166
     },
     {
         "kommune": "Horten",
         "fylke": "Vestfold",
-        "lat": 59.4027,
-        "lon": 10.459
+        "lat": 59.4172,
+        "lon": 10.4834
     },
     {
         "kommune": "Larvik",
         "fylke": "Vestfold",
-        "lat": 59.0729,
-        "lon": 10.0065
+        "lat": 59.0533,
+        "lon": 10.0352
     },
     {
         "kommune": "Øvre Eiker",
@@ -536,8 +536,8 @@
     {
         "kommune": "Lier",
         "fylke": "Buskerud",
-        "lat": 59.8049,
-        "lon": 10.2555
+        "lat": 59.5833,
+        "lon": 5.4833
     },
     {
         "kommune": "Ringerike",
@@ -548,8 +548,8 @@
     {
         "kommune": "Jevnaker",
         "fylke": "Akershus",
-        "lat": 60.2753,
-        "lon": 10.3923
+        "lat": 60.2398,
+        "lon": 10.3871
     },
     {
         "kommune": "Hole",
@@ -566,104 +566,104 @@
     {
         "kommune": "Flå",
         "fylke": "Buskerud",
-        "lat": 60.4159,
-        "lon": 9.5026
+        "lat": 63.1977,
+        "lon": 10.302
     },
     {
         "kommune": "Nesbyen",
         "fylke": "Buskerud",
-        "lat": 60.5514,
-        "lon": 9.0726
+        "lat": 60.5681,
+        "lon": 9.1027
     },
     {
         "kommune": "Nore Og Uvdal",
         "fylke": "Buskerud",
-        "lat": 60.3135,
-        "lon": 8.7346
+        "lat": 60.2661,
+        "lon": 8.9861
     },
     {
         "kommune": "Gol",
         "fylke": "Buskerud",
-        "lat": 60.7472,
-        "lon": 9.0001
+        "lat": 60.7014,
+        "lon": 8.9457
     },
     {
         "kommune": "Hemsedal",
         "fylke": "Buskerud",
-        "lat": 60.9109,
-        "lon": 8.467
+        "lat": 60.8629,
+        "lon": 8.5534
     },
     {
         "kommune": "Ål",
         "fylke": "Buskerud",
-        "lat": 60.6998,
-        "lon": 8.5214
+        "lat": 60.35,
+        "lon": 10.5833
     },
     {
         "kommune": "Hol",
         "fylke": "Buskerud",
-        "lat": 60.5327,
-        "lon": 8.0991
+        "lat": 60.6151,
+        "lon": 8.294
     },
     {
         "kommune": "Kongsberg",
         "fylke": "Buskerud",
-        "lat": 59.6269,
-        "lon": 9.6745
+        "lat": 59.6686,
+        "lon": 9.6502
     },
     {
         "kommune": "Flesberg",
         "fylke": "Buskerud",
-        "lat": 59.8562,
-        "lon": 9.4863
+        "lat": 59.863,
+        "lon": 9.4325
     },
     {
         "kommune": "Rollag",
         "fylke": "Buskerud",
-        "lat": 60.013,
-        "lon": 9.2225
+        "lat": 59.9843,
+        "lon": 9.2964
     },
     {
         "kommune": "Tinn",
         "fylke": "Telemark",
-        "lat": 59.9626,
-        "lon": 8.663
+        "lat": 59.55,
+        "lon": 9.25
     },
     {
         "kommune": "Notodden",
         "fylke": "Telemark",
-        "lat": 59.5919,
-        "lon": 9.2371
+        "lat": 59.5594,
+        "lon": 9.2585
     },
     {
         "kommune": "Hjartdal",
         "fylke": "Telemark",
-        "lat": 59.695,
-        "lon": 8.7287
+        "lat": 59.6007,
+        "lon": 8.6501
     },
     {
         "kommune": "Skien",
         "fylke": "Telemark",
-        "lat": 59.1998,
-        "lon": 9.5841
+        "lat": 59.2096,
+        "lon": 9.609
     },
     {
         "kommune": "Siljan",
         "fylke": "Telemark",
-        "lat": 59.3267,
-        "lon": 9.7227
+        "lat": 59.2884,
+        "lon": 9.71
     },
     {
         "kommune": "Drangedal",
         "fylke": "Telemark",
-        "lat": 59.0885,
-        "lon": 8.9683
+        "lat": 59.0977,
+        "lon": 9.0587
     },
     {
         "kommune": "Kragerø",
         "fylke": "Telemark",
-        "lat": 58.8698,
-        "lon": 9.4479
+        "lat": 58.8693,
+        "lon": 9.4149
     },
     {
         "kommune": "Midt-Telemark",
@@ -674,8 +674,8 @@
     {
         "kommune": "Seljord",
         "fylke": "Telemark",
-        "lat": 59.5422,
-        "lon": 8.5979
+        "lat": 59.4848,
+        "lon": 8.6302
     },
     {
         "kommune": "Nome",
@@ -686,8 +686,8 @@
     {
         "kommune": "Kviteseid",
         "fylke": "Telemark",
-        "lat": 59.3862,
-        "lon": 8.4006
+        "lat": 59.4022,
+        "lon": 8.4927
     },
     {
         "kommune": "Nissedal",
@@ -698,14 +698,14 @@
     {
         "kommune": "Vinje",
         "fylke": "Telemark",
-        "lat": 59.7357,
-        "lon": 7.7634
+        "lat": 68.3226,
+        "lon": 14.2014
     },
     {
         "kommune": "Fyresdal",
         "fylke": "Telemark",
-        "lat": 59.1614,
-        "lon": 8.0552
+        "lat": 59.1834,
+        "lon": 8.0921
     },
     {
         "kommune": "Tokke",
@@ -716,8 +716,8 @@
     {
         "kommune": "Porsgrunn",
         "fylke": "Telemark",
-        "lat": 59.1208,
-        "lon": 9.678
+        "lat": 59.1405,
+        "lon": 9.6561
     },
     {
         "kommune": "Bamble",
@@ -728,80 +728,80 @@
     {
         "kommune": "Stavanger",
         "fylke": "Rogaland",
-        "lat": 59.0042,
-        "lon": 5.7366
+        "lat": 58.9701,
+        "lon": 5.7333
     },
     {
         "kommune": "Sola",
         "fylke": "Rogaland",
-        "lat": 58.8977,
-        "lon": 5.5576
+        "lat": 58.8885,
+        "lon": 5.6528
     },
     {
         "kommune": "Randaberg",
         "fylke": "Rogaland",
-        "lat": 59.0031,
-        "lon": 5.6112
+        "lat": 58.9995,
+        "lon": 5.6187
     },
     {
         "kommune": "Strand",
         "fylke": "Rogaland",
-        "lat": 59.037,
-        "lon": 5.9837
+        "lat": 59.05,
+        "lon": 5.9333
     },
     {
         "kommune": "Sandnes",
         "fylke": "Rogaland",
-        "lat": 58.874,
-        "lon": 5.8469
+        "lat": 62.15,
+        "lon": 5.6667
     },
     {
         "kommune": "Hjelmeland",
         "fylke": "Rogaland",
-        "lat": 59.2231,
-        "lon": 6.2821
+        "lat": 59.2369,
+        "lon": 6.1791
     },
     {
         "kommune": "Kvitsøy",
         "fylke": "Rogaland",
-        "lat": 59.0392,
-        "lon": 5.364
+        "lat": 59.0663,
+        "lon": 5.4101
     },
     {
         "kommune": "Suldal",
         "fylke": "Rogaland",
-        "lat": 59.4562,
-        "lon": 6.342
+        "lat": 59.5253,
+        "lon": 6.3912
     },
     {
         "kommune": "Sauda",
         "fylke": "Rogaland",
-        "lat": 59.6544,
-        "lon": 6.3612
+        "lat": 59.6506,
+        "lon": 6.3541
     },
     {
         "kommune": "Karmøy",
         "fylke": "Rogaland",
-        "lat": 59.2976,
-        "lon": 5.2112
+        "lat": 59.25,
+        "lon": 5.25
     },
     {
         "kommune": "Gjesdal",
         "fylke": "Rogaland",
-        "lat": 58.7935,
-        "lon": 6.0377
+        "lat": 58.95,
+        "lon": 5.8743
     },
     {
         "kommune": "Time",
         "fylke": "Rogaland",
-        "lat": 58.7264,
-        "lon": 5.7068
+        "lat": 58.7333,
+        "lon": 5.7
     },
     {
         "kommune": "Klepp",
         "fylke": "Rogaland",
-        "lat": 58.7679,
-        "lon": 5.5771
+        "lat": 60.1892,
+        "lon": 5.1478
     },
     {
         "kommune": "Hå",
@@ -818,26 +818,26 @@
     {
         "kommune": "Sokndal",
         "fylke": "Rogaland",
-        "lat": 58.3499,
-        "lon": 6.2846
+        "lat": 58.3333,
+        "lon": 6.3
     },
     {
         "kommune": "Bjerkreim",
         "fylke": "Rogaland",
-        "lat": 58.6419,
-        "lon": 6.1642
+        "lat": 58.6,
+        "lon": 6.1167
     },
     {
         "kommune": "Flekkefjord",
         "fylke": "Agder",
-        "lat": 58.3107,
-        "lon": 6.643
+        "lat": 58.297,
+        "lon": 6.6607
     },
     {
         "kommune": "Sirdal",
         "fylke": "Agder",
-        "lat": 58.8665,
-        "lon": 6.8398
+        "lat": 58.6626,
+        "lon": 6.7169
     },
     {
         "kommune": "Lund",
@@ -848,20 +848,20 @@
     {
         "kommune": "Kvinesdal",
         "fylke": "Agder",
-        "lat": 58.413,
-        "lon": 6.9157
+        "lat": 58.3122,
+        "lon": 6.9619
     },
     {
         "kommune": "Lindesnes",
         "fylke": "Agder",
-        "lat": 58.097,
-        "lon": 7.4545
+        "lat": 57.9796,
+        "lon": 7.0553
     },
     {
         "kommune": "Lyngdal",
         "fylke": "Agder",
-        "lat": 58.2679,
-        "lon": 7.2372
+        "lat": 58.1376,
+        "lon": 7.07
     },
     {
         "kommune": "Åseral",
@@ -872,32 +872,32 @@
     {
         "kommune": "Farsund",
         "fylke": "Agder",
-        "lat": 58.0968,
-        "lon": 6.6586
+        "lat": 58.0948,
+        "lon": 6.8047
     },
     {
         "kommune": "Hægebostad",
         "fylke": "Agder",
-        "lat": 58.4182,
-        "lon": 7.1998
+        "lat": 58.2,
+        "lon": 7.35
     },
     {
         "kommune": "Kristiansand",
         "fylke": "Agder",
-        "lat": 58.1486,
-        "lon": 7.9666
+        "lat": 58.1467,
+        "lon": 7.9956
     },
     {
         "kommune": "Vennesla",
         "fylke": "Agder",
-        "lat": 58.3008,
-        "lon": 7.9059
+        "lat": 58.2686,
+        "lon": 7.9731
     },
     {
         "kommune": "Iveland",
         "fylke": "Agder",
-        "lat": 58.4427,
-        "lon": 7.9917
+        "lat": 58.4539,
+        "lon": 7.9162
     },
     {
         "kommune": "Evje Og Hornnes",
@@ -908,74 +908,74 @@
     {
         "kommune": "Bygland",
         "fylke": "Agder",
-        "lat": 58.7758,
-        "lon": 7.7635
+        "lat": 58.8285,
+        "lon": 7.7962
     },
     {
         "kommune": "Valle",
         "fylke": "Agder",
-        "lat": 59.1596,
-        "lon": 7.4315
+        "lat": 59.2126,
+        "lon": 7.5356
     },
     {
         "kommune": "Bykle",
         "fylke": "Agder",
-        "lat": 59.4864,
-        "lon": 7.236
+        "lat": 59.3542,
+        "lon": 7.3573
     },
     {
         "kommune": "Birkenes",
         "fylke": "Agder",
-        "lat": 58.4902,
-        "lon": 8.2389
+        "lat": 58.0833,
+        "lon": 6.8667
     },
     {
         "kommune": "Lillesand",
         "fylke": "Agder",
-        "lat": 58.1815,
-        "lon": 8.3577
+        "lat": 58.2488,
+        "lon": 8.3778
     },
     {
         "kommune": "Arendal",
         "fylke": "Agder",
-        "lat": 58.4681,
-        "lon": 8.7908
+        "lat": 58.4615,
+        "lon": 8.7725
     },
     {
         "kommune": "Froland",
         "fylke": "Agder",
-        "lat": 58.6021,
-        "lon": 8.3919
+        "lat": 58.5005,
+        "lon": 8.5793
     },
     {
         "kommune": "Åmli",
         "fylke": "Agder",
-        "lat": 58.7517,
-        "lon": 8.4884
+        "lat": 58.9833,
+        "lon": 9.85
     },
     {
         "kommune": "Grimstad",
         "fylke": "Agder",
-        "lat": 58.3267,
-        "lon": 8.585
+        "lat": 68.7512,
+        "lon": 14.5785
     },
     {
         "kommune": "Tvedestrand",
         "fylke": "Agder",
-        "lat": 58.6239,
-        "lon": 9.0021
+        "lat": 58.622,
+        "lon": 8.9315
     },
     {
         "kommune": "Risør",
         "fylke": "Agder",
-        "lat": 58.7196,
-        "lon": 9.1754
+        "lat": 58.0167,
+        "lon": 7.4333
     },
     {
         "kommune": "Gjerstad",
         "fylke": "Agder",
-        "lat": 58.8746,
-        "lon": 9.0051
+        "lat": 59.0571,
+        "lon": 10.1037
     },
     {
         "kommune": "Vegårshei",
@@ -986,14 +986,14 @@
     {
         "kommune": "Bergen",
         "fylke": "Vestland",
-        "lat": 60.3808,
-        "lon": 5.3246
+        "lat": 60.393,
+        "lon": 5.3242
     },
     {
         "kommune": "Øygarden",
         "fylke": "Vestland",
-        "lat": 60.386,
-        "lon": 4.9721
+        "lat": 62.9522,
+        "lon": 7.4118
     },
     {
         "kommune": "Bjørnafjorden",
@@ -1004,38 +1004,38 @@
     {
         "kommune": "Osterøy",
         "fylke": "Vestland",
-        "lat": 60.5411,
-        "lon": 5.5496
+        "lat": 60.535,
+        "lon": 5.5644
     },
     {
         "kommune": "Askøy",
         "fylke": "Vestland",
-        "lat": 60.4482,
-        "lon": 5.1544
+        "lat": 60.5,
+        "lon": 5.0833
     },
     {
         "kommune": "Austevoll",
         "fylke": "Vestland",
-        "lat": 60.0575,
-        "lon": 5.1172
+        "lat": 60.1095,
+        "lon": 5.1625
     },
     {
         "kommune": "Stord",
         "fylke": "Vestland",
-        "lat": 59.7987,
-        "lon": 5.4776
+        "lat": 69.4362,
+        "lon": 19.5593
     },
     {
         "kommune": "Fitjar",
         "fylke": "Vestland",
-        "lat": 59.9114,
-        "lon": 5.3258
+        "lat": 59.918,
+        "lon": 5.3167
     },
     {
         "kommune": "Bømlo",
         "fylke": "Vestland",
-        "lat": 59.7453,
-        "lon": 5.1475
+        "lat": 59.6023,
+        "lon": 5.2075
     },
     {
         "kommune": "Kvinnherad",
@@ -1046,32 +1046,32 @@
     {
         "kommune": "Haugesund",
         "fylke": "Rogaland",
-        "lat": 59.4191,
-        "lon": 5.2773
+        "lat": 59.4138,
+        "lon": 5.268
     },
     {
         "kommune": "Utsira",
         "fylke": "Rogaland",
-        "lat": 59.2926,
-        "lon": 4.8568
+        "lat": 59.3057,
+        "lon": 4.8862
     },
     {
         "kommune": "Sveio",
         "fylke": "Vestland",
-        "lat": 59.6099,
-        "lon": 5.431
+        "lat": 59.5419,
+        "lon": 5.3518
     },
     {
         "kommune": "Tysvær",
         "fylke": "Rogaland",
-        "lat": 59.3653,
-        "lon": 5.5654
+        "lat": 59.332,
+        "lon": 5.4898
     },
     {
         "kommune": "Bokn",
         "fylke": "Rogaland",
-        "lat": 59.195,
-        "lon": 5.4607
+        "lat": 59.2306,
+        "lon": 5.4352
     },
     {
         "kommune": "Vindafjord",
@@ -1082,20 +1082,20 @@
     {
         "kommune": "Etne",
         "fylke": "Vestland",
-        "lat": 59.782,
-        "lon": 6.1513
+        "lat": 59.6653,
+        "lon": 5.9371
     },
     {
         "kommune": "Kvam",
         "fylke": "Vestland",
-        "lat": 60.3514,
-        "lon": 6.143
+        "lat": 64.1401,
+        "lon": 11.7394
     },
     {
         "kommune": "Ullensvang",
         "fylke": "Vestland",
-        "lat": 60.1964,
-        "lon": 6.6212
+        "lat": 60.3204,
+        "lon": 6.6552
     },
     {
         "kommune": "Samnanger",
@@ -1106,44 +1106,44 @@
     {
         "kommune": "Tysnes",
         "fylke": "Vestland",
-        "lat": 60.0061,
-        "lon": 5.5616
+        "lat": 60.05,
+        "lon": 5.55
     },
     {
         "kommune": "Voss",
         "fylke": "Vestland",
-        "lat": 60.6562,
-        "lon": 6.4767
+        "lat": 60.6287,
+        "lon": 6.4147
     },
     {
         "kommune": "Aurland",
         "fylke": "Vestland",
-        "lat": 60.8527,
-        "lon": 7.1024
+        "lat": 60.9058,
+        "lon": 7.1871
     },
     {
         "kommune": "Ulvik",
         "fylke": "Vestland",
-        "lat": 60.61,
-        "lon": 7.2392
+        "lat": 60.5679,
+        "lon": 6.9165
     },
     {
         "kommune": "Vaksdal",
         "fylke": "Vestland",
-        "lat": 60.6107,
-        "lon": 5.8459
+        "lat": 60.4768,
+        "lon": 5.7407
     },
     {
         "kommune": "Modalen",
         "fylke": "Vestland",
-        "lat": 60.8875,
-        "lon": 5.9297
+        "lat": 60.2167,
+        "lon": 9.95
     },
     {
         "kommune": "Eidfjord",
         "fylke": "Vestland",
-        "lat": 60.3956,
-        "lon": 7.2593
+        "lat": 60.4675,
+        "lon": 7.0719
     },
     {
         "kommune": "Alver",
@@ -1154,38 +1154,38 @@
     {
         "kommune": "Austrheim",
         "fylke": "Vestland",
-        "lat": 60.797,
-        "lon": 4.9252
+        "lat": 60.7774,
+        "lon": 4.9323
     },
     {
         "kommune": "Fedje",
         "fylke": "Vestland",
-        "lat": 60.7934,
-        "lon": 4.6175
+        "lat": 60.7789,
+        "lon": 4.7149
     },
     {
         "kommune": "Gulen",
         "fylke": "Vestland",
-        "lat": 60.9503,
-        "lon": 5.0431
+        "lat": 61.1833,
+        "lon": 5.0667
     },
     {
         "kommune": "Høyanger",
         "fylke": "Vestland",
-        "lat": 61.1677,
-        "lon": 5.9366
+        "lat": 61.2235,
+        "lon": 6.0847
     },
     {
         "kommune": "Masfjorden",
         "fylke": "Vestland",
-        "lat": 60.8626,
-        "lon": 5.4486
+        "lat": 60.7989,
+        "lon": 5.3042
     },
     {
         "kommune": "Ålesund",
         "fylke": "Møre og Romsdal",
-        "lat": 62.5238,
-        "lon": 6.3481
+        "lat": 62.4723,
+        "lon": 6.1549
     },
     {
         "kommune": "Sula",
@@ -1196,38 +1196,38 @@
     {
         "kommune": "Giske",
         "fylke": "Møre og Romsdal",
-        "lat": 62.5497,
-        "lon": 5.9772
+        "lat": 62.4833,
+        "lon": 6.8667
     },
     {
         "kommune": "Hareid",
         "fylke": "Møre og Romsdal",
-        "lat": 62.3621,
-        "lon": 6.0131
+        "lat": 62.3704,
+        "lon": 6.029
     },
     {
         "kommune": "Ulstein",
         "fylke": "Møre og Romsdal",
-        "lat": 62.3163,
-        "lon": 5.863
+        "lat": 62.3432,
+        "lon": 5.8487
     },
     {
         "kommune": "Herøy (Møre Og Romsdal)",
         "fylke": "Møre og Romsdal",
-        "lat": 62.3404,
-        "lon": 5.639
+        "lat": 65.9833,
+        "lon": 12.2833
     },
     {
         "kommune": "Sande",
         "fylke": "Møre og Romsdal",
-        "lat": 62.245,
-        "lon": 5.5022
+        "lat": 59.5868,
+        "lon": 10.2081
     },
     {
         "kommune": "Volda",
         "fylke": "Møre og Romsdal",
-        "lat": 62.11,
-        "lon": 6.1721
+        "lat": 62.146,
+        "lon": 6.0711
     },
     {
         "kommune": "Vanylven",
@@ -1238,56 +1238,56 @@
     {
         "kommune": "Ørsta",
         "fylke": "Møre og Romsdal",
-        "lat": 62.2307,
-        "lon": 6.2546
+        "lat": 62.1998,
+        "lon": 6.129
     },
     {
         "kommune": "Stranda",
         "fylke": "Møre og Romsdal",
-        "lat": 62.1833,
-        "lon": 7.0103
+        "lat": 62.3086,
+        "lon": 6.9372
     },
     {
         "kommune": "Fjord",
         "fylke": "Møre og Romsdal",
-        "lat": 62.2697,
-        "lon": 7.3062
+        "lat": 70.1796,
+        "lon": 23.3778
     },
     {
         "kommune": "Sykkylven",
         "fylke": "Møre og Romsdal",
-        "lat": 62.3657,
-        "lon": 6.5724
+        "lat": 62.3959,
+        "lon": 6.5875
     },
     {
         "kommune": "Haram",
         "fylke": "Møre og Romsdal",
-        "lat": 62.6175,
-        "lon": 6.326
+        "lat": 62.6578,
+        "lon": 6.2409
     },
     {
         "kommune": "Aukra",
         "fylke": "Møre og Romsdal",
-        "lat": 62.8181,
-        "lon": 6.805
+        "lat": 62.791,
+        "lon": 6.918
     },
     {
         "kommune": "Rauma",
         "fylke": "Møre og Romsdal",
-        "lat": 62.5323,
-        "lon": 7.6516
+        "lat": 62.5675,
+        "lon": 7.6869
     },
     {
         "kommune": "Molde",
         "fylke": "Møre og Romsdal",
-        "lat": 62.7315,
-        "lon": 7.4247
+        "lat": 62.7375,
+        "lon": 7.1591
     },
     {
         "kommune": "Vestnes",
         "fylke": "Møre og Romsdal",
-        "lat": 62.589,
-        "lon": 7.0186
+        "lat": 62.6254,
+        "lon": 7.087
     },
     {
         "kommune": "Hustadvika",
@@ -1298,38 +1298,38 @@
     {
         "kommune": "Kristiansund",
         "fylke": "Møre og Romsdal",
-        "lat": 63.1078,
-        "lon": 7.7599
+        "lat": 63.1105,
+        "lon": 7.7279
     },
     {
         "kommune": "Averøy",
         "fylke": "Møre og Romsdal",
-        "lat": 63.0695,
-        "lon": 7.4587
+        "lat": 62.9872,
+        "lon": 7.5563
     },
     {
         "kommune": "Smøla",
         "fylke": "Møre og Romsdal",
-        "lat": 63.4177,
-        "lon": 7.876
+        "lat": 63.3566,
+        "lon": 8.0342
     },
     {
         "kommune": "Aure",
         "fylke": "Møre og Romsdal",
-        "lat": 63.2888,
-        "lon": 8.4905
+        "lat": 63.2679,
+        "lon": 8.5291
     },
     {
         "kommune": "Sunndal",
         "fylke": "Møre og Romsdal",
-        "lat": 62.662,
-        "lon": 8.6323
+        "lat": 60.1167,
+        "lon": 6.2833
     },
     {
         "kommune": "Tingvoll",
         "fylke": "Møre og Romsdal",
-        "lat": 62.9652,
-        "lon": 8.1593
+        "lat": 62.9132,
+        "lon": 8.2053
     },
     {
         "kommune": "Gjemnes",
@@ -1340,14 +1340,14 @@
     {
         "kommune": "Surnadal",
         "fylke": "Møre og Romsdal",
-        "lat": 62.9381,
-        "lon": 8.7069
+        "lat": 62.974,
+        "lon": 8.7247
     },
     {
         "kommune": "Rindal",
         "fylke": "Trøndelag",
-        "lat": 63.0584,
-        "lon": 9.2943
+        "lat": 63.0555,
+        "lon": 9.2115
     },
     {
         "kommune": "Heim",
@@ -1358,98 +1358,98 @@
     {
         "kommune": "Kinn",
         "fylke": "Vestland",
-        "lat": 61.6812,
-        "lon": 5.0374
+        "lat": 61.5996,
+        "lon": 5.0328
     },
     {
         "kommune": "Stad",
         "fylke": "Vestland",
-        "lat": 61.9646,
-        "lon": 5.6903
+        "lat": 61.9222,
+        "lon": 5.9861
     },
     {
         "kommune": "Bremanger",
         "fylke": "Vestland",
-        "lat": 61.8299,
-        "lon": 5.2367
+        "lat": 61.7854,
+        "lon": 4.8483
     },
     {
         "kommune": "Stryn",
         "fylke": "Vestland",
-        "lat": 61.8236,
-        "lon": 6.7811
+        "lat": 61.9026,
+        "lon": 6.7179
     },
     {
         "kommune": "Sunnfjord",
         "fylke": "Vestland",
-        "lat": 61.4476,
-        "lon": 5.9686
+        "lat": 61.4517,
+        "lon": 5.8569
     },
     {
         "kommune": "Gloppen",
         "fylke": "Vestland",
-        "lat": 61.7413,
-        "lon": 6.2163
+        "lat": 61.8102,
+        "lon": 6.1532
     },
     {
         "kommune": "Sogndal",
         "fylke": "Vestland",
-        "lat": 61.2521,
-        "lon": 6.9133
+        "lat": 58.3229,
+        "lon": 6.2843
     },
     {
         "kommune": "Lærdal",
         "fylke": "Vestland",
-        "lat": 61.0577,
-        "lon": 7.5452
+        "lat": 61.1,
+        "lon": 7.4737
     },
     {
         "kommune": "Luster",
         "fylke": "Vestland",
-        "lat": 61.4325,
-        "lon": 7.3612
+        "lat": 61.4432,
+        "lon": 7.4599
     },
     {
         "kommune": "Årdal",
         "fylke": "Vestland",
-        "lat": 61.2843,
-        "lon": 7.7944
+        "lat": 59.155,
+        "lon": 6.1943
     },
     {
         "kommune": "Vik",
         "fylke": "Vestland",
-        "lat": 61.0766,
-        "lon": 6.6698
+        "lat": 65.3125,
+        "lon": 12.1673
     },
     {
         "kommune": "Solund",
         "fylke": "Vestland",
-        "lat": 61.1233,
-        "lon": 4.7422
+        "lat": 61.1146,
+        "lon": 4.9535
     },
     {
         "kommune": "Hyllestad",
         "fylke": "Vestland",
-        "lat": 61.1779,
-        "lon": 5.2324
+        "lat": 61.1711,
+        "lon": 5.296
     },
     {
         "kommune": "Fjaler",
         "fylke": "Vestland",
-        "lat": 61.2928,
-        "lon": 5.2854
+        "lat": 61.3635,
+        "lon": 5.4004
     },
     {
         "kommune": "Askvoll",
         "fylke": "Vestland",
-        "lat": 61.3732,
-        "lon": 4.9743
+        "lat": 61.3467,
+        "lon": 5.0622
     },
     {
         "kommune": "Trondheim",
         "fylke": "Trøndelag",
-        "lat": 63.3993,
-        "lon": 10.4024
+        "lat": 63.4305,
+        "lon": 10.3951
     },
     {
         "kommune": "Indre Fosen",
@@ -1460,8 +1460,8 @@
     {
         "kommune": "Ørland",
         "fylke": "Trøndelag",
-        "lat": 63.7578,
-        "lon": 9.6143
+        "lat": 59.5508,
+        "lon": 6.3823
     },
     {
         "kommune": "Orkland",
@@ -1472,26 +1472,26 @@
     {
         "kommune": "Åfjord",
         "fylke": "Trøndelag",
-        "lat": 64.1206,
-        "lon": 10.1039
+        "lat": 63.9607,
+        "lon": 10.2247
     },
     {
         "kommune": "Melhus",
         "fylke": "Trøndelag",
-        "lat": 63.1817,
-        "lon": 10.2397
+        "lat": 63.2856,
+        "lon": 10.2781
     },
     {
         "kommune": "Hitra",
         "fylke": "Trøndelag",
-        "lat": 63.5762,
-        "lon": 8.9108
+        "lat": 63.6333,
+        "lon": 8.7333
     },
     {
         "kommune": "Frøya",
         "fylke": "Trøndelag",
-        "lat": 63.8423,
-        "lon": 8.6928
+        "lat": 61.7723,
+        "lon": 4.8919
     },
     {
         "kommune": "Midtre Gauldal",
@@ -1502,20 +1502,20 @@
     {
         "kommune": "Oppdal",
         "fylke": "Trøndelag",
-        "lat": 62.5786,
-        "lon": 9.6183
+        "lat": 62.5943,
+        "lon": 9.6912
     },
     {
         "kommune": "Skaun",
         "fylke": "Trøndelag",
-        "lat": 63.2892,
-        "lon": 10.0482
+        "lat": 63.2515,
+        "lon": 10.0524
     },
     {
         "kommune": "Røros",
         "fylke": "Trøndelag",
-        "lat": 62.6194,
-        "lon": 11.6126
+        "lat": 62.5747,
+        "lon": 11.3842
     },
     {
         "kommune": "Holtålen",
@@ -1526,56 +1526,56 @@
     {
         "kommune": "Rennebu",
         "fylke": "Trøndelag",
-        "lat": 62.7875,
-        "lon": 9.9197
+        "lat": 62.8771,
+        "lon": 9.8396
     },
     {
         "kommune": "Stjørdal",
         "fylke": "Trøndelag",
-        "lat": 63.4674,
-        "lon": 11.0034
+        "lat": 63.468,
+        "lon": 10.9178
     },
     {
         "kommune": "Meråker",
         "fylke": "Trøndelag",
-        "lat": 63.4186,
-        "lon": 11.8797
+        "lat": 63.4141,
+        "lon": 11.743
     },
     {
         "kommune": "Malvik",
         "fylke": "Trøndelag",
-        "lat": 63.419,
-        "lon": 10.6864
+        "lat": 63.4333,
+        "lon": 10.6833
     },
     {
         "kommune": "Selbu",
         "fylke": "Trøndelag",
-        "lat": 63.2005,
-        "lon": 11.1481
+        "lat": 63.2491,
+        "lon": 10.9486
     },
     {
         "kommune": "Tydal",
         "fylke": "Trøndelag",
-        "lat": 63.0082,
-        "lon": 11.8075
+        "lat": 63.0567,
+        "lon": 11.6025
     },
     {
         "kommune": "Levanger",
         "fylke": "Trøndelag",
-        "lat": 63.7068,
-        "lon": 11.2276
+        "lat": 63.7464,
+        "lon": 11.2996
     },
     {
         "kommune": "Frosta",
         "fylke": "Trøndelag",
-        "lat": 63.5879,
-        "lon": 10.7068
+        "lat": 63.5891,
+        "lon": 10.7423
     },
     {
         "kommune": "Verdal",
         "fylke": "Trøndelag",
-        "lat": 63.7947,
-        "lon": 11.5899
+        "lat": 63.7933,
+        "lon": 11.4817
     },
     {
         "kommune": "Inderøy",
@@ -1586,14 +1586,14 @@
     {
         "kommune": "Steinkjer",
         "fylke": "Trøndelag",
-        "lat": 64.0272,
-        "lon": 11.4938
+        "lat": 64.0149,
+        "lon": 11.4954
     },
     {
         "kommune": "Osen",
         "fylke": "Trøndelag",
-        "lat": 64.352,
-        "lon": 10.3363
+        "lat": 59.493,
+        "lon": 6.5192
     },
     {
         "kommune": "Flatanger",
@@ -1604,8 +1604,8 @@
     {
         "kommune": "Namsos",
         "fylke": "Trøndelag",
-        "lat": 64.5083,
-        "lon": 11.4185
+        "lat": 64.4662,
+        "lon": 11.4957
     },
     {
         "kommune": "Snåsa",
@@ -1622,14 +1622,14 @@
     {
         "kommune": "Grong",
         "fylke": "Trøndelag",
-        "lat": 64.5385,
-        "lon": 12.6093
+        "lat": 64.4646,
+        "lon": 12.316
     },
     {
         "kommune": "Høylandet",
         "fylke": "Trøndelag",
-        "lat": 64.7898,
-        "lon": 12.3998
+        "lat": 64.6289,
+        "lon": 12.3021
     },
     {
         "kommune": "Lierne",
@@ -1640,14 +1640,14 @@
     {
         "kommune": "Namsskogan",
         "fylke": "Trøndelag",
-        "lat": 64.8175,
-        "lon": 13.0117
+        "lat": 64.9289,
+        "lon": 13.1595
     },
     {
         "kommune": "Røyrvik",
         "fylke": "Trøndelag",
-        "lat": 64.9222,
-        "lon": 13.7222
+        "lat": 67.1909,
+        "lon": 14.7066
     },
     {
         "kommune": "Nærøysund",
@@ -1670,32 +1670,26 @@
     {
         "kommune": "Bodø",
         "fylke": "Nordland",
-        "lat": 67.2936,
-        "lon": 14.4763
+        "lat": 67.2827,
+        "lon": 14.3751
     },
     {
         "kommune": "Værøy",
         "fylke": "Nordland",
-        "lat": 67.6263,
-        "lon": 12.851
+        "lat": 67.6667,
+        "lon": 12.65
     },
     {
         "kommune": "Røst",
         "fylke": "Nordland",
-        "lat": 67.3693,
-        "lon": 12.1958
+        "lat": 63.7215,
+        "lon": 9.6994
     },
     {
         "kommune": "Gildeskål",
         "fylke": "Nordland",
         "lat": 67.0609,
         "lon": 13.9192
-    },
-    {
-        "kommune": "Jan Mayen",
-        "fylke": "Jan Mayen",
-        "lat": 71.0262,
-        "lon": -8.4631
     },
     {
         "kommune": "Beiarn",
@@ -1706,20 +1700,20 @@
     {
         "kommune": "Meløy",
         "fylke": "Nordland",
-        "lat": 66.8376,
-        "lon": 13.5644
+        "lat": 68.9167,
+        "lon": 15.2833
     },
     {
         "kommune": "Rødøy",
         "fylke": "Nordland",
-        "lat": 66.6138,
-        "lon": 13.0975
+        "lat": 66.65,
+        "lon": 13.0833
     },
     {
         "kommune": "Fauske",
         "fylke": "Nordland",
-        "lat": 67.2609,
-        "lon": 15.4611
+        "lat": 68.6657,
+        "lon": 16.5754
     },
     {
         "kommune": "Sørfold",
@@ -1730,68 +1724,68 @@
     {
         "kommune": "Saltdal",
         "fylke": "Nordland",
-        "lat": 67.0108,
-        "lon": 15.4119
+        "lat": 67.1028,
+        "lon": 15.3944
     },
     {
         "kommune": "Hamarøy",
         "fylke": "Nordland",
-        "lat": 68.059,
-        "lon": 15.8926
+        "lat": 68.1068,
+        "lon": 15.5078
     },
     {
         "kommune": "Narvik",
         "fylke": "Nordland",
-        "lat": 68.3391,
-        "lon": 17.2759
+        "lat": 68.4384,
+        "lon": 17.4272
     },
     {
         "kommune": "Steigen",
         "fylke": "Nordland",
-        "lat": 67.8139,
-        "lon": 14.7966
+        "lat": 67.9354,
+        "lon": 14.9804
     },
     {
         "kommune": "Vågan",
         "fylke": "Nordland",
-        "lat": 68.263,
-        "lon": 14.6125
+        "lat": 63.45,
+        "lon": 9.2667
     },
     {
         "kommune": "Hadsel",
         "fylke": "Nordland",
-        "lat": 68.4977,
-        "lon": 15.0349
+        "lat": 68.5455,
+        "lon": 14.7009
     },
     {
         "kommune": "Vestvågøy",
         "fylke": "Nordland",
-        "lat": 68.1064,
-        "lon": 13.7432
+        "lat": 68.2097,
+        "lon": 13.8256
     },
     {
         "kommune": "Flakstad",
         "fylke": "Nordland",
-        "lat": 68.0561,
-        "lon": 13.1966
+        "lat": 69.1911,
+        "lon": 17.045
     },
     {
         "kommune": "Moskenes",
         "fylke": "Nordland",
-        "lat": 67.8903,
-        "lon": 13.0864
+        "lat": 67.9023,
+        "lon": 13.0416
     },
     {
         "kommune": "Sortland",
         "fylke": "Nordland",
-        "lat": 68.7074,
-        "lon": 15.3855
+        "lat": 68.6957,
+        "lon": 15.405
     },
     {
         "kommune": "Øksnes",
         "fylke": "Nordland",
-        "lat": 68.9125,
-        "lon": 15.0047
+        "lat": 64.1793,
+        "lon": 11.8617
     },
     {
         "kommune": "Kvæfjord",
@@ -1802,26 +1796,26 @@
     {
         "kommune": "Lødingen",
         "fylke": "Nordland",
-        "lat": 68.4004,
-        "lon": 15.704
+        "lat": 68.4137,
+        "lon": 15.9963
     },
     {
         "kommune": "Bø",
         "fylke": "Nordland",
-        "lat": 68.6821,
-        "lon": 14.378
+        "lat": 68.6561,
+        "lon": 15.3194
     },
     {
         "kommune": "Andøy",
         "fylke": "Nordland",
-        "lat": 69.1566,
-        "lon": 15.8005
+        "lat": 58.1125,
+        "lon": 7.9789
     },
     {
         "kommune": "Evenes",
         "fylke": "Nordland",
-        "lat": 68.4875,
-        "lon": 16.8171
+        "lat": 68.5268,
+        "lon": 16.9952
     },
     {
         "kommune": "Rana",
@@ -1832,8 +1826,8 @@
     {
         "kommune": "Hemnes",
         "fylke": "Nordland",
-        "lat": 66.0892,
-        "lon": 13.9356
+        "lat": 66.2333,
+        "lon": 13.65
     },
     {
         "kommune": "Vefsn",
@@ -1844,74 +1838,74 @@
     {
         "kommune": "Grane",
         "fylke": "Nordland",
-        "lat": 65.5194,
-        "lon": 13.4587
+        "lat": 58.449,
+        "lon": 7.0162
     },
     {
         "kommune": "Hattfjelldal",
         "fylke": "Nordland",
-        "lat": 65.5883,
-        "lon": 14.0514
+        "lat": 65.5974,
+        "lon": 13.9879
     },
     {
         "kommune": "Nesna",
         "fylke": "Nordland",
-        "lat": 66.2295,
-        "lon": 13.0134
+        "lat": 66.1982,
+        "lon": 13.0184
     },
     {
         "kommune": "Lurøy",
         "fylke": "Nordland",
-        "lat": 66.4053,
-        "lon": 12.8845
+        "lat": 66.4189,
+        "lon": 12.8425
     },
     {
         "kommune": "Træna",
         "fylke": "Nordland",
-        "lat": 66.5496,
-        "lon": 12.0924
+        "lat": 66.5,
+        "lon": 12.0833
     },
     {
         "kommune": "Alstahaug",
         "fylke": "Nordland",
-        "lat": 65.9086,
-        "lon": 12.5211
+        "lat": 65.9,
+        "lon": 12.4333
     },
     {
         "kommune": "Dønna",
         "fylke": "Nordland",
-        "lat": 66.1792,
-        "lon": 12.4325
+        "lat": 66.1,
+        "lon": 12.5833
     },
     {
         "kommune": "Herøy (Nordland)",
         "fylke": "Nordland",
-        "lat": 65.9658,
-        "lon": 11.9847
+        "lat": 65.9833,
+        "lon": 12.2833
     },
     {
         "kommune": "Vevelstad",
         "fylke": "Nordland",
-        "lat": 65.6496,
-        "lon": 12.5652
+        "lat": 65.6978,
+        "lon": 12.4371
     },
     {
         "kommune": "Leirfjord",
         "fylke": "Nordland",
-        "lat": 66.0888,
-        "lon": 13.0576
+        "lat": 67.5763,
+        "lon": 15.7706
     },
     {
         "kommune": "Brønnøy",
         "fylke": "Nordland",
-        "lat": 65.4655,
-        "lon": 12.2184
+        "lat": 65.4749,
+        "lon": 12.2128
     },
     {
         "kommune": "Sømna",
         "fylke": "Nordland",
-        "lat": 65.3258,
-        "lon": 11.9007
+        "lat": 65.3167,
+        "lon": 12.1667
     },
     {
         "kommune": "Vega",
@@ -1922,20 +1916,20 @@
     {
         "kommune": "Tromsø",
         "fylke": "Troms",
-        "lat": 69.6702,
-        "lon": 18.875
+        "lat": 69.6489,
+        "lon": 18.9551
     },
     {
         "kommune": "Balsfjord",
         "fylke": "Troms",
-        "lat": 69.3316,
-        "lon": 19.0899
+        "lat": 69.3167,
+        "lon": 19.3667
     },
     {
         "kommune": "Storfjord",
         "fylke": "Troms",
-        "lat": 69.2308,
-        "lon": 20.3659
+        "lat": 68.15,
+        "lon": 13.7667
     },
     {
         "kommune": "Lyngen",
@@ -1946,14 +1940,14 @@
     {
         "kommune": "Karlsøy",
         "fylke": "Troms",
-        "lat": 70.106,
-        "lon": 19.5187
+        "lat": 68.0009,
+        "lon": 15.7655
     },
     {
         "kommune": "Gáivuotna Kåfjord",
         "fylke": "Troms",
-        "lat": 69.502,
-        "lon": 20.7065
+        "lat": 69.6014,
+        "lon": 20.5361
     },
     {
         "kommune": "Nordreisa",
@@ -1968,46 +1962,40 @@
         "lon": 21.713
     },
     {
-        "kommune": "Svalbard",
-        "fylke": "Svalbard",
-        "lat": 77.4739,
-        "lon": 17.9125
-    },
-    {
         "kommune": "Skjervøy",
         "fylke": "Troms",
-        "lat": 70.1052,
-        "lon": 20.7005
+        "lat": 70.0311,
+        "lon": 20.9714
     },
     {
         "kommune": "Loppa",
         "fylke": "Finnmark",
-        "lat": 70.2579,
-        "lon": 21.7735
+        "lat": 70.3338,
+        "lon": 21.4507
     },
     {
         "kommune": "Senja",
         "fylke": "Troms",
-        "lat": 69.3441,
-        "lon": 17.5767
+        "lat": 69.3311,
+        "lon": 17.4931
     },
     {
         "kommune": "Sørreisa",
         "fylke": "Troms",
-        "lat": 69.0875,
-        "lon": 18.1531
+        "lat": 69.1453,
+        "lon": 18.1529
     },
     {
         "kommune": "Dyrøy",
         "fylke": "Troms",
-        "lat": 69.0375,
-        "lon": 17.6193
+        "lat": 68.8167,
+        "lon": 14.8167
     },
     {
         "kommune": "Målselv",
         "fylke": "Troms",
-        "lat": 69.0405,
-        "lon": 18.926
+        "lat": 69.0357,
+        "lon": 18.6527
     },
     {
         "kommune": "Salangen",
@@ -2018,20 +2006,20 @@
     {
         "kommune": "Lavangen",
         "fylke": "Troms",
-        "lat": 68.7314,
-        "lon": 17.8008
+        "lat": 68.5333,
+        "lon": 16.6227
     },
     {
         "kommune": "Bardu",
         "fylke": "Troms",
-        "lat": 68.6644,
-        "lon": 18.8871
+        "lat": 68.8586,
+        "lon": 18.3472
     },
     {
         "kommune": "Harstad",
         "fylke": "Troms",
-        "lat": 68.8348,
-        "lon": 16.5341
+        "lat": 68.7983,
+        "lon": 16.5417
     },
     {
         "kommune": "Tjeldsund",
@@ -2042,20 +2030,20 @@
     {
         "kommune": "Ibestad",
         "fylke": "Troms",
-        "lat": 68.8511,
-        "lon": 17.1928
+        "lat": 68.7878,
+        "lon": 17.1509
     },
     {
         "kommune": "Gratangen",
         "fylke": "Troms",
-        "lat": 68.6941,
-        "lon": 17.5162
+        "lat": 68.65,
+        "lon": 17.6833
     },
     {
         "kommune": "Alta",
         "fylke": "Finnmark",
-        "lat": 70.0304,
-        "lon": 23.2266
+        "lat": 69.9689,
+        "lon": 23.2717
     },
     {
         "kommune": "Guovdageaidnu Kautokeino",
@@ -2066,20 +2054,20 @@
     {
         "kommune": "Hasvik",
         "fylke": "Finnmark",
-        "lat": 70.5903,
-        "lon": 22.2256
+        "lat": 70.4864,
+        "lon": 22.1611
     },
     {
         "kommune": "Hammerfest",
         "fylke": "Finnmark",
-        "lat": 70.6427,
-        "lon": 23.6628
+        "lat": 70.6631,
+        "lon": 23.6809
     },
     {
         "kommune": "Måsøy",
         "fylke": "Finnmark",
-        "lat": 70.9689,
-        "lon": 24.471
+        "lat": 71.0077,
+        "lon": 25.004
     },
     {
         "kommune": "Porsanger Porsángu Porsanki",
@@ -2090,8 +2078,8 @@
     {
         "kommune": "Lebesby",
         "fylke": "Finnmark",
-        "lat": 70.7079,
-        "lon": 26.9147
+        "lat": 70.5728,
+        "lon": 27.0019
     },
     {
         "kommune": "Karasjohka Karasjok",
@@ -2102,20 +2090,20 @@
     {
         "kommune": "Nordkapp",
         "fylke": "Finnmark",
-        "lat": 71.0243,
-        "lon": 25.8489
+        "lat": 71.1725,
+        "lon": 25.7844
     },
     {
         "kommune": "Gamvik",
         "fylke": "Finnmark",
-        "lat": 70.828,
-        "lon": 27.9932
+        "lat": 71.0639,
+        "lon": 28.2465
     },
     {
         "kommune": "Vadsø",
         "fylke": "Finnmark",
-        "lat": 70.127,
-        "lon": 29.7547
+        "lat": 70.0735,
+        "lon": 29.7494
     },
     {
         "kommune": "Deatnu Tana",
@@ -2138,19 +2126,19 @@
     {
         "kommune": "Vardø",
         "fylke": "Finnmark",
-        "lat": 70.3735,
-        "lon": 30.8647
+        "lat": 70.3705,
+        "lon": 31.1107
     },
     {
         "kommune": "Berlevåg",
         "fylke": "Finnmark",
-        "lat": 70.7569,
-        "lon": 29.3284
+        "lat": 70.8578,
+        "lon": 29.0864
     },
     {
         "kommune": "Båtsfjord",
         "fylke": "Finnmark",
-        "lat": 70.5582,
-        "lon": 29.9046
+        "lat": 70.6343,
+        "lon": 29.7175
     }
 ]
