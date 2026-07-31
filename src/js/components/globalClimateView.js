@@ -358,39 +358,19 @@ function renderGlobalRecordsGrid(data) {
   if (!container || !data || !data.records) return;
 
   if (titleEl) {
-    titleEl.textContent = `🌐 Globale Rekorder & Observasjonsdata – ${data.regionName}`;
+    titleEl.textContent = '🌐 Globale Rekorder & Observasjonsdata';
   }
 
   const cat = activeGlobalRecordCategory;
-
-  if (cat === 'warmestYears' || cat === 'coldestYears') {
-    const list = cat === 'warmestYears' ? (data.records.warmestYears || []) : (data.records.coldestYears || []);
-    const metricClass = cat === 'warmestYears' ? 'warm' : 'cold';
-    container.innerHTML = list.map((item, idx) => `
-      <div class="extreme-item-card">
-        <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
-        <div class="extreme-info">
-          <div class="extreme-place">År ${item.year}</div>
-        </div>
-        <div class="extreme-metric ${metricClass}">${item.anomaly > 0 ? '+' : ''}${item.anomaly} °C</div>
+  const list = cat === 'warmestYears' ? (data.records.warmestYears || []) : (data.records.coldestYears || []);
+  const metricClass = cat === 'warmestYears' ? 'warm' : 'cold';
+  container.innerHTML = list.map((item, idx) => `
+    <div class="extreme-item-card">
+      <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
+      <div class="extreme-info">
+        <div class="extreme-place">År ${item.year}</div>
       </div>
-    `).join('');
-    return;
-  }
-
-  if (cat === 'elNino' || cat === 'laNina') {
-    const list = cat === 'elNino' ? (data.records.elNinoEvents || []) : (data.records.laNinaEvents || []);
-    const metricClass = cat === 'elNino' ? 'warm' : 'cold';
-    container.innerHTML = list.map((item, idx) => `
-      <div class="extreme-item-card">
-        <span class="extreme-rank rank-${idx + 1}">#${idx + 1}</span>
-        <div class="extreme-info">
-          <div class="extreme-place">${item.year}</div>
-          <div class="extreme-region">${item.name}</div>
-        </div>
-        <div class="extreme-metric ${metricClass}">${item.rate}</div>
-      </div>
-    `).join('');
-    return;
-  }
+      <div class="extreme-metric ${metricClass}">${item.anomaly > 0 ? '+' : ''}${item.anomaly} °C</div>
+    </div>
+  `).join('');
 }
