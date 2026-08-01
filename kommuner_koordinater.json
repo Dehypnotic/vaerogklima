@@ -72,7 +72,7 @@
         "lon": 6.587
     },
     {
-        "kommune": "Våler (Østfold)",
+        "kommune": "Våler",
         "fylke": "Østfold",
         "lat": 60.2333,
         "lon": 11.3167
@@ -264,7 +264,7 @@
         "lon": 12.2637
     },
     {
-        "kommune": "Våler (Innlandet)",
+        "kommune": "Våler",
         "fylke": "Innlandet",
         "lat": 60.2333,
         "lon": 11.3167
@@ -1212,7 +1212,7 @@
         "lon": 5.8487
     },
     {
-        "kommune": "Herøy (Møre Og Romsdal)",
+        "kommune": "Herøy",
         "fylke": "Møre og Romsdal",
         "lat": 65.9833,
         "lon": 12.2833
@@ -1878,7 +1878,7 @@
         "lon": 12.5833
     },
     {
-        "kommune": "Herøy (Nordland)",
+        "kommune": "Herøy",
         "fylke": "Nordland",
         "lat": 65.9833,
         "lon": 12.2833
@@ -1944,7 +1944,7 @@
         "lon": 15.7655
     },
     {
-        "kommune": "Gáivuotna Kåfjord",
+        "kommune": "Kåfjord",
         "fylke": "Troms",
         "lat": 69.6014,
         "lon": 20.5361
@@ -2046,7 +2046,7 @@
         "lon": 23.2717
     },
     {
-        "kommune": "Guovdageaidnu Kautokeino",
+        "kommune": "Kautokeino",
         "fylke": "Finnmark",
         "lat": 69.0611,
         "lon": 23.3926
@@ -2070,7 +2070,7 @@
         "lon": 25.004
     },
     {
-        "kommune": "Porsanger Porsángu Porsanki",
+        "kommune": "Porsanger",
         "fylke": "Finnmark",
         "lat": 70.148,
         "lon": 25.1777
@@ -2082,7 +2082,7 @@
         "lon": 27.0019
     },
     {
-        "kommune": "Karasjohka Karasjok",
+        "kommune": "Karasjok",
         "fylke": "Finnmark",
         "lat": 69.4633,
         "lon": 25.3143
@@ -2106,13 +2106,13 @@
         "lon": 29.7494
     },
     {
-        "kommune": "Deatnu Tana",
+        "kommune": "Tana",
         "fylke": "Finnmark",
         "lat": 70.2026,
         "lon": 27.8492
     },
     {
-        "kommune": "Unjargga Nesseby",
+        "kommune": "Nesseby",
         "fylke": "Finnmark",
         "lat": 70.1332,
         "lon": 28.7991
