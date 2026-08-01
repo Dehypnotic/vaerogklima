@@ -139,7 +139,6 @@ async function loadCityWeatherData(index) {
         <div class="city-name-container">
           <span class="city-name">${city.name}</span>
           <span class="city-subtext">${city.region || 'Norge'}</span>
-          <span class="double-click-hint">🖱️ Dobbeltklikk for å bytte sted</span>
         </div>
         <div class="city-weather-icon">${weather.icon}</div>
       </div>

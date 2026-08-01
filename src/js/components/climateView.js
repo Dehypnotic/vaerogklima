@@ -467,9 +467,20 @@ function renderAnomalyChart(data) {
       btn.onclick = () => {
         if (!anomalyChartInstance) return;
         const isVisible = anomalyChartInstance.isDatasetVisible(idx);
-        anomalyChartInstance.setDatasetVisibility(idx, !isVisible);
+        const newVisible = !isVisible;
+        anomalyChartInstance.setDatasetVisibility(idx, newVisible);
+
+        // Skjul/vis tilhørende akse på siden når datasettet slås av/på
+        if (idx === 0 && anomalyChartInstance.options.scales.yTrend) {
+          anomalyChartInstance.options.scales.yTrend.display = newVisible;
+        } else if (idx === 1 && anomalyChartInstance.options.scales.yPrecip) {
+          anomalyChartInstance.options.scales.yPrecip.display = newVisible;
+        } else if (idx === 2 && anomalyChartInstance.options.scales.yAnomaly) {
+          anomalyChartInstance.options.scales.yAnomaly.display = newVisible;
+        }
+
         anomalyChartInstance.update();
-        btn.classList.toggle('hidden', isVisible);
+        btn.classList.toggle('hidden', !newVisible);
       };
       btn.classList.remove('hidden');
     });
