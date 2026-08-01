@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vær og Klima i Norge | Sanntid Vær, Ekstrempunkter & Historiske Klimadata</title>
-  <meta name="description" content="Kjørbare, interaktive websider for vær og klimainformasjon i Norge. Nåværende vær i de 10 største byene, stedsvalg, prognoser og historiske klimagrafikk.">
+  <title>Vær og Klima – Norge &amp; Verden | Sanntidsvær &amp; Klimadata</title>
+  <meta name="description" content="Kjørbare, interaktive websider for vær og klimainformasjon i Norge og Verden. Nåværende vær i de 10 største byene, stedsvalg, prognoser og historisk klimagrafikk.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="weather-logo"><path d="M17.5 19.5 15.08 14.33a5 5 0 0 0-6.16-2.58A5 5 0 0 0 4.5 17"/><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.94 9.06a5 5 0 0 0-7.88 0"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <div class="brand-text">
-          <h1>Vær og Klima <span class="brand-badge">NORGE</span></h1>
+          <h1>Vær og Klima <span class="brand-badge">NORGE &amp; VERDEN</span></h1>
           <p class="brand-tagline"> Meteorologiske data & historisk utsyn</p>
         </div>
       </div>
@@ -273,11 +273,23 @@
           <div class="climate-chart-header">
             <h3 id="climate-chart-title">Historisk Temperaturavvik (1900–nåtid)</h3>
             <div id="climate-data-source-banner" class="climate-source-banner">📡 Henter måledata...</div>
-            <p class="chart-legend-hint">
-              <span class="legend-dot warm"></span> Varmere enn normal (1961-1990)
-              <span class="legend-dot cold"></span> Kaldere enn normal
-              <span class="legend-dot trend"></span> 10-års glidende snitt
-            </p>
+            <div id="climate-interactive-legend" class="climate-interactive-legend">
+              <button class="legend-item" data-dataset="0" title="Klikk for å slå av/på 10-års snittemperatur">
+                <span class="legend-symbol line-gold"></span>
+                <span>10-års Snittemperatur (°C)</span>
+              </button>
+              <button class="legend-item" data-dataset="1" title="Klikk for å slå av/på 10-års snittnedbør">
+                <span class="legend-symbol line-cyan-dashed"></span>
+                <span>10-års Snittnedbør (mm)</span>
+              </button>
+              <button class="legend-item" data-dataset="2" title="Klikk for å slå av/på temperaturavvik">
+                <span class="legend-symbol bar-dual">
+                  <span class="bar-red"></span>
+                  <span class="bar-blue"></span>
+                </span>
+                <span>Temperaturavvik fra 1961–1990 normal (°C)</span>
+              </button>
+            </div>
           </div>
           <div class="chart-wrapper climate-chart-wrapper">
             <canvas id="climate-trend-chart"></canvas>

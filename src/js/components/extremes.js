@@ -36,11 +36,16 @@ export async function initExtremes(onSelectLocation) {
     });
   }
 
-  // Hent data
+  // Hent data med live oppdaterings-callback
   try {
-    currentExtremesData = await fetchExtremesData();
+    currentExtremesData = await fetchExtremesData((freshData) => {
+      currentExtremesData = freshData;
+      if (timestampEl) timestampEl.textContent = freshData.timestamp;
+      renderExtremesGrid();
+    });
+
     if (currentExtremesData) {
-      if (timestampEl) timestampEl.textContent = `Oppdatert kl. ${currentExtremesData.timestamp}`;
+      if (timestampEl) timestampEl.textContent = currentExtremesData.timestamp;
       renderExtremesGrid();
     } else {
       container.innerHTML = '<div class="loading-skeleton">Kunne ikke laste ekstremdata akkurat nå.</div>';

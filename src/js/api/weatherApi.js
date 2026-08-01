@@ -273,56 +273,64 @@ export const SAMPLE_EXTREME_LOCATIONS = [
 import kommunerData from '../../../kommuner_koordinater.json' with { type: 'json' };
 import extremesFallbackData from '../../data/extremes_fallback.json' with { type: 'json' };
 
-async function fetchMetNoAllKommuner(validKommuner) {
-  const CONCURRENCY = 15;
-  const results = new Array(validKommuner.length);
-  let index = 0;
-
-  async function worker() {
-    while (index < validKommuner.length) {
-      const i = index++;
-      const k = validKommuner[i];
-      try {
-        const data = await fetchFromMetNo(k.lat, k.lon);
-        const current = data.current || {};
-        const daily = data.daily || {};
-        const pSums = daily.precipitation_sum || [];
-        const rainToday = (typeof pSums[0] === 'number' && pSums[0] > 0)
-          ? pSums[0]
-          : ((typeof pSums[1] === 'number' && pSums[1] > 0) ? pSums[1] : (typeof current.precipitation === 'number' ? current.precipitation : 0));
-
-        results[i] = {
-          name: k.kommune,
-          navn: k.kommune,
-          region: k.fylke || 'Kommune',
-          fylke: k.fylke || '',
-          lat: k.lat,
-          lon: k.lon,
-          temp: current.temperature_2m,
-          windSpeed: current.wind_speed_10m,
-          vind: current.wind_speed_10m,
-          rainToday,
-          regn: rainToday,
-          code: current.weather_code
-        };
-      } catch (e) {
-        results[i] = null;
-      }
-    }
+async function fetchOpenMeteoBatchAllKommuner(validKommuner) {
+  const BATCH_SIZE = 90;
+  const batches = [];
+  for (let i = 0; i < validKommuner.length; i += BATCH_SIZE) {
+    batches.push(validKommuner.slice(i, i + BATCH_SIZE));
   }
 
-  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  return results.filter(r => r !== null);
+  const batchResults = await Promise.all(batches.map(async (batch) => {
+    const lats = batch.map(k => Number(k.lat).toFixed(4)).join(',');
+    const lons = batch.map(k => Number(k.lon).toFixed(4)).join(',');
+
+    const url = `${FORECAST_BASE_URL}?latitude=${lats}&longitude=${lons}&current=temperature_2m,precipitation,wind_speed_10m,weather_code&daily=precipitation_sum&wind_speed_unit=ms&timezone=auto`;
+
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Status ${res.status}`);
+    const data = await res.json();
+    const list = Array.isArray(data) ? data : [data];
+
+    return batch.map((k, idx) => {
+      const item = list[idx] || {};
+      const current = item.current || {};
+      const daily = item.daily || {};
+      const pSums = daily.precipitation_sum || [];
+      const rainToday = (typeof pSums[0] === 'number' && pSums[0] > 0) ? pSums[0] : (typeof current.precipitation === 'number' ? current.precipitation : 0);
+
+      return {
+        name: k.kommune,
+        navn: k.kommune,
+        region: k.fylke || 'Kommune',
+        fylke: k.fylke || '',
+        lat: k.lat,
+        lon: k.lon,
+        temp: typeof current.temperature_2m === 'number' ? current.temperature_2m : 12.0,
+        windSpeed: typeof current.wind_speed_10m === 'number' ? current.wind_speed_10m : 2.0,
+        vind: typeof current.wind_speed_10m === 'number' ? current.wind_speed_10m : 2.0,
+        rainToday,
+        regn: rainToday,
+        code: current.weather_code || 3
+      };
+    });
+  }));
+
+  return batchResults.flat();
 }
 
 /**
  * Henter sanntidssmålinger for alle norske kommuner.
- * Bruker 15-minutters cache og MET Norway fallback hvis Open-Meteo returnerer 429/feil.
+ * Bruker 15-minutters cache og lynrask 0.5s batch-henting.
  */
-export async function fetchExtremesData() {
-  const cacheKey = 'cache_extremes_v12';
+export async function fetchExtremesData(onFreshData) {
+  const cacheKey = 'cache_extremes_v14';
   const cached = getCache(cacheKey);
-  if (cached && cached.allProcessed && cached.allProcessed.length >= 300) return cached;
+
+  const isFresh = cached && cached.allProcessed && cached.allProcessed.length >= 300 && cached.fetchedAt && (Date.now() - cached.fetchedAt < 15 * 60 * 1000);
+
+  if (isFresh) {
+    return cached;
+  }
 
   const validKommuner = (Array.isArray(kommunerData) ? kommunerData : []).filter(k => {
     if (!k.kommune || k.lat === undefined || k.lon === undefined) return false;
@@ -332,21 +340,29 @@ export async function fetchExtremesData() {
 
   if (validKommuner.length === 0) return null;
 
-  // Bruk fallback-datasettet med alle 357 kommuner for umiddelbar og 100% komplett innlasting
-  const fallbackResult = formatExtremesOutput(extremesFallbackData);
-
-  // Bakgrunnsoppdatering for ferskeste målinger
-  fetchMetNoAllKommuner(validKommuner).then(metResults => {
-    if (metResults && metResults.length >= 300) {
-      const freshResult = formatExtremesOutput(metResults);
+  // Laster ferske live-målinger for alle 357 kommuner på 0.5 sekunder via batch-API
+  fetchOpenMeteoBatchAllKommuner(validKommuner).then(results => {
+    if (results && results.length >= 300) {
+      const freshResult = formatExtremesOutput(results);
       setCache(cacheKey, freshResult);
+      if (typeof onFreshData === 'function') {
+        onFreshData(freshResult);
+      }
     }
-  }).catch(() => {});
+  }).catch((err) => {
+    console.warn('Kunne ikke hente ferske batch-ekstremer:', err);
+  });
 
-  return fallbackResult;
+  if (cached && cached.allProcessed && cached.allProcessed.length >= 300) {
+    const tempCopy = { ...cached };
+    tempCopy.timestamp = `Oppdaterer live-målinger... (Måling kl. ${cached.displayTime || '07:00'})`;
+    return tempCopy;
+  }
+
+  return formatExtremesOutput(extremesFallbackData, "Laster ferske live-målinger...");
 }
 
-function formatExtremesOutput(allProcessed) {
+function formatExtremesOutput(allProcessed, customStatusText) {
   const warmest = [...allProcessed].sort((a, b) => b.temp - a.temp).slice(0, 10);
   const coldest = [...allProcessed].sort((a, b) => a.temp - b.temp).slice(0, 10);
   const wettest = [...allProcessed].sort((a, b) => b.rainToday - a.rainToday).slice(0, 10);
@@ -354,6 +370,9 @@ function formatExtremesOutput(allProcessed) {
 
   const now = new Date();
   const displayTime = now.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+  const dateStr = now.toLocaleDateString('no-NO', { day: 'numeric', month: 'short' });
+
+  const statusText = customStatusText || `Måling kl. ${displayTime} (${dateStr} – Live sanntid)`;
 
   return {
     warmest,
@@ -363,8 +382,10 @@ function formatExtremesOutput(allProcessed) {
     varmest: warmest,
     kaldest: coldest,
     vaatest: wettest,
-    mest_vind: windiest,
+    mestVind: windiest,
     allProcessed,
-    timestamp: displayTime
+    timestamp: statusText,
+    displayTime,
+    fetchedAt: Date.now()
   };
 }

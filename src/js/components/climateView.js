@@ -385,11 +385,7 @@ function renderAnomalyChart(data) {
       },
       plugins: {
         legend: {
-          labels: {
-            color: '#94a3b8',
-            font: { family: 'Inter', size: 12 },
-            usePointStyle: true
-          }
+          display: false
         },
         tooltip: {
           backgroundColor: '#131b2e',
@@ -423,10 +419,7 @@ function renderAnomalyChart(data) {
           min: Math.floor((minAnomaly - anomalyPad) * 2) / 2,
           max: Math.ceil((maxAnomaly + anomalyPad) * 2) / 2,
           title: {
-            display: true,
-            text: 'Temperaturavvik fra 1961–1990 normal (°C)',
-            color: '#94a3b8',
-            font: { family: 'Inter', size: 11, weight: '600' }
+            display: false
           },
           grid: { color: 'rgba(255, 255, 255, 0.06)' },
           ticks: {
@@ -441,10 +434,7 @@ function renderAnomalyChart(data) {
           min: Math.floor((minTrend - trendPad) * 2) / 2,
           max: Math.ceil((maxTrend + trendPad) * 2) / 2,
           title: {
-            display: true,
-            text: '10-års Temp.snitt (°C)',
-            color: '#f59e0b',
-            font: { family: 'Inter', size: 11, weight: '600' }
+            display: false
           },
           grid: { drawOnChartArea: false },
           ticks: {
@@ -457,10 +447,7 @@ function renderAnomalyChart(data) {
           display: true,
           position: 'right',
           title: {
-            display: true,
-            text: '10-års Nedbørssnitt (mm)',
-            color: '#06b6d4',
-            font: { family: 'Inter', size: 11, weight: '600' }
+            display: false
           },
           grid: { drawOnChartArea: false },
           ticks: {
@@ -471,6 +458,22 @@ function renderAnomalyChart(data) {
       }
     }
   });
+
+  // Koble til den interaktive tegnforklaringen over diagrammet
+  const legendContainer = document.getElementById('climate-interactive-legend');
+  if (legendContainer) {
+    legendContainer.querySelectorAll('.legend-item').forEach(btn => {
+      const idx = parseInt(btn.dataset.dataset, 10);
+      btn.onclick = () => {
+        if (!anomalyChartInstance) return;
+        const isVisible = anomalyChartInstance.isDatasetVisible(idx);
+        anomalyChartInstance.setDatasetVisibility(idx, !isVisible);
+        anomalyChartInstance.update();
+        btn.classList.toggle('hidden', isVisible);
+      };
+      btn.classList.remove('hidden');
+    });
+  }
 }
 
 function renderNormalsChart(data) {

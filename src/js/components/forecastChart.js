@@ -37,11 +37,9 @@ export async function initForecastSection() {
       if (currentHome && currentHome.name === currentLocation.name) {
         // Fjern som hjem
         setHomeLocation(null);
-        alert(`${currentLocation.name} er tilbakestilt som hjemsted.`);
       } else {
         // Sett som hjem
         setHomeLocation(currentLocation);
-        alert(`${currentLocation.name} er nå valgt som ditt standard hjem-sted! 🏠`);
       }
 
       updateHomeTag();
@@ -194,10 +192,12 @@ function renderChart() {
           type: 'bar',
           label: 'Nedbør (mm)',
           data: rainData,
-          backgroundColor: 'rgba(59, 130, 246, 0.6)',
+          backgroundColor: 'rgba(59, 130, 246, 0.55)',
           borderColor: '#3b82f6',
           borderWidth: 1,
-          borderRadius: 4,
+          borderRadius: 3,
+          barPercentage: activeChartMode === 'daily' ? 0.35 : 0.45,
+          categoryPercentage: 0.6,
           yAxisID: 'yRain'
         },
         {
