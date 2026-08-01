@@ -157,13 +157,17 @@ function generateNorwayClimateData(stationKey = 'norway', seasonKey = 'annual') 
     : (frostStation.seasons ? frostStation.seasons.annual : {});
 
   for (let year = startYear; year <= endYear; year++) {
-    const anomaly = seasonAnomalies[year] !== undefined 
-      ? seasonAnomalies[year] 
-      : (SEASONAL_RAW_ANOMALIES[seasonKey] ? SEASONAL_RAW_ANOMALIES[seasonKey][year - 1900] || 1.0 : 1.0);
+    let rawVal = seasonAnomalies ? seasonAnomalies[year] : undefined;
+    if (rawVal === undefined || rawVal === null) {
+      const fallbackArr = SEASONAL_RAW_ANOMALIES[seasonKey] || SEASONAL_RAW_ANOMALIES.annual;
+      rawVal = fallbackArr[year - 1900];
+    }
+
+    const anomalyNum = (typeof rawVal === 'number' && !isNaN(rawVal)) ? rawVal : 0.0;
 
     years.push({
       year,
-      anomaly: Number(anomaly.toFixed(2))
+      anomaly: Number(anomalyNum.toFixed(2))
     });
   }
 
