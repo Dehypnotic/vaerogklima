@@ -105,6 +105,18 @@ function renderGlobalChart(data) {
   const canvas = document.getElementById('global-climate-chart');
   if (!canvas) return;
 
+  const chartTitleEl = document.getElementById('global-chart-title');
+  if (chartTitleEl && data) {
+    const varNames = {
+      temp: 'Temperaturavvik fra før-industrielt snitt',
+      co2: 'Atmosfærisk CO₂-konsentrasjon (Keeling-kurven)',
+      sealevel: 'Global Havnivåstigning',
+      ice: 'Arktisk Sjøis Minimum',
+      enso: 'ENSO (El Niño / La Niña)'
+    };
+    chartTitleEl.textContent = `${varNames[activeVariable] || 'Klimaindikator'} – ${data.regionName}`;
+  }
+
   const ctx = canvas.getContext('2d');
 
   if (globalChartInstance) {
@@ -130,7 +142,7 @@ function renderGlobalChart(data) {
     datasetConfig = [
       {
         type: 'bar',
-        label: 'Årlig Temperaturavvik (°C)',
+        label: `Årlig Temperaturavvik – ${data.regionName} (°C)`,
         data: anomalies,
         backgroundColor: anomalies.map(v => v >= 0 ? 'rgba(244, 63, 94, 0.75)' : 'rgba(59, 130, 246, 0.75)'),
         borderColor: anomalies.map(v => v >= 0 ? '#f43f5e' : '#3b82f6'),
@@ -139,7 +151,7 @@ function renderGlobalChart(data) {
       },
       {
         type: 'line',
-        label: '10-års Klimatrend (°C)',
+        label: `10-års Klimatrend – ${data.regionName} (°C)`,
         data: trends,
         borderColor: '#f59e0b',
         borderWidth: 3,
@@ -147,7 +159,7 @@ function renderGlobalChart(data) {
         tension: 0.35
       }
     ];
-    yAxisLeftTitle = 'Temperaturavvik fra baseline (°C)';
+    yAxisLeftTitle = `Temperaturavvik – ${data.regionName} (°C)`;
   } else if (activeVariable === 'co2') {
     const co2Data = displaySeries.map(s => s.co2Ppm);
     datasetConfig = [
@@ -294,6 +306,9 @@ function renderGlobalChart(data) {
   const maxVal = Math.max(...(datasetConfig[0]?.data || [1]));
   const pad = Math.max(0.1, (maxVal - minVal) * 0.05);
 
+  const yMin = Number((minVal - pad).toFixed(2));
+  const yMax = Number((maxVal + pad).toFixed(2));
+
   const scalesConfig = {
     x: {
       grid: { color: 'rgba(255, 255, 255, 0.05)' },
@@ -302,8 +317,8 @@ function renderGlobalChart(data) {
     y: {
       position: 'left',
       beginAtZero: false,
-      min: Number((minVal - pad).toFixed(2)),
-      max: Number((maxVal + pad).toFixed(2)),
+      min: yMin,
+      max: yMax,
       title: {
         display: true,
         text: yAxisLeftTitle,
@@ -314,7 +329,7 @@ function renderGlobalChart(data) {
       ticks: {
         color: yAxisLeftColor,
         font: { family: 'Inter', size: 11, weight: '600' },
-        callback: val => Number(val.toFixed(2))
+        callback: val => activeVariable === 'temp' ? `${val > 0 ? '+' : ''}${val}°C` : Number(val.toFixed(2))
       }
     }
   };
